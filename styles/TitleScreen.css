@@ -1,0 +1,42 @@
+.TitleScreen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+   background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url("../images/title_bg.jpg");
+    background-size: cover;
+}
+.TitleScreen .KeyboardMenu {
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+  background: transparent;
+  border: 0;
+}
+.TitleScreen button {
+  color: #fff;
+  justify-content: center;
+  padding:0;
+    transition: all 0.25s;
+    margin-top: 10px;
+}
+
+.TitleScreen .DescriptionBox {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  text-align: center;
+}
+h1{
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+}

@@ -1,0 +1,35 @@
+:root{
+    --border-color: #291d4d;
+    --dialog-background: #fff3b4;
+    --menu-background: #ffe8d2;
+    --menu-border-color: #a48465;
+    --menu-font-color: #3a160d;
+    --menu-selected-background: #7fc2ff;
+}
+  @font-face{
+                    font-family: font;
+                src: url('../font.otf');
+            }
+* {
+  box-sizing:border-box;
+}
+body {
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+    font-family: font;
+}
+
+.game-container {
+    background:#202020;
+  width: 352px;
+  height: 198px;
+  margin: 0 auto;
+  outline: 1px solid #000;
+  transform: scale(2.5) translateY(39%);
+}
+
+.game-container canvas {
+  image-rendering: pixelated;
+}
