@@ -24,29 +24,35 @@ class Inventory {
             }
         });
     }
-    
+
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
-        this.esc?.unbind();
-        this.esc2?.unbind();
+        this.esc.unbind();
+        this.esc2.unbind();
         this.element.remove();
         this.onComplete();
     }
         
-    async init(container) {
+   async init(container) {
         this.createElement();
         document.querySelector("canvas").style.filter = "brightness(0.2)";
         container.appendChild(this.element);
         this.check();
         utils.wait(200);
         this.esc = new KeyPressListener("KeyE", () => {
+            if(document.querySelector(".option_box")){
+                document.querySelector(".option_box").remove();
+            }
             this.close();
         })
         this.esc2 = new KeyPressListener("Escape", () => {
+            if(document.querySelector(".option_box")){
+                document.querySelector(".option_box").remove();
+            }
             this.close();
         })
         document.addEventListener("mouseover", function(event){
-            if(event.target.tagName == "TD" && event.target.dataset.itemName && !document.querySelector("h3")){
+            if((event.target.tagName == "TD" || event.target.className == "option_box") && event.target.dataset.itemName && !document.querySelector("h3")){
                let eq_h3 = document.createElement("h3");
                 eq_h3.innerText = event.target.dataset.itemName;
                 document.querySelector(".Inventory").appendChild(eq_h3);
@@ -59,6 +65,29 @@ class Inventory {
             if(event.target.tagName == "TD" && event.target.dataset.itemName && document.querySelector("h3")){
                document.querySelector("h3").remove();
                 document.querySelector("span").remove();
+            }
+        });
+        document.addEventListener("click", function(event){
+            if(event.target.tagName == "TD" && event.target.dataset.itemName){
+                if(document.querySelector(".option_box")){
+                    document.querySelector(".option_box").remove();
+                }
+                event.target.setAttribute("class", "td_focus");
+                let option_box = document.createElement("div");
+                option_box.setAttribute("class", "option_box");
+                option_box.dataset.itemName = event.target.dataset.itemName;
+                option_box.style.cssText = `position: absolute; top: ${event.clientY}px;left: ${event.clientX}px;`;
+                document.body.appendChild(option_box);
+                option_box.innerHTML = `<span class="span_uzyj">Użyj</span><span class="span_usun">Usuń</span>`;
+            }
+            else if(event.target.tagName != "TD" && event.target.className != "option_box"){
+                let td = document.querySelectorAll("td");
+                td.forEach(td =>{
+                    td.removeAttribute("class");
+                })
+                if(document.querySelector(".option_box")){
+                    document.querySelector(".option_box").remove();
+                }
             }
         });
     }

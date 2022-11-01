@@ -65,6 +65,7 @@
     justify-content: center;
     image-rendering: pixelated;
     pointer-events: none;
+    user-select: none;
 }
 .Inventory table{
     margin-top: 5px;
@@ -83,4 +84,24 @@
     text-align: center;
     margin: auto;
     margin-top: 5px;
+}
+.option_box{
+    background:  #715132;
+    width: 120px;
+    height: 100px;
+    color: #fff;
+    font-size: 22px;
+    padding-left: 15px;
+    text-decoration: underline;
+}
+.option_box > span{
+    display: block;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 40px;
+}
+.span_usun{
+    color: red;
+    text-decoration: underline;
+    text-decoration-color: red;
 }
