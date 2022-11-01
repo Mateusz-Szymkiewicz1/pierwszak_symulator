@@ -10,7 +10,7 @@ class TextMessage{
         this.element.classList.add("TextMessage");
         this.element.innerHTML = (`
             <p class="TextMessage_p"></p>
-            <button class="TextMessage_button">Next</button>
+            <button class="TextMessage_button">Dalej</button>
             `)
         
         this.revealingText = new RevealingText({

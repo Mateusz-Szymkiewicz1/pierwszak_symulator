@@ -36,6 +36,7 @@ class PauseMenu {
     }
 
     close() {
+        document.querySelector("canvas").style.filter = "brightness(1)";
         this.esc?.unbind();
         this.keyboardMenu.end();
         this.element.remove();
@@ -49,7 +50,7 @@ class PauseMenu {
         })
         this.keyboardMenu.init(this.element);
         this.keyboardMenu.setOptions(this.getOptions("root"));
-
+        document.querySelector("canvas").style.filter = "brightness(0.2)";
         container.appendChild(this.element);
         utils.wait(200);
         this.esc = new KeyPressListener("Escape", () => {

@@ -4,6 +4,7 @@ class Progress {
         this.startingHeroX = 0;
         this.startingHeroY = 0;
         this.startingHeroDirection = "up";
+        this.heroInventory = [];
         this.saveFileKey = "rpg_savefile1";
     }
 
@@ -13,7 +14,8 @@ class Progress {
             startingHeroX: this.startingHeroX,
             startingHeroY: this.startingHeroY,
             startingHeroDirection: this.startingHeroDirection,
-        }))
+            heroInventory: window.heroInventory,
+        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id"]))
     }
 
     getSaveFile() {
@@ -28,6 +30,7 @@ class Progress {
             this.startingHeroX = file.startingHeroX;
             this.startingHeroY = file.startingHeroY;
             this.startingHeroDirection = file.startingHeroDirection;
+            this.heroInventory = file.heroInventory;
         }
     }
 

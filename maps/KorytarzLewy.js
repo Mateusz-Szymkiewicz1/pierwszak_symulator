@@ -252,7 +252,7 @@ window.OverworldMaps.KorytarzLewy = {
             }),
         },
         cutsceneSpaces: {
-                [utils.asGridCoord(24, 4)]: [
+                [utils.asGridCoord(23, 4)]: [
                 {
                     events: [
                         {
@@ -265,7 +265,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-                [utils.asGridCoord(24, 5)]: [
+                [utils.asGridCoord(23, 5)]: [
                 {
                     events: [
                         {

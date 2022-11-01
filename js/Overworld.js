@@ -51,6 +51,15 @@ class Overworld {
             ]);
             }
         })
+        new KeyPressListener("KeyE", () => {
+            if (!this.map.isCutscenePlaying) {
+                this.map.startCutscene([
+                    {
+                        type: "inventory"
+                    }
+            ]);
+            }
+        })
     }
     bindHeroPositionCheck() {
         document.addEventListener("PersonWalkingComplete", e => {
@@ -94,8 +103,18 @@ class Overworld {
                 y: this.progress.startingHeroY,
                 direction: this.progress.startingHeroDirection,
             }
+             window.heroInventory = this.progress.heroInventory;
+            window.heroInventory.forEach(e =>{
+                window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
+            });
             this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
         } else {
+            if(window.localStorage.getItem("rpg_savefile1") != null){
+            window.localStorage.removeItem("rpg_savefile1");
+                document.location.reload(true);
+                return;
+            }
+            window.heroInventory = [];
             this.startMap(window.OverworldMaps.School, initialHeroState);
             this.map.startCutscene([
                 {

@@ -113,23 +113,25 @@ window.OverworldMaps.Toilet = {
                    }
                ],
             }),
-            cigs: new Person({
+            Kiepy: new Person({
+                id: "Kiepy",
                 x: utils.withGrid(5),
                 y: utils.withGrid(7),
                 walkable: true,
                 pickUp: true,
                 counter: 0,
+                movePixels: true,
                 src: "images/objects/cigs.png",
                 talking: [
                     {
                         events: [
                             {
-                                who: "cigs",
+                                who: "Kiepy",
                                 type: "textMessage",
                                 text: 'Znalazłeś "kiepy"!!'
                             },
                             {
-                                who: "cigs",
+                                who: "Kiepy",
                                 type: "stand",
                                 direction: "left",
                                 time: 200
@@ -154,7 +156,7 @@ window.OverworldMaps.Toilet = {
                             map: "KorytarzLewy",
                             x: utils.withGrid(2),
                             y: utils.withGrid(4),
-                            direction: "left"
+                            direction: "down"
                         },
                     ]
                 }
@@ -205,3 +207,10 @@ window.OverworldMaps.Toilet = {
            [utils.asGridCoord(6, 4)]: true,
         }
     };
+const progress = new Progress();
+progress.load();
+progress.heroInventory.forEach(e =>{
+    if(e.id == "Kiepy"){
+        delete window.OverworldMaps.Toilet.gameObjects.Kiepy;
+    }
+})

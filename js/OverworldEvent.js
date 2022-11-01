@@ -57,8 +57,7 @@ class OverworldEvent {
             const obj = this.map.gameObjects[this.event.who];
             if (obj.pickUp) {
                 obj.talking = [];
-                const property = "ma" + this.event.who;
-                this.map.gameObjects["hero"][property] = true;
+                window.heroInventory.push(window.GameObjects.find(x=> x.id === obj.id));
             }
         }
     }
@@ -104,6 +103,18 @@ class OverworldEvent {
             }
         });
         menu.init(document.querySelector(".game-container"));
+    }
+    
+    inventory(resolve){
+        this.map.isPaused = true;
+        const inventory = new Inventory({
+            onComplete: () => {
+                resolve();
+                this.map.isPaused = false;
+                this.map.overworld.startGameLoop();
+            }
+        });
+        inventory.init(document.querySelector(".game-container"));
     }
 
     init() {
