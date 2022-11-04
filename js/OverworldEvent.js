@@ -3,7 +3,7 @@ class OverworldEvent {
         map,
         event
     }) {
-        this.map = map;
+        this.map = map || null;
         this.event = event;
     }
 
@@ -55,7 +55,7 @@ class OverworldEvent {
         message.init(document.querySelector(".game-container"));
         if (this.event.who) {
             const obj = this.map.gameObjects[this.event.who];
-            if (obj.pickUp) {
+            if(obj.pickUp) {
                 obj.talking = [];
                 window.heroInventory.push(window.GameObjects.find(x=> x.id === obj.id));
             }
@@ -115,6 +115,16 @@ class OverworldEvent {
             }
         });
         inventory.init(document.querySelector(".game-container"));
+    }
+    
+    decision(resolve){
+        const decision = new DecisionBox({
+            onComplete: () => {
+                resolve();
+                this.event.handler();
+            }
+        });
+        decision.init(document.querySelector(".game-container"));
     }
 
     init() {

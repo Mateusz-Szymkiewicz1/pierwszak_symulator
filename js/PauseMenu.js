@@ -9,6 +9,13 @@ class PauseMenu {
 
     getOptions(pageKey) {
         return [
+                        {
+                label: "Wznów",
+                description: "Wróć do gry",
+                handler: () => {
+                    this.close();
+                }
+        },
             {
                 label: "Zapisz",
                 description: "Zapisz swój postęp",
@@ -17,11 +24,16 @@ class PauseMenu {
                     this.close();
                 }
         },
-            {
-                label: "Wznów",
-                description: "Wróć do gry",
-                handler: () => {
-                    this.close();
+        {
+                label: "Wyjdź",
+                description: "Opuść grę",
+                handler: async () => {
+                    window.map.startCutscene([
+                        {
+                        type: "decision",
+                        handler: () => {document.location.reload(true);}
+                        }
+                    ]);
                 }
         }
       ]
@@ -37,7 +49,7 @@ class PauseMenu {
 
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
-        this.esc?.unbind();
+        this.esc.unbind();
         this.keyboardMenu.end();
         this.element.remove();
         this.onComplete();

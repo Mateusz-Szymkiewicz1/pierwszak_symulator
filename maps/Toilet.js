@@ -207,6 +207,7 @@ window.OverworldMaps.Toilet = {
            [utils.asGridCoord(6, 4)]: true,
         }
     };
+function toilet_check(){
 const progress = new Progress();
 progress.load();
 progress.heroInventory.forEach(e =>{
@@ -214,3 +215,4 @@ progress.heroInventory.forEach(e =>{
         delete window.OverworldMaps.Toilet.gameObjects.Kiepy;
     }
 })
+}

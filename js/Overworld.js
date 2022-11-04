@@ -71,6 +71,7 @@ class Overworld {
 
     startMap(mapConfig, heroInitialState = null) {
         this.map = new OverworldMap(mapConfig);
+        window.map = this.map;
         this.map.overworld = this;
         this.map.mountObjects();
         if (heroInitialState) {
@@ -106,15 +107,20 @@ class Overworld {
              window.heroInventory = this.progress.heroInventory;
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
+                if(e.deleted){
+                window.GameObjects.find(x => x.id === e.id).deleted = true;
+                }
             });
+            toilet_check();
+            biblioteka_check();
             this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
         } else {
             if(window.localStorage.getItem("rpg_savefile1") != null){
-            window.localStorage.removeItem("rpg_savefile1");
-                document.location.reload(true);
-                return;
+                window.localStorage.removeItem("rpg_savefile1");
             }
             window.heroInventory = [];
+            toilet_check();
+            biblioteka_check();
             this.startMap(window.OverworldMaps.School, initialHeroState);
             this.map.startCutscene([
                 {

@@ -12,8 +12,20 @@ class TitleScreen {
                 label: "Nowa gra",
                 description: "Rozpocznij przygodę",
                 handler: () => {
-                    this.close();
-                    resolve();
+                    if(window.localStorage.getItem("rpg_savefile1")){
+                     const eventHandler = new OverworldEvent({event:{
+                        type: "decision",
+                        handler: () => {
+                            this.close();
+                            resolve();
+                        }
+                    }});
+                    eventHandler.init();
+                    }
+                    else{
+                        this.close();
+                            resolve();
+                    }
                 }
       },
       safeFile ? {
