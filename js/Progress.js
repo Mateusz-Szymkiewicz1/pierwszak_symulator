@@ -15,7 +15,7 @@ class Progress {
             startingHeroY: this.startingHeroY,
             startingHeroDirection: this.startingHeroDirection,
             heroInventory: window.heroInventory,
-        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted"]))
+        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted","amount"]))
     }
 
     getSaveFile() {

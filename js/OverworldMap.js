@@ -1,6 +1,7 @@
 class OverworldMap {
     constructor(config) {
         this.overworld = null;
+        this.id = config.id;
         this.gameObjects = config.gameObjects;
         this.walls = config.walls || {};
         this.cutsceneSpaces = config.cutsceneSpaces || {};

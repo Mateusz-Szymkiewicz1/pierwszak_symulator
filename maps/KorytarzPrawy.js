@@ -253,7 +253,7 @@ window.OverworldMaps.KorytarzPrawy = {
             }),
             hero: new Person({
                 isPlayerControlled: true,
-                x: utils.withGrid(0),
+                x: utils.withGrid(1),
                 y: utils.withGrid(8),
                 useShadow: true
             }),
@@ -287,7 +287,10 @@ window.OverworldMaps.KorytarzPrawy = {
             ],
         },
         walls: {
-           [utils.asGridCoord(0, 7)]: true,
+           [utils.asGridCoord(0, 8)]: true,
+           [utils.asGridCoord(0, 9)]: true,
+            [utils.asGridCoord(-1, 8)]: true,
+           [utils.asGridCoord(-1, 9)]: true,
            [utils.asGridCoord(1, 7)]: true,
            [utils.asGridCoord(4, 7)]: true,
            [utils.asGridCoord(5, 7)]: true,
@@ -340,7 +343,5 @@ window.OverworldMaps.KorytarzPrawy = {
            [utils.asGridCoord(13, 10)]: true,
            [utils.asGridCoord(14, 10)]: true,
            [utils.asGridCoord(15, 10)]: true,
-           [utils.asGridCoord(-1, 8)]: true,
-           [utils.asGridCoord(-1, 9)]: true,
         }
     };

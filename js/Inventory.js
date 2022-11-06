@@ -16,7 +16,7 @@ class Inventory {
     check(){
         window.heroInventory.forEach(e =>{
             for(let i = 1; i <= 16; i++){
-                if(e.deleted){
+                if(e.deleted || e.amount == 0){
                     continue;
                  }
                 if(document.querySelector("#t"+i).innerHTML == ""){
@@ -106,13 +106,32 @@ class Inventory {
                     document.querySelector(".option_box").remove();
                 }
             }
-            if(event.target.className == "span_uzyj"){            
-                let eventConfig = window.GameObjects.find(x=> x.id === event.target.parentElement.dataset.itemName).use;
+            if(event.target.className == "span_uzyj"){  
+                let obj = window.GameObjects.find(x=> x.id === event.target.parentElement.dataset.itemName);
                 let map = window.map;
+                window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
+                let use_req = obj.use_req;
+                if(eval(use_req)){
+                let eventConfig = obj.use;
                 eventConfig.forEach(e => {
                     const eventHandler = new OverworldEvent({map, event: e});
                     eventHandler.init();
                 })
+                if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                    document.querySelector(".Inventory").remove();
+                    this2.createElement();
+                    document.querySelector(".game-container").appendChild(this2.element);
+                    this2.check();
+                }
+                }
+                else{
+                    let use_req_text = obj.use_req_text;
+                    const eventHandler = new OverworldEvent({map, event: {
+                        type: "textMessage",
+                        text: use_req_text
+                    }});
+                    eventHandler.init();
+                }
             }
              if(event.target.className == "span_usun"){  
                  const eventHandler = new OverworldEvent({map, event:{

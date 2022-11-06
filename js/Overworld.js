@@ -110,6 +110,9 @@ class Overworld {
                 if(e.deleted){
                 window.GameObjects.find(x => x.id === e.id).deleted = true;
                 }
+                if(e.amount || e.amount == 0){
+                window.GameObjects.find(x => x.id === e.id).amount = e.amount;
+                }
             });
             toilet_check();
             biblioteka_check();

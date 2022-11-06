@@ -10,6 +10,8 @@ window.GameObjects = [
                 text: 'Czas życia skrócony o 4 minuty.'
             },
         ],
+        use_req: 'window.map.id == "Toilet"',
+        use_req_text: "Palić możesz tylko w kiblu lub na winklu!",
     },
     {
         id: "Podrecznik_access",
