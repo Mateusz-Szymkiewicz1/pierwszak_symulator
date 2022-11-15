@@ -17,6 +17,25 @@ window.OverworldMaps.School = {
                 counter: 0,
                 src: "images/characters/people/npc1.png",
                 talking: [
+                     {
+                        events: [
+                            {
+                                who: "wozna",
+                                type: "textMessage",
+                                text: "Trzymaj, przyda ci się",
+                                faceHero: "wozna"
+                            },
+                            {
+                                who: "Klucz_Szafka",
+                                type: "textMessage",
+                                text: 'Otrzymałeś "Klucz do Szafki"!',
+                            },
+                            {
+                                code: "window.OverworldMaps.School.gameObjects.wozna.talking.splice(0,1);",
+                                type: "do_code",
+                            },
+                       ]
+                   },
                     {
                         events: [
                             {
@@ -90,6 +109,13 @@ window.OverworldMaps.School = {
                        ]
                    }
                ],
+            }),
+            Klucz_Szafka: new Person({
+                x: utils.withGrid(2),
+                y: utils.withGrid(2),
+                pickUp: true,
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
             }),
             ksiazka: new Person({
                 x: utils.withGrid(16),
@@ -235,4 +261,16 @@ window.OverworldMaps.School = {
            [utils.asGridCoord(20, 7)]: true,
            [utils.asGridCoord(20, 8)]: true,
         },
+    start_func: function(){
+        window.heroInventory.forEach(e =>{
+            if(e.id == "Klucz_Szafka"){
+                delete window.OverworldMaps.School.gameObjects.Klucz_Szafka;
+                window.OverworldMaps.School.gameObjects.wozna.talking.forEach(e=>{
+                    if(e.events[1] && e.events[1].who == "Klucz_Szafka"){
+                       window.OverworldMaps.School.gameObjects.wozna.talking.splice(0,1);
+                    }
+                })
+            }
+        })
+    }
     };

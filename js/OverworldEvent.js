@@ -92,6 +92,10 @@ class OverworldEvent {
         }
         resolve();
     }
+    do_code(resolve) {
+        eval(this.event.code);
+        resolve();
+    }
     pause(resolve) {
         this.map.isPaused = true;
         const menu = new PauseMenu({
@@ -115,6 +119,18 @@ class OverworldEvent {
             }
         });
         inventory.init(document.querySelector(".game-container"));
+    }
+    
+   questlog(resolve){
+        this.map.isPaused = true;
+        const questlog = new QuestLog({
+            onComplete: () => {
+                resolve();
+                this.map.isPaused = false;
+                this.map.overworld.startGameLoop();
+            }
+        });
+        questlog.init(document.querySelector(".game-container"));
     }
     
     decision(resolve){

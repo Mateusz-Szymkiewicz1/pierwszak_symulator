@@ -312,7 +312,7 @@ window.OverworldMaps.KorytarzLewy = {
            [utils.asGridCoord(23, 3)]: true,
            [utils.asGridCoord(10, 7)]: true,
            [utils.asGridCoord(24, 4)]: true,
-           [utils.asGridCoord(24, 5)]: true,
+           [utils.asGridCoord(25, 5)]: true,
            [utils.asGridCoord(24, 3)]: true,
            [utils.asGridCoord(20, 3)]: true,
            [utils.asGridCoord(19, 3)]: true,

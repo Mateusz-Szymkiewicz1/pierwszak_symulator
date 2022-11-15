@@ -30,6 +30,10 @@ class Inventory {
 
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events:auto;";
+        document.querySelector(".quest_button").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
+        document.querySelector(".gold img").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
+        document.querySelector(".gold span").style= "filter: brightness(1);cursor:pointer;";
         this.esc.unbind();
         this.esc2.unbind();
         this.element.remove();
@@ -40,6 +44,10 @@ class Inventory {
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector(".health_bar").style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+        document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
+        document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
+        document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events:none;";
         container.appendChild(this.element);
         this.check();
         utils.wait(200);
@@ -71,11 +79,11 @@ class Inventory {
         document.addEventListener("mouseout", function(event){
             if(event.target.tagName == "TD" && event.target.dataset.itemName && document.querySelector("h3")){
                document.querySelector("h3").remove();
-                document.querySelector("span").remove();
+                document.querySelector(".Inventory span").remove();
             }
         });
         document.addEventListener("click", function(event){
-            if(event.target.tagName == "TD" && event.target.dataset.itemName){
+            if(event.target.tagName == "TD" && event.target.dataset.itemName && (window.GameObjects.find(x=> x.id === event.target.dataset.itemName).use || window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete)){
                 let td = document.querySelectorAll("td");
                 td.forEach(td =>{
                     td.removeAttribute("class");
@@ -95,7 +103,9 @@ class Inventory {
                 else{
                     option_box.style.height = "60px";
                 }
+                if(window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete){
                 option_box.innerHTML = option_box.innerHTML + `<span class="span_usun">Usuń</span>`;
+                }
             }
             else if(event.target.tagName != "TD" && event.target.className != "option_box"){
                 let td = document.querySelectorAll("td");

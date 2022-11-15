@@ -163,13 +163,13 @@ window.OverworldMaps.Biblioteka = {
             [utils.asGridCoord(6, 6)]: true,
             [utils.asGridCoord(6, 11)]: true,
         },
-    };
-function biblioteka_check(){
-const progress = new Progress();
-progress.load();
-progress.heroInventory.forEach(e =>{
-    if(e.id == "Podrecznik_access"){
-        delete window.OverworldMaps.Biblioteka.gameObjects.Podrecznik_access;
+    start_func: function(){
+        const progress = new Progress();
+        progress.load();
+        progress.heroInventory.forEach(e =>{
+            if(e.id == "Podrecznik_access"){
+                delete window.OverworldMaps.Biblioteka.gameObjects.Podrecznik_access;
+            }
+        })
     }
-})
-}
+    };

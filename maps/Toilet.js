@@ -205,14 +205,14 @@ window.OverworldMaps.Toilet = {
            [utils.asGridCoord(4, 4)]: true,
            [utils.asGridCoord(5, 4)]: true,
            [utils.asGridCoord(6, 4)]: true,
+        },
+        start_func: function(){
+            const progress = new Progress();
+            progress.load();
+            progress.heroInventory.forEach(e =>{
+                if(e.id == "Kiepy"){
+                    delete window.OverworldMaps.Toilet.gameObjects.Kiepy;
+                }
+            })
         }
     };
-function toilet_check(){
-const progress = new Progress();
-progress.load();
-progress.heroInventory.forEach(e =>{
-    if(e.id == "Kiepy"){
-        delete window.OverworldMaps.Toilet.gameObjects.Kiepy;
-    }
-})
-}

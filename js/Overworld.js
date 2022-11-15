@@ -85,12 +85,19 @@ class Overworld {
             this.map.addWall(hero.x, hero.y);
         }
         this.progress.mapId = mapConfig.id;
+        if(window.OverworldMaps[this.progress.mapId].start_func){
+        window.OverworldMaps[this.progress.mapId].start_func();
+        }
         this.progress.startingHeroX = this.map.gameObjects.hero.x;
         this.progress.startingHeroY = this.map.gameObjects.hero.y;
         this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
     }
 
     async init() {
+        let this2 = this;
+        document.querySelector(".game-container").addEventListener("contextmenu", function(event){
+            event.preventDefault();
+        });
         this.progress = new Progress();
         this.titleScreen = new TitleScreen({
             progress: this.progress
@@ -114,16 +121,12 @@ class Overworld {
                 window.GameObjects.find(x => x.id === e.id).amount = e.amount;
                 }
             });
-            toilet_check();
-            biblioteka_check();
             this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
         } else {
             if(window.localStorage.getItem("rpg_savefile1") != null){
                 window.localStorage.removeItem("rpg_savefile1");
             }
             window.heroInventory = [];
-            toilet_check();
-            biblioteka_check();
             this.startMap(window.OverworldMaps.School, initialHeroState);
             this.map.startCutscene([
                 {
@@ -150,11 +153,53 @@ class Overworld {
                 },
         ])
         }
+        window.health = 100;
+        const health_bar = new HealthBar();
+        health_bar.init();
+        window.gold = 0;
+        const gold = new Gold();
+        gold.init();
         this.bindActionInput();
         this.bindHeroPositionCheck();
         this.directionInput = new DirectionInput();
         this.directionInput.init();
         this.startGameLoop();
+        const quest_button = document.createElement("div");
+        quest_button.classList.add("quest_button");
+        quest_button.innerText = "!";
+        document.querySelector(".game-container").append(quest_button);
+        quest_button.addEventListener("click", function(){
+          if (!this2.map.isCutscenePlaying) {
+                this2.map.startCutscene([
+                    {
+                        type: "questlog"
+                    }
+            ]);
+            }
+        })
+        document.querySelector(".quest_button").addEventListener("mousemove", function(event){
+            if(!document.querySelector(".QuestLog")){
+           if(document.querySelector(".desc")){
+               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;
+           }else{
+           let desc = document.createElement("div");
+           desc.classList.add("desc");
+           desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
+            desc.innerText = "Quests";
+           document.querySelector("body").appendChild(desc);
+           }
+            }
+            else{
+                if(document.querySelector(".desc")){
+                document.querySelector(".desc").remove();
+                }
+            }
+       })
+       document.querySelector(".quest_button").addEventListener("mouseleave", function(){
+           if(document.querySelector(".desc")){
+           document.querySelector(".desc").remove();
+           }
+       })
     }
 
 }

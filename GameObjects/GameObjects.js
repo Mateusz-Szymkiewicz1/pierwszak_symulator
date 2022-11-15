@@ -12,10 +12,18 @@ window.GameObjects = [
         ],
         use_req: 'window.map.id == "Toilet"',
         use_req_text: "Palić możesz tylko w kiblu lub na winklu!",
+        can_delete: true
     },
     {
         id: "Podrecznik_access",
         src: "images/objects/podrecznik.png",
         desc: "1200 stron mądrości życiowej",
+        can_delete: true,
+    },
+    {
+        id: "Klucz_Szafka",
+        src: "images/objects/klucz_szafka.png",
+        desc: '"nr.213" - Lepiej go nie zgub.',
+        can_delete: false,
     }
 ];

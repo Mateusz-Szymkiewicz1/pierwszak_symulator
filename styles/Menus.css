@@ -149,3 +149,96 @@
 #decision_nie:hover{
     background: #d63b2b;
 }
+.quest_button{
+    width: 22px;
+    height: 21px;
+    font-size: 14px;
+    background: #a48465;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #fff;
+    text-align: center;
+    padding-top: 1px;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+.quest_button:hover{
+    background: #937354;
+}
+.QuestLog{
+    position:absolute;
+  left:4.5em;
+  top:1em;
+  right:4.5em;
+  background: var(--menu-background);
+  color: var(--menu-font-color);
+  border:1px solid var(--menu-border-color);
+  z-index:2;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+    height: 160px;
+}
+.QuestLog > h2{
+    margin: auto;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #a48465;
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
+.health_bar{
+    background: #937354;
+    height: 10px;
+    width: 100px;
+    position:absolute;
+    top: 3px;
+    left: 3px;
+    border: 1px solid #fff;
+    overflow: hidden;
+    cursor: pointer;
+}
+.health_fill{
+    background: #ef1110;
+    height: 7.5px;
+}
+.health_bar span{
+    color: #fff;
+    font-size: 8px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -1px;
+    left: 1px;
+    pointer-events: none;
+}
+.gold{
+    height: 33px;
+    width: 300px;
+    transform: scale(0.5);
+    position: absolute;
+    top: 10px;
+    left: -70px;
+    color: #fff;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 25px;
+}
+.gold > *{
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.desc{
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    background: #A48465;
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 22px;
+}
