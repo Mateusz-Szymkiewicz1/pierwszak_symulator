@@ -8,7 +8,7 @@ class Overworld {
 
     startGameLoop() {
         const step = () => {
-
+            window.Overworld = this;
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
             const cameraPerson = this.map.gameObjects.hero;
@@ -177,17 +177,18 @@ class Overworld {
             ]);
             }
         })
-        document.querySelector(".quest_button").addEventListener("mousemove", function(event){
+        document.querySelector(".quest_button").addEventListener("mouseenter", function(event){
             if(!document.querySelector(".QuestLog")){
-           if(document.querySelector(".desc")){
-               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;
-           }else{
-           let desc = document.createElement("div");
+                let desc = document.createElement("div");
            desc.classList.add("desc");
            desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
             desc.innerText = "Quests";
            document.querySelector("body").appendChild(desc);
-           }
+            }
+        })
+        document.querySelector(".quest_button").addEventListener("mousemove", function(event){
+            if(!document.querySelector(".QuestLog")){
+               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;    
             }
             else{
                 if(document.querySelector(".desc")){
