@@ -55,7 +55,7 @@ class Overworld {
             if (!this.map.isCutscenePlaying) {
                 this.map.startCutscene([
                     {
-                        type: "inventory"
+                        type: "inventory",
                     }
             ]);
             }
@@ -112,6 +112,7 @@ class Overworld {
                 direction: this.progress.startingHeroDirection,
             }
              window.heroInventory = this.progress.heroInventory;
+            window.health = this.progress.health;
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
                 if(e.deleted){
@@ -127,6 +128,7 @@ class Overworld {
                 window.localStorage.removeItem("rpg_savefile1");
             }
             window.heroInventory = [];
+            window.health = 100;
             this.startMap(window.OverworldMaps.School, initialHeroState);
             this.map.startCutscene([
                 {
@@ -153,9 +155,8 @@ class Overworld {
                 },
         ])
         }
-        window.health = 100;
-        const health_bar = new HealthBar();
-        health_bar.init();
+        window.health_bar = new HealthBar();
+        window.health_bar.init();
         window.gold = 0;
         const gold = new Gold();
         gold.init();

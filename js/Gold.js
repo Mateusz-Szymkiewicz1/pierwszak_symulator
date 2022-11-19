@@ -3,6 +3,17 @@ class Gold{
      
     }
  
+    
+    add(value){
+        window.gold = window.gold+value;
+          document.querySelector(".gold span").innerText = window.gold;
+    }
+    
+     spend(value){
+        window.gold = window.gold-value;
+          document.querySelector(".gold span").innerText = window.gold;
+    }
+    
    async init() {
         let this2 = this;
         this.element = document.createElement("div");

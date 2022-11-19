@@ -1,8 +1,9 @@
 class Inventory {
     constructor({
         onComplete
-    }) {
+    }, szafka) {
         this.onComplete = onComplete;
+        this.szafka = szafka;
     }
 
     createElement() {
@@ -43,14 +44,19 @@ class Inventory {
    async init(container) {
         let this2 = this;
         this.createElement();
+       if(!this.szafka){
         document.querySelector("canvas").style.filter = "brightness(0.2)";
         document.querySelector(".health_bar").style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
         document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
         document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
         document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events:none;";
+       }else{
+           this.element.classList.add("szafka_inventory");
+       }
         container.appendChild(this.element);
         this.check();
         utils.wait(200);
+       if(!this.szafka){
         this.esc = new KeyPressListener("KeyE", () => {
             if(document.querySelector(".option_box")){
                 document.querySelector(".option_box").remove();
@@ -63,6 +69,7 @@ class Inventory {
             }
             this.close();
         })
+       }
         document.addEventListener("mouseover", function(event){
             if((event.target.tagName == "TD" || event.target.className == "option_box") && event.target.dataset.itemName && !document.querySelector("h3")){
                let eq_h3 = document.createElement("h3");
@@ -82,7 +89,7 @@ class Inventory {
                 document.querySelector(".Inventory span").remove();
             }
         });
-        document.addEventListener("click", function(event){
+        document.addEventListener("click", async function(event){
             if(event.target.tagName == "TD" && event.target.dataset.itemName && (window.GameObjects.find(x=> x.id === event.target.dataset.itemName).use || window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete)){
                 let td = document.querySelectorAll("td");
                 td.forEach(td =>{
@@ -119,15 +126,25 @@ class Inventory {
             if(event.target.className == "span_uzyj"){  
                 let obj = window.GameObjects.find(x=> x.id === event.target.parentElement.dataset.itemName);
                 let map = window.map;
-                window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
                 let use_req = obj.use_req;
                 if(eval(use_req)){
+                window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
                 let eventConfig = obj.use;
-                eventConfig.forEach(e => {
+                await eventConfig.forEach(async (e) => {
                     const eventHandler = new OverworldEvent({map, event: e});
-                    eventHandler.init();
+                    await eventHandler.init();
                 })
                 if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                     const eventHandler2 = new OverworldEvent({map, event: {
+                         type: "textMessage",
+                         text: `Zużyłeś ${obj.id}!`
+                     }});
+                    await eventHandler2.init();
+                    let eventConfig = obj.use;
+                    await eventConfig.forEach(async (e) => {
+                    const eventHandler = new OverworldEvent({map, event: e});
+                    await eventHandler.init();
+                })
                     document.querySelector(".Inventory").remove();
                     this2.createElement();
                     document.querySelector(".game-container").appendChild(this2.element);

@@ -2,7 +2,35 @@ class HealthBar{
     constructor() {
      
     }
- 
+    
+   add(value){
+       window.health = window.health+value;
+           if(window.health > 100){
+               window.health = 100;
+           }
+          document.querySelector(".health_fill").style.width = window.health+"px";
+       let map = window.map;
+        const eventHandler = new OverworldEvent({map, event: {
+                        type: "textMessage",
+                        text: `Odzyskałeś ${value} HP ;)`
+                    }});
+                    eventHandler.init();
+   }
+    substract(value){
+       window.health = window.health-value;
+           if(window.health <= 0){
+               window.health = 0;
+               alert("Dead");
+           }
+           document.querySelector(".health_fill").style.width = window.health+"px";
+        let map = window.map;
+        const eventHandler = new OverworldEvent({map, event: {
+                        type: "textMessage",
+                        text: `Straciłeś ${value} HP ;(`
+                    }});
+                    eventHandler.init();
+   }
+    
    async init() {
         let this2 = this;
         this.element = document.createElement("div");
@@ -17,7 +45,7 @@ class HealthBar{
            let desc = document.createElement("div");
            desc.classList.add("desc");
            desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
-            desc.innerText = "Health";
+            desc.innerText = `Health ${window.health}/100`;
            document.querySelector("body").appendChild(desc);
        })
        this.element.addEventListener("mousemove", function(event){

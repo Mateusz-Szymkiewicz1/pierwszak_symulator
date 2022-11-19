@@ -41,7 +41,9 @@ old_element.parentNode.replaceChild(new_element, old_element);
         })
         document.querySelector(".quest_button").addEventListener("mousemove", function(event){
             if(!document.querySelector(".QuestLog")){
-               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;        
+                if(document.querySelector(".desc")){
+               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;     
+                }
             }
             else{
                 if(document.querySelector(".desc")){

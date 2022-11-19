@@ -6,8 +6,8 @@ window.GameObjects = [
         amount: "8",
         use: [
             {
-                type: "textMessage",
-                text: 'Czas życia skrócony o 4 minuty.'
+                type: "do_code",
+                code: 'window.health_bar.substract(4)'
             },
         ],
         use_req: 'window.map.id == "Toilet"',

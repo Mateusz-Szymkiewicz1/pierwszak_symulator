@@ -110,6 +110,15 @@ class OverworldEvent {
     }
     
     inventory(resolve){
+        if(this.event.szafka){
+            const inventory = new Inventory({
+                onComplete: () => {
+                    resolve();
+                }
+            }, true);
+            inventory.init(document.querySelector(".game-container"));
+        }
+        else{
         this.map.isPaused = true;
         const inventory = new Inventory({
             onComplete: () => {
@@ -117,8 +126,9 @@ class OverworldEvent {
                 this.map.isPaused = false;
                 this.map.overworld.startGameLoop();
             }
-        });
+        }, false);
         inventory.init(document.querySelector(".game-container"));
+        }
     }
     
    questlog(resolve){
@@ -143,6 +153,18 @@ class OverworldEvent {
         decision.init(document.querySelector(".game-container"));
     }
 
+    szafka_open(resolve){
+        this.map.isPaused = true;
+        const szafka = new Szafka({
+            onComplete: () => {
+                resolve();
+                this.map.isPaused = false;
+                this.map.overworld.startGameLoop();
+            }
+        });
+        szafka.init(document.querySelector(".game-container"));
+    }
+    
     init() {
         return new Promise(resolve => {
             this[this.event.type](resolve)

@@ -3,7 +3,14 @@ window.OverworldMaps.Szafki2 = {
         lowerSrc: "images/maps/Szafki2Lower.png",
         upperSrc: "images/maps/KitchenUpper.png",
         gameObjects: {
-            hero: new Person({
+        szafka: new Person({
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+                talking: [],
+            }),
+        hero: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(7),
                 y: utils.withGrid(1),
@@ -34,7 +41,6 @@ window.OverworldMaps.Szafki2 = {
             [utils.asGridCoord(6, 0)]: true,
             [utils.asGridCoord(6, 1)]: true,
             [utils.asGridCoord(6, 2)]: true,
-            [utils.asGridCoord(5, 2)]: true,
             [utils.asGridCoord(4, 2)]: true,
             [utils.asGridCoord(3, 2)]: true,
             [utils.asGridCoord(2, 2)]: true,
@@ -64,5 +70,31 @@ window.OverworldMaps.Szafki2 = {
             [utils.asGridCoord(8, 6)]: true,
             [utils.asGridCoord(8, 7)]: true,
             [utils.asGridCoord(8, 8)]: true,
+        },
+    start_func: function(){
+        let has_key = false;
+        window.heroInventory.forEach(e => {
+            if(e.id == "Klucz_Szafka"){
+                has_key = true;
+            }
+        })
+        if(has_key == false){
+            window.OverworldMaps.Szafki2.gameObjects.szafka.talking = [{
+                        events: [
+                            {
+                                type: "textMessage",
+                                text: "Potrzebujesz klucza!"
+                            },
+                       ]
+                   }];
+        }else{
+            window.OverworldMaps.Szafki2.gameObjects.szafka.talking = [{
+                        events: [
+                            {
+                                type: "szafka_open",
+                            },
+                       ]
+                   }];
         }
+    }
     };
