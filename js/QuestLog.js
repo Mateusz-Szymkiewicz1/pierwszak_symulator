@@ -9,6 +9,105 @@ class QuestLog{
         this.element.innerHTML = `<h2>Questy</h2>`;
     }
     
+    add_quest(quest){
+        quest.progress = 0;
+        if(!quest.reward){
+            quest.reward = "";
+        }
+        window.quests.push(quest);
+        const popup = document.createElement("div");
+        popup.classList.add("QuestPopup");
+        popup.innerHTML = `<h2>Nowy Quest!</h2><span>${quest.desc}</span>`;
+        if(document.querySelector(".QuestPopup")){
+            popup.style = "bottom: 60px";
+        }
+        document.querySelector(".game-container").appendChild(popup);
+        const timeout = setTimeout(function(){
+            popup.style = "opacity: 0;pointer-events: none;";
+        }, 5000)
+        const timeout2 = setTimeout(function(){
+            popup.remove();
+            if(document.querySelector(".QuestPopup")){
+                document.querySelector(".QuestPopup").style = "bottom: 6px";
+            }
+        }, 5100);
+        popup.addEventListener("click", function(){
+            clearTimeout(timeout);
+            clearTimeout(timeout2);
+            popup.style = "opacity: 0;pointer-events: none;";
+            setTimeout(function(){
+                popup.remove();
+                if(document.querySelector(".QuestPopup")){
+                document.querySelector(".QuestPopup").style = "bottom: 6px";
+                }
+            }, 200)
+        })
+    }
+    
+    end_quest(id){
+        let quest = {};
+        window.quests.forEach(e => {
+            if(e.id == id){
+                quest = e;
+                e.progress = 1;
+                if(e.reward){
+                let gold = new Gold();
+                gold.add(e.reward);
+                }
+            }
+        })
+        const popup = document.createElement("div");
+        popup.classList.add("QuestPopup");
+        if(quest.reward){
+            popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}<br />Nagroda : ${quest.reward}</span>`;
+        }else{
+        popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}</span>`;
+        }
+        if(document.querySelector(".QuestPopup")){
+            popup.style = "bottom: 60px";
+        }
+        document.querySelector(".game-container").appendChild(popup);
+        const timeout = setTimeout(function(){
+            popup.style = "opacity: 0;pointer-events: none;";
+        }, 5000)
+        const timeout2 = setTimeout(function(){
+            popup.remove();
+            if(document.querySelector(".QuestPopup")){
+                document.querySelector(".QuestPopup").style = "bottom: 6px";
+            }
+        }, 5100);
+        popup.addEventListener("click", function(){
+            clearTimeout(timeout);
+            clearTimeout(timeout2);
+            popup.style = "opacity: 0;pointer-events: none;";
+            setTimeout(function(){
+                popup.remove();
+                if(document.querySelector(".QuestPopup")){
+                document.querySelector(".QuestPopup").style = "bottom: 6px";
+            }
+            }, 200)
+        })
+    }
+    
+    check(){
+        this.element = document.querySelector(".QuestLog");
+        this.element.innerHTML = `<h2>Questy</h2>`;
+        let counter = 0;
+        window.quests.forEach(e => {
+            if(e.progress == 0){
+                counter++;
+            if(e.deletable){
+                this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p data-questid="${e.id}">X</p><p>${e.reward}G</p></h3><br><br/><span>${e.desc}</span>`;
+            }else{
+            this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}</h3><br/><br/><span>${e.desc}</span>`;
+            }
+            }
+        })
+        if(counter == 0){
+            this.element.innerHTML = this.element.innerHTML+`<h4>Pusto ;(</h4>`;
+        }
+    }
+    
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
         document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
@@ -76,6 +175,7 @@ old_element.parentNode.replaceChild(new_element, old_element);
         document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
         document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
         container.appendChild(this.element);
+       this.check();
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
@@ -85,6 +185,22 @@ var new_element = old_element.cloneNode(true);
 old_element.parentNode.replaceChild(new_element, old_element);
        document.querySelector(".quest_button").addEventListener("click", function quest_close(){
            this2.close();
+       })
+       document.querySelector(".QuestLog").addEventListener("click", function(event){
+           const eventHandler = new OverworldEvent({event:{
+                        type: "decision",
+                        handler: () => {
+                                let counter = 0;
+                                window.quests.forEach(e =>{
+                                if(e.id == event.target.dataset.questid){
+                                    window.quests.splice(counter,1);
+                                    this2.check();
+                                }
+                                counter++;
+                            })
+                        }
+            }});
+           eventHandler.init();
        })
     }
 

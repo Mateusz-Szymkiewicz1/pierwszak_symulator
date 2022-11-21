@@ -34,6 +34,14 @@ window.OverworldMaps.School = {
                                 code: "window.OverworldMaps.School.gameObjects.wozna.talking.splice(0,1);",
                                 type: "do_code",
                             },
+                             {
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.end_quest("Znajdź_Klucz");',
+                                type: "do_code",
+                            },
+                            {
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Znajdź_Szafkę",desc: "Znajdź szafkę numer 213",})',
+                                type: "do_code",
+                            },
                        ]
                    },
                     {

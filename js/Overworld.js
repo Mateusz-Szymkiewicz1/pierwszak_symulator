@@ -113,6 +113,8 @@ class Overworld {
             }
              window.heroInventory = this.progress.heroInventory;
             window.health = this.progress.health;
+            window.quests = this.progress.quests;
+            window.gold = this.progress.gold;
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
                 if(e.deleted){
@@ -129,35 +131,43 @@ class Overworld {
             }
             window.heroInventory = [];
             window.health = 100;
+            window.gold = 0;
+            window.quests = [];
+            const quest = new QuestLog({
+            onComplete: () => {}
+            });
+            quest.add_quest({
+                id: "Znajdź_Klucz",
+                desc: "Poszukaj klucza do twojej nowej szafki!",
+            })
             this.startMap(window.OverworldMaps.School, initialHeroState);
-            this.map.startCutscene([
-                {
-                    who: "wozna",
-                    type: "stand",
-                    direction: "right",
-                    time: 500
-                },
-                {
-                    type: "textMessage",
-                    text: "Nareszcie pierwszy dzień w nowej szkole..."
-                },
-                {
-                    type: "textMessage",
-                    text: "Może mnie nie będą bić jak w podstawówce!"
-                },
-                {
-                    type: "textMessage",
-                    text: "Użyj strzałek/AWSD aby się poruszać"
-                },
-                {
-                    type: "textMessage",
-                    text: "oraz Enter do interakcji"
-                },
-        ])
+//            this.map.startCutscene([
+//                {
+//                    who: "wozna",
+//                    type: "stand",
+//                    direction: "right",
+//                    time: 500
+//                },
+//                {
+//                    type: "textMessage",
+//                    text: "Nareszcie pierwszy dzień w nowej szkole..."
+//                },
+//                {
+//                    type: "textMessage",
+//                    text: "Może mnie nie będą bić jak w podstawówce!"
+//                },
+//                {
+//                    type: "textMessage",
+//                    text: "Użyj strzałek/AWSD aby się poruszać"
+//                },
+//                {
+//                    type: "textMessage",
+//                    text: "oraz Enter do interakcji"
+//                },
+//        ])
         }
         window.health_bar = new HealthBar();
         window.health_bar.init();
-        window.gold = 0;
         const gold = new Gold();
         gold.init();
         this.bindActionInput();

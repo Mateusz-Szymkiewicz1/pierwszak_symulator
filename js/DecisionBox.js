@@ -10,7 +10,9 @@ class DecisionBox {
     }
     
     close() {
+        if(!window.Overworld.map.isPaused){
         document.querySelector("canvas").style.filter = "brightness(1)";
+        }
         this.element.remove();
         this.esc.unbind();
     }
