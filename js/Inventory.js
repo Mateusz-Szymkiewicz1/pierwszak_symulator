@@ -89,7 +89,7 @@ class Inventory {
                 document.querySelector(".Inventory span").remove();
             }
         });
-        document.addEventListener("click", async function(event){
+        document.addEventListener("mouseup", async function(event){
             if(event.target.tagName == "TD" && event.target.dataset.itemName && (window.GameObjects.find(x=> x.id === event.target.dataset.itemName).use || window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete)){
                 let td = document.querySelectorAll("td");
                 td.forEach(td =>{

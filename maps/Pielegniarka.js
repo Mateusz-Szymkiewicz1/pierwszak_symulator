@@ -38,6 +38,33 @@ window.OverworldMaps.Pielegniarka = {
                    }
                ],
             }),
+             Apteczka: new Person({
+                id: "Apteczka",
+                x: utils.withGrid(3),
+                y: utils.withGrid(6),
+                walkable: true,
+                pickUp: true,
+                counter: 0,
+                movePixels: true,
+                src: "images/objects/medkit.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                who: "Apteczka",
+                                type: "textMessage",
+                                text: 'Znalazłeś "Apteczka"!!'
+                            },
+                            {
+                                who: "Apteczka",
+                                type: "stand",
+                                direction: "left",
+                                time: 200
+                            },
+                       ]
+                   }
+               ],
+            }),
             hero: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(2),
@@ -79,4 +106,13 @@ window.OverworldMaps.Pielegniarka = {
             [utils.asGridCoord(4, 6)]: true,
             [utils.asGridCoord(4, 8)]: true,
         },
+    start_func: function(){
+        const progress = new Progress();
+        progress.load();
+        progress.heroInventory.forEach(e =>{
+            if(e.id == "Apteczka"){
+                delete window.OverworldMaps.Pielegniarka.gameObjects.Apteczka;
+            }
+        })
+    }
     };
