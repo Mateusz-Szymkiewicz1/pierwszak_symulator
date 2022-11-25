@@ -97,7 +97,7 @@ window.OverworldMaps.School = {
                     {
                         type: "stand",
                         direction: "down",
-                        time: 800
+                        time: 2000
                     },
                 ]
             }),

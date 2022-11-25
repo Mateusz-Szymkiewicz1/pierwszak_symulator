@@ -143,6 +143,16 @@ class OverworldEvent {
         questlog.init(document.querySelector(".game-container"));
     }
     
+     settings(resolve){
+        this.map.isPaused = true;
+        const settings = new Settings({
+            onComplete: () => {
+                resolve();
+            }
+        });
+        settings.init();
+    }
+    
     decision(resolve){
         const decision = new DecisionBox({
             onComplete: () => {

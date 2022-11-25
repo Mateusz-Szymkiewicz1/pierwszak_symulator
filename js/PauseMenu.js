@@ -25,6 +25,18 @@ class PauseMenu {
                 }
         },
         {
+                label: "Ustawienia",
+                description: "Dostosuj grę pod siebie",
+                handler: async () => {
+                    let map = window.map;
+                    await this.close();
+                    const eventHandler = new OverworldEvent({map, event: {
+                        type: "settings"
+                    }});
+                    await eventHandler.init();
+                }
+        },
+        {
                 label: "Wyjdź",
                 description: "Opuść grę",
                 handler: async () => {
@@ -47,12 +59,18 @@ class PauseMenu {
     `)
     }
 
-    close() {
+   async close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
         document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
         document.querySelector(".quest_button").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
         document.querySelector(".gold span").style = "filter: brightness(1);cursor:pointer;";
         document.querySelector(".gold img").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
+        let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(1)";
+            el.style.cursor = "pointer";
+            el.style.pointerEvents = "auto";
+        })
         this.esc.unbind();
         this.keyboardMenu.end();
         this.element.remove();
@@ -71,6 +89,12 @@ class PauseMenu {
         document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
         document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
         document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
+        let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(0.2)";
+            el.style.cursor = "default";
+            el.style.pointerEvents = "none";
+        })
         container.appendChild(this.element);
         utils.wait(200);
         this.esc = new KeyPressListener("Escape", () => {

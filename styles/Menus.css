@@ -6,7 +6,7 @@
   background: var(--menu-background);
   color: var(--menu-font-color);
   border:1px solid var(--menu-border-color);
-  z-index:2;
+  z-index:1000;
   padding-left: 4px;
   padding-right: 4px;
   padding-bottom: 4px;
@@ -33,7 +33,7 @@
   background: var(--menu-background);
   color: var(--menu-font-color);
   border:1px solid var(--menu-border-color);
-  z-index:2;
+  z-index:1000;
   padding-left: 4px;
   padding-right: 4px;
   padding-bottom: 4px;
@@ -176,7 +176,7 @@
   background: var(--menu-background);
   color: var(--menu-font-color);
   border:1px solid var(--menu-border-color);
-  z-index:2;
+  z-index:1000;
   padding-left: 4px;
   padding-right: 4px;
   padding-bottom: 4px;
@@ -192,7 +192,7 @@
 ::-webkit-scrollbar-thumb {
   background: #a48465;
 }
-.QuestLog > h2{
+.QuestLog > h2, .settings > h2{
     margin: auto;
     text-align: center;
     font-size: 16px;
@@ -304,7 +304,7 @@
   background: var(--menu-background);
   color: var(--menu-font-color);
   border:1px solid var(--menu-border-color);
-  z-index:2;
+  z-index:1000;
   padding-left: 4px;
   padding-right: 4px;
   padding-bottom: 4px;
@@ -356,7 +356,7 @@
     border: 1px solid #fff;
     text-align: center;
     color: #fff;
-    transition: 0.4s;
+    transition: opacity 0.4s;
     cursor: pointer;
     z-index: 100;
 }
@@ -371,4 +371,22 @@
     font-size: 9px;
     display: block;
     margin-top: 3px;
+}
+.quest_ended{
+    background: #2ecc71;
+    color: #fff;
+}
+.settings{
+    position:absolute;
+  left:4.5em;
+  top:1em;
+  right:4.5em;
+  background: var(--menu-background);
+  color: var(--menu-font-color);
+  border:1px solid var(--menu-border-color);
+  z-index:1000;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+    height: 160px;
 }

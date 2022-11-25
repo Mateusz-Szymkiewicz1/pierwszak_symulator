@@ -35,6 +35,12 @@ class Inventory {
         document.querySelector(".quest_button").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
         document.querySelector(".gold img").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
         document.querySelector(".gold span").style= "filter: brightness(1);cursor:pointer;";
+        let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(1)";
+            el.style.cursor = "pointer";
+            el.style.pointerEvents = "auto";
+        })
         this.esc.unbind();
         this.esc2.unbind();
         this.element.remove();
@@ -50,6 +56,12 @@ class Inventory {
         document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
         document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
         document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events:none;";
+           let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(0.2)";
+            el.style.cursor = "default";
+            el.style.pointerEvents = "none";
+        })
        }else{
            this.element.classList.add("szafka_inventory");
        }

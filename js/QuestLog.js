@@ -17,28 +17,31 @@ class QuestLog{
         window.quests.push(quest);
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
+        popup.classList.add("quest_added");
         popup.innerHTML = `<h2>Nowy Quest!</h2><span>${quest.desc}</span>`;
         if(document.querySelector(".QuestPopup")){
-            popup.style = "bottom: 60px";
+            popup.style.bottom = "60px";
         }
         document.querySelector(".game-container").appendChild(popup);
         const timeout = setTimeout(function(){
-            popup.style = "opacity: 0;pointer-events: none;";
+            popup.style.opacity = "0";
+            popup.style.pointerEvents = "none";
         }, 5000)
         const timeout2 = setTimeout(function(){
             popup.remove();
             if(document.querySelector(".QuestPopup")){
-                document.querySelector(".QuestPopup").style = "bottom: 6px";
+                document.querySelector(".QuestPopup").style.bottom = "6px";
             }
         }, 5100);
         popup.addEventListener("click", function(){
             clearTimeout(timeout);
             clearTimeout(timeout2);
-            popup.style = "opacity: 0;pointer-events: none;";
+            popup.style.opacity = "0";
+            popup.style.pointerEvents = "none";
             setTimeout(function(){
                 popup.remove();
                 if(document.querySelector(".QuestPopup")){
-                document.querySelector(".QuestPopup").style = "bottom: 6px";
+                document.querySelector(".QuestPopup").style.bottom = "6px";
                 }
             }, 200)
         })
@@ -58,32 +61,35 @@ class QuestLog{
         })
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
+        popup.classList.add("quest_ended");
         if(quest.reward){
             popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}<br />Nagroda : ${quest.reward}</span>`;
         }else{
         popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}</span>`;
         }
         if(document.querySelector(".QuestPopup")){
-            popup.style = "bottom: 60px";
+            popup.style.bottom = "60px";
         }
         document.querySelector(".game-container").appendChild(popup);
         const timeout = setTimeout(function(){
-            popup.style = "opacity: 0;pointer-events: none;";
+            popup.style.opacity = "0";
+            popup.style.pointerEvents = "none";
         }, 5000)
         const timeout2 = setTimeout(function(){
             popup.remove();
             if(document.querySelector(".QuestPopup")){
-                document.querySelector(".QuestPopup").style = "bottom: 6px";
+                document.querySelector(".QuestPopup").style.bottom = "6px";
             }
         }, 5100);
         popup.addEventListener("click", function(){
             clearTimeout(timeout);
             clearTimeout(timeout2);
-            popup.style = "opacity: 0;pointer-events: none;";
+            popup.style.opacity = "0";
+            popup.style.pointerEvents = "none";
             setTimeout(function(){
                 popup.remove();
                 if(document.querySelector(".QuestPopup")){
-                document.querySelector(".QuestPopup").style = "bottom: 6px";
+                document.querySelector(".QuestPopup").style.bottom = "6px";
             }
             }, 200)
         })
@@ -113,6 +119,12 @@ class QuestLog{
         document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
         document.querySelector(".gold img").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
         document.querySelector(".gold span").style = "filter: brightness(1);cursor:pointer;";
+        let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(1)";
+            el.style.cursor = "pointer";
+            el.style.pointerEvents = "auto";
+        })
         document.querySelector(".quest_button").innerText = '!';
         document.querySelector(".quest_button").style.paddingTop = "1px";
        document.querySelector(".quest_button").style.height = "20px";
@@ -174,6 +186,12 @@ old_element.parentNode.replaceChild(new_element, old_element);
         document.querySelector(".health_bar").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
         document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
         document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
+       let quest_popups = document.querySelectorAll(".QuestPopup");
+        quest_popups.forEach(el => {
+            el.style.filter = "brightness(0.2)";
+            el.style.cursor = "default";
+            el.style.pointerEvents = "none";
+        })
         container.appendChild(this.element);
        this.check();
        utils.wait(200);
