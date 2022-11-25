@@ -1,7 +1,7 @@
 window.OverworldMaps.KorytarzLewy = {
         id: "KorytarzLewy",
         lowerSrc: "images/maps/KorytarzLewyLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/KorytarzLewyUpper.png",
         gameObjects: {
             hero: new Person({
                 isPlayerControlled: true,
@@ -252,7 +252,7 @@ window.OverworldMaps.KorytarzLewy = {
             }),
         },
         cutsceneSpaces: {
-                [utils.asGridCoord(23, 4)]: [
+                [utils.asGridCoord(24, 4)]: [
                 {
                     events: [
                         {
@@ -265,7 +265,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-                [utils.asGridCoord(23, 5)]: [
+                [utils.asGridCoord(24, 5)]: [
                 {
                     events: [
                         {
@@ -285,7 +285,7 @@ window.OverworldMaps.KorytarzLewy = {
                             type: "changeMap",
                             map: "Szafki2",
                             x: utils.withGrid(7),
-                            y: utils.withGrid(0),
+                            y: utils.withGrid(1),
                             direction: "down"
                         },
                     ]
@@ -311,9 +311,9 @@ window.OverworldMaps.KorytarzLewy = {
         walls: {
            [utils.asGridCoord(23, 3)]: true,
            [utils.asGridCoord(10, 7)]: true,
-           [utils.asGridCoord(24, 4)]: true,
-           [utils.asGridCoord(25, 5)]: true,
            [utils.asGridCoord(24, 3)]: true,
+           [utils.asGridCoord(25, 4)]: true,
+           [utils.asGridCoord(25, 5)]: true,
            [utils.asGridCoord(20, 3)]: true,
            [utils.asGridCoord(19, 3)]: true,
            [utils.asGridCoord(18, 3)]: true,

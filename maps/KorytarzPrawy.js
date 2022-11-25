@@ -1,7 +1,7 @@
 window.OverworldMaps.KorytarzPrawy = {
         id: "KorytarzPrawy",
         lowerSrc: "images/maps/KorytarzPrawyLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/KorytarzPrawyUpper.png",
         gameObjects: {
             s16Drzwi: new Person({
                 x: utils.withGrid(2),
@@ -259,7 +259,7 @@ window.OverworldMaps.KorytarzPrawy = {
             }),
         },
         cutsceneSpaces: {
-                [utils.asGridCoord(1, 8)]: [
+                [utils.asGridCoord(0, 8)]: [
                 {
                     events: [
                         {
@@ -272,7 +272,7 @@ window.OverworldMaps.KorytarzPrawy = {
                     ]
                 }
             ],
-            [utils.asGridCoord(1, 9)]: [
+            [utils.asGridCoord(0, 9)]: [
                 {
                     events: [
                         {
@@ -287,8 +287,7 @@ window.OverworldMaps.KorytarzPrawy = {
             ],
         },
         walls: {
-           [utils.asGridCoord(0, 8)]: true,
-           [utils.asGridCoord(0, 9)]: true,
+           [utils.asGridCoord(0, 7)]: true,
             [utils.asGridCoord(-1, 8)]: true,
            [utils.asGridCoord(-1, 9)]: true,
            [utils.asGridCoord(1, 7)]: true,

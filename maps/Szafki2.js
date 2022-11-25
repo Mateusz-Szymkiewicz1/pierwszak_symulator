@@ -1,7 +1,7 @@
 window.OverworldMaps.Szafki2 = {
         id: "Szafki2",
         lowerSrc: "images/maps/Szafki2Lower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/Szafki2Upper.png",
         gameObjects: {
         szafka: new Person({
                 x: utils.withGrid(5),

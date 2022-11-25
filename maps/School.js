@@ -1,7 +1,7 @@
 window.OverworldMaps.School = {
         id: "School",
         lowerSrc: "images/maps/SchoolLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/SchoolUpper.png",
         gameObjects: {
             hero: new Person({
                 isPlayerControlled: true,
@@ -173,7 +173,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(23),
+                            x: utils.withGrid(24),
                             y: utils.withGrid(4),
                             direction: "left"
                         },
@@ -186,7 +186,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(23),
+                            x: utils.withGrid(24),
                             y: utils.withGrid(5),
                             direction: "left"
                         },
@@ -199,7 +199,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzPrawy",
-                            x: utils.withGrid(1),
+                            x: utils.withGrid(0),
                             y: utils.withGrid(8),
                             direction: "right"
                         },
@@ -212,7 +212,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzPrawy",
-                            x: utils.withGrid(1),
+                            x: utils.withGrid(0),
                             y: utils.withGrid(9),
                             direction: "right"
                         },
