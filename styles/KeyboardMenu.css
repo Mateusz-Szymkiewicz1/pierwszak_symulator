@@ -46,6 +46,7 @@
   border-top: 1px solid var(--border-color);
   background: var(--menu-background);
   padding: 2px;
+     z-index: 1000;
  }
  .DescriptionBox p {
   font-size: 10px;

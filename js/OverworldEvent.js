@@ -154,6 +154,10 @@ class OverworldEvent {
     }
 
     szafka_open(resolve){
+        if(window.quests.find(x=> x.id === "Znajdź_Szafkę") && window.quests.find(x=> x.id === "Znajdź_Szafkę").progress == 0){
+           const quest = new QuestLog({onComplete: () => {}});
+           quest.end_quest("Znajdź_Szafkę");
+        }
         this.map.isPaused = true;
         const szafka = new Szafka({
             onComplete: () => {
