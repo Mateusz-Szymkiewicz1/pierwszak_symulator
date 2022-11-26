@@ -27,15 +27,22 @@ class Settings{
         this.element = document.createElement("div");
         this.element.classList.add("settings");
        this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist>`;
+       const file = window.localStorage.getItem("preferences");
+    const file2 = JSON.parse(file);
         document.querySelector(".game-container").appendChild(this.element);
+        if(file2 && file2.scale){
+           document.querySelector(".settings > input[type=range]").value = file2.scale*10;
+       }
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
        document.querySelector(".settings > input[type=range]").addEventListener("change", function(){
            let skala = document.querySelector(".settings > input[type=range]").value/10;
-           console.log(skala)
            document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
+           window.localStorage.setItem("preferences", JSON.stringify({
+               scale: skala
+           }))
        })
    }
 
