@@ -446,4 +446,19 @@ input[type=range]:focus {
 .settings >input[type=range]:focus::-webkit-slider-runnable-track {
   background: #545a5a;
 }
-
+button{
+    cursor: pointer;
+}
+.settings > button{
+    width: 90px;
+    height: 20px;
+    font-size: 9px;
+    font-family: 'font';
+    margin-top: 10px;
+    margin-left: 5px;
+    border: 0;
+    background: #484d4d;
+    border: 1px solid #2ecc71;
+    transition: 0.4s;
+    color: #fff;
+}
