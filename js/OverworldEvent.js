@@ -143,6 +143,18 @@ class OverworldEvent {
         questlog.init(document.querySelector(".game-container"));
     }
     
+    shop(resolve){
+        this.map.isPaused = true;
+        const shop = new Shop({
+            onComplete: () => {
+                resolve();
+                this.map.isPaused = false;
+                this.map.overworld.startGameLoop();
+            }
+        }, this.event.products);
+        shop.init();
+    }
+    
      settings(resolve){
         this.map.isPaused = true;
         const settings = new Settings({

@@ -198,9 +198,21 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "kasjerka",
-                                type: "textMessage",
-                                text: 'Może jakiegoś rogala?'
+                                type: "shop",
+                                products: [
+                                    {
+                                        id: "Rogal",
+                                        desc: "Uzdrawia 15HP",
+                                        src: "images/Objects/croissant.png",
+                                        price: "10"
+                                    },
+                                    {
+                                        id: "Obwarzanek",
+                                        desc: "Uzdrawia 10HP",
+                                        src: "images/Objects/pretzel.png",
+                                        price: "6"
+                                    }
+                                ]
                             },
                        ]
                    }

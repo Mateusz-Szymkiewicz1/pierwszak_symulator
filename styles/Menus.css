@@ -168,7 +168,7 @@
 .quest_button:hover{
     background: #937354;
 }
-.QuestLog{
+.QuestLog, .shop{
     position:absolute;
   left:4.5em;
   top:1em;
@@ -183,16 +183,16 @@
     height: 160px;
     overflow-y: scroll;
 }
-.QuestLog::-webkit-scrollbar {
+.QuestLog::-webkit-scrollbar, .shop::-webkit-scrollbar {
   width: 6px;
 }
-.QuestLog::-webkit-scrollbar-track {
+.QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track{
   background: #937454;
 }
-.QuestLog::-webkit-scrollbar-thumb {
+.QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb{
   background: #a48465;
 }
-.QuestLog > h2, .settings > h2{
+.QuestLog > h2, .settings > h2, .shop > h2{
     margin: auto;
     text-align: center;
     font-size: 16px;
@@ -390,7 +390,7 @@
   padding-bottom: 4px;
     height: 160px;
 }
-.settings > h3{
+.settings > h3, .product > h3{
     font-size: 12px;
     margin-top: 5px;
     margin-left: 5px;
@@ -461,4 +461,50 @@ button{
     border: 1px solid #2ecc71;
     transition: 0.4s;
     color: #fff;
+}
+.product{
+    background: #937354;
+    color: #fff;
+    padding-left: 5px;
+    width: 192px;
+    height: 37px;
+    margin-top: 5px;
+    padding-top: 3px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.product > h3, .product > h4{
+    font-weight: 300;
+}
+.product > span{
+    font-weight: 100;
+    font-size: 9px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-top: 2px;
+}
+.product > h3{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+.product > img{
+image-rendering: pixelated;
+    position: absolute;
+    top: 4.5px;
+    right: 4px;
+}
+.product > h4{
+    position: absolute;
+    right: 39px;
+    top: 3px;
+    padding: 0;
+    margin: 0;
+    color: #f1c40f;
+    text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
+}
+.product:hover{
+    background: #826243;
 }
