@@ -52,13 +52,21 @@ class Shop{
             this2.close();
         });
        const gold = new Gold();
-       gold.add(20);
        this.element.addEventListener("mouseup", function product_mouseup(event){
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
                    gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
                    let obj = window.GameObjects.find(x=> x.id === event.target.dataset.product);
+                   if(window.heroInventory.find(x=> x.id === event.target.dataset.product)){
+                       if(window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted == true){
+                           window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted = false;
+                       window.heroInventory.find(x=> x.id === event.target.dataset.product).amount = 1;
+                       }else{
+                           window.heroInventory.find(x=> x.id === event.target.dataset.product).amount++;
+                       }
+                   }else{
                    window.heroInventory.push(obj);
+                   }
                }else{
                     document.querySelector(".gold > span").style.color = "red";
                    document.querySelector(".gold > span").style.animation = "shake 1s ease";
