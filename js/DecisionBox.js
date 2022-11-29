@@ -20,6 +20,7 @@ class DecisionBox {
         }
         this.element.remove();
         this.esc.unbind();
+        this.ent.unbind();
     }
         
    async init(container) {
@@ -36,8 +37,11 @@ class DecisionBox {
                 this2.close(); 
             }
         });
-       this.esc = new KeyPressListener("Enter", () => {
+       this.ent = new KeyPressListener("Enter", () => {
             this2.onComplete();
+            this2.close();
+        });
+        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
     }

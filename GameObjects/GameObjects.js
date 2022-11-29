@@ -39,5 +39,47 @@ window.GameObjects = [
         ],
         use_req: "1==1"
         
+    },
+    {
+        id:  "Rogal",
+        src: "images/objects/croissant.png",
+        desc: "Uzdrawia 15 HP",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(15);'
+            }
+        ],
+        use_req: "1==1"
+    },
+    {
+        id:  "Obwarzanek",
+        src: "images/objects/pretzel.png",
+        desc: "Uzdrawia 10 HP",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(10);'
+            }
+        ],
+        use_req: "1==1"
+    },
+    {
+        id:  "Pizza",
+        src: "images/objects/pizza.png",
+        desc: "Uzdrawia 20 HP",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(20);'
+            }
+        ],
+        use_req: "1==1"
     }
 ];

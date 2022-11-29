@@ -8,8 +8,6 @@ class Shop{
         document.querySelector("canvas").style.filter = "brightness(1)";
         document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events:auto;";
         document.querySelector(".quest_button").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".gold img").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".gold span").style= "filter: brightness(1);cursor:pointer;";
         let quest_popups = document.querySelectorAll(".QuestPopup");
         quest_popups.forEach(el => {
             el.style.filter = "brightness(1)";
@@ -24,7 +22,7 @@ class Shop{
     show_products(){
         this.element.innerHTML = "<h2>Sklep</h2>";
         this.products.forEach(el => {
-            this.element.innerHTML = this.element.innerHTML+`<div class="product">
+            this.element.innerHTML = this.element.innerHTML+`<div class="product" data-product="${el.id}">
                 <h3>${el.id}</h3>
                 <span>${el.desc}</span>
                 <h4>${el.price}G</h4>
@@ -37,8 +35,6 @@ class Shop{
        document.querySelector("canvas").style.filter = "brightness(0.2)";
         document.querySelector(".health_bar").style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
         document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
-        document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
-        document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events:none;";
            let quest_popups = document.querySelectorAll(".QuestPopup");
         quest_popups.forEach(el => {
             el.style.filter = "brightness(0.2)";
@@ -55,6 +51,24 @@ class Shop{
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
+       const gold = new Gold();
+       gold.add(20);
+       this.element.addEventListener("mouseup", function product_mouseup(event){
+           if(event.target.className == "product"){
+               if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
+                   gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
+                   let obj = window.GameObjects.find(x=> x.id === event.target.dataset.product);
+                   window.heroInventory.push(obj);
+               }else{
+                    document.querySelector(".gold > span").style.color = "red";
+                   document.querySelector(".gold > span").style.animation = "shake 1s ease";
+                   setTimeout(function(){
+                     document.querySelector(".gold > span").style.color = "#fff";
+                   document.querySelector(".gold > span").style.animation = "";  
+                   }, 1200)
+                }
+           }
+       })
    }
 
 }

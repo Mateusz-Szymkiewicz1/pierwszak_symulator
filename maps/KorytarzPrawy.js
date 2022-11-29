@@ -211,6 +211,12 @@ window.OverworldMaps.KorytarzPrawy = {
                                         desc: "Uzdrawia 10HP",
                                         src: "images/Objects/pretzel.png",
                                         price: "6"
+                                    },
+                                    {
+                                        id: "Pizza",
+                                        desc: "Uzdrawia 20HP",
+                                        src: "images/Objects/pizza.png",
+                                        price: "15"
                                     }
                                 ]
                             },
