@@ -18,6 +18,7 @@ class Gold{
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("gold");
+       this.element.classList.add("hud");
        this.element.innerHTML = `<img src="./images/Objects/gold.png"><span>${window.gold}</span>`;
         document.querySelector(".game-container").appendChild(this.element);
        document.querySelector(".gold img").addEventListener("mouseenter", function(event){

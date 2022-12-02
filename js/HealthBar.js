@@ -35,6 +35,7 @@ class HealthBar{
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("health_bar");
+       this.element.classList.add("hud");
        this.fill = document.createElement("div");
        this.fill.classList.add("health_fill");
        this.fill.style.width = window.health+"px";

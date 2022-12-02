@@ -34,15 +34,8 @@ class Inventory {
 
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
-        document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".quest_button").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".gold img").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".gold span").style= "filter: brightness(1);cursor:pointer;";
-        let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(1)";
-            el.style.cursor = "pointer";
-            el.style.pointerEvents = "auto";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
         })
         this.esc.unbind();
         this.esc2.unbind();
@@ -55,15 +48,8 @@ class Inventory {
         this.createElement();
        if(!this.szafka){
         document.querySelector("canvas").style.filter = "brightness(0.2)";
-        document.querySelector(".health_bar").style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
-        document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
-        document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
-        document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events:none;";
-           let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(0.2)";
-            el.style.cursor = "default";
-            el.style.pointerEvents = "none";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
         })
        }else{
            this.element.classList.add("szafka_inventory");
@@ -148,21 +134,16 @@ class Inventory {
                 if(eval(use_req)){
                 window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
                 let eventConfig = obj.use;
-                await eventConfig.forEach(async (e) => {
+                eventConfig.forEach((e) => {
                     const eventHandler = new OverworldEvent({map, event: e});
-                    await eventHandler.init();
+                    eventHandler.init();
                 })
                 if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
                      const eventHandler2 = new OverworldEvent({map, event: {
                          type: "textMessage",
                          text: `Zużyłeś ${obj.id}!`
                      }});
-                    await eventHandler2.init();
-                    let eventConfig = obj.use;
-                    await eventConfig.forEach(async (e) => {
-                    const eventHandler = new OverworldEvent({map, event: e});
-                    await eventHandler.init();
-                })
+                    eventHandler2.init();
                     if(document.querySelector(".Inventory")){
                     this2.check();
                     }

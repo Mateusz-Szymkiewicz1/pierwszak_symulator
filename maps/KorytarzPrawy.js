@@ -217,6 +217,12 @@ window.OverworldMaps.KorytarzPrawy = {
                                         desc: "Uzdrawia 20HP",
                                         src: "images/Objects/pizza.png",
                                         price: "15"
+                                    },
+                                    {
+                                        id: "Monster",
+                                        desc: "+1 Prędkość +1 Szansa na zawał",
+                                        src: "images/Objects/monster.png",
+                                        price: "20"
                                     }
                                 ]
                             },

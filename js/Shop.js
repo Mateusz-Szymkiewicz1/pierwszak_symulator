@@ -52,6 +52,7 @@ class Shop{
             this2.close();
         });
        const gold = new Gold();
+       gold.add(100)
        this.element.addEventListener("mouseup", function product_mouseup(event){
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){

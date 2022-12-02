@@ -18,6 +18,7 @@ class QuestLog{
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_added");
+         popup.classList.add("hud");
         popup.innerHTML = `<h2>Nowy Quest!</h2><span>${quest.desc}</span>`;
         if(document.querySelector(".QuestPopup")){
             popup.style.bottom = "60px";
@@ -62,6 +63,7 @@ class QuestLog{
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_ended");
+         popup.classList.add("hud");
         if(quest.reward){
             popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}<br />Nagroda : ${quest.reward}</span>`;
         }else{
@@ -116,14 +118,8 @@ class QuestLog{
     
     close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
-        document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
-        document.querySelector(".gold img").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
-        document.querySelector(".gold span").style = "filter: brightness(1);cursor:pointer;";
-        let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(1)";
-            el.style.cursor = "pointer";
-            el.style.pointerEvents = "auto";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
         })
         document.querySelector(".quest_button").innerText = '!';
         document.querySelector(".quest_button").style.paddingTop = "1px";
@@ -183,14 +179,8 @@ old_element.parentNode.replaceChild(new_element, old_element);
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "brightness(0.2)";
-        document.querySelector(".health_bar").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
-        document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
-        document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
-       let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(0.2)";
-            el.style.cursor = "default";
-            el.style.pointerEvents = "none";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
         })
         container.appendChild(this.element);
        this.check();

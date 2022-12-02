@@ -61,15 +61,8 @@ class PauseMenu {
 
    async close() {
         document.querySelector("canvas").style.filter = "brightness(1)";
-        document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
-        document.querySelector(".quest_button").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
-        document.querySelector(".gold span").style = "filter: brightness(1);cursor:pointer;";
-        document.querySelector(".gold img").style = "filter: brightness(1);cursor:pointer;pointer-events: auto;";
-        let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(1)";
-            el.style.cursor = "pointer";
-            el.style.pointerEvents = "auto";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
         })
         this.esc.unbind();
         this.keyboardMenu.end();
@@ -85,15 +78,8 @@ class PauseMenu {
         this.keyboardMenu.init(this.element);
         this.keyboardMenu.setOptions(this.getOptions("root"));
         document.querySelector("canvas").style.filter = "brightness(0.2)";
-        document.querySelector(".health_bar").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
-        document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
-        document.querySelector(".gold img").style = "filter: brightness(0.2);cursor:default;pointer-events: none;";
-        document.querySelector(".gold span").style = "filter: brightness(0.2);cursor:default;";
-        let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(0.2)";
-            el.style.cursor = "default";
-            el.style.pointerEvents = "none";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
         })
         container.appendChild(this.element);
         utils.wait(200);

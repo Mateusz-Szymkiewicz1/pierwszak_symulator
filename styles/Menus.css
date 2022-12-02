@@ -187,10 +187,10 @@
   width: 6px;
 }
 .QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track{
-  background: #937454;
+  background: #826343;
 }
 .QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb{
-  background: #a48465;
+  background: #b59376;
 }
 .QuestLog > h2, .settings > h2, .shop > h2{
     margin: auto;
@@ -530,4 +530,14 @@ image-rendering: pixelated;
 }
 .product *{
     pointer-events: none;
+}
+.buff{
+    height: 17px;
+    width: 13px;
+    position: absolute;
+    top: 40px;
+    left: 5px;
+}
+.buff > img{
+    cursor: pointer;
 }

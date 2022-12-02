@@ -19,7 +19,16 @@ class Overworld {
                     map: this.map,
                 })
             })
-
+            if(window.speed && window.speed == 2){
+                Object.values(this.map.gameObjects).forEach(object => {
+                    if(object.id == "hero"){
+                    object.update({
+                        arrow: this.directionInput.direction,
+                        map: this.map,
+                    })
+                    }
+                })
+            }
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             Object.values(this.map.gameObjects).sort((a, b) => {
@@ -177,6 +186,7 @@ class Overworld {
         this.startGameLoop();
         const quest_button = document.createElement("div");
         quest_button.classList.add("quest_button");
+        quest_button.classList.add("hud");
         quest_button.innerText = "!";
         document.querySelector(".game-container").append(quest_button);
         quest_button.addEventListener("click", function(){

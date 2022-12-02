@@ -81,5 +81,23 @@ window.GameObjects = [
             }
         ],
         use_req: "1==1"
+    },
+    {
+        id:  "Monster",
+        src: "images/objects/monster.png",
+        desc: "+1 Prędkość +1 Szansa na zawał",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.substract(3);window.speed = 2;setTimeout(function(){window.speed = 1;}, 91300)'
+            },{
+                type: "do_code",
+                code: 'const buff = new Buff("Speed", 90000);buff.init();'
+            }
+            
+        ],
+        use_req: "1==1"
     }
 ];
