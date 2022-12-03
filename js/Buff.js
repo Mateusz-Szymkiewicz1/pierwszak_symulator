@@ -27,6 +27,8 @@ class Buff{
                if(nice_time > 60000){
                    if((nice_time%60000)/1000 == 0){
                        nice_time = Math.floor(nice_time/60000)+":00";
+                   }else if((nice_time%60000)/1000 < 10){
+                       nice_time = Math.floor(nice_time/60000)+":0"+(nice_time%60000)/1000;;
                    }else{
                        nice_time = Math.floor(nice_time/60000)+":"+(nice_time%60000)/1000;
                    }
@@ -45,6 +47,8 @@ class Buff{
                if(nice_time > 60000){
                    if((nice_time%60000)/1000 == 0){
                        nice_time = Math.floor(nice_time/60000)+":00";
+                   }else if((nice_time%60000)/1000 < 10){
+                       nice_time = Math.floor(nice_time/60000)+":0"+(nice_time%60000)/1000;;
                    }else{
                        nice_time = Math.floor(nice_time/60000)+":"+(nice_time%60000)/1000;
                    }

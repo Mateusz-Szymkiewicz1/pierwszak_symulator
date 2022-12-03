@@ -223,6 +223,12 @@ window.OverworldMaps.KorytarzPrawy = {
                                         desc: "+1 Prędkość +1 Szansa na zawał",
                                         src: "images/Objects/monster.png",
                                         price: "20"
+                                    },
+                                    {
+                                        id: "Woda",
+                                        desc: "W sumie to nic nie robi",
+                                        src: "images/Objects/water.png",
+                                        price: "4"
                                     }
                                 ]
                             },

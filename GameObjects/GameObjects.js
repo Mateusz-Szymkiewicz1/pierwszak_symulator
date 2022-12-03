@@ -98,6 +98,21 @@ window.GameObjects = [
             }
             
         ],
+        use_req: "window.speed != 2", 
+        use_req_text: "Zostaw bo ci pikawa siądzie!"
+    },
+    {
+        id:  "Woda",
+        src: "images/objects/water.png",
+        desc: "W sumie to nic nie robi",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: ''
+            }
+        ],
         use_req: "1==1"
     }
 ];
