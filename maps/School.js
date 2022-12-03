@@ -165,6 +165,47 @@ window.OverworldMaps.School = {
                    }
                ],
             }),
+            automat: new Person({
+                x: utils.withGrid(10),
+                y: utils.withGrid(6),
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                type: "shop",
+                                products: [
+                                    {
+                                        id: "Woda",
+                                        desc: "W sumie to nic nie robi",
+                                        src: "images/Objects/water.png",
+                                        price: "4"
+                                    },
+                                    {
+                                        id: "Cola",
+                                        desc: "Oryginalna receptura",
+                                        src: "images/Objects/cola.png",
+                                        price: "6"
+                                    },
+                                    {
+                                        id: "Baton",
+                                        desc: "500kcal + cukrzyca",
+                                        src: "images/Objects/baton.png",
+                                        price: "8"
+                                    },
+                                    {
+                                        id: "Kanapka",
+                                        desc: "Uzdrawia 25HP",
+                                        src: "images/Objects/sandwich.png",
+                                        price: "15"
+                                    },
+                                ]
+                            },
+                       ]
+                   }
+               ],
+            }),
         },
         cutsceneSpaces: {
                 [utils.asGridCoord(1, 3)]: [
@@ -259,7 +300,6 @@ window.OverworldMaps.School = {
            [utils.asGridCoord(19, 9)]: true,
            [utils.asGridCoord(17, 2)]: true,
            [utils.asGridCoord(10, 8)]: true,
-           [utils.asGridCoord(10, 6)]: true,
            [utils.asGridCoord(10, 2)]: true,
            [utils.asGridCoord(15, 3)]: true,
            [utils.asGridCoord(14, 3)]: true,

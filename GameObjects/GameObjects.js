@@ -114,5 +114,47 @@ window.GameObjects = [
             }
         ],
         use_req: "1==1"
+    },
+    {
+        id:  "Cola",
+        src: "images/objects/cola.png",
+        desc: "Oryginalna receptura",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: ''
+            }
+        ],
+        use_req: "1==1"
+    },
+    {
+        id:  "Baton",
+        src: "images/objects/baton.png",
+        desc: "500kcal + cukrzyca",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(5)'
+            }
+        ],
+        use_req: "1==1"
+    },
+    {
+        id:  "Kanapka",
+        src: "images/objects/sandwich.png",
+        desc: "Uzdrawia 25HP",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(25)'
+            }
+        ],
+        use_req: "1==1"
     }
 ];

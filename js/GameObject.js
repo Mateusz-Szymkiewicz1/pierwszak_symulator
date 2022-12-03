@@ -29,9 +29,6 @@ class GameObject {
         }, 10);
     }
     
-    update(){
-        
-    }
     
     async doBehaviorEvent(map){
         

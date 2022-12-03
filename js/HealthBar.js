@@ -3,7 +3,7 @@ class HealthBar{
      
     }
     
-   add(value){
+   async add(value){
        window.health = window.health+value;
            if(window.health > 100){
                window.health = 100;

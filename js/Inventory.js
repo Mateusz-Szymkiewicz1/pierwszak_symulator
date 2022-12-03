@@ -90,11 +90,24 @@ class Inventory {
                 document.querySelector(".Inventory span").remove();
             }
         });
+       document.addEventListener("click", function(e){
+           if(document.querySelector(".option_box") && e.target.tagName != "TD" && e.target.className != "option_box"){
+                    document.querySelector(".option_box").remove();
+                document.querySelectorAll("td").forEach(td =>{
+                    td.removeAttribute("class");
+                })
+            }
+       })
         this2.element.addEventListener("mouseup", async function(event){
+            if(document.querySelector(".option_box")){
+                    document.querySelector(".option_box").remove();
+                document.querySelectorAll("td").forEach(td =>{
+                    td.removeAttribute("class");
+                })
+            }
             let option_box = null;
             if(event.target.tagName == "TD" && event.target.dataset.itemName && (window.GameObjects.find(x=> x.id === event.target.dataset.itemName).use || window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete)){
-                let td = document.querySelectorAll("td");
-                td.forEach(td =>{
+                document.querySelectorAll("td").forEach(td =>{
                     td.removeAttribute("class");
                 })
                 if(document.querySelector(".option_box")){
@@ -118,15 +131,6 @@ class Inventory {
             }
             if(option_box != null){
             option_box.addEventListener("click", async function(event){
-            if(event.target.tagName != "TD" && event.target.className != "option_box"){
-                let td = document.querySelectorAll("td");
-                td.forEach(td =>{
-                    td.removeAttribute("class");
-                })
-                if(document.querySelector(".option_box")){
-                    document.querySelector(".option_box").remove();
-                }
-            }
             if(event.target.className == "span_uzyj"){  
                 let obj = window.GameObjects.find(x=> x.id === event.target.parentElement.dataset.itemName);
                 let map = window.map;
@@ -134,18 +138,22 @@ class Inventory {
                 if(eval(use_req)){
                 window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
                 let eventConfig = obj.use;
-                eventConfig.forEach((e) => {
-                    const eventHandler = new OverworldEvent({map, event: e});
-                    eventHandler.init();
-                })
+                for await (const ev of eventConfig){
+                    const eventHandler = new OverworldEvent({map, event: ev});
+                    await eventHandler.init();
+                }
                 if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
-                     const eventHandler2 = new OverworldEvent({map, event: {
+                    eventConfig.unshift({
                          type: "textMessage",
                          text: `Zużyłeś ${obj.id}!`
-                     }});
-                    eventHandler2.init();
+                     })
+                    console.log(eventConfig)
+                    for await (const ev of eventConfig){
+                        const eventHandler = new OverworldEvent({map, event: ev});
+                        await eventHandler.init();
+                    }  
                     if(document.querySelector(".Inventory")){
-                    this2.check();
+                        this2.check();
                     }
                 }
                 }
