@@ -44,8 +44,8 @@ class TitleScreen {
         this.element.classList.add("TitleScreen");
         this.element.innerHTML = (`
       <h1>Pierwszak Symulator</h1>
+      <div class="settings_icon"><img src="./images/settings.png" height="15px" width="15px"></div>
     `)
-
     }
 
     close() {
@@ -59,6 +59,18 @@ class TitleScreen {
             container.appendChild(this.element);
             this.keyboardMenu = new KeyboardMenu();
             this.keyboardMenu.init(this.element);
+            document.querySelector(".settings_icon").addEventListener("click", function(){
+            if(document.querySelector(".settings")){
+                document.querySelector(".settings").remove();
+                 document.querySelector("canvas").style.filter = "brightness(1)";
+            }else{
+            let map = window.map;
+            const eventHandler = new OverworldEvent({map, event: {
+                type: "settings"
+            }});
+            eventHandler.init();
+            }
+            })
             this.keyboardMenu.setOptions(this.getOptions(resolve))
         })
     }

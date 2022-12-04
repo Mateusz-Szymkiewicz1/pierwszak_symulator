@@ -6,6 +6,9 @@ class Settings{
     }
     
     close() {
+        if(!document.querySelector(".PauseMenu")){
+            document.querySelector("canvas").style.filter = "brightness(1)";
+        }
         this.esc.unbind();
         this.element.remove();
         this.onComplete();

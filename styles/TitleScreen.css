@@ -26,7 +26,9 @@
     transition: all 0.25s;
     margin-top: 10px;
 }
-
+.TitleScreen button:hover{
+    transform: translateY(-2px);
+}
 .TitleScreen .DescriptionBox {
   background: transparent;
   color: #fff;
@@ -37,4 +39,11 @@ h1{
     color: #fff;
     text-align: center;
     font-weight: 100;
+}
+.settings_icon{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+    transition: 0.4s;
 }

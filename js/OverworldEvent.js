@@ -156,7 +156,9 @@ class OverworldEvent {
     }
     
      settings(resolve){
+         if(this.map){
         this.map.isPaused = true;
+         }
         const settings = new Settings({
             onComplete: () => {
                 resolve();
