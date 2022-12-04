@@ -104,7 +104,7 @@ class Settings{
                document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
        document.body.style.background = "#fff";
        document.body.style.overflow = "auto";
-        document.querySelector(".game-container").style.outline = "1ox solid #000;";
+        document.querySelector(".game-container").style.outline = "1px solid #000";
                document.querySelector(".settings > input[type=range]").disabled = false;
         document.querySelector(".settings > input[type=range]").style.filter = "contrast(1)";
                document.querySelector(".settings > button").style.border = "1px solid #2ecc71";

@@ -26,7 +26,7 @@
     transition: all 0.25s;
     margin-top: 10px;
 }
-.TitleScreen button:hover{
+.TitleScreen button:hover, .TitleScreen button:focus{
     transform: translateY(-2px);
 }
 .TitleScreen .DescriptionBox {
@@ -42,7 +42,7 @@ h1{
 }
 .settings_icon{
     position: absolute;
-    top: 3px;
+    top: 0px;
     right: 3px;
     cursor: pointer;
     transition: 0.4s;

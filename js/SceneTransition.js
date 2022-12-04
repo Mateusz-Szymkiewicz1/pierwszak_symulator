@@ -7,7 +7,7 @@ class SceneTransition {
         this.element.classList.add("SceneTransition");
     }
     
-    fadeOut(){
+    async fadeOut(){
         this.element.classList.add("fade-out");
         this.element.addEventListener("animationend", () => {
             this.element.remove();
