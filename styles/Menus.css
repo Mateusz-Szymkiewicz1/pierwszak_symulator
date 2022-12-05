@@ -183,13 +183,13 @@
     height: 160px;
     overflow-y: scroll;
 }
-.QuestLog::-webkit-scrollbar, .shop::-webkit-scrollbar {
+.QuestLog::-webkit-scrollbar, .shop::-webkit-scrollbar, .settings::-webkit-scrollbar {
   width: 6px;
 }
-.QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track{
+.QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track, .settings::-webkit-scrollbar-track{
   background: #826343;
 }
-.QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb{
+.QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb, .settings::-webkit-scrollbar-thumb{
   background: #b59376;
 }
 .QuestLog > h2, .settings > h2, .shop > h2{
@@ -409,6 +409,7 @@
   padding-right: 4px;
   padding-bottom: 4px;
     height: 160px;
+    overflow-y: auto;
 }
 .settings > h3, .product > h3{
     font-size: 12px;
@@ -481,6 +482,17 @@ button{
     border: 1px solid #2ecc71;
     transition: 0.4s;
     color: #fff;
+}
+.settings > input[type=color]{
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+    transform: translateY(-9px);
 }
 .product{
     background: #937354;

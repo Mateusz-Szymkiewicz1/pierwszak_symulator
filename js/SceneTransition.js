@@ -5,6 +5,9 @@ class SceneTransition {
     createElement(){
         this.element = document.createElement("div");
         this.element.classList.add("SceneTransition");
+        if(window.game_color){
+            this.element.style.background = window.game_color;
+        }
     }
     
     async fadeOut(){

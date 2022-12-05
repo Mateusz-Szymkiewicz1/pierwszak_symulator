@@ -75,12 +75,26 @@ class Settings{
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("settings");
-       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button>`;
+       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game">`;
+       window.scale = 2.5;
+       window.website_color = "#ffffff";
+       window.game_color = "#202020";
        const file = window.localStorage.getItem("preferences");
     const file2 = JSON.parse(file);
         document.querySelector(".game-container").appendChild(this.element);
         if(file2 && file2.scale){
+            if(file2.scale){
            document.querySelector(".settings > input[type=range]").value = file2.scale*10;
+            window.scale = file2.scale;
+            }
+            if(file2.website_color){
+            document.querySelector("#color_website").value = file2.website_color;
+            window.website_color = file2.website_color;
+            }
+            if(file2.game_color){
+            document.querySelector("#color_game").value = file2.game_color;
+            window.game_color = file2.game_color;
+            }
        }
         if(typeof window.fullscreen !== 'undefined' && window.fullscreen == 1){
            document.querySelector(".settings > input[type=range]").disabled = true;
@@ -94,7 +108,9 @@ class Settings{
            let skala = document.querySelector(".settings > input[type=range]").value/10;
            document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
            window.localStorage.setItem("preferences", JSON.stringify({
-               scale: skala
+               scale: skala,
+               website_color: window.website_color,
+               game_color: window.game_color
            }))
        })
        document.querySelector(".settings > button").addEventListener("click", function(){
@@ -111,6 +127,36 @@ class Settings{
            }else{
                this2.fullscreen();
            }
+       })
+       let timeout;
+       document.querySelector("#color_website").addEventListener("input", function(e){
+           if(typeof timeout !== 'undefined' || timeout !== null){
+               clearTimeout(timeout);
+           }
+           document.body.style.background = e.target.value;
+           window.website_color = e.target.value;
+           timeout = setTimeout(function(){
+                window.localStorage.setItem("preferences", JSON.stringify({
+               scale: window.scale,
+               website_color: e.target.value,
+               game_color: window.game_color
+           }))
+           }, 100)
+       })
+       let timeout2;
+       document.querySelector("#color_game").addEventListener("input", function(e){
+           if(typeof timeout2 !== 'undefined' || timeout2 !== null){
+               clearTimeout(timeout2);
+           }
+           document.querySelector(".game-container").style.background = e.target.value;
+           window.game_color = e.target.value;
+           timeout2 = setTimeout(function(){
+               window.localStorage.setItem("preferences", JSON.stringify({
+               scale: window.scale,
+               website_color: window.website_color,
+               game_color: e.target.value
+                }))
+           }, 100)
        })
    }
 
