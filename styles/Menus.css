@@ -494,6 +494,18 @@ button{
   border: none;
     transform: translateY(-9px);
 }
+.color_default{
+    background: #484d4d;
+    color: #fff;
+    width: 90px;
+    height: 20px;
+    margin-left: 5px;
+    font-size: 9px;
+    text-align: center;
+    border: 1px solid #fff;
+    padding-top: 3px;
+    cursor: pointer;
+}
 .product{
     background: #937354;
     color: #fff;

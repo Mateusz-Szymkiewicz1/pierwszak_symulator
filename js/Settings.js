@@ -9,6 +9,10 @@ class Settings{
         if(!document.querySelector(".PauseMenu")){
             document.querySelector("canvas").style.filter = "brightness(1)";
         }
+        if(document.querySelector(".TitleScreen")){
+            document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: brightness(1)');
+             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: brightness(1)');
+        }
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
@@ -75,7 +79,7 @@ class Settings{
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("settings");
-       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game">`;
+       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div>`;
        window.scale = 2.5;
        window.website_color = "#ffffff";
        window.game_color = "#202020";
@@ -157,6 +161,19 @@ class Settings{
                game_color: e.target.value
                 }))
            }, 100)
+       })
+       document.querySelector(".color_default").addEventListener("click", function(){
+           window.game_color = "#202020";
+           window.website_color = "#ffffff";
+           document.querySelector(".game-container").style.background = window.game_color;
+           document.querySelector("#color_website").value = window.website_color;
+           document.querySelector("#color_game").value = window.game_color;
+           document.body.style.background = window.website_color;
+            window.localStorage.setItem("preferences", JSON.stringify({
+               scale: window.scale,
+               website_color: window.website_color,
+               game_color: window.game_color
+            }))
        })
    }
 
