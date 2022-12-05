@@ -133,7 +133,14 @@ class Overworld {
                 window.GameObjects.find(x => x.id === e.id).amount = e.amount;
                 }
             });
-            this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
+            var StartMapPromise = new Promise(function(resolve) {
+                const sceneTransition = new SceneTransition();
+                sceneTransition.init(document.querySelector(".game-container"), () => {
+                this2.startMap(window.OverworldMaps[this2.progress.mapId], initialHeroState);
+                sceneTransition.fadeOut();
+                    resolve();
+                })
+            });
         } else {
             if(window.localStorage.getItem("rpg_savefile1") != null){
                 window.localStorage.removeItem("rpg_savefile1");
@@ -142,49 +149,64 @@ class Overworld {
             window.health = 100;
             window.gold = 0;
             window.quests = [];
-            const quest = new QuestLog({
+            var StartMapPromise = new Promise(function(resolve) {
+                window.sceneTransition = new SceneTransition();
+                sceneTransition.init(document.querySelector(".game-container"), () => {
+                this2.startMap(window.OverworldMaps.School, initialHeroState);
+                    resolve();
+                })
+            });
+            StartMapPromise.then(async function(){
+                await this2.map.startCutscene([
+                {
+                    who: "wozna",
+                    type: "stand",
+                    direction: "right",
+                    time: 500
+                },
+                {
+                    type: "textMessage",
+                    text: "Nareszcie pierwszy dzień w nowej szkole..."
+                },
+                {
+                    type: "textMessage",
+                    text: "Może mnie nie będą bić jak w podstawówce!"
+                },
+                {
+                    type: "do_code",
+                    code: `window.sceneTransition.fadeOut();delete window.sceneTransition`
+                },
+                {
+                    type: "textMessage",
+                    text: "Użyj strzałek/AWSD aby się poruszać"
+                },
+                {
+                    type: "textMessage",
+                    text: "oraz Enter do interakcji"
+                },
+                ])
+            }).then(function(){
+                const quest = new QuestLog({
             onComplete: () => {}
             });
             quest.add_quest({
                 id: "Znajdź_Klucz",
                 desc: "Poszukaj klucza do twojej nowej szafki!",
             })
-            this.startMap(window.OverworldMaps.School, initialHeroState);
-//            this.map.startCutscene([
-//                {
-//                    who: "wozna",
-//                    type: "stand",
-//                    direction: "right",
-//                    time: 500
-//                },
-//                {
-//                    type: "textMessage",
-//                    text: "Nareszcie pierwszy dzień w nowej szkole..."
-//                },
-//                {
-//                    type: "textMessage",
-//                    text: "Może mnie nie będą bić jak w podstawówce!"
-//                },
-//                {
-//                    type: "textMessage",
-//                    text: "Użyj strzałek/AWSD aby się poruszać"
-//                },
-//                {
-//                    type: "textMessage",
-//                    text: "oraz Enter do interakcji"
-//                },
-//        ])
+            })
         }
+        StartMapPromise.then(function(value){
+            this2.bindActionInput();
+        this2.bindHeroPositionCheck();
+        this2.directionInput = new DirectionInput();
+        this2.directionInput.init();
+        this2.startGameLoop();
+        })
         window.health_bar = new HealthBar();
         window.health_bar.init();
         const gold = new Gold();
         gold.init();
-        this.bindActionInput();
-        this.bindHeroPositionCheck();
-        this.directionInput = new DirectionInput();
-        this.directionInput.init();
-        this.startGameLoop();
-        const quest_button = document.createElement("div");
+      const quest_button = document.createElement("div");
         quest_button.classList.add("quest_button");
         quest_button.classList.add("hud");
         quest_button.innerText = "!";
