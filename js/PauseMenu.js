@@ -60,9 +60,9 @@ class PauseMenu {
     }
 
    async close() {
-        document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector("canvas").style.filter = "none";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
         this.esc.unbind();
         this.keyboardMenu.end();
@@ -77,9 +77,9 @@ class PauseMenu {
         })
         this.keyboardMenu.init(this.element);
         this.keyboardMenu.setOptions(this.getOptions("root"));
-        document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
         container.appendChild(this.element);
         utils.wait(200);

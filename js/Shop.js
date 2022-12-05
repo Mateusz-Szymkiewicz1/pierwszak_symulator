@@ -5,14 +5,9 @@ class Shop{
     }
  
     close() {
-        document.querySelector("canvas").style.filter = "brightness(1)";
-        document.querySelector(".health_bar").style = "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        document.querySelector(".quest_button").style= "filter: brightness(1);cursor:pointer;pointer-events:auto;";
-        let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(1)";
-            el.style.cursor = "pointer";
-            el.style.pointerEvents = "auto";
+        document.querySelector("canvas").style.filter = "none";
+       document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
         this.esc.unbind();
         this.element.remove();
@@ -32,14 +27,9 @@ class Shop{
     }
     
    async init() {
-       document.querySelector("canvas").style.filter = "brightness(0.2)";
-        document.querySelector(".health_bar").style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
-        document.querySelector(".quest_button").style = "filter: brightness(0.2);cursor:default; pointer-events:none;";
-           let quest_popups = document.querySelectorAll(".QuestPopup");
-        quest_popups.forEach(el => {
-            el.style.filter = "brightness(0.2)";
-            el.style.cursor = "default";
-            el.style.pointerEvents = "none";
+       document.querySelector("canvas").style.filter = "blur(4px)";
+        document.querySelectorAll(".hud").forEach(el => {
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
         let this2 = this;
         this.element = document.createElement("div");

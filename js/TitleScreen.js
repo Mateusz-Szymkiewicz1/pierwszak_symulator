@@ -62,9 +62,9 @@ class TitleScreen {
             document.querySelector(".settings_icon").addEventListener("click", function(){
             if(document.querySelector(".settings")){
                 document.querySelector(".settings").remove();
-                 document.querySelector("canvas").style.filter = "brightness(1)";
-                 document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: brightness(1)');
-             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: brightness(1)');
+                 document.querySelector("canvas").style.filter = "none";
+                 document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: none');
+             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: none');
             }else{
             let map = window.map;
             const eventHandler = new OverworldEvent({map, event: {

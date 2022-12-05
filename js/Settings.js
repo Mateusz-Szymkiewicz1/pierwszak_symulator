@@ -7,11 +7,11 @@ class Settings{
     
     close() {
         if(!document.querySelector(".PauseMenu")){
-            document.querySelector("canvas").style.filter = "brightness(1)";
+            document.querySelector("canvas").style.filter = "none";
         }
         if(document.querySelector(".TitleScreen")){
-            document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: brightness(1)');
-             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: brightness(1)');
+            document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: none');
+             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: none');
         }
         this.esc.unbind();
         this.element.remove();
@@ -72,9 +72,9 @@ class Settings{
     }
     
    async init() {
-       document.querySelector("canvas").style.filter = "brightness(0.2)";
+       document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
         let this2 = this;
         this.element = document.createElement("div");

@@ -33,9 +33,9 @@ class Inventory {
     }
 
     close() {
-        document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector("canvas").style.filter = "none";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
         this.esc.unbind();
         this.esc2.unbind();
@@ -47,9 +47,9 @@ class Inventory {
         let this2 = this;
         this.createElement();
        if(!this.szafka){
-        document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
        }else{
            this.element.classList.add("szafka_inventory");

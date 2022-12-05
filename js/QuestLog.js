@@ -117,9 +117,9 @@ class QuestLog{
     }
     
     close() {
-        document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector("canvas").style.filter = "none";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
         document.querySelector(".quest_button").innerText = '!';
         document.querySelector(".quest_button").style.paddingTop = "1px";
@@ -178,9 +178,9 @@ old_element.parentNode.replaceChild(new_element, old_element);
        document.querySelector(".quest_button").style.height = "21px";
         let this2 = this;
         this.createElement();
-        document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
         container.appendChild(this.element);
        this.check();

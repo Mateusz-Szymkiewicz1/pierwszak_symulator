@@ -10,9 +10,9 @@ class Szafka{
     }
     
     close() {
-        document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector("canvas").style.filter = "none";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(1); cursor: pointer;pointer-events: auto;";
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
         document.querySelector(".Inventory").remove();
         this.element.remove();
@@ -23,9 +23,9 @@ class Szafka{
    async init(container) {
         let this2 = this;
         this.createElement();
-        document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: brightness(0.2); cursor: default;pointer-events: none;";
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
         container.appendChild(this.element);
        utils.wait(200);

@@ -12,11 +12,11 @@ class DecisionBox {
     close() {
         if(window.Overworld){
         if(!window.Overworld.map.isPaused){
-        document.querySelector("canvas").style.filter = "brightness(1)";
+        document.querySelector("canvas").style.filter = "none";
         }
         }
         else{
-            document.querySelector("canvas").style.filter = "brightness(1)";
+            document.querySelector("canvas").style.filter = "none";
         }
         this.element.remove();
         this.esc.unbind();
@@ -26,7 +26,7 @@ class DecisionBox {
    async init(container) {
         let this2 = this;
         this.createElement();
-        document.querySelector("canvas").style.filter = "brightness(0.2)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         container.appendChild(this.element);
         document.addEventListener("click", function(event){
             if(event.target.getAttribute("id") == "decision_tak"){
