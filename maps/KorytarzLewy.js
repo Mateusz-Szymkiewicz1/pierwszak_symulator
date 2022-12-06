@@ -198,9 +198,10 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             szatniaMDrzwi: new Person({
-                x: utils.withGrid(1),
+                x: utils.withGrid(0),
                 y: utils.withGrid(7),
                 counter: 0,
+                movePixels: true,
                 src: "images/Objects/door_left.png",
                 talking: [
                     {
@@ -217,8 +218,9 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             szatniaDDrzwi: new Person({
-                x: utils.withGrid(1),
+                x: utils.withGrid(0),
                 y: utils.withGrid(9),
+                movePixels: true,
                 counter: 0,
                 src: "images/Objects/door_left.png",
                 talking: [
@@ -234,8 +236,9 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             kantorekDrzwi: new Person({
-                x: utils.withGrid(1),
+                x: utils.withGrid(0),
                 y: utils.withGrid(11),
+                movePixels: true,
                 counter: 0,
                 src: "images/Objects/door_left.png",
                 talking: [
@@ -330,10 +333,10 @@ window.OverworldMaps.KorytarzLewy = {
            [utils.asGridCoord(0, 4)]: true,
            [utils.asGridCoord(0, 5)]: true,
            [utils.asGridCoord(1, 3)]: true,
-           [utils.asGridCoord(1, 6)]: true,
-           [utils.asGridCoord(1, 8)]: true,
-           [utils.asGridCoord(1, 10)]: true,
-           [utils.asGridCoord(1, 12)]: true,
+           [utils.asGridCoord(0, 6)]: true,
+           [utils.asGridCoord(0, 8)]: true,
+           [utils.asGridCoord(0, 10)]: true,
+           [utils.asGridCoord(0, 12)]: true,
            [utils.asGridCoord(15, 2)]: true,
            [utils.asGridCoord(18, 2)]: true,
            [utils.asGridCoord(4, 12)]: true,

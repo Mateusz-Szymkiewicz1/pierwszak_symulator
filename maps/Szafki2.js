@@ -18,7 +18,7 @@ window.OverworldMaps.Szafki2 = {
             })
         },
         cutsceneSpaces: {
-                [utils.asGridCoord(7, 0)]: [
+                [utils.asGridCoord(7, 1)]: [
                 {
                     events: [
                         {

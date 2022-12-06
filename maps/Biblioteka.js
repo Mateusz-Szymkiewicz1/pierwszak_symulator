@@ -1,7 +1,7 @@
 window.OverworldMaps.Biblioteka = {
         id: "Biblioteka",
         lowerSrc: "images/maps/BibliotekaLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/BibliotekaUpper.png",
         gameObjects: {
             Podrecznik_access: new Person({
                 id: "Podrecznik_access",

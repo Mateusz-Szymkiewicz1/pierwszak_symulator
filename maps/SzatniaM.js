@@ -1,7 +1,7 @@
 window.OverworldMaps.SzatniaM = {
         id: "SzatniaM",
         lowerSrc: "images/maps/SzatniaMLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/SzatniaMUpper.png",
         gameObjects: {
             wcDrzwi: new Person({
                 x: utils.withGrid(3),
@@ -75,7 +75,7 @@ window.OverworldMaps.SzatniaM = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(2),
+                            x: utils.withGrid(1),
                             y: utils.withGrid(7),
                             direction: "right"
                         },

@@ -1,7 +1,7 @@
 window.OverworldMaps.Pielegniarka = {
         id: "Pielegniarka",
         lowerSrc: "images/maps/PielegniarkaLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/PielegniarkaUpper.png",
         gameObjects: {
             pielegniarka: new Person({
                 x: utils.withGrid(2),
