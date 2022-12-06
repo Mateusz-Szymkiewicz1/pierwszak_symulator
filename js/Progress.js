@@ -7,10 +7,20 @@ class Progress {
         this.heroInventory = [];
         this.quests = [];
         this.gold = 0;
-        this.saveFileKey = "rpg_savefile1";
+        this.saveFileKey = "saveFile";
+        this.buffs = [];
     }
 
     save() {
+        if(document.querySelector(".buff")){
+            document.querySelectorAll(".buff").forEach(el => {
+                let obj = {
+                    type: el.dataset.type,
+                    time: el.dataset.time,
+                }
+                this.buffs.push(obj);
+            })
+        }
         window.localStorage.setItem(this.saveFileKey, JSON.stringify({
             mapId: this.mapId,
             startingHeroX: this.startingHeroX,
@@ -20,7 +30,8 @@ class Progress {
             health: window.health,
             quests: window.quests,
             gold: window.gold,
-        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted","amount","health", "quests", "desc", "progress", "deletable", "gold"]))
+            buffs: this.buffs
+        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted","amount","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
     }
 
     getSaveFile() {
@@ -39,6 +50,7 @@ class Progress {
             this.health = file.health;
             this.quests = file.quests;
             this.gold = file.gold;
+            this.buffs = file.buffs;
         }
     }
 

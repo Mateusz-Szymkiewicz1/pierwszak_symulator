@@ -16,6 +16,7 @@ class Buff{
         this.element = document.createElement("div");
         this.element.classList.add("buff");
        this.element.classList.add("hud");
+       this.element.dataset.type = this.type;
         document.querySelector(".game-container").appendChild(this.element);
         this.element.innerHTML = `<img src="./images/Objects/${this.type.toLowerCase()}.png" height="17px" width="13px">`;
        this.element.addEventListener("mouseenter", function(event){
@@ -75,6 +76,7 @@ class Buff{
            document.querySelector(".desc").remove();
        })
        setInterval(function(){
+           this2.element.dataset.time = this2.time;
            if(this2.time > 0){
            this2.time = this2.time-1000;
            }else{

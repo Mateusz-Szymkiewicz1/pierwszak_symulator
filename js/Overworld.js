@@ -133,6 +133,16 @@ class Overworld {
                 window.GameObjects.find(x => x.id === e.id).amount = e.amount;
                 }
             });
+            this.progress.buffs.forEach(buff => {
+                let progress_buff = new Buff(buff.type, buff.time);
+                progress_buff.init();
+                if(buff.type == "Speed"){
+                    window.speed = 2;
+                    setTimeout(function() {
+                        window.speed = 1;
+                    }, buff.time)
+                }
+            })
             var StartMapPromise = new Promise(function(resolve) {
                 const sceneTransition = new SceneTransition();
                 sceneTransition.init(document.querySelector(".game-container"), () => {
