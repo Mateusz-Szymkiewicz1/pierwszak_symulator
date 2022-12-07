@@ -3,33 +3,6 @@ window.OverworldMaps.Biblioteka = {
         lowerSrc: "images/maps/BibliotekaLower.png",
         upperSrc: "images/maps/BibliotekaUpper.png",
         gameObjects: {
-            Podrecznik_access: new Person({
-                id: "Podrecznik_access",
-                x: utils.withGrid(2),
-                y: utils.withGrid(9),
-                walkable: true,
-                pickUp: true,
-                counter: 0,
-                movePixels: true,
-                src: "images/objects/podrecznik.png",
-                talking: [
-                    {
-                        events: [
-                            {
-                                who: "Podrecznik_access",
-                                type: "textMessage",
-                                text: 'Znalazłeś "Podręcznik Access"!!'
-                            },
-                            {
-                                who: "Podrecznik_access",
-                                type: "stand",
-                                direction: "left",
-                                time: 200
-                            },
-                       ]
-                   }
-               ],
-            }),
             bibliotekarka1: new Person({
                 x: utils.withGrid(8),
                 y: utils.withGrid(8),
@@ -97,6 +70,33 @@ window.OverworldMaps.Biblioteka = {
                                 who: "bibliotekarka2",
                                 type: "textMessage",
                                 text: 'Lorem Ipsum dolor sit amet'
+                            },
+                       ]
+                   }
+               ],
+            }),
+            Podrecznik_access: new Person({
+                id: "Podrecznik_access",
+                x: utils.withGrid(2),
+                y: utils.withGrid(9),
+                walkable: true,
+                pickUp: true,
+                counter: 0,
+                movePixels: true,
+                src: "images/objects/podrecznik.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                who: "Podrecznik_access",
+                                type: "textMessage",
+                                text: 'Znalazłeś "Podręcznik Access"!!'
+                            },
+                            {
+                                who: "Podrecznik_access",
+                                type: "stand",
+                                direction: "left",
+                                time: 200
                             },
                        ]
                    }

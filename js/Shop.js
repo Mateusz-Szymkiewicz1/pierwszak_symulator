@@ -29,7 +29,9 @@ class Shop{
    async init() {
        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
+            if(el.className != "gold hud"){
             el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
+            }
         })
         let this2 = this;
         this.element = document.createElement("div");
