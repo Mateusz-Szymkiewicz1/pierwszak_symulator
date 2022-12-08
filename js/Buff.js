@@ -42,9 +42,9 @@ class Buff{
                }
            }
                desc.innerText = `+1 ${this2.type} (${nice_time})`;
-           setInterval(function(){
+           let interval = setInterval(function(){
                nice_time = this2.time;
-           if(nice_time >= 0){
+           if(nice_time > 0){
                if(nice_time > 60000){
                    if((nice_time%60000)/1000 == 0){
                        nice_time = Math.floor(nice_time/60000)+":00";
@@ -62,9 +62,12 @@ class Buff{
                }
            }
                desc.innerText = `+1 Speed (${nice_time})`;
-               if(nice_time == 0){
-                   clearInterval();
-                   document.querySelector(".desc").remove();
+               if(nice_time <= 0){
+                   desc.innerText = `+1 Speed (0s)`;
+                   clearInterval(interval);
+                   setTimeout(function(){
+                       this2.end();
+                   }, 1000)
                }
            }, 1000)
            document.querySelector("body").appendChild(desc);
@@ -79,13 +82,8 @@ class Buff{
            this2.element.dataset.time = this2.time;
            if(this2.time > 0){
            this2.time = this2.time-1000;
-           }else{
-               clearInterval();
            }
        }, 1000)
-       setTimeout(function(){
-           this2.end();
-       }, this.time+1300)
    }
 
 }

@@ -12,6 +12,7 @@ class Progress {
     }
 
     save() {
+        this.buffs = [];
         if(document.querySelector(".buff")){
             document.querySelectorAll(".buff").forEach(el => {
                 let obj = {

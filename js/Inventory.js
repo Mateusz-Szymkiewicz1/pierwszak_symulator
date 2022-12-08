@@ -128,6 +128,10 @@ class Inventory {
                 if(window.GameObjects.find(x=> x.id === event.target.dataset.itemName).can_delete){
                 option_box.innerHTML = option_box.innerHTML + `<span class="span_usun">Usuń</span>`;
                 }
+                if(window.GameObjects.find(x=> x.id === event.target.dataset.itemName).amount > 1){
+                option_box.style.height = "170px";
+                option_box.innerHTML = option_box.innerHTML + `<span class="span_usun_all">Usuń wszystkie</span>`;
+                }
             }
             if(option_box != null){
             option_box.addEventListener("click", async function(event){
@@ -147,7 +151,6 @@ class Inventory {
                          type: "textMessage",
                          text: `Zużyłeś ${obj.id}!`
                      })
-                    console.log(eventConfig)
                     for await (const ev of eventConfig){
                         const eventHandler = new OverworldEvent({map, event: ev});
                         await eventHandler.init();
@@ -166,7 +169,7 @@ class Inventory {
                     eventHandler.init();
                 }
             }
-             if(event.target.className == "span_usun"){  
+             if(event.target.className == "span_usun_all"){  
                  const eventHandler = new OverworldEvent({map, event:{
                         type: "decision",
                         handler: () => {
@@ -178,7 +181,12 @@ class Inventory {
                     }});
                 eventHandler.init();
             }
-                                
+             if(event.target.className == "span_usun"){  
+                 window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
+                if(document.querySelector(".Inventory")){
+                    this2.check();
+                }
+            }                   
             })
             }
         });

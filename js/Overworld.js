@@ -140,7 +140,7 @@ class Overworld {
                     window.speed = 2;
                     setTimeout(function() {
                         window.speed = 1;
-                    }, buff.time)
+                    }, parseInt(buff.time)+1300)
                 }
             })
             var StartMapPromise = new Promise(function(resolve) {
