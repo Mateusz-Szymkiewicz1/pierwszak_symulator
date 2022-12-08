@@ -156,6 +156,7 @@ class Overworld {
                 window.localStorage.removeItem("rpg_savefile1");
             }
             window.heroInventory = [];
+            window.szafka = [];
             window.health = 100;
             window.gold = 0;
             window.quests = [];

@@ -14,6 +14,9 @@ class Szafka{
         document.querySelectorAll(".hud").forEach(el => {
             el.style = "filter: none; cursor: pointer;pointer-events: auto;";
         })
+        if(document.querySelector(".option_box")){
+            document.querySelector(".option_box").remove();
+        }
         document.querySelector(".Inventory").remove();
         this.element.remove();
         this.esc.unbind();
@@ -38,6 +41,48 @@ class Szafka{
            szafka: true,
        }});
        eventHandler.init();
+       function shift_click_listen(e){
+           if(e.target.tagName == "TD" && e.target.dataset.nameBackup){
+            let obj = window.GameObjects.find(x=> x.id === e.target.dataset.nameBackup);
+               window.heroInventory.find(x=> x.id === e.target.dataset.nameBackup).deleted = true;
+            window.szafka.push(obj);
+               console.log(window.szafka)
+           e.target.innerHTML = "";
+           e.target.removeAttribute("data-item-name");
+           e.target.removeAttribute("data-name-backup");
+           if(document.querySelector(".Inventory h3")){
+               document.querySelector(".Inventory h3").remove();
+           }
+           if(document.querySelector(".Inventory span")){
+               document.querySelector(".Inventory span").remove();
+           }
+           }
+       }
+      document.addEventListener("keydown", function shift_listen(e){
+          document.querySelectorAll(".Inventory td").forEach(el => {
+              if(el.dataset.itemName){
+                  el.dataset.nameBackup = el.dataset.itemName;
+                  el.removeAttribute("data-item-name");
+              }
+          })
+          if(e.repeat){
+              return;
+          }
+           if(e.code == "ShiftLeft"){
+              document.querySelector(".Inventory").addEventListener("click", shift_click_listen)
+           }
+       })
+       document.addEventListener("keyup", function shift_listen(e){
+           document.querySelectorAll(".Inventory td").forEach(el => {
+              if(el.dataset.nameBackup){
+                  el.dataset.itemName = el.dataset.nameBackup;
+                  el.removeAttribute("data-name-backup");
+              }
+          })
+           if(e.code == "ShiftLeft"){
+                document.querySelector(".Inventory").removeEventListener("click", shift_click_listen)
+           }
+       })
     }
 
 }
