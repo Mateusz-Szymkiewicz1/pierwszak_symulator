@@ -149,6 +149,9 @@
 #decision_nie:hover{
     background: #d63b2b;
 }
+.shop:focus{
+    outline: none;
+}
 .quest_button{
     width: 22px;
     height: 21px;

@@ -38,6 +38,8 @@ class Shop{
         this.element.classList.add("shop");
        this.element.innerHTML = `<h2>Sklep</h2>`;
         document.querySelector(".game-container").appendChild(this.element);
+       this.element.setAttribute("tabindex", "0")
+       this.element.focus();
        this.show_products();
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
