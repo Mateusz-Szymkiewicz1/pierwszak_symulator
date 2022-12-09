@@ -1,7 +1,7 @@
 class Buff{
     constructor(type, time) {
      this.type = type;
-     this.time = time;
+     this.time = parseInt(time);
     }
     
     end(){
@@ -65,9 +65,6 @@ class Buff{
                if(nice_time <= 0){
                    desc.innerText = `+1 Speed (0s)`;
                    clearInterval(interval);
-                   setTimeout(function(){
-                       this2.end();
-                   }, 1000)
                }
            }, 1000)
            document.querySelector("body").appendChild(desc);
@@ -84,6 +81,9 @@ class Buff{
            this2.time = this2.time-1000;
            }
        }, 1000)
+       setTimeout(function(){
+           this2.end();
+       }, this2.time+1300)
    }
 
 }

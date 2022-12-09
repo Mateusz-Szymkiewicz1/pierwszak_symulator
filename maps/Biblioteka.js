@@ -34,6 +34,22 @@ window.OverworldMaps.Biblioteka = {
                    }
                ],
             }),
+            sztuka_wojny: new Person({
+                x: utils.withGrid(3),
+                y: utils.withGrid(2),
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                type: "book",
+                                book_id: "art_of_war"
+                            },
+                       ]
+                   }
+               ],
+            }),
             bibliotekarka2: new Person({
                 x: utils.withGrid(4),
                 y: utils.withGrid(2),

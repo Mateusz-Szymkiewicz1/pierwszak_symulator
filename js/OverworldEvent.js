@@ -155,6 +155,18 @@ class OverworldEvent {
         shop.init();
     }
     
+    book(resolve){
+        this.map.isPaused = true;
+        const book = new Book({
+            onComplete: () => {
+                resolve();
+                this.map.isPaused = false;
+                this.map.overworld.startGameLoop();
+            }
+        }, this.event.book_id);
+        book.init();
+    }
+    
      settings(resolve){
          if(this.map){
         this.map.isPaused = true;

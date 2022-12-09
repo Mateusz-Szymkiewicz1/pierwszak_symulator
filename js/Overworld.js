@@ -152,8 +152,8 @@ class Overworld {
                 })
             });
         } else {
-            if(window.localStorage.getItem("rpg_savefile1") != null){
-                window.localStorage.removeItem("rpg_savefile1");
+            if(window.localStorage.getItem("saveFile") != null){
+                window.localStorage.removeItem("saveFile");
             }
             window.heroInventory = [];
             window.szafka = [];
