@@ -10,6 +10,14 @@ class RevealingText {
     
     revealOneCharacter(list){
         const next = list.splice(0,1)[0];
+         if(next.span.innerText == " " || next.span.innerText == "," || next.span.innerText == "."){
+             document.querySelector("#audio_talking").pause();
+         }else{
+             if(document.querySelector("#audio_talking").paused){
+            document.querySelector("#audio_talking").play();
+            document.querySelector("#audio_talking").volume = 0.5;
+             }
+         }
         next.span.classList.add("revealed");
         if(list.length > 0){
             this.timeout = setTimeout(() => {
@@ -18,10 +26,12 @@ class RevealingText {
         }
         else{
             this.isDone = true;
+            document.querySelector("#audio_talking").pause();
         }
     }
     
     warpToDone(){
+        document.querySelector("#audio_talking").pause();
         clearTimeout(this.timeout);
         this.isDone = true;
         this.element.querySelectorAll("span").forEach(s => {

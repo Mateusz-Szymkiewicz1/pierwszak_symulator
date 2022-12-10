@@ -36,6 +36,15 @@ class Person extends GameObject{
            }, 10);
            return;
        }
+            if(this.isPlayerControlled == true){
+                document.querySelector("#audio_walk").volume = 0.4;
+                if(window.speed){
+                document.querySelector("#audio_walk").playbackRate = window.speed*2;
+                }else{
+                    document.querySelector("#audio_walk").playbackRate = 2;
+                }
+                document.querySelector("#audio_walk").play();
+            }
          state.map.moveWall(this.x,this.y,this.direction);  
         this.movingProgressRemaining = 16;
             this.updateSprite(state);
@@ -60,6 +69,9 @@ class Person extends GameObject{
            utils.emitEvent("PersonWalkingComplete", {
                whoId: this.id
            })
+              if(this.isPlayerControlled == true){
+                document.querySelector("#audio_walk").pause();
+            }
         }
     }
     
