@@ -10,6 +10,10 @@ class Szafka{
     }
     
     close() {
+        if(!document.querySelector("#audio_locker").paused){
+            document.querySelector("#audio_locker").pause();
+            document.querySelector("#audio_locker").currentTime = 0;
+        }
         document.querySelector("canvas").style.filter = "none";
         document.querySelectorAll(".hud").forEach(el => {
             el.style = "filter: none; cursor: pointer;pointer-events: auto;";

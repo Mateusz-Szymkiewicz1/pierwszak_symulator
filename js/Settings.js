@@ -6,6 +6,11 @@ class Settings{
     }
     
     close() {
+        if(document.querySelector(".settings")){
+        let audio_settings_close = document.querySelector("#audio_settings_close");
+                   audio_settings_close.volume = 0.2;
+                   audio_settings_close.play();
+        }
         if(!document.querySelector(".PauseMenu")){
             document.querySelector("canvas").style.filter = "none";
         }
@@ -72,6 +77,9 @@ class Settings{
     }
     
    async init() {
+       let audio_settings = document.querySelector("#audio_settings");
+                   audio_settings.volume = 0.2;
+                   audio_settings.play();
        document.querySelector("canvas").style.filter = "blur(4px)";
         document.querySelectorAll(".hud").forEach(el => {
             el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
