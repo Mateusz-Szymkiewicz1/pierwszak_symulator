@@ -149,6 +149,13 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
+                            {
                                 type: "changeMap",
                                 map: "S30",
                                 x: utils.withGrid(4),
@@ -167,6 +174,13 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
                             {
                                 type: "changeMap",
                                 map: "S29",
@@ -187,6 +201,13 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
+                            {
                                 type: "changeMap",
                                 map: "Toilet",
                                 x: utils.withGrid(3),
@@ -206,6 +227,13 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
                             {
                                 type: "changeMap",
                                 map: "SzatniaM",

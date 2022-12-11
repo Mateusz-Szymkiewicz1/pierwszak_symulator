@@ -12,6 +12,13 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
+                            {
                                 type: "changeMap",
                                 map: "S16",
                                 x: utils.withGrid(4),
@@ -30,6 +37,13 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
                             {
                                 type: "changeMap",
                                 map: "Biblioteka",
@@ -50,6 +64,13 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
                             {
                                 type: "changeMap",
                                 map: "BiuroG",
@@ -88,6 +109,13 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
+                            {
                                 type: "changeMap",
                                 map: "S14"
                             },
@@ -103,6 +131,13 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2;
+                                audio_door.play();`
+                            },
                             {
                                 type: "changeMap",
                                 map: "Pielegniarka",
