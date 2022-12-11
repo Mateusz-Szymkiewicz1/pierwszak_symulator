@@ -19,6 +19,9 @@ class QuestLog{
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_added");
          popup.classList.add("hud");
+        let audio_quest = document.querySelector("#audio_quest");
+        audio_quest.volume = 0.2;
+        audio_quest.play();
         popup.innerHTML = `<h2>Nowy Quest!</h2><span>${quest.desc}</span>`;
         if(document.querySelector(".QuestPopup")){
             popup.style.bottom = "60px";
@@ -64,6 +67,9 @@ class QuestLog{
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_ended");
          popup.classList.add("hud");
+        let audio_quest_completed = document.querySelector("#audio_quest_completed");
+        audio_quest_completed.volume = 0.2;
+        audio_quest_completed.play();
         if(quest.reward){
             popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}<br />Nagroda : ${quest.reward}</span>`;
         }else{
