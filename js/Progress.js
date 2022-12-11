@@ -1,9 +1,6 @@
 class Progress {
     constructor() {
         this.mapId = "School";
-        this.startingHeroX = 0;
-        this.startingHeroY = 0;
-        this.startingHeroDirection = "up";
         this.heroInventory = [];
         this.quests = [];
         this.gold = 0;
@@ -12,6 +9,9 @@ class Progress {
     }
 
     save() {
+        this.heroX = window.Overworld.map.gameObjects.hero.x;
+        this.heroY = window.Overworld.map.gameObjects.hero.y;
+        this.heroDirection = window.Overworld.map.gameObjects.hero.direction;
         this.buffs = [];
         if(document.querySelector(".buff")){
             document.querySelectorAll(".buff").forEach(el => {
@@ -24,9 +24,9 @@ class Progress {
         }
         window.localStorage.setItem(this.saveFileKey, JSON.stringify({
             mapId: this.mapId,
-            startingHeroX: this.startingHeroX,
-            startingHeroY: this.startingHeroY,
-            startingHeroDirection: this.startingHeroDirection,
+            startingHeroX: this.heroX,
+            startingHeroY: this.heroY,
+            startingHeroDirection: this.heroDirection,
             heroInventory: window.heroInventory,
             health: window.health,
             quests: window.quests,
