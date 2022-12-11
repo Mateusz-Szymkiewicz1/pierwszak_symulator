@@ -31,11 +31,11 @@ class KeyboardMenu {
         button.focus();
       })
       button.addEventListener("focus", () => {
-        this.prevFocus = button;
-        this.descriptionElementText.innerText = button.dataset.description;
           let audio_switch = document.querySelector("#audio_button_switch").cloneNode(true);
                    audio_switch.volume = 0.2;
                    audio_switch.play().then(function(){},function(){});
+        this.prevFocus = button;
+        this.descriptionElementText.innerText = button.dataset.description;
       })
     })
 

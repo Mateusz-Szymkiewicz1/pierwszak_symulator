@@ -593,3 +593,8 @@ image-rendering: pixelated;
     margin-bottom: 3px;
     word-wrap: break-word;
 }
+.settings > input[type=checkbox]{
+    transform: scale(0.7) translateY(-13px);
+    margin-left: 8px;
+    cursor: pointer;
+}
