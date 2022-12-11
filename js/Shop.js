@@ -51,6 +51,9 @@ class Shop{
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
                    gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
+                   let audio = document.querySelector("#audio_spend").cloneNode(true);
+                   audio.volume = 0.2;
+                   audio.play();
                    let obj = window.GameObjects.find(x=> x.id === event.target.dataset.product);
                    if(window.heroInventory.find(x=> x.id === event.target.dataset.product)){
                        if(window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted == true){

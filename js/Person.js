@@ -36,7 +36,7 @@ class Person extends GameObject{
            }, 10);
            return;
        }
-            if(this.isPlayerControlled == true){
+            if(this.isPlayerControlled == true && !window.Overworld.map.isPaused){
                 document.querySelector("#audio_walk").volume = 0.4;
                 if(window.speed){
                 document.querySelector("#audio_walk").playbackRate = window.speed*2;
@@ -76,7 +76,9 @@ class Person extends GameObject{
     }
     
     updateSprite(){
-        
+        if(window.Overworld.map.isPaused){
+                document.querySelector("#audio_walk").pause();
+        }
         if(this.movingProgressRemaining > 0){
             this.sprite.setAnimation("walk-"+this.direction);
             return;
