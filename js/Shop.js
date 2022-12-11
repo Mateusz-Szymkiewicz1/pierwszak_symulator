@@ -51,9 +51,9 @@ class Shop{
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
                    gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
-                   let audio = document.querySelector("#audio_spend").cloneNode(true);
-                   audio.volume = 0.2;
-                   audio.play();
+                   let audio_spend = document.querySelector("#audio_spend").cloneNode(true);
+                   audio_spend.volume = 0.2;
+                   audio_spend.play();
                    let obj = window.GameObjects.find(x=> x.id === event.target.dataset.product);
                    if(window.heroInventory.find(x=> x.id === event.target.dataset.product)){
                        if(window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted == true){
@@ -66,6 +66,9 @@ class Shop{
                    window.heroInventory.push(obj);
                    }
                }else{
+                   let audio_wrong = document.querySelector("#audio_wrong");
+                   audio_wrong.volume = 0.1;
+                   audio_wrong.play();
                     document.querySelector(".gold > span").style.color = "red";
                    document.querySelector(".gold > span").style.animation = "shake 1s ease";
                    setTimeout(function(){
