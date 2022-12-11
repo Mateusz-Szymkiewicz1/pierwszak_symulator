@@ -13,9 +13,14 @@ class RevealingText {
          if(next.span.innerText == " " || next.span.innerText == "," || next.span.innerText == "."){
              document.querySelector("#audio_talking").pause();
          }else{
-             if(document.querySelector("#audio_talking").paused){
-            document.querySelector("#audio_talking").play();
-            document.querySelector("#audio_talking").volume = 0.5;
+             if(document.querySelector("#audio_talking").src.slice(-18) == "audio/talking2.mp3"){
+            let audio = document.querySelector("#audio_talking").cloneNode(true);
+                 audio.play();
+            audio.volume = 0.5;
+             }else{
+                let audio = document.querySelector("#audio_talking");
+                 audio.play();
+            audio.volume = 0.5;
              }
          }
         next.span.classList.add("revealed");
