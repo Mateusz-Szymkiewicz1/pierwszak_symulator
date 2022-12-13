@@ -16,11 +16,11 @@ class RevealingText {
              if(document.querySelector("#audio_talking").src.slice(-18) == "audio/talking2.mp3"){
             let audio = document.querySelector("#audio_talking").cloneNode(true);
                  audio.play();
-            audio.volume = 0.5;
+            audio.volume = 0.5*window.sfx_volume;
              }else{
                 let audio = document.querySelector("#audio_talking");
                  audio.play();
-            audio.volume = 0.5;
+            audio.volume = 0.5*window.sfx_volume;
              }
          }
         next.span.classList.add("revealed");

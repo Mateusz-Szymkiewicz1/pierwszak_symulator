@@ -35,7 +35,7 @@ class Szafka{
             el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
         })
        let audio_locker = document.querySelector("#audio_locker");
-        audio_locker.volume = 0.4;
+        audio_locker.volume = 0.4*window.sfx_volume;
         audio_locker.play();
         container.appendChild(this.element);
        utils.wait(200);

@@ -14,12 +14,12 @@
             document.querySelector(".game-container").style.background = file2.game_color;
             window.game_color = file2.game_color;
         }
-        if(file2.sfx_volume){
+        if(file2.sfx_volume || file2.sfx_volume == 0){
             window.sfx_volume = file2.sfx_volume;
         }else{
             window.sfx_volume = 1;
         }
-        if(file2.music_volume){
+        if(file2.music_volume || file2.sfx_volume == 0){
             window.music_volume = file2.music_volume;
         }else{
             window.music_volume = 1;
@@ -31,7 +31,16 @@
             }
         }else{
             window.sans_mode = false;
+            document.querySelector("#audio_talking").src = "audio/talking.mp3";
         }
+    }else{
+        window.sans_mode = false;
+        document.querySelector("#audio_talking").src = "audio/talking.mp3";
+        window.music_volume = 1;
+        window.sfx_volume = 1;
+        window.game_color = "#202020";
+         window.website_color = "#fff";
+        window.scale = 2.5;
     }
   const overworld = new Overworld({
     element: document.querySelector(".game-container")

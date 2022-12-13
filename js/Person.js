@@ -37,7 +37,7 @@ class Person extends GameObject{
            return;
        }
             if(this.isPlayerControlled == true && !window.Overworld.map.isPaused){
-                document.querySelector("#audio_walk").volume = 0.4;
+                document.querySelector("#audio_walk").volume = 0.4*window.sfx_volume;
                 if(window.speed){
                 document.querySelector("#audio_walk").playbackRate = window.speed*2;
                 }else{
