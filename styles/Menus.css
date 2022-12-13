@@ -598,3 +598,6 @@ image-rendering: pixelated;
     margin-left: 8px;
     cursor: pointer;
 }
+#range_sfx{
+    margin-top: -5px;
+}

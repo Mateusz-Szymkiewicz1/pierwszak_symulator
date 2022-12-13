@@ -77,6 +77,7 @@ class Settings{
     }
     
    async init() {
+       this.progress = new Progress();
        let audio_settings = document.querySelector("#audio_settings");
                    audio_settings.volume = 0.2;
                    audio_settings.play();
@@ -87,7 +88,7 @@ class Settings{
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("settings");
-       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><h3>Dźwięk</h3><input type="checkbox" id="sans_check"><label>S A N S</label>`;
+       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10" id="range_size"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><h3>Dźwięk</h3><label id="label_sfx">SFX</label><input type="range" min="0" max="200" id="range_sfx"><br /><input type="checkbox" id="sans_check"><label>S A N S</label>`;
        window.scale = 2.5;
        window.website_color = "#ffffff";
        window.game_color = "#202020";
@@ -108,6 +109,10 @@ class Settings{
             window.game_color = file2.game_color;
             }
        }
+       document.querySelector("#range_sfx").value = window.sfx_volume*100;
+       if(window.sans_mode){
+           document.querySelector("#sans_check").checked = true;
+       }
         if(typeof window.fullscreen !== 'undefined' && window.fullscreen == 1){
            document.querySelector(".settings > input[type=range]").disabled = true;
         document.querySelector(".settings > input[type=range]").style.setProperty("filter", "contrast(0.4)")
@@ -116,14 +121,11 @@ class Settings{
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
-       document.querySelector(".settings > input[type=range]").addEventListener("change", function(){
+       document.querySelector("#range_size").addEventListener("change", function(){
            let skala = document.querySelector(".settings > input[type=range]").value/10;
            document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
-           window.localStorage.setItem("preferences", JSON.stringify({
-               scale: skala,
-               website_color: window.website_color,
-               game_color: window.game_color
-           }))
+           window.scale = skala;
+           this2.progress.save_preferences();
        })
        document.querySelector(".settings > button").addEventListener("click", function(){
            if(window.fullscreen == 1){
@@ -148,11 +150,7 @@ class Settings{
            document.body.style.background = e.target.value;
            window.website_color = e.target.value;
            timeout = setTimeout(function(){
-                window.localStorage.setItem("preferences", JSON.stringify({
-               scale: window.scale,
-               website_color: e.target.value,
-               game_color: window.game_color
-           }))
+               this2.progress.save_preferences();
            }, 100)
        })
        let timeout2;
@@ -163,11 +161,7 @@ class Settings{
            document.querySelector(".game-container").style.background = e.target.value;
            window.game_color = e.target.value;
            timeout2 = setTimeout(function(){
-               window.localStorage.setItem("preferences", JSON.stringify({
-               scale: window.scale,
-               website_color: window.website_color,
-               game_color: e.target.value
-                }))
+               this2.progress.save_preferences();
            }, 100)
        })
        document.querySelector(".color_default").addEventListener("click", function(){
@@ -177,18 +171,22 @@ class Settings{
            document.querySelector("#color_website").value = window.website_color;
            document.querySelector("#color_game").value = window.game_color;
            document.body.style.background = window.website_color;
-            window.localStorage.setItem("preferences", JSON.stringify({
-               scale: window.scale,
-               website_color: window.website_color,
-               game_color: window.game_color
-            }))
+            this2.progress.save_preferences();
        })
        document.querySelector("#sans_check").addEventListener("change", function(){
            if(!document.querySelector("#sans_check").checked){
                document.querySelector("#audio_talking").src = "audio/talking.mp3";
+               window.sans_mode = false;
            }else{
                document.querySelector("#audio_talking").src = "audio/talking2.mp3";
+               window.sans_mode = true;
            }
+           this2.progress.save_preferences();
+       })
+       document.querySelector("#range_sfx").addEventListener("click", function(e){
+           let volume = e.target.value/100;
+           window.sfx_volume = volume;
+           this2.progress.save_preferences();
        })
    }
 

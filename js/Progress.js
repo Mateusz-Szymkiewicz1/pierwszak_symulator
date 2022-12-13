@@ -40,6 +40,17 @@ class Progress {
         return file ? JSON.parse(file) : null
     }
 
+    save_preferences(){
+        window.localStorage.setItem("preferences", JSON.stringify({
+               scale: window.scale,
+               website_color: window.website_color,
+               game_color: window.game_color,
+                sfx_volume: window.sfx_volume,
+             music_volume: window.music_volume,
+             sans_mode: window.sans_mode,
+            }))
+    }
+    
     load() {
         const file = this.getSaveFile();
         if (file) {
