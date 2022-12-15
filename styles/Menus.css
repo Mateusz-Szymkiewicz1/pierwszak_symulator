@@ -413,6 +413,7 @@
   padding-bottom: 4px;
     height: 160px;
     overflow-y: auto;
+    outline: none;
 }
 .settings > h3, .product > h3{
     font-size: 12px;

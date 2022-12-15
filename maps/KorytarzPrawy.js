@@ -117,7 +117,10 @@ window.OverworldMaps.KorytarzPrawy = {
                             },
                             {
                                 type: "changeMap",
-                                map: "S14"
+                                map: "S14",
+                                x: utils.withGrid(14),
+                                y: utils.withGrid(11),
+                                direction: "up"
                             },
                        ]
                    },

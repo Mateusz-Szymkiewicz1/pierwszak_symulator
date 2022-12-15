@@ -10,7 +10,13 @@ class Progress {
 
     save() {
         this.heroX = window.Overworld.map.gameObjects.hero.x;
+        while(this.heroX%16 != 0){
+            this.heroX--;
+        }
         this.heroY = window.Overworld.map.gameObjects.hero.y;
+        while(this.heroY%16 != 0){
+            this.heroY--;
+        }
         this.heroDirection = window.Overworld.map.gameObjects.hero.direction;
         this.buffs = [];
         if(document.querySelector(".buff")){

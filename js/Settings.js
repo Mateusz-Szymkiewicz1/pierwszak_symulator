@@ -89,12 +89,11 @@ class Settings{
         this.element = document.createElement("div");
         this.element.classList.add("settings");
        this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10" id="range_size"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><h3>Dźwięk</h3><label id="label_sfx">SFX</label><input type="range" min="0" max="200" id="range_sfx"><br /><input type="checkbox" id="sans_check"><label>S A N S</label>`;
-       window.scale = 2.5;
-       window.website_color = "#ffffff";
-       window.game_color = "#202020";
        const file = window.localStorage.getItem("preferences");
     const file2 = JSON.parse(file);
         document.querySelector(".game-container").appendChild(this.element);
+       this.element.setAttribute("tabindex", "0");
+         this.element.focus();
         if(file2 && file2.scale){
             if(file2.scale){
            document.querySelector(".settings > input[type=range]").value = file2.scale*10;
