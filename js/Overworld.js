@@ -103,6 +103,7 @@ class Overworld {
     }
 
     async init() {
+        window.page_hover = true;
         let this2 = this;
         document.querySelector(".game-container").addEventListener("contextmenu", function(event){
             event.preventDefault();
@@ -212,6 +213,21 @@ class Overworld {
         this2.directionInput = new DirectionInput();
         this2.directionInput.init();
         this2.startGameLoop();
+        document.addEventListener('mouseleave', e=>{
+            if(!this2.map.isPaused){
+                if (!this2.map.isCutscenePlaying) {
+                    this2.map.startCutscene([
+                        {
+                            type: "pause"
+                        }
+                ]);
+            }
+            window.page_hover = false;
+            }
+        })
+            document.addEventListener('mouseenter', e=>{
+            window.page_hover = true;
+            })
         })
         window.health_bar = new HealthBar();
         window.health_bar.init();
