@@ -37,6 +37,10 @@ class KeyboardMenu {
         this.prevFocus = button;
         this.descriptionElementText.innerText = button.dataset.description;
       })
+        button.addEventListener("focusout", () => {
+        this.prevFocus =  null;
+        this.descriptionElementText.innerText = "";
+      })
     })
 
     setTimeout(() => {
