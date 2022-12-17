@@ -15,9 +15,7 @@ class Szafka{
             document.querySelector("#audio_locker").currentTime = 0;
         }
         document.querySelector("canvas").style.filter = "none";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+       utils.turn_hud_on();
         if(document.querySelector(".option_box")){
             document.querySelector(".option_box").remove();
         }
@@ -31,9 +29,7 @@ class Szafka{
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
+        utils.turn_hud_off();
        let audio_locker = document.querySelector("#audio_locker");
         audio_locker.volume = 0.4*window.sfx_volume;
         audio_locker.play();

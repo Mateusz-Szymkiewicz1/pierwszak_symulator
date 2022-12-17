@@ -12,9 +12,7 @@ class Book{
     
     close() {
         document.querySelector("canvas").style.filter = "none";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+        utils.turn_hud_on();
         this.element.remove();
         this.esc.unbind();
         this.onComplete();
@@ -24,9 +22,7 @@ class Book{
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
+       utils.turn_hud_off();
         document.querySelector(".game-container").appendChild(this.element);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();

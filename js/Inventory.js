@@ -34,9 +34,7 @@ class Inventory {
 
     close() {
         document.querySelector("canvas").style.filter = "none";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+        utils.turn_hud_on();
         this.esc.unbind();
         this.esc2.unbind();
         this.element.remove();
@@ -48,9 +46,7 @@ class Inventory {
         this.createElement();
        if(!this.szafka){
         document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
+        utils.turn_hud_off();
        }else{
            this.element.classList.add("szafka_inventory");
        }

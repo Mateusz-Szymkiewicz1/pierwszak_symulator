@@ -3,18 +3,25 @@ class HealthBar{
      
     }
     
-   async add(value){
+   async add(value, text = true){
        window.health = window.health+value;
            if(window.health > 100){
                window.health = 100;
            }
           document.querySelector(".health_fill").style.width = window.health+"px";
        let map = window.map;
+       if(text == true){
         const eventHandler = new OverworldEvent({map, event: {
                         type: "textMessage",
                         text: `Odzyskałeś ${value} HP ;)`
                     }});
                     eventHandler.init();
+       }
+       if(document.querySelector(".desc")){
+           if(document.querySelector(".desc").dataset.div == "health_bar"){
+               document.querySelector(".desc").innerText = `Health ${window.health}/100`;
+           }
+       }
    }
     substract(value){
        window.health = window.health-value;
@@ -45,6 +52,7 @@ class HealthBar{
        this.element.addEventListener("mouseenter", function(event){
            let desc = document.createElement("div");
            desc.classList.add("desc");
+           desc.dataset.div = "health_bar";
            desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
             desc.innerText = `Health ${window.health}/100`;
            document.querySelector("body").appendChild(desc);

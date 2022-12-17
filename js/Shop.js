@@ -6,9 +6,7 @@ class Shop{
  
     close() {
         document.querySelector("canvas").style.filter = "none";
-       document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+       utils.turn_hud_on();
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
@@ -28,11 +26,8 @@ class Shop{
     
    async init() {
        document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            if(el.className != "gold hud"){
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-            }
-        })
+        utils.turn_hud_off();
+        document.querySelector(".gold").style = "filter: none; cursor: pointer;pointer-events: auto;";
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("shop");

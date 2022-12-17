@@ -124,9 +124,7 @@ class QuestLog{
     
     close() {
         document.querySelector("canvas").style.filter = "none";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+        utils.turn_hud_on();
         document.querySelector(".quest_button").innerText = '!';
         document.querySelector(".quest_button").style.paddingTop = "1px";
        document.querySelector(".quest_button").style.height = "20px";
@@ -185,9 +183,7 @@ old_element.parentNode.replaceChild(new_element, old_element);
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
+       utils.turn_hud_off();
         container.appendChild(this.element);
        this.check();
        utils.wait(200);

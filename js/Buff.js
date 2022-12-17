@@ -17,6 +17,11 @@ class Buff{
         this.element.classList.add("buff");
        this.element.classList.add("hud");
        this.element.dataset.type = this.type;
+       const buffs = document.querySelectorAll(".buff");
+       if(buffs.length > 0){
+           this.element.style.top = `${40+(25*buffs.length)}px`;
+       }
+       this.element.dataset.top = this.element.style.top;
         document.querySelector(".game-container").appendChild(this.element);
         this.element.innerHTML = `<img src="./images/Objects/${this.type.toLowerCase()}.png" height="17px" width="13px">`;
        this.element.addEventListener("mouseenter", function(event){
@@ -61,9 +66,9 @@ class Buff{
                    }
                }
            }
-               desc.innerText = `+1 Speed (${nice_time})`;
+               desc.innerText = `+1 ${this2.type} (${nice_time})`;
                if(nice_time <= 0){
-                   desc.innerText = `+1 Speed (0s)`;
+                   desc.innerText = `+1 ${this2.type} (0s)`;
                    clearInterval(interval);
                }
            }, 1000)

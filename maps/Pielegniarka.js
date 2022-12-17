@@ -30,9 +30,33 @@ window.OverworldMaps.Pielegniarka = {
                     {
                         events: [
                             {
-                                who: "pielegniarka",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet'
+                                type: "shop",
+                                products: [
+                                    {
+                                        id: "Apteczka",
+                                        desc: "Leczy całe hp",
+                                        src: "images/objects/medkit.png",
+                                        price: "50"
+                                    },
+                                    {
+                                        id: "Bandaż",
+                                        desc: "Leczy 50 hp",
+                                        src: "images/objects/bandage.png",
+                                        price: "30"
+                                    },
+                                    {
+                                        id: "Mikst.Regeneracji",
+                                        desc: "Efekt regeneracji na 30s",
+                                        src: "images/objects/reg_potion.png",
+                                        price: "20"
+                                    },
+                                    {
+                                        id: "Krople Żołądkowe",
+                                        desc: "Efekt regeneracji na 100s",
+                                        src: "images/objects/krople.png",
+                                        price: "40"
+                                    }
+                                ]
                             },
                        ]
                    }

@@ -27,7 +27,7 @@ window.GameObjects = [
         can_delete: false,
     },{
         id:  "Apteczka",
-        src: "images/objects/medkit.png",
+        src: "images/Objects/medkit.png",
         desc: "Leczy całe HP",
         can_delete: true,
         amount: "1",
@@ -37,7 +37,72 @@ window.GameObjects = [
                 code: 'window.health_bar.add(100);'
             }
         ],
-        use_req: "1==1"
+        use_req: "window.health<100",
+        use_req_text: "Już masz 100 HP!"
+        
+    },
+    {
+        id:  "Bandaż",
+        src: "images/Objects/bandage.png",
+        desc: "Leczy 50 HP",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "do_code",
+                code: 'window.health_bar.add(50);'
+            }
+        ],
+        use_req: "window.health<100",
+        use_req_text: "Już masz 100 HP!"
+        
+    },
+    {
+        id:  "Mikst.Regeneracji",
+        src: "images/Objects/reg_potion.png",
+        desc: "Efekt regeneracji na 30s",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "textMessage",
+               text: "Zyskałeś Regenerację!"
+            },
+            {
+                type: "do_code",
+                code: 'const buff = new Buff("Regeneration", 30000);buff.init();'
+            },
+            {
+                type: "do_code",
+                code: `const interval = setInterval(function(){window.health_bar.add(1, false)}, 1000);setTimeout(function(){clearInterval(interval)}, 30000);`
+            }
+        ],
+        use_req: 'window.health<100 && !document.querySelector(".buff[data-type=Regeneration]")',
+        use_req_text: "Już masz 100 HP!/Regenerację"
+        
+    },
+    {
+        id:  "Krople Żołądkowe",
+        src: "images/Objects/krople.png",
+        desc: "Efekt regeneracji na 100s",
+        can_delete: true,
+        amount: "1",
+        use: [
+            {
+                type: "textMessage",
+               text: "Zyskałeś Regenerację!"
+            },
+            {
+                type: "do_code",
+                code: 'const buff = new Buff("Regeneration", 100000);buff.init();'
+            },
+            {
+                type: "do_code",
+                code: `const interval = setInterval(function(){window.health_bar.add(1, false)}, 1000);setTimeout(function(){clearInterval(interval)}, 100000);`
+            }
+        ],
+        use_req: 'window.health<100 && !document.querySelector(".buff[data-type=Regeneration]")',
+        use_req_text: "Już masz 100 HP/Regenerację!"
         
     },
     {

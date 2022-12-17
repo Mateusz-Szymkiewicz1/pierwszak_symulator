@@ -48,4 +48,22 @@ const utils = {
             }, ms)
         })
     },
+    turn_hud_on(){
+        document.querySelectorAll(".hud").forEach(el => {
+            if(el.dataset.top){
+                el.style = `top: ${el.dataset.top};filter: none; cursor: pointer;pointer-events: auto;`;
+                return;
+            }
+            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
+        })
+    },
+    turn_hud_off(){
+        document.querySelectorAll(".hud").forEach(el => {
+            if(el.dataset.top){
+                el.style = `top: ${el.dataset.top};filter: blur(4px); cursor: default;pointer-events: none;`;
+                return;
+            }
+            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
+        })
+    }
 }

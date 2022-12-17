@@ -61,9 +61,7 @@ class PauseMenu {
 
    async close() {
         document.querySelector("canvas").style.filter = "none";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: none; cursor: pointer;pointer-events: auto;";
-        })
+        utils.turn_hud_on();
         this.esc.unbind();
         this.keyboardMenu.end();
         this.element.remove();
@@ -78,9 +76,7 @@ class PauseMenu {
         this.keyboardMenu.init(this.element);
         this.keyboardMenu.setOptions(this.getOptions("root"));
         document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
-            el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
+        utils.turn_hud_off();
         container.appendChild(this.element);
         utils.wait(200);
         this.esc = new KeyPressListener("Escape", () => {
