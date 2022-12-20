@@ -1,7 +1,7 @@
-window.OverworldMaps.S29 = {
-        id: "S29",
-        lowerSrc: "images/maps/S30Lower.png",
-        upperSrc: "images/maps/S30Upper.png",
+window.OverworldMaps.S25 = {
+        id: "S25",
+        lowerSrc: "images/maps/S26Lower.png",
+        upperSrc: "images/maps/S26Upper.png",
         gameObjects: {
             placeholder: new Person({
                src: "images/maps/KitchenUpper.png"

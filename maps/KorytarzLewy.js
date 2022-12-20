@@ -72,7 +72,7 @@ window.OverworldMaps.KorytarzLewy = {
                     },
                 ]
             }),
-            s29: new Person({
+            s25: new Person({
                 x: utils.withGrid(12),
                 y: utils.withGrid(3),
                 counter: 0,
@@ -81,15 +81,15 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "s29",
+                                who: "s25",
                                 type: "textMessage",
-                                text: '"Sala 29"'
+                                text: '"Sala 25"'
                             },
                        ]
                    }
                ],
             }),
-            s30: new Person({
+            s26: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(3),
                 counter: 0,
@@ -98,9 +98,9 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "s30",
+                                who: "s26",
                                 type: "textMessage",
-                                text: '"Sala 30"'
+                                text: '"Sala 26"'
                             },
                        ]
                    }
@@ -140,7 +140,7 @@ window.OverworldMaps.KorytarzLewy = {
                    }
                ],
             }),
-            s30Drzwi: new Person({
+            s26Drzwi: new Person({
                 x: utils.withGrid(13),
                 y: utils.withGrid(3),
                 counter: 0,
@@ -157,7 +157,7 @@ window.OverworldMaps.KorytarzLewy = {
                             },
                             {
                                 type: "changeMap",
-                                map: "S30",
+                                map: "S26",
                                 x: utils.withGrid(4),
                                 y: utils.withGrid(11),
                                 direction: "up"
@@ -166,7 +166,7 @@ window.OverworldMaps.KorytarzLewy = {
                    },
                ],
             }),
-            s29Drzwi: new Person({
+            s25Drzwi: new Person({
                 x: utils.withGrid(8),
                 y: utils.withGrid(3),
                 counter: 0,
@@ -183,7 +183,7 @@ window.OverworldMaps.KorytarzLewy = {
                             },
                             {
                                 type: "changeMap",
-                                map: "S29",
+                                map: "S25",
                                 x: utils.withGrid(4),
                                 y: utils.withGrid(11),
                                 direction: "up"
