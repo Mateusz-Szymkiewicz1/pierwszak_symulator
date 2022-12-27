@@ -40,7 +40,7 @@ class OverworldEvent {
                 resolve();
             }
         }
-        document.addEventListener("PersonWalkingComplete", completeHandler)
+        document.addEventListener("PersonWalkingComplete", completeHandler);
     }
 
     textMessage(resolve) {

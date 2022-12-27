@@ -326,13 +326,11 @@ window.OverworldMaps.KorytarzLewy = {
                 {
                     events: [
                         {
-                            type: "textMessage",
-                            text: 'Zamknięte...'
-                        },
-                        {
-                            who: "hero",
-                            type: "walk",
-                            direction: "up"
+                           type: "changeMap",
+                            map: "Szafki",
+                            x: utils.withGrid(5),
+                            y: utils.withGrid(1),
+                            direction: "down" 
                         }
                     ]
                 }
@@ -341,6 +339,7 @@ window.OverworldMaps.KorytarzLewy = {
         },
         walls: {
            [utils.asGridCoord(23, 3)]: true,
+           [utils.asGridCoord(14, 7)]: true,
            [utils.asGridCoord(10, 7)]: true,
            [utils.asGridCoord(24, 3)]: true,
            [utils.asGridCoord(25, 4)]: true,

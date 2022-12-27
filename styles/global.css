@@ -30,6 +30,7 @@ body {
   outline: 1px solid #000;
   transform: scale(2.5) translateY(39%);
 user-select: none;
+    overflow: hidden;
 }
 
 .game-container canvas {

@@ -170,6 +170,7 @@ old_element.parentNode.replaceChild(new_element, old_element);
         },500)
         this.element.remove();
         this.esc.unbind();
+        this.q.unbind();
         this.onComplete();
     }
         
@@ -185,10 +186,15 @@ old_element.parentNode.replaceChild(new_element, old_element);
         document.querySelector("canvas").style.filter = "blur(4px)";
        utils.turn_hud_off();
         container.appendChild(this.element);
+       this.element.setAttribute("tabindex", "0");
+         this.element.focus();
        this.check();
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
+        });
+       this.q = new KeyPressListener("KeyQ", () => {
+           this2.close();
         });
        var old_element = document.querySelector(".quest_button");
 var new_element = old_element.cloneNode(true);

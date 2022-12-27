@@ -136,7 +136,7 @@ window.OverworldMaps.School = {
                             {
                                 who: "ksiazka",
                                 type: "textMessage",
-                                text: '"MaTeMemAtyka rozszerzona dla klasy 3"'
+                                text: '"MATeMemAtyka rozszerzona dla klasy 3"'
                             },
                             {
                                 who: "ksiazka",

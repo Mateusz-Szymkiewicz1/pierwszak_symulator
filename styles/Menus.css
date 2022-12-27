@@ -149,7 +149,7 @@
 #decision_nie:hover{
     background: #d63b2b;
 }
-.shop:focus{
+.shop:focus, .QuestLog:focus{
     outline: none;
 }
 .quest_button{

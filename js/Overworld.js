@@ -247,6 +247,15 @@ class Overworld {
             ]);
             }
         })
+        const quest_press = new KeyPressListener("KeyQ", () => {
+            if (!this2.map.isCutscenePlaying && !document.querySelector(".QuestLog")) {
+                this2.map.startCutscene([
+                    {
+                        type: "questlog"
+                    }
+            ]);
+            }
+        });
         document.querySelector(".quest_button").addEventListener("mouseenter", function(event){
             if(!document.querySelector(".QuestLog")){
                 let desc = document.createElement("div");
