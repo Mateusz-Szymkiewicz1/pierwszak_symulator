@@ -110,7 +110,6 @@ window.OverworldMaps.School = {
                     {
                         events: [
                             {
-                                who: "dezynfekcja",
                                 type: "textMessage",
                                 text: "*mmmm dezynfekcja*"
                             },
@@ -134,12 +133,10 @@ window.OverworldMaps.School = {
                     {
                         events: [
                             {
-                                who: "ksiazka",
                                 type: "textMessage",
                                 text: '"MATeMemAtyka rozszerzona dla klasy 3"'
                             },
                             {
-                                who: "ksiazka",
                                 type: "textMessage",
                                 text: "*ten widok sprawia ci ból*"
                             },
@@ -157,7 +154,6 @@ window.OverworldMaps.School = {
                     {
                         events: [
                             {
-                                who: "sekretariatDrzwi",
                                 type: "textMessage",
                                 text: '"Zaraz wracam"'
                             },

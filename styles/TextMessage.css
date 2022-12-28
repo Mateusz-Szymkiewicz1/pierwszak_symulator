@@ -34,3 +34,23 @@
     right: 7px;
     bottom: 3px;
 }
+.TextMessage_big{
+    height: 80px;
+}
+.TextMessage_big > img{
+    height: 50px;
+    width: 50px;
+    background: var(--menu-border-color);
+    float: left;
+    border: 1px solid var(--menu-font-color);
+}
+.npc_title{
+    display: block;
+    opacity: 1 !important;
+    padding-left: 12.5px;
+    font-size: 12px;
+}
+.TextMessage_big > p {
+    padding-top: 17px;
+   padding-left: 60px;
+}

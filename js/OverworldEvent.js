@@ -48,8 +48,12 @@ class OverworldEvent {
             const obj = this.map.gameObjects[this.event.faceHero];
             obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
         }
+        if(!this.event.who){
+            this.event.who = null;
+        }
         const message = new TextMessage({
             text: this.event.text,
+            npc: this.event.who,
             onComplete: () => resolve()
         })
         message.init(document.querySelector(".game-container"));
