@@ -92,7 +92,6 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "s16",
                                 type: "textMessage",
                                 text: '"Nauczanie Indywidualne - Nie przeszkadzać!"'
                             },
@@ -161,7 +160,6 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "s16",
                                 type: "textMessage",
                                 text: '"Sala 16"'
                             },
@@ -178,7 +176,6 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "biblioteka",
                                 type: "textMessage",
                                 text: '"Biblioteka"'
                             },
@@ -195,7 +192,6 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "s14",
                                 type: "textMessage",
                                 text: '"Sala 14"'
                             },
@@ -212,7 +208,6 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "pielegniarka",
                                 type: "textMessage",
                                 text: '"Pielegniarka (Czynne 11:00-11:30)"'
                             },
@@ -274,7 +269,7 @@ window.OverworldMaps.KorytarzPrawy = {
                    }
                ],
             }),
-            ziomek: new Person({
+            tyson: new Person({
                 x: utils.withGrid(13),
                 y: utils.withGrid(8),
                 counter: 0,
@@ -284,7 +279,7 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "ziomek",
+                                who: "tyson",
                                 type: "textMessage",
                                 text: 'Errors (3000) method "talking" not found.'
                             },
@@ -292,7 +287,7 @@ window.OverworldMaps.KorytarzPrawy = {
                    }
                ],
             }),
-            ziomek2: new Person({
+            aleks: new Person({
                 x: utils.withGrid(24),
                 y: utils.withGrid(8),
                 counter: 0,
@@ -303,10 +298,10 @@ window.OverworldMaps.KorytarzPrawy = {
                     {
                         events: [
                             {
-                                who: "ziomek2",
+                                who: "aleks",
                                 type: "textMessage",
                                 text: 'Lorem Ipsum?',
-                                faceHero: "ziomek2"
+                                faceHero: "aleks"
                             },
                        ]
                    }

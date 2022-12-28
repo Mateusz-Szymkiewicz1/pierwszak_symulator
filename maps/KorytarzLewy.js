@@ -9,7 +9,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(24),
                 y: utils.withGrid(5),
             }),
-            ziomek: new Person({
+            marek: new Person({
                 x: utils.withGrid(21),
                 y: utils.withGrid(9),
                 useShadow: true,
@@ -19,19 +19,18 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "ziomek",
+                                who: "marek",
                                 type: "textMessage",
                                 text: "Czy znasz historię o niemym Michałku, który żuł gumę tak długo, aż oślepł?",
-                                faceHero: "ziomek"
+                                faceHero: "marek"
                             },
                             {
-                                who: "ziomek",
+                                who: "marek",
                                 type: "stand",
                                 direction: "left",
                                 time: 500
                             },
                             {
-                                who: "ziomek",
                                 type: "textMessage",
                                 text: "*Ziomek nie kontaktuje*"
                             },
@@ -46,7 +45,7 @@ window.OverworldMaps.KorytarzLewy = {
                     },
                 ]
             }),
-            ziomek2: new Person({
+            lysy: new Person({
                 x: utils.withGrid(3),
                 y: utils.withGrid(6),
                 useShadow: true,
@@ -56,10 +55,10 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "ziomek2",
+                                who: "lys",
                                 type: "textMessage",
                                 text: "Zapytaj się czy dzisiaj bilard",
-                                faceHero: "ziomek2"
+                                faceHero: "lysy"
                             },
                        ]
                    }
@@ -81,7 +80,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "s25",
                                 type: "textMessage",
                                 text: '"Sala 25"'
                             },
@@ -98,7 +96,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "s26",
                                 type: "textMessage",
                                 text: '"Sala 26"'
                             },
@@ -115,7 +112,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "wc",
                                 type: "textMessage",
                                 text: '"Toaleta"'
                             },
@@ -132,7 +128,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "dezynfekcja",
                                 type: "textMessage",
                                 text: '*mmmm dezynkfekcja*'
                             },
@@ -255,7 +250,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "szatniaDDrzwi",
                                 type: "textMessage",
                                 text: 'Zamknięte...'
                             },
@@ -273,7 +267,6 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "kantorekDrzwi",
                                 type: "textMessage",
                                 text: 'Zamknięte...'
                             },
