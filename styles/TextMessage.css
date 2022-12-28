@@ -47,7 +47,8 @@
 .npc_title{
     display: block;
     opacity: 1 !important;
-    padding-left: 12.5px;
+    text-align: center;
+    width: 50px;
     font-size: 12px;
 }
 .TextMessage_big > p {

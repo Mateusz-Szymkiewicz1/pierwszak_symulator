@@ -4,4 +4,9 @@ window.NPCs = [
       portrait: "krobus.png",
       title: "Woźna"
     },
+    {
+      id: "dariusz",
+      portrait: "krobus.png",
+      title: "Dariusz"
+    },
 ]

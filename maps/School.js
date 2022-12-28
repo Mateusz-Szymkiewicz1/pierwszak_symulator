@@ -63,7 +63,7 @@ window.OverworldMaps.School = {
                     },
                 ]
             }),
-            ziomek: new Person({
+            dariusz: new Person({
                 x: utils.withGrid(8),
                 y: utils.withGrid(2),
                 useShadow: true,
@@ -73,22 +73,22 @@ window.OverworldMaps.School = {
                     {
                         events: [
                             {
-                                who: "ziomek",
+                                who: "dariusz",
                                 type: "textMessage",
                                 text: "Kazali mi zapłacić za winkiel",
-                                faceHero: "ziomek"
+                                faceHero: "dariusz"
                             },
                             {
-                                who: "ziomek",
+                                who: "dariusz",
                                 type: "textMessage",
                                 text: "Teraz dzwonią po moich rodziców",
-                                faceHero: "ziomek"
+                                faceHero: "dariusz"
                             },
                             {
-                                who: "ziomek",
+                                who: "dariusz",
                                 type: "textMessage",
                                 text: "Dwulicowe szmaty",
-                                faceHero: "ziomek"
+                                faceHero: "dariusz"
                             },
                        ]
                    }
