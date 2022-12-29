@@ -143,6 +143,14 @@ class Overworld {
                         window.speed = 1;
                     }, parseInt(buff.time)+1300)
                 }
+                if(buff.type == "Regeneration"){
+                    const interval = setInterval(function(){
+                        window.health_bar.add(1, false)
+                    }, 1000);
+                    setTimeout(function(){
+                        clearInterval(interval)
+                    }, parseInt(buff.time)+1300);
+                }
             })
             var StartMapPromise = new Promise(function(resolve) {
                 const sceneTransition = new SceneTransition();
