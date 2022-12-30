@@ -15,21 +15,59 @@ class Inventory {
     }
     
     check(){
+        let this2 = this;
         document.querySelector(".Inventory").innerHTML = (`
       <h2>Ekwipunek</h2><table><tr><td id="t1"><td id="t2"><td id="t3"><td id="t4"></tr><tr><td id="t5"><td id="t6"><td id="t7"><td id="t8"></tr><tr><td id="t9"><td id="t10"><td id="t11"><td id="t12"></tr><tr><td id="t13"><td id="t14"><td id="t15"><td id="t16"></tr></table>
         `)
         window.heroInventory.forEach(e =>{
             for(let i = 1; i <= 16; i++){
-                if(e.deleted || e.amount == 0){
-                    continue;
+                if(e.deleted || e.amount == 0 || e.tile){
+                    break;
                  }
                 if(document.querySelector("#t"+i).innerHTML == ""){
                     document.querySelector("#t"+i).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
                     document.querySelector("#t"+i).dataset.itemName = e.id;
+                    e.tile = i;
                     break;
                 }
             }
+            if(e.tile){
+                document.querySelector("#t"+e.tile).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
+                document.querySelector("#t"+e.tile).dataset.itemName = e.id;
+            }
         });
+         document.querySelectorAll(".Inventory td").forEach(el => {
+           if(el.querySelector("img")){
+               el.setAttribute("draggable", "true");
+               el.addEventListener("dragstart", function(e){
+                    e.dataTransfer.setData("item", e.target.dataset.itemName);
+                    e.dataTransfer.setData("old_tile", parseInt(e.target.getAttribute("id").slice(1)));
+               })
+           }else{
+               el.addEventListener("dragover", function(e){
+                   e.preventDefault();
+               })
+               el.addEventListener("drop", function(e){
+                   let item = e.dataTransfer.getData("item");
+                   let item2 = window.heroInventory.find(x=> x.id === item);
+                   let new_tile_number = parseInt(e.target.getAttribute("id").slice(1));
+                   let new_tile = document.querySelector("#t"+new_tile_number);
+                   let old_tile = document.querySelector("#t"+e.dataTransfer.getData("old_tile"));
+                   old_tile.innerHTML = "";
+                    old_tile.removeAttribute("data-item-name");
+                   if(document.querySelector(".Inventory h3")){
+                   document.querySelector(".Inventory h3").innerText = "";
+                   }
+                   if(document.querySelector(".Inventory span")){
+                   document.querySelector(".Inventory span").innerText = "";
+                   }
+                   item2.tile = new_tile_number;
+                   new_tile.innerHTML = `<img src="${item2.src}" width="20px" height="20px">`;
+                   new_tile.dataset.itemName = item2.id;
+                   this2.check();
+               })
+           }
+       })
     }
 
     close() {

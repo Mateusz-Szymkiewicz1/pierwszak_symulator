@@ -38,7 +38,7 @@ class Progress {
             quests: window.quests,
             gold: window.gold,
             buffs: this.buffs
-        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted","amount","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
+        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","id","deleted","amount","tile","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
     }
 
     getSaveFile() {

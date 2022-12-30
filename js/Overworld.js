@@ -128,10 +128,13 @@ class Overworld {
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
                 if(e.deleted){
-                window.GameObjects.find(x => x.id === e.id).deleted = true;
+                    window.GameObjects.find(x => x.id === e.id).deleted = true;
                 }
                 if(e.amount || e.amount == 0){
-                window.GameObjects.find(x => x.id === e.id).amount = e.amount;
+                    window.GameObjects.find(x => x.id === e.id).amount = e.amount;
+                }
+                if(e.tile){
+                    window.GameObjects.find(x => x.id === e.id).tile = e.tile;
                 }
             });
             this.progress.buffs.forEach(buff => {

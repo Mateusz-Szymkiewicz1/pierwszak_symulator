@@ -6,7 +6,7 @@ window.NPCs = [
     },
     {
       id: "dariusz",
-      portrait: "dariusz.png",
+      portrait: "krobus.png",
       title: "Dariusz"
     },
 ]
