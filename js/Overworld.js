@@ -125,6 +125,7 @@ class Overworld {
             window.health = this.progress.health;
             window.quests = this.progress.quests;
             window.gold = this.progress.gold;
+            window.szafka = this.progress.szafka;
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
                 if(e.deleted){

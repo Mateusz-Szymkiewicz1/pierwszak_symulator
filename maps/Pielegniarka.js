@@ -45,7 +45,7 @@ window.OverworldMaps.Pielegniarka = {
                                         price: "30"
                                     },
                                     {
-                                        id: "Mikst.Regeneracji",
+                                        id: "Miks.Regeneracji",
                                         desc: "Efekt regeneracji na 30s",
                                         src: "images/objects/reg_potion.png",
                                         price: "20"

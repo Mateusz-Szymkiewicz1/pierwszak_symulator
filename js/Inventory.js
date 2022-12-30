@@ -87,6 +87,7 @@ class Inventory {
         utils.turn_hud_off();
        }else{
            this.element.classList.add("szafka_inventory");
+           window.current_inventory = this;
        }
         container.appendChild(this.element);
         this.check();

@@ -6,7 +6,29 @@ class Szafka{
     createElement() {
         this.element = document.createElement("div");
         this.element.classList.add("Szafka")
-        this.element.innerHTML = `<h2>Szafka</h2><table><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></table>`;
+        this.element.innerHTML = `<h2>Szafka</h2><table><tr><td id="s1"></td><td id="s2"></td><td id="s3"></td><td id="s4"></td></tr><tr><td id="s5"></td><td id="s6"></td><td id="s7"></td><td id="s8"></td></tr><tr><td id="s9"></td><td id="s10"></td><td id="s11"></td><td id="s12"></td></tr><tr><td id="s13"></td><td id="s14"></td><td id="s15"></td><td id="s16"></td></tr></table>`;
+    }
+    
+    check(){
+        let this2 = this;
+        this.element.innerHTML = `<h2>Szafka</h2><table><tr><td id="s1"></td><td id="s2"></td><td id="s3"></td><td id="s4"></td></tr><tr><td id="s5"></td><td id="s6"></td><td id="s7"></td><td id="s8"></td></tr><tr><td id="s9"></td><td id="s10"></td><td id="s11"></td><td id="s12"></td></tr><tr><td id="s13"></td><td id="s14"></td><td id="s15"></td><td id="s16"></td></tr></table>`;
+        window.szafka.forEach(e =>{
+            for(let i = 1; i <= 16; i++){
+                if(e.deleted || e.amount == 0 || e.tile){
+                    break;
+                 }
+                if(document.querySelector("#s"+i).innerHTML == ""){
+                    document.querySelector("#s"+i).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
+                    document.querySelector("#s"+i).dataset.itemName = e.id;
+                    e.tile = i;
+                    break;
+                }
+            }
+            if(e.tile){
+                document.querySelector("#s"+e.tile).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
+                document.querySelector("#s"+e.tile).dataset.itemName = e.id;
+            }
+        });
     }
     
     close() {
@@ -34,6 +56,7 @@ class Szafka{
         audio_locker.volume = 0.4*window.sfx_volume;
         audio_locker.play();
         container.appendChild(this.element);
+         this.check();
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
@@ -45,24 +68,45 @@ class Szafka{
        }});
        eventHandler.init();
        function shift_click_listen(e){
-           if(e.target.tagName == "TD" && e.target.dataset.nameBackup){
-            let obj = window.GameObjects.find(x=> x.id === e.target.dataset.nameBackup);
-               window.heroInventory.find(x=> x.id === e.target.dataset.nameBackup).deleted = true;
-            window.szafka.push(obj);
-               console.log(window.szafka)
-           e.target.innerHTML = "";
-           e.target.removeAttribute("data-item-name");
-           e.target.removeAttribute("data-name-backup");
-           if(document.querySelector(".Inventory h3")){
-               document.querySelector(".Inventory h3").remove();
+           if(e.target.tagName == "TD" && e.target.dataset.nameBackup && e.target.parentElement.parentElement.parentElement.parentElement.classList == "Inventory szafka_inventory" && e.target.dataset.nameBackup != "Klucz_Szafka"){
+                let obj = window.heroInventory.find(x=> x.id === e.target.dataset.nameBackup);
+                obj.tile = 0;
+                let obj_index = window.heroInventory.indexOf(obj);
+                window.heroInventory.splice(obj_index, 1);
+                window.szafka.push(obj);
+                   window.current_inventory.check();
+                   this2.check();
+               e.target.innerHTML = "";
+               e.target.removeAttribute("data-item-name");
+               e.target.removeAttribute("data-name-backup");
+               if(document.querySelector(".Inventory h3")){
+                   document.querySelector(".Inventory h3").remove();
+               }
+               if(document.querySelector(".Inventory span")){
+                   document.querySelector(".Inventory span").remove();
+               }
            }
-           if(document.querySelector(".Inventory span")){
-               document.querySelector(".Inventory span").remove();
-           }
+           if(e.target.tagName == "TD" && e.target.dataset.nameBackup && e.target.parentElement.parentElement.parentElement.parentElement.classList == "Szafka"){
+                let obj = window.szafka.find(x=> x.id === e.target.dataset.nameBackup);
+                obj.tile = 0;
+                let obj_index = window.szafka.indexOf(obj);
+                window.szafka.splice(obj_index, 1);
+                window.heroInventory.push(obj);
+                   window.current_inventory.check();
+                   this2.check();
+               e.target.innerHTML = "";
+               e.target.removeAttribute("data-item-name");
+               e.target.removeAttribute("data-name-backup");
+               if(document.querySelector(".Inventory h3")){
+                   document.querySelector(".Inventory h3").remove();
+               }
+               if(document.querySelector(".Inventory span")){
+                   document.querySelector(".Inventory span").remove();
+               }
            }
        }
       document.addEventListener("keydown", function shift_listen(e){
-          document.querySelectorAll(".Inventory td").forEach(el => {
+          document.querySelectorAll("td").forEach(el => {
               if(el.dataset.itemName){
                   el.dataset.nameBackup = el.dataset.itemName;
                   el.removeAttribute("data-item-name");
@@ -72,19 +116,38 @@ class Szafka{
               return;
           }
            if(e.code == "ShiftLeft"){
-              document.querySelector(".Inventory").addEventListener("click", shift_click_listen)
+              document.addEventListener("click", shift_click_listen)
            }
        })
        document.addEventListener("keyup", function shift_listen(e){
-           document.querySelectorAll(".Inventory td").forEach(el => {
+           document.querySelectorAll("td").forEach(el => {
               if(el.dataset.nameBackup){
                   el.dataset.itemName = el.dataset.nameBackup;
                   el.removeAttribute("data-name-backup");
               }
           })
            if(e.code == "ShiftLeft"){
-                document.querySelector(".Inventory").removeEventListener("click", shift_click_listen)
+                document.removeEventListener("click", shift_click_listen)
            }
+       })
+       this.element.addEventListener("mouseover", function(e){
+           if(e.target.tagName == "TD" && e.target.dataset.itemName && !document.querySelector(".Inventory h3")){
+               let eq_h3 = document.createElement("h3");
+                eq_h3.innerText = event.target.dataset.itemName;
+                if(window.GameObjects.find(x=> x.id === event.target.dataset.itemName).amount){
+                    eq_h3.innerHTML = eq_h3.innerHTML +" (" +window.GameObjects.find(x=> x.id === event.target.dataset.itemName).amount+")";
+                }
+                document.querySelector(".Inventory").appendChild(eq_h3);
+            let eq_span = document.createElement("span");
+                eq_span.innerText = window.GameObjects.find(x=> x.id === event.target.dataset.itemName).desc;
+                document.querySelector(".Inventory").appendChild(eq_span);
+           }
+       })
+       this.element.addEventListener("mouseout", function(e){
+           if(event.target.tagName == "TD" && event.target.dataset.itemName && document.querySelector(".Inventory h3")){
+               document.querySelector(".Inventory h3").remove();
+                document.querySelector(".Inventory span").remove();
+            }
        })
     }
 

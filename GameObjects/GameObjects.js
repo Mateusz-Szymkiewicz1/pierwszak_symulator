@@ -58,7 +58,7 @@ window.GameObjects = [
         
     },
     {
-        id:  "Mikst.Regeneracji",
+        id:  "Miks.Regeneracji",
         src: "images/Objects/reg_potion.png",
         desc: "Efekt regeneracji na 30s",
         can_delete: true,
