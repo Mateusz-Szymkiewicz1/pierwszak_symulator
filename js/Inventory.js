@@ -31,7 +31,7 @@ class Inventory {
                     break;
                 }
             }
-            if(e.tile){
+            if(e.tile && !e.deleted){
                 document.querySelector("#t"+e.tile).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
                 document.querySelector("#t"+e.tile).dataset.itemName = e.id;
             }
@@ -42,29 +42,57 @@ class Inventory {
                el.addEventListener("dragstart", function(e){
                     e.dataTransfer.setData("item", e.target.dataset.itemName);
                     e.dataTransfer.setData("old_tile", parseInt(e.target.getAttribute("id").slice(1)));
+                    e.dataTransfer.setData("parent", "inventory");
                })
            }else{
                el.addEventListener("dragover", function(e){
                    e.preventDefault();
                })
                el.addEventListener("drop", function(e){
-                   let item = e.dataTransfer.getData("item");
-                   let item2 = window.heroInventory.find(x=> x.id === item);
-                   let new_tile_number = parseInt(e.target.getAttribute("id").slice(1));
-                   let new_tile = document.querySelector("#t"+new_tile_number);
-                   let old_tile = document.querySelector("#t"+e.dataTransfer.getData("old_tile"));
-                   old_tile.innerHTML = "";
-                    old_tile.removeAttribute("data-item-name");
-                   if(document.querySelector(".Inventory h3")){
-                   document.querySelector(".Inventory h3").innerText = "";
+                   let parent = e.dataTransfer.getData("parent");
+                   if(parent == "inventory"){
+                       let item = e.dataTransfer.getData("item");
+                       let item2 = window.heroInventory.find(x=> x.id === item);
+                       let new_tile_number = parseInt(e.target.getAttribute("id").slice(1));
+                       let new_tile = document.querySelector("#t"+new_tile_number);
+                       let old_tile = document.querySelector("#t"+e.dataTransfer.getData("old_tile"));
+                       old_tile.innerHTML = "";
+                        old_tile.removeAttribute("data-item-name");
+                       if(document.querySelector(".Inventory h3")){
+                       document.querySelector(".Inventory h3").innerText = "";
+                       }
+                       if(document.querySelector(".Inventory span")){
+                       document.querySelector(".Inventory span").innerText = "";
+                       }
+                       item2.tile = new_tile_number;
+                       new_tile.innerHTML = `<img src="${item2.src}" width="20px" height="20px">`;
+                       new_tile.dataset.itemName = item2.id;
+                       this2.check();
                    }
-                   if(document.querySelector(".Inventory span")){
-                   document.querySelector(".Inventory span").innerText = "";
-                   }
-                   item2.tile = new_tile_number;
-                   new_tile.innerHTML = `<img src="${item2.src}" width="20px" height="20px">`;
-                   new_tile.dataset.itemName = item2.id;
-                   this2.check();
+                  if(parent == "szafka"){
+                      let item = e.dataTransfer.getData("item");
+                       let item2 = window.szafka.find(x=> x.id === item);
+                       let new_tile_number = parseInt(e.target.getAttribute("id").slice(1));
+                       let new_tile = document.querySelector("#t"+new_tile_number);
+                       let old_tile = document.querySelector("#s"+e.dataTransfer.getData("old_tile"));
+                       old_tile.innerHTML = "";
+                      old_tile.removeAttribute("data-item-name");
+                       if(document.querySelector(".Inventory h3")){
+                       document.querySelector(".Inventory h3").innerText = "";
+                       }
+                       if(document.querySelector(".Inventory span")){
+                       document.querySelector(".Inventory span").innerText = "";
+                       }
+                      let obj_index = window.szafka.indexOf(item2);
+                      window.szafka.splice(obj_index, 1);
+                    window.heroInventory.push(item2);
+                      let item3 = window.heroInventory.find(x=> x.id === item);
+                      item3.tile = new_tile_number;
+                       new_tile.innerHTML = `<img src="${item2.src}" width="20px" height="20px">`;
+                       new_tile.dataset.itemName = item2.id;
+                       this2.check();
+                       window.current_szafka.check();
+                  }
                })
            }
        })
@@ -182,6 +210,7 @@ class Inventory {
                     await eventHandler.init();
                 }
                 if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                    window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).deleted = true;
                     eventConfig.unshift({
                          type: "textMessage",
                          text: `Zużyłeś ${obj.id}!`
@@ -218,6 +247,9 @@ class Inventory {
             }
              if(event.target.className == "span_usun"){  
                  window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
+                 if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                     window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).deleted = true;
+                 }
                 if(document.querySelector(".Inventory")){
                     this2.check();
                 }
