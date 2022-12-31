@@ -43,6 +43,9 @@ class Inventory {
                     e.dataTransfer.setData("item", e.target.dataset.itemName);
                     e.dataTransfer.setData("old_tile", parseInt(e.target.getAttribute("id").slice(1)));
                     e.dataTransfer.setData("parent", "inventory");
+                   if(document.querySelector(".option_box")){
+                       document.querySelector(".option_box").remove();
+                    }
                })
            }else{
                el.addEventListener("dragover", function(e){
@@ -257,6 +260,14 @@ class Inventory {
             })
             }
         });
+       window.addEventListener("resize", function(){
+         if(document.querySelector(".option_box")){
+             document.querySelector(".option_box").remove();
+             document.querySelectorAll("td").forEach(td =>{
+                    td.removeAttribute("class");
+                })
+         }  
+       })
     }
 
 }

@@ -55,7 +55,7 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "lys",
+                                who: "lysy",
                                 type: "textMessage",
                                 text: "Zapytaj się czy dzisiaj bilard",
                                 faceHero: "lysy"

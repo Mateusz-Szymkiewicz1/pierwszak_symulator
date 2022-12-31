@@ -29,7 +29,7 @@ class Settings{
         window.fullscreen = 1;
        let width0 = window.getComputedStyle(document.querySelector(".game-container")).width;
        let width = parseInt(width0.slice(0, width0.length-2));
-       let scale = document.querySelector(".settings > input[type=range]").value/10;
+       let scale = window.scale;
        let counter = 0;
        while(width != window.innerWidth){
            counter++;
@@ -49,7 +49,7 @@ class Settings{
        }
        let height0 = window.getComputedStyle(document.querySelector(".game-container")).height;
        let height = parseInt(height0.slice(0, height0.length-2));
-       let scale2 = document.querySelector(".settings > input[type=range]").value/10;
+       let scale2 = window.scale;
        let counter2 = 0;
        while(height != window.innerHeight){
            counter2++;
@@ -186,6 +186,11 @@ class Settings{
            let volume = e.target.value/100;
            window.sfx_volume = volume;
            this2.progress.save_preferences();
+       })
+       window.addEventListener("resize", function(){
+           if(window.fullscreen){
+               this2.fullscreen();
+           }
        })
    }
 
