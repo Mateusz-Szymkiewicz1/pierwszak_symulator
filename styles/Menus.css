@@ -186,13 +186,13 @@
     height: 160px;
     overflow-y: scroll;
 }
-.QuestLog::-webkit-scrollbar, .shop::-webkit-scrollbar, .settings::-webkit-scrollbar {
+.QuestLog::-webkit-scrollbar, .shop::-webkit-scrollbar, .settings::-webkit-scrollbar, .Question::-webkit-scrollbar{
   width: 6px;
 }
-.QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track, .settings::-webkit-scrollbar-track{
+.QuestLog::-webkit-scrollbar-track, .shop::-webkit-scrollbar-track, .settings::-webkit-scrollbar-track, .Question::-webkit-scrollbar-track{
   background: #826343;
 }
-.QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb, .settings::-webkit-scrollbar-thumb{
+.QuestLog::-webkit-scrollbar-thumb, .shop::-webkit-scrollbar-thumb, .settings::-webkit-scrollbar-thumb, .Question::-webkit-scrollbar-thumb{
   background: #b59376;
 }
 .QuestLog > h2, .settings > h2, .shop > h2{

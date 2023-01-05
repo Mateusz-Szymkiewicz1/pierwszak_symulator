@@ -66,6 +66,23 @@ class OverworldEvent {
         }
     }
 
+    question(resolve) {
+        if (this.event.faceHero) {
+            const obj = this.map.gameObjects[this.event.faceHero];
+            obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+        }
+        if(!this.event.who){
+            this.event.who = null;
+        }
+        const question = new Question({
+            text: this.event.text,
+            npc: this.event.who,
+            options: this.event.options,
+            onComplete: () => resolve()
+        })
+        question.init(document.querySelector(".game-container"));
+    }
+    
     changeMap(resolve) {
         const sceneTransition = new SceneTransition();
         sceneTransition.init(document.querySelector(".game-container"), () => {

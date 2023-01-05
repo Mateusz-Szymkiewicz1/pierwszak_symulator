@@ -90,6 +90,22 @@ window.OverworldMaps.School = {
                                 text: "Dwulicowe szmaty",
                                 faceHero: "dariusz"
                             },
+                             {
+                                who: "dariusz",
+                                type: "question",
+                                text: "Wisła czy Cracovia?",
+                                faceHero: "dariusz",
+                                 options: [
+                                     {
+                                        text: "Wisła",
+                                        reaction: 'let map = window.map;const eventHandler = new OverworldEvent({map, event: {type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Wisła?"}});eventHandler.init();'
+                                     },
+                                     {
+                                         text: "Cracovia",
+                                        reaction: 'let map = window.map;const eventHandler = new OverworldEvent({map, event: {type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Cracovia?"}});eventHandler.init();'
+                                     }
+                                 ]
+                            },
                        ]
                    }
                ],

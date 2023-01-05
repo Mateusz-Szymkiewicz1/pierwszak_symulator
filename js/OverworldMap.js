@@ -50,6 +50,7 @@ class OverworldMap {
     }
 
     checkForActionCutscene() {
+        if(!document.querySelector(".TextMessage") && !document.querySelector(".Question")){
         const hero = this.gameObjects["hero"];
         const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
         const match = Object.values(this.gameObjects).find(object => {
@@ -73,6 +74,7 @@ class OverworldMap {
             }
             this.startCutscene(match2.talking[match2.counter].events);
             match2.counter += 1;
+        }
         }
     }
     checkForFootstepCutscene() {

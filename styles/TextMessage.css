@@ -1,4 +1,4 @@
-.TextMessage{
+.TextMessage, .Question{
     position: absolute;
     left: 0;
     right: 0;
@@ -11,14 +11,14 @@
     color: var(--menu-font-color);
     z-index: 1000;
 }
-.TextMessage_p{
+.TextMessage_p, .Question_p{
     margin: 0;
     font-size: 12px;
 }
-.TextMessage span{
+.TextMessage span, .Question span{
     opacity: 0;
 }
-.TextMessage span.revealed{
+.TextMessage span.revealed, .Question span.revealed{
     opacity: 1;
 }
 .TextMessage_button{
@@ -54,4 +54,21 @@
 .TextMessage_big > p {
     padding-top: 17px;
    padding-left: 60px;
+}
+.Question{
+    height: 100px;
+    overflow-y: auto;
+}
+.Question label{
+    display: block;
+    background: var(--menu-border-color);
+    margin-top: 5px;
+    color: #fff;
+    padding-left: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.Question label:hover{
+    background: #937354;
 }

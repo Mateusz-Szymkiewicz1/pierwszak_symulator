@@ -10,7 +10,6 @@ class Overworld {
         const step = () => {
             window.Overworld = this;
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
             const cameraPerson = this.map.gameObjects.hero;
 
             Object.values(this.map.gameObjects).forEach(object => {
