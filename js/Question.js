@@ -18,17 +18,35 @@ class Question{
             label.dataset.index = this2.options.indexOf(opt);
             label.innerText = opt.text;
             this.element.appendChild(label);
-            label.addEventListener("click", function(){
-                this2.element.remove();
-                this2.actionListener.unbind();
-                if(opt.reaction){
-                    eval(opt.reaction);  
+            if(opt.req){
+                if(eval(opt.req)){
+                    label.addEventListener("click", function(){
+                        this2.element.remove();
+                        this2.actionListener.unbind();
+                        if(opt.reaction){
+                            eval(opt.reaction);  
+                        }else{
+                        this2.onComplete().then(function(){
+                          eval(opt.reaction);  
+                        })
+                        }
+                    })
                 }else{
-                this2.onComplete().then(function(){
-                  eval(opt.reaction);  
-                })
+                    label.style = "filter: contrast(0.4);pointer-events: none;"
                 }
-            })
+            }else{
+                label.addEventListener("click", function(){
+                    this2.element.remove();
+                    this2.actionListener.unbind();
+                    if(opt.reaction){
+                        eval(opt.reaction);  
+                    }else{
+                    this2.onComplete().then(function(){
+                      eval(opt.reaction);  
+                    })
+                    }
+                })
+            }
         })
         this.revealingText = new RevealingText({
             element: this.element.querySelector(".Question_p"),

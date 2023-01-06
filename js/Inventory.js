@@ -31,7 +31,7 @@ class Inventory {
                     break;
                 }
             }
-            if(e.tile && !e.deleted){
+            if(e.tile && !e.deleted && e.amount != 0){
                 document.querySelector("#t"+e.tile).innerHTML = `<img src="${e.src}" width="20px" height="20px">`;
                 document.querySelector("#t"+e.tile).dataset.itemName = e.id;
             }
