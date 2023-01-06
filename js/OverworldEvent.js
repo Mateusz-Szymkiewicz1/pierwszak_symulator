@@ -83,6 +83,14 @@ class OverworldEvent {
         question.init(document.querySelector(".game-container"));
     }
     
+    talk(resolve){
+        let array = window.NPCs.find(x=> x.id === this.event.who).talking;let randomElement = array[Math.floor(Math.random() * array.length)];
+        let map = window.map;
+        (async function(){for await(const ev of randomElement){const eventHandler = new OverworldEvent({map, event: ev});await eventHandler.init();}})().then(function(){
+            resolve();
+        });
+    }
+    
     changeMap(resolve) {
         const sceneTransition = new SceneTransition();
         sceneTransition.init(document.querySelector(".game-container"), () => {
