@@ -30,11 +30,11 @@ window.NPCs.push({
                             options: [
                                         {
                                         text: "Wisła",
-                                        reaction: 'let map = window.map;const eventHandler = new OverworldEvent({map, event: {type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Wisła?"}});eventHandler.init();'
+                                        reaction: 'let map = window.map;map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Wisła?"}]);'
                                         },
                                      {
                                          text: "Cracovia",
-                                        reaction: 'let map = window.map;const eventHandler = new OverworldEvent({map, event: {type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Cracovia?"}});eventHandler.init();'
+                                        reaction: 'let map = window.map;map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Cracovia?"}]);'
                                      }
                                  ]
                             },
@@ -57,7 +57,7 @@ window.NPCs.push({
                 {
                      who: "dariusz",
                     type: "textMessage",
-                    text: "Wypuście mnie",
+                    text: "Wypuśćcie mnie",
                     faceHero: "dariusz"
                     }
                 ],

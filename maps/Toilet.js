@@ -14,9 +14,7 @@ window.OverworldMaps.Toilet = {
                         events: [
                             {
                                 who: "ziomek",
-                                type: "textMessage",
-                                text: "Masz ognia?",
-                                faceHero: "ziomek"
+                                type: "talk",
                             },
                        ]
                    }

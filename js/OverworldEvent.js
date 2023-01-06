@@ -78,7 +78,7 @@ class OverworldEvent {
             text: this.event.text,
             npc: this.event.who,
             options: this.event.options,
-            onComplete: () => resolve()
+            onComplete: async () => resolve()
         })
         question.init(document.querySelector(".game-container"));
     }

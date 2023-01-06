@@ -19,10 +19,15 @@ class Question{
             label.innerText = opt.text;
             this.element.appendChild(label);
             label.addEventListener("click", function(){
-                eval(opt.reaction);
                 this2.element.remove();
                 this2.actionListener.unbind();
-                this2.onComplete();
+                if(opt.reaction){
+                    eval(opt.reaction);  
+                }else{
+                this2.onComplete().then(function(){
+                  eval(opt.reaction);  
+                })
+                }
             })
         })
         this.revealingText = new RevealingText({
