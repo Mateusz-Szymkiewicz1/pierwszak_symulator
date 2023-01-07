@@ -84,11 +84,29 @@ class OverworldEvent {
     }
     
     talk(resolve){
-        let array = window.NPCs.find(x=> x.id === this.event.who).talking;let randomElement = array[Math.floor(Math.random() * array.length)];
+        let has_events = false;
+        let randomElement;
+        while(!has_events){
+            let array = window.NPCs.find(x=> x.id === this.event.who).talking;
+            randomElement = array[Math.floor(Math.random() * array.length)];
+            for(const ev of randomElement){
+                if(!ev.said || !ev.once){
+                    has_events = true;
+                }
+            }
+        }
         let map = window.map;
-        (async function(){for await(const ev of randomElement){const eventHandler = new OverworldEvent({map, event: ev});await eventHandler.init();}})().then(function(){
-            resolve();
-        });
+        if(has_events){
+            (async function(){for await(const ev of randomElement){
+                if(!ev.said){
+                    if(ev.once){
+                        ev.said = true;
+                    }
+                const eventHandler = new OverworldEvent({map, event: ev});
+                await eventHandler.init();}}})().then(function(){
+                resolve();
+            });
+        }
     }
     
     changeMap(resolve) {

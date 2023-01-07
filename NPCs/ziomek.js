@@ -5,6 +5,7 @@ window.NPCs.push({
     talking: [
         [
             {
+                once: true,
                 type: "question",
                 who: "ziomek",
                 faceHero: "ziomek",
@@ -26,5 +27,13 @@ window.NPCs.push({
                         ]
             }
         ],
+        [
+            {
+               type: "textMessage",
+                who: "ziomek",
+                faceHero: "ziomek",
+                text: "Kocham gilzy kokosowe <3", 
+            }
+        ]
     ]
 });

@@ -23,6 +23,7 @@ window.NPCs.push({
                             faceHero: "dariusz"
                         },
                         {
+                            once: true,
                             who: "dariusz",
                             type: "question",
                             text: "Wisła czy Cracovia?",
