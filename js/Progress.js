@@ -9,6 +9,7 @@ class Progress {
     }
 
     save() {
+        this.save_relations();
         this.heroX = window.Overworld.map.gameObjects.hero.x;
         while(this.heroX%16 != 0){
             this.heroX--;
@@ -38,7 +39,7 @@ class Progress {
             health: window.health,
             quests: window.quests,
             gold: window.gold,
-            buffs: this.buffs
+            buffs: this.buffs,
         }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","szafka","id","deleted","amount","tile","src","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
     }
 
@@ -56,6 +57,20 @@ class Progress {
              music_volume: window.music_volume,
              sans_mode: window.sans_mode,
             }))
+    }
+    
+    save_relations(){
+        window.localStorage.setItem("relations", JSON.stringify({
+               relations: window.relations_obj
+        }))
+    }
+    
+    load_relations(){
+        const file = window.localStorage.getItem("relations");
+        const file2 = JSON.parse(file);
+        if (file2) {
+         window.relations_obj = file2.relations; 
+        }
     }
     
     load() {

@@ -125,6 +125,9 @@ class Overworld {
             window.quests = this.progress.quests;
             window.gold = this.progress.gold;
             window.szafka = this.progress.szafka;
+            window.relations = new Relations();
+            this.progress.load_relations();
+            window.relations.load_relations();
             window.heroInventory.forEach(e =>{
                 window.heroInventory[window.heroInventory.indexOf(e)] = window.GameObjects.find(x => x.id === e.id);
                 if(e.deleted){
@@ -172,6 +175,8 @@ class Overworld {
             window.health = 100;
             window.gold = 0;
             window.quests = [];
+            window.relations = new Relations();
+            relations.init();
             var StartMapPromise = new Promise(function(resolve) {
                 window.sceneTransition = new SceneTransition();
                 sceneTransition.init(document.querySelector(".game-container"), () => {
