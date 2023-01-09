@@ -71,6 +71,44 @@ window.OverworldMaps.KorytarzLewy = {
                     },
                 ]
             }),
+            oze: new Person({
+                x: utils.withGrid(16),
+                y: utils.withGrid(1),
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                type: "changeMap",
+                                map: "OZE",
+                                x: utils.withGrid(5),
+                                y: utils.withGrid(23),
+                                direction: "up"
+                            },
+                       ]
+                   }
+               ],
+            }),
+            oze2: new Person({
+                x: utils.withGrid(17),
+                y: utils.withGrid(1),
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+                talking: [
+                    {
+                        events: [
+                            {
+                                type: "changeMap",
+                                map: "OZE",
+                                x: utils.withGrid(6),
+                                y: utils.withGrid(23),
+                                direction: "up"
+                            },
+                       ]
+                   }
+               ],
+            }),
             s25: new Person({
                 x: utils.withGrid(12),
                 y: utils.withGrid(3),
