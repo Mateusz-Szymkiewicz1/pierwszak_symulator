@@ -3,9 +3,6 @@ window.OverworldMaps.OZE = {
         lowerSrc: "images/maps/OZELower.png",
         upperSrc: "images/maps/KitchenUpper.png",
         gameObjects: {
-            placeholder: new Person({
-               src: "images/maps/KitchenUpper.png"
-            }),
             schronD: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(22),
@@ -49,6 +46,9 @@ window.OverworldMaps.OZE = {
                             {
                                 type: "changeMap",
                                 map: "Bilard",
+                                 x: utils.withGrid(1),
+                                y: utils.withGrid(9),
+                                direction: "right"
                             },
                        ]
                    },
@@ -222,5 +222,6 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(1,5)]: true,
             [utils.asGridCoord(2,3)]: true,
             [utils.asGridCoord(3,3)]: true,
+            [utils.asGridCoord(2,6)]: true,
         },
     };
