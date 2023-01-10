@@ -235,32 +235,22 @@ window.OverworldMaps.KorytarzPrawy = {
                                 products: [
                                     {
                                         id: "Rogal",
-                                        desc: "Uzdrawia 15HP",
-                                        src: "images/Objects/croissant.png",
                                         price: "10"
                                     },
                                     {
                                         id: "Obwarzanek",
-                                        desc: "Uzdrawia 10HP",
-                                        src: "images/Objects/pretzel.png",
                                         price: "6"
                                     },
                                     {
                                         id: "Pizza",
-                                        desc: "Uzdrawia 20HP",
-                                        src: "images/Objects/pizza.png",
                                         price: "15"
                                     },
                                     {
                                         id: "Monster",
-                                        desc: "+1 Prędkość +1 Szansa na zawał",
-                                        src: "images/Objects/monster.png",
                                         price: "20"
                                     },
                                     {
                                         id: "Woda",
-                                        desc: "W sumie to nic nie robi",
-                                        src: "images/Objects/water.png",
                                         price: "4"
                                     }
                                 ]

@@ -34,27 +34,23 @@ window.OverworldMaps.Pielegniarka = {
                                 products: [
                                     {
                                         id: "Apteczka",
-                                        desc: "Leczy całe hp",
-                                        src: "images/objects/medkit.png",
                                         price: "50"
                                     },
                                     {
                                         id: "Bandaż",
-                                        desc: "Leczy 50 hp",
-                                        src: "images/objects/bandage.png",
                                         price: "30"
                                     },
                                     {
                                         id: "Miks.Regeneracji",
-                                        desc: "Efekt regeneracji na 30s",
-                                        src: "images/objects/reg_potion.png",
                                         price: "20"
                                     },
                                     {
                                         id: "Krople Żołądkowe",
-                                        desc: "Efekt regeneracji na 100s",
-                                        src: "images/objects/krople.png",
                                         price: "40"
+                                    },
+                                    {
+                                        id: "Miks.Szybkości",
+                                        price: "30"
                                     }
                                 ]
                             },

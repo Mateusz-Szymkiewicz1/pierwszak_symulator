@@ -15,11 +15,12 @@ class Shop{
     show_products(){
         this.element.innerHTML = "<h2>Sklep</h2>";
         this.products.forEach(el => {
-            this.element.innerHTML = this.element.innerHTML+`<div class="product" data-product="${el.id}">
-                <h3>${el.id}</h3>
-                <span>${el.desc}</span>
+            let el2 = window.GameObjects.find(x=> x.id === el.id);
+            this.element.innerHTML = this.element.innerHTML+`<div class="product" data-product="${el2.id}">
+                <h3>${el2.id}</h3>
+                <span>${el2.desc}</span>
                 <h4>${el.price}G</h4>
-                <img src="${el.src}" height="30px" width="30px">
+                <img src="${el2.src}" height="30px" width="30px">
             </div>`;
         })
     }

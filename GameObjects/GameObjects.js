@@ -81,6 +81,25 @@ window.GameObjects = [
         use_req_text: "Już masz 100 HP!/Regenerację"
         
     },
+     {
+        id:  "Miks.Szybkości",
+        src: "images/Objects/speed_potion.png",
+        desc: "Końska dawka kofeiny",
+        can_delete: true,
+        amount: "1",
+         use: [
+            {
+                type: "do_code",
+                code: 'window.speed = 2;setTimeout(function(){window.speed = 1;}, 91300)'
+            },{
+                type: "do_code",
+                code: 'const buff = new Buff("Speed", 90000);buff.init();'
+            }
+            
+        ],
+        use_req: "window.speed != 2", 
+        use_req_text: "Zostaw bo ci pikawa siądzie!"
+    },
     {
         id:  "Krople Żołądkowe",
         src: "images/Objects/krople.png",

@@ -206,26 +206,24 @@ class Inventory {
                 let map = window.map;
                 let use_req = obj.use_req;
                 if(eval(use_req)){
-                window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
-                let eventConfig = obj.use;
-                for await (const ev of eventConfig){
-                    const eventHandler = new OverworldEvent({map, event: ev});
-                    await eventHandler.init();
-                }
-                if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
-                    window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).deleted = true;
-                    eventConfig.unshift({
-                         type: "textMessage",
-                         text: `Zużyłeś ${obj.id}!`
-                     })
+                    window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount--;
+                    let eventConfig = obj.use;
+                    if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                        eventConfig.unshift({
+                            type: "textMessage",
+                            text: `Zużyłeś ${obj.id}!`
+                        })
+                    }
                     for await (const ev of eventConfig){
                         const eventHandler = new OverworldEvent({map, event: ev});
                         await eventHandler.init();
-                    }  
-                    if(document.querySelector(".Inventory")){
-                        this2.check();
                     }
-                }
+                    if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
+                        window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).deleted = true;
+                        if(document.querySelector(".Inventory")){
+                            this2.check();
+                        }
+                    }
                 }
                 else{
                     let use_req_text = obj.use_req_text;

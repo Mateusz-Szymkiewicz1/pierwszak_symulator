@@ -158,26 +158,18 @@ window.OverworldMaps.School = {
                                 products: [
                                     {
                                         id: "Woda",
-                                        desc: "W sumie to nic nie robi",
-                                        src: "images/Objects/water.png",
                                         price: "4"
                                     },
                                     {
                                         id: "Cola",
-                                        desc: "Oryginalna receptura",
-                                        src: "images/Objects/cola.png",
                                         price: "6"
                                     },
                                     {
                                         id: "Baton",
-                                        desc: "500kcal + cukrzyca",
-                                        src: "images/Objects/baton.png",
                                         price: "8"
                                     },
                                     {
                                         id: "Kanapka",
-                                        desc: "Uzdrawia 25HP",
-                                        src: "images/Objects/sandwich.png",
                                         price: "15"
                                     },
                                 ]
