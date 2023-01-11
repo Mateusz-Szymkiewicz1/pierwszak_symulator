@@ -22,6 +22,9 @@ window.OverworldMaps.OZE = {
                             {
                                 type: "changeMap",
                                 map: "Schron",
+                                x: utils.withGrid(1),
+                                y: utils.withGrid(2),
+                                direction: "right"
                             },
                        ]
                    },
