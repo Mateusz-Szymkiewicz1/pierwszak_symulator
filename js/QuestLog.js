@@ -108,12 +108,16 @@ class QuestLog{
         this.element.innerHTML = `<h2>Questy</h2>`;
         let counter = 0;
         window.quests.forEach(e => {
+            let reward = "";
+            if(e.reward){
+                reward = e.reward+"G";
+            }
             if(e.progress == 0){
                 counter++;
             if(e.deletable){
-                this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p data-questid="${e.id}">X</p><p>${e.reward}G</p></h3><br><br/><span>${e.desc}</span>`;
+                this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}G</p></h3><br><br/><span>${e.desc}</span>`;
             }else{
-            this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}</h3><br/><br/><span>${e.desc}</span>`;
+            this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span>`;
             }
             }
         })
@@ -203,6 +207,7 @@ old_element.parentNode.replaceChild(new_element, old_element);
            this2.close();
        })
        document.querySelector(".QuestLog").addEventListener("click", function(event){
+           if(event.target.className == "rez"){
            const eventHandler = new OverworldEvent({event:{
                         type: "decision",
                         handler: () => {
@@ -217,6 +222,7 @@ old_element.parentNode.replaceChild(new_element, old_element);
                         }
             }});
            eventHandler.init();
+           }
        })
     }
 

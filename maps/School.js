@@ -282,6 +282,7 @@ window.OverworldMaps.School = {
            [utils.asGridCoord(20, 8)]: true,
         },
     start_func: function(){
+        let wozna_talking = window.OverworldMaps.School.gameObjects.wozna.talking;
         window.heroInventory.forEach(e =>{
             if(e.id == "Klucz_Szafka"){
                 delete window.OverworldMaps.School.gameObjects.Klucz_Szafka;

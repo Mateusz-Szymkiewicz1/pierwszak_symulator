@@ -22,7 +22,7 @@ window.NPCs.push({
                 type: "textMessage",
                 who: "wozna",
                 faceHero: "wozna",
-                text: "Stawiam na tego bo lewej"
+                text: "Stawiam na tego po lewej"
             }
         ]
     ]

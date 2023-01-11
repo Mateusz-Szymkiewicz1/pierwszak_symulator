@@ -13,21 +13,19 @@ window.OverworldMaps.OZE = {
                     {
                         events: [
                             {
-                                type: "do_code",
-                                code: `let audio_door = document.querySelector("#audio_door_open");
-                                audio_door.playbackRate = 2;
-                                audio_door.volume = 0.2*window.sfx_volume;
-                                audio_door.play();`
+                                type: "textMessage",
+                                text: "Zatrzaśnięte?"
                             },
                             {
-                                type: "changeMap",
-                                map: "Schron",
-                                x: utils.withGrid(1),
-                                y: utils.withGrid(2),
-                                direction: "right"
+                                type: "textMessage",
+                                text: "Przysiągłbym że widziałem jak ktoś tu wchodzi..."
                             },
-                       ]
-                   },
+                            {
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Klucz_do_schronu",desc: "Znajdź kogość kto wie coś o schronie"});window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();',
+                                type: "do_code",
+                            },
+                        ]
+                    }
                ],
             }),
             bilardD: new Person({
@@ -227,4 +225,33 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(3,3)]: true,
             [utils.asGridCoord(2,6)]: true,
         },
+        start_func: function(){
+            window.heroInventory.forEach(e =>{
+                if(e.id == "Klucz_Schron"){
+                     window.OverworldMaps.OZE.gameObjects.schronD.talking = [
+                    {
+                        events: [
+                            {
+                                type: "do_code",
+                                code: `let audio_door = document.querySelector("#audio_door_open");
+                                audio_door.playbackRate = 2;
+                                audio_door.volume = 0.2*window.sfx_volume;
+                                audio_door.play();`
+                            },
+                            {
+                                type: "changeMap",
+                                map: "Schron",
+                                x: utils.withGrid(1),
+                                y: utils.withGrid(2),
+                                direction: "right"
+                            },
+                       ]
+                   },
+                ]
+                }
+            })
+            if(window.quests.find(x=> x.id === "Klucz_do_schronu")){
+                window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();
+            }
+        }
     };

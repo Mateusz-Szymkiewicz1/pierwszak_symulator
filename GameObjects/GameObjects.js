@@ -25,7 +25,14 @@ window.GameObjects = [
         src: "images/objects/klucz_szafka.png",
         desc: '"nr.213" - Lepiej go nie zgub.',
         can_delete: false,
-    },{
+    },
+    {
+        id: "Klucz_Schron",
+        src: "images/objects/klucz_schron.png",
+        desc: '???',
+        can_delete: false,
+    },
+    {
         id:  "Apteczka",
         src: "images/Objects/medkit.png",
         desc: "Leczy całe HP",
