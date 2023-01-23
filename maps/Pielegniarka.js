@@ -3,6 +3,30 @@ window.OverworldMaps.Pielegniarka = {
         lowerSrc: "images/maps/PielegniarkaLower.png",
         upperSrc: "images/maps/PielegniarkaUpper.png",
         gameObjects: {
+            Klucz_Schron: new Person({
+                x: utils.withGrid(0),
+                y: utils.withGrid(9),
+                pickUp: true,
+                counter: 0,
+                src: "images/maps/KitchenUpper.png",
+            }),
+            ranny: new Person({
+                x: utils.withGrid(1),
+                y: utils.withGrid(6),
+                counter: 0,
+                useShadow: true,
+                src: "images/characters/people/ranny.png",
+                talking: [
+                    {
+                        events: [
+                            {who: "ranny",type: "talk",},
+                       ]
+                   }
+               ],
+               behaviorLoop: [
+                    {type: "stand",direction: "right",time: 100000},
+                ]
+            }),
             pielegniarka: new Person({
                 x: utils.withGrid(2),
                 y: utils.withGrid(2),
@@ -12,11 +36,7 @@ window.OverworldMaps.Pielegniarka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "pielegniarka",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet'
-                            },
+                            {who: "pielegniarka",type: "textMessage",text: 'Lorem Ipsum dolor sit amet'},
                        ]
                    }
                ],
@@ -32,26 +52,11 @@ window.OverworldMaps.Pielegniarka = {
                             {
                                 type: "shop",
                                 products: [
-                                    {
-                                        id: "Apteczka",
-                                        price: "50"
-                                    },
-                                    {
-                                        id: "Bandaż",
-                                        price: "30"
-                                    },
-                                    {
-                                        id: "Miks.Regeneracji",
-                                        price: "20"
-                                    },
-                                    {
-                                        id: "Krople Żołądkowe",
-                                        price: "40"
-                                    },
-                                    {
-                                        id: "Miks.Szybkości",
-                                        price: "30"
-                                    }
+                                    {id: "Apteczka",price: "50"},
+                                    {id: "Bandaż",price: "30"},
+                                    {id: "Miks.Regeneracji",price: "20"},
+                                    {id: "Krople Żołądkowe",price: "40"},
+                                    {id: "Miks.Szybkości",price: "30"}
                                 ]
                             },
                        ]
@@ -70,17 +75,8 @@ window.OverworldMaps.Pielegniarka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "Apteczka",
-                                type: "textMessage",
-                                text: 'Znalazłeś "Apteczka"!!'
-                            },
-                            {
-                                who: "Apteczka",
-                                type: "stand",
-                                direction: "left",
-                                time: 200
-                            },
+                            {who: "Apteczka",type: "textMessage",text: 'Znalazłeś "Apteczka"!!'},
+                            {who: "Apteczka",type: "stand",direction: "left",time: 200},
                        ]
                    }
                ],
@@ -132,6 +128,23 @@ window.OverworldMaps.Pielegniarka = {
         progress.heroInventory.forEach(e =>{
             if(e.id == "Apteczka"){
                 delete window.OverworldMaps.Pielegniarka.gameObjects.Apteczka;
+            }
+        })
+        window.quests.forEach(e =>{
+            if(e.id == "Klucz_do_schronu"){
+                if(e.progress == 0){
+                    window.OverworldMaps.Pielegniarka.gameObjects.ranny.talking[0].events = [
+                        {who: "ranny", type: "textMessage", text: "Już mam dość schronu..."},
+                        {who: "ranny", type: "textMessage", text: "???"},
+                        {who: "ranny", type: "textMessage", text: "Chciałbyś się tam dostać?"},
+                        {who: "ranny", type: "textMessage", text: "Powodzenia..."},
+                        {who: "Klucz_Schron",type: "textMessage",text: 'Otrzymałeś "Klucz do Schronu"!',},
+                        {code: 'const quest = new QuestLog({onComplete: () => {}});quest.end_quest("Klucz_do_schronu");',type: "do_code"},
+                        {code: 'window.OverworldMaps.Pielegniarka.gameObjects.ranny.talking[0].events = [{type: "talk", who:"ranny"}];',type: "do_code"},
+                    ];
+                }else{
+                    delete window.OverworldMaps.Pielegniarka.gameObjects.ranny;
+                }
             }
         })
     }

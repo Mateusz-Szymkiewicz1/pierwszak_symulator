@@ -12,21 +12,12 @@ window.OverworldMaps.BiuroG = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "g",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet',
-                                faceHero: "g"
-                            },
+                            {who: "g",type: "textMessage",text: 'Lorem Ipsum dolor sit amet',faceHero: "g"},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "right",
-                        time: 2000
-                    },
+                    {type: "stand",direction: "right",time: 2000},
                 ]
             }),
             hero: new Person({

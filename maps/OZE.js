@@ -12,16 +12,10 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
+                            {type: "textMessage",text: "Zatrzaśnięte?"},
+                            {type: "textMessage",text: "Przysiągłbym że widziałem jak ktoś tu wchodzi..."},
                             {
-                                type: "textMessage",
-                                text: "Zatrzaśnięte?"
-                            },
-                            {
-                                type: "textMessage",
-                                text: "Przysiągłbym że widziałem jak ktoś tu wchodzi..."
-                            },
-                            {
-                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Klucz_do_schronu",desc: "Znajdź kogość kto wie coś o schronie"});window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();',
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Klucz_do_schronu",desc: "Znajdź kogoś kto wie coś o schronie"});window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();',
                                 type: "do_code",
                             },
                         ]
@@ -88,10 +82,7 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: 'Na OZE lepiej nie wchodzić...'
-                            }
+                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
                        ]
                    },
                ],
@@ -105,10 +96,7 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: 'Na OZE lepiej nie wchodzić...'
-                            }
+                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
                        ]
                    },
                ],
@@ -122,10 +110,7 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: 'Na OZE lepiej nie wchodzić...'
-                            }
+                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
                        ]
                    },
                ],
@@ -139,10 +124,7 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
-                           {
-                                type: "textMessage",
-                                text: 'Na OZE lepiej nie wchodzić...'
-                            }
+                           {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
                        ]
                    },
                ],
@@ -226,6 +208,18 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(2,6)]: true,
         },
         start_func: function(){
+             window.OverworldMaps.OZE.gameObjects.schronD.talking = [
+                    {
+                        events: [
+                            {type: "textMessage",text: "Zatrzaśnięte?"},
+                            {type: "textMessage",text: "Przysiągłbym że widziałem jak ktoś tu wchodzi..."},
+                            {
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Klucz_do_schronu",desc: "Znajdź kogoś kto wie coś o schronie"});window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();',
+                                type: "do_code",
+                            },
+                        ]
+                    }
+               ];
             window.heroInventory.forEach(e =>{
                 if(e.id == "Klucz_Schron"){
                      window.OverworldMaps.OZE.gameObjects.schronD.talking = [
@@ -250,8 +244,15 @@ window.OverworldMaps.OZE = {
                 ]
                 }
             })
-            if(window.quests.find(x=> x.id === "Klucz_do_schronu")){
-                window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();
-            }
+            const progress = new Progress();
+            progress.load();
+            progress.quests.forEach(e =>{
+                if(e.id == "Klucz_do_schronu"){
+                    let length = window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.length-1;
+                    if(window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events[length].type == "do_code"){
+                        window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.pop();
+                    }
+                }
+            })
         }
     };

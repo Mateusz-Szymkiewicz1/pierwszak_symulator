@@ -19,30 +19,17 @@ window.OverworldMaps.KorytarzLewy = {
                     {
                         events: [
                             {
-                                who: "marek",
-                                type: "textMessage",
+                                who: "marek",type: "textMessage",
                                 text: "Czy znasz historię o niemym Michałku, który żuł gumę tak długo, aż oślepł?",
                                 faceHero: "marek"
                             },
-                            {
-                                who: "marek",
-                                type: "stand",
-                                direction: "left",
-                                time: 500
-                            },
-                            {
-                                type: "textMessage",
-                                text: "*Ziomek nie kontaktuje*"
-                            },
+                            {who: "marek",type: "stand",direction: "left",time: 500},
+                            {type: "textMessage",text: "*Ziomek nie kontaktuje*"},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "left",
-                        time: 800
-                    },
+                    {type: "stand",direction: "left",time: 800},
                 ]
             }),
             lysy: new Person({
@@ -54,21 +41,12 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "lysy",
-                                type: "textMessage",
-                                text: "Zapytaj się czy dzisiaj bilard",
-                                faceHero: "lysy"
-                            },
+                            {who: "lysy",type: "textMessage",text: "Zapytaj się czy dzisiaj bilard",faceHero:"lysy"},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "left",
-                        time: 2000
-                    },
+                    {type: "stand",direction: "left",time: 2000},
                 ]
             }),
             oze: new Person({
@@ -117,10 +95,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Sala 25"'
-                            },
+                            {type: "textMessage",text: '"Sala 25"'},
                        ]
                    }
                ],
@@ -133,10 +108,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Sala 26"'
-                            },
+                            {type: "textMessage",text: '"Sala 26"'},
                        ]
                    }
                ],
@@ -149,10 +121,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Toaleta"'
-                            },
+                            {type: "textMessage",text: '"Toaleta"'},
                        ]
                    }
                ],
@@ -165,10 +134,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '*mmmm dezynkfekcja*'
-                            },
+                            {type: "textMessage",text: '*mmmm dezynkfekcja*'},
                        ]
                    }
                ],
@@ -287,10 +253,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: 'Zamknięte...'
-                            },
+                            {type: "textMessage",text: 'Zamknięte...'},
                        ]
                    },
                ],
@@ -304,10 +267,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: 'Zamknięte...'
-                            },
+                            {type: "textMessage",text: 'Zamknięte...'},
                        ]
                    },
                ],

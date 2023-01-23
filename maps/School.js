@@ -19,17 +19,8 @@ window.OverworldMaps.School = {
                 talking: [
                      {
                         events: [
-                            {
-                                who: "wozna",
-                                type: "textMessage",
-                                text: "Trzymaj, przyda ci się",
-                                faceHero: "wozna"
-                            },
-                            {
-                                who: "Klucz_Szafka",
-                                type: "textMessage",
-                                text: 'Otrzymałeś "Klucz do Szafki"!',
-                            },
+                            {who: "wozna",type: "textMessage",text: "Trzymaj, przyda ci się",faceHero: "wozna"},
+                            {who: "Klucz_Szafka",type: "textMessage",text: 'Otrzymałeś "Klucz do Szafki"!',},
                             {
                                 code: "window.OverworldMaps.School.gameObjects.wozna.talking.splice(0,1);",
                                 type: "do_code",
@@ -46,19 +37,12 @@ window.OverworldMaps.School = {
                    },
                     {
                         events: [
-                            {
-                                type: "talk",
-                                who: "wozna"
-                            }
+                            {type: "talk",who: "wozna"}
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "right",
-                        time: 2000
-                    },
+                    {type: "stand",direction: "right",time: 2000},
                 ]
             }),
             dariusz: new Person({
@@ -70,19 +54,12 @@ window.OverworldMaps.School = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "talk",
-                                who: "dariusz"
-                            }
+                            {type: "talk",who: "dariusz"}
                         ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "down",
-                        time: 2000
-                    },
+                    {type: "stand",direction: "down",time: 2000},
                 ]
             }),
             dezynfekcja: new Person({
@@ -93,10 +70,7 @@ window.OverworldMaps.School = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: "*mmmm dezynfekcja*"
-                            },
+                            {type: "textMessage",text: "*mmmm dezynfekcja*"},
                        ]
                    }
                ],
@@ -116,14 +90,8 @@ window.OverworldMaps.School = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"MATeMemAtyka rozszerzona dla klasy 3"'
-                            },
-                            {
-                                type: "textMessage",
-                                text: "*ten widok sprawia ci ból*"
-                            },
+                            {type: "textMessage",text: '"MATeMemAtyka rozszerzona dla klasy 3"'},
+                            {type: "textMessage",text: "*ten widok sprawia ci ból*"},
                        ]
                    }
                ],
@@ -137,10 +105,7 @@ window.OverworldMaps.School = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Zaraz wracam"'
-                            },
+                            {type: "textMessage",text: '"Zaraz wracam"'},
                        ]
                    }
                ],
@@ -156,22 +121,10 @@ window.OverworldMaps.School = {
                             {
                                 type: "shop",
                                 products: [
-                                    {
-                                        id: "Woda",
-                                        price: "4"
-                                    },
-                                    {
-                                        id: "Cola",
-                                        price: "6"
-                                    },
-                                    {
-                                        id: "Baton",
-                                        price: "8"
-                                    },
-                                    {
-                                        id: "Kanapka",
-                                        price: "15"
-                                    },
+                                    {id: "Woda",price: "4"},
+                                    {id: "Cola",price: "6"},
+                                    {id: "Baton",price: "8"},
+                                    {id: "Kanapka",price: "15"},
                                 ]
                             },
                        ]

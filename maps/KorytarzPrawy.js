@@ -91,10 +91,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Nauczanie Indywidualne - Nie przeszkadzać!"'
-                            },
+                            {type: "textMessage",text: '"Nauczanie Indywidualne - Nie przeszkadzać!"'},
                        ]
                    },
                ],
@@ -159,10 +156,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Sala 16"'
-                            },
+                            {type: "textMessage",text: '"Sala 16"'},
                        ]
                    }
                ],
@@ -175,10 +169,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Biblioteka"'
-                            },
+                            {type: "textMessage",text: '"Biblioteka"'},
                        ]
                    }
                ],
@@ -191,10 +182,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Sala 14"'
-                            },
+                            {type: "textMessage",text: '"Sala 14"'},
                        ]
                    }
                ],
@@ -207,10 +195,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "textMessage",
-                                text: '"Pielegniarka (Czynne 11:00-11:30)"'
-                            },
+                            {type: "textMessage",text: '"Pielegniarka (Czynne 11:00-11:30)"'},
                        ]
                    }
                ],
@@ -233,26 +218,11 @@ window.OverworldMaps.KorytarzPrawy = {
                             {
                                 type: "shop",
                                 products: [
-                                    {
-                                        id: "Rogal",
-                                        price: "10"
-                                    },
-                                    {
-                                        id: "Obwarzanek",
-                                        price: "6"
-                                    },
-                                    {
-                                        id: "Pizza",
-                                        price: "15"
-                                    },
-                                    {
-                                        id: "Monster",
-                                        price: "20"
-                                    },
-                                    {
-                                        id: "Woda",
-                                        price: "4"
-                                    }
+                                    {id: "Rogal",price: "10"},
+                                    {id: "Obwarzanek",price: "6"},
+                                    {id: "Pizza",price: "15"},
+                                    {id: "Monster",price: "20"},
+                                    {id: "Woda",price: "4"}
                                 ]
                             },
                        ]
@@ -268,11 +238,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "tyson",
-                                type: "textMessage",
-                                text: 'Errors (3000) method "talking" not found.'
-                            },
+                            {who: "tyson",type: "textMessage",text: 'Errors (3000) method "talking" not found.'},
                        ]
                    }
                ],
@@ -287,21 +253,12 @@ window.OverworldMaps.KorytarzPrawy = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "aleks",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum?',
-                                faceHero: "aleks"
-                            },
+                            {who: "aleks",type: "textMessage",text: 'Lorem Ipsum?',faceHero: "aleks"},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "left",
-                        time: 2000
-                    },
+                    {type: "stand",direction: "left",time: 2000},
                 ]
             }),
             hero: new Person({

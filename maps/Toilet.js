@@ -12,19 +12,12 @@ window.OverworldMaps.Toilet = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "ziomek",
-                                type: "talk",
-                            },
+                            {who: "ziomek",type: "talk",},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "down",
-                        time: 800
-                    },
+                    {type: "stand",direction: "down",time: 800},
                 ]
             }),
             ziomek2: new Person({
@@ -46,11 +39,7 @@ window.OverworldMaps.Toilet = {
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "left",
-                        time: 800
-                    },
+                    {type: "stand",direction: "left",time: 800},
                 ]
             }),
             wcDrzwi: new Person({
@@ -62,22 +51,12 @@ window.OverworldMaps.Toilet = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "wcDrzwi",
-                                map: "Toilet",
-                                type: "open",
-                                src: 'images/Objects/toilet_door_opened.png'
-                            },
+                            {who: "wcDrzwi",map: "Toilet",type: "open",src: 'images/Objects/toilet_door_opened.png'},
                        ]
                    },
                     {
                         events: [
-                            {
-                                who: "wcDrzwi",
-                                map: "Toilet",
-                                type: "open",
-                                src: 'images/Objects/toilet_door.png'
-                            },
+                            {who: "wcDrzwi",map: "Toilet",type: "open",src: 'images/Objects/toilet_door.png'},
                        ]
                    }
                ],
@@ -91,22 +70,12 @@ window.OverworldMaps.Toilet = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "wcDrzwi2",
-                                map: "Toilet",
-                                type: "open",
-                                src: 'images/Objects/toilet_door_opened.png'
-                            },
+                            {who: "wcDrzwi2",map: "Toilet",type: "open",src: 'images/Objects/toilet_door_opened.png'},
                        ]
                    },
                     {
                         events: [
-                            {
-                                who: "wcDrzwi2",
-                                map: "Toilet",
-                                type: "open",
-                                src: 'images/Objects/toilet_door.png'
-                            },
+                            {who: "wcDrzwi2",map: "Toilet",type: "open",src: 'images/Objects/toilet_door.png'},
                        ]
                    }
                ],
@@ -123,17 +92,8 @@ window.OverworldMaps.Toilet = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "Kiepy",
-                                type: "textMessage",
-                                text: 'Znalazłeś "kiepy"!!'
-                            },
-                            {
-                                who: "Kiepy",
-                                type: "stand",
-                                direction: "left",
-                                time: 200
-                            },
+                            {who: "Kiepy",type: "textMessage",text: 'Znalazłeś "kiepy"!!'},
+                            {who: "Kiepy",type: "stand",direction: "left",time: 200},
                        ]
                    }
                ],

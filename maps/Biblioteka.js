@@ -10,11 +10,7 @@ window.OverworldMaps.Biblioteka = {
                 useShadow: true,
                 src: "images/characters/people/npc1.png",
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "left",
-                        time: 100000
-                    },
+                    {type: "stand",direction: "left",time: 100000},
                 ]
             }),
             bibliotekarka1_talking: new Person({
@@ -25,11 +21,7 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "bibliotekarka1",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet'
-                            },
+                            {who: "bibliotekarka1",type: "textMessage",text: 'Lorem Ipsum dolor sit amet'},
                        ]
                    }
                ],
@@ -42,10 +34,7 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {
-                                type: "book",
-                                book_id: "art_of_war"
-                            },
+                            {type: "book",book_id: "art_of_war"},
                        ]
                    }
                ],
@@ -58,20 +47,12 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "bibliotekarka2",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet'
-                            },
+                            {who: "bibliotekarka2",type: "textMessage",text: 'Lorem Ipsum dolor sit amet'},
                        ]
                    }
                ],
                 behaviorLoop: [
-                    {
-                        type: "stand",
-                        direction: "right",
-                        time: 100000
-                    },
+                    {type: "stand",direction: "right",time: 100000},
                 ]
             }),
             bibliotekarka2_talking: new Person({
@@ -82,11 +63,7 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "bibliotekarka2",
-                                type: "textMessage",
-                                text: 'Lorem Ipsum dolor sit amet'
-                            },
+                            {who: "bibliotekarka2",type: "textMessage",text: 'Lorem Ipsum dolor sit amet'},
                        ]
                    }
                ],
@@ -103,17 +80,8 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {
-                                who: "Podrecznik_access",
-                                type: "textMessage",
-                                text: 'Znalazłeś "Podręcznik Access"!!'
-                            },
-                            {
-                                who: "Podrecznik_access",
-                                type: "stand",
-                                direction: "left",
-                                time: 200
-                            },
+                            {who: "Podrecznik_access",type: "textMessage",text: 'Znalazłeś "Podręcznik Access"!!'},
+                            {who: "Podrecznik_access",type: "stand",direction: "left",time: 200},
                        ]
                    }
                ],

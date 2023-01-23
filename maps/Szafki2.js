@@ -80,21 +80,16 @@ window.OverworldMaps.Szafki2 = {
         })
         if(has_key == false){
             window.OverworldMaps.Szafki2.gameObjects.szafka.talking = [{
-                        events: [
-                            {
-                                type: "textMessage",
-                                text: "Potrzebujesz klucza!"
-                            },
-                       ]
-                   }];
+                events: [
+                    {type: "textMessage",text: "Potrzebujesz klucza!"},
+                ]
+            }];
         }else{
             window.OverworldMaps.Szafki2.gameObjects.szafka.talking = [{
-                        events: [
-                            {
-                                type: "szafka_open",
-                            },
-                       ]
-                   }];
+                events: [
+                    {type: "szafka_open"}
+                ]
+            }];
         }
     }
     };
