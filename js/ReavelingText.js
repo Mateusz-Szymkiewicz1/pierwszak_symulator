@@ -7,20 +7,19 @@ class RevealingText {
         this.timeout = null;
         this.isDone = false;
     }
-    
     revealOneCharacter(list){
         const next = list.splice(0,1)[0];
          if(next.span.innerText == " " || next.span.innerText == "," || next.span.innerText == "."){
              document.querySelector("#audio_talking").pause();
          }else{
-             if(document.querySelector("#audio_talking").src.slice(-18) == "audio/talking2.mp3"){
-            let audio = document.querySelector("#audio_talking").cloneNode(true);
-                 audio.play();
-            audio.volume = 0.5*window.sfx_volume;
+            if(document.querySelector("#audio_talking").src.slice(-18) == "audio/talking2.mp3"){
+                let audio = document.querySelector("#audio_talking").cloneNode(true);
+                audio.play();
+                audio.volume = 0.5*window.sfx_volume;
              }else{
                 let audio = document.querySelector("#audio_talking");
-                 audio.play();
-            audio.volume = 0.5*window.sfx_volume;
+                audio.play();
+                audio.volume = 0.5*window.sfx_volume;
              }
          }
         next.span.classList.add("revealed");
@@ -34,7 +33,6 @@ class RevealingText {
             document.querySelector("#audio_talking").pause();
         }
     }
-    
     warpToDone(){
         document.querySelector("#audio_talking").pause();
         clearTimeout(this.timeout);
@@ -42,21 +40,15 @@ class RevealingText {
         this.element.querySelectorAll("span").forEach(s => {
             s.classList.add("revealed");
         })
-    }
-    
+    }  
     init(){
         let characters = [];
         this.text.split("").forEach(character => {
             let span = document.createElement("span");
             span.textContent = character;
             this.element.appendChild(span);
-            
-            characters.push({
-                span,
-                delayAfter: character === " " ? 0 : this.speed
-            })
-        })
-        
+            characters.push({span,delayAfter: character === " " ? 0 : this.speed});
+        })   
         this.revealOneCharacter(characters);
     }
 }

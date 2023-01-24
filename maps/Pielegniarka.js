@@ -137,13 +137,37 @@ window.OverworldMaps.Pielegniarka = {
                         {who: "ranny", type: "textMessage", text: "Już mam dość schronu..."},
                         {who: "ranny", type: "textMessage", text: "???"},
                         {who: "ranny", type: "textMessage", text: "Chciałbyś się tam dostać?"},
-                        {who: "ranny", type: "textMessage", text: "Powodzenia..."},
-                        {who: "Klucz_Schron",type: "textMessage",text: 'Otrzymałeś "Klucz do Schronu"!',},
+                        {who: "ranny", type: "textMessage", text: "Tak mi się chce jarać..."},
+                        {who: "ranny", type: "textMessage", text: "Daj mi szluga to się dogadamy."},
                         {code: 'const quest = new QuestLog({onComplete: () => {}});quest.end_quest("Klucz_do_schronu");',type: "do_code"},
-                        {code: 'window.OverworldMaps.Pielegniarka.gameObjects.ranny.talking[0].events = [{type: "talk", who:"ranny"}];',type: "do_code"},
+                        {
+                            code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Przysługa",desc: "Przynieś Jędrkowi szlugi"});',
+                            type: "do_code",
+                        },
+                        {type: "do_code", code: "window.OverworldMaps.Pielegniarka.start_func();"},
                     ];
                 }else{
-                    delete window.OverworldMaps.Pielegniarka.gameObjects.ranny;
+                    window.OverworldMaps.Pielegniarka.gameObjects.ranny.talking = [{events:[{who: "ranny",type: "talk"}]}
+               ];
+                }
+            }
+            if(e.id == "Przysługa"){
+                if(e.progress == 0){
+                  window.OverworldMaps.Pielegniarka.gameObjects.ranny.talking[0].events = [
+                      {
+                        type: "question",
+                        who: "ranny",
+                        text: "???",
+                        options: [
+                                    {
+                                        text: "Trzymaj szluga",
+                                        reaction: 'let map = window.map;map.startCutscene([{type: "textMessage", text: "Trzymaj...",who:"ranny"},{type:"textMessage",who:"Klucz_Schron",text: "Otrzymałeś Klucz do schronu!"}]);window.heroInventory.find(x=> x.id === "Kiepy").amount--;const quest = new QuestLog({onComplete: () => {}});quest.end_quest("Przysługa");',
+                                        req: 'window.heroInventory.find(x=> x.id === "Kiepy") && window.heroInventory.find(x=> x.id === "Kiepy").amount > 0 && !window.heroInventory.find(x=> x.id === "Kiepy").deleted',
+                                    },
+                                    {text: "Nic...",reaction: ''},
+                                ]
+                       }  
+                  ];  
                 }
             }
         })

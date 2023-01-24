@@ -8,15 +8,13 @@ class SceneTransition {
         if(window.game_color){
             this.element.style.background = window.game_color;
         }
-    }
-    
+    }   
     async fadeOut(){
         this.element.classList.add("fade-out");
         this.element.addEventListener("animationend", () => {
             this.element.remove();
         }, {once: true})
     }
-    
     init(container, callback){
         this.createElement();
         container.appendChild(this.element);

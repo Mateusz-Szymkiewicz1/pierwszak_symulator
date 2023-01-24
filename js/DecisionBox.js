@@ -2,18 +2,16 @@ class DecisionBox {
     constructor({onComplete}) {
         this.onComplete = onComplete;
     }
-
-    createElement() {
+    createElement(){
         this.element = document.createElement("div");
         this.element.classList.add("DecisionBox")
         this.element.innerHTML = `<h2>Na pewno?</h2><div id="decision_tak">Tak</div><div id="decision_nie">Nie</div>`;
-    }
-    
-    close() {
+    } 
+    close(){
         if(window.Overworld){
-        if(!window.Overworld.map.isPaused){
-        document.querySelector("canvas").style.filter = "none";
-        }
+            if(!window.Overworld.map.isPaused){
+                document.querySelector("canvas").style.filter = "none";
+            }
         }
         else{
             document.querySelector("canvas").style.filter = "none";
@@ -21,9 +19,8 @@ class DecisionBox {
         this.element.remove();
         this.esc.unbind();
         this.ent.unbind();
-    }
-        
-   async init(container) {
+    }      
+   async init(container){
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
@@ -38,12 +35,12 @@ class DecisionBox {
             }
         });
        this.ent = new KeyPressListener("Enter", () => {
-            this2.onComplete();
-            this2.close();
-        });
-        this.esc = new KeyPressListener("Escape", () => {
-            this2.close();
-        });
+          this2.onComplete();
+          this2.close();
+       });
+       this.esc = new KeyPressListener("Escape", () => {
+          this2.close();
+       });
     }
 
 }

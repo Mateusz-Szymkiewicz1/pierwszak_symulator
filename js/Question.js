@@ -6,7 +6,6 @@ class Question{
         this.onComplete = onComplete;
         this.element = null;
     }
-    
     createElement(){
         let this2 = this;
         this.element = document.createElement("div");
@@ -41,9 +40,9 @@ class Question{
                     if(opt.reaction){
                         eval(opt.reaction);  
                     }else{
-                    this2.onComplete().then(function(){
-                      eval(opt.reaction);  
-                    })
+                        this2.onComplete().then(function(){
+                          eval(opt.reaction);  
+                        })
                     }
                 })
             }
@@ -55,14 +54,12 @@ class Question{
         this.actionListener = new KeyPressListener("Enter", () => {
             this.done();
         })
-    }
-    
+    }  
     done(){
         if(!this.revealingText.isDone){
            this.revealingText.warpToDone();
        }
-    }
-    
+    } 
     init(container){
         this.createElement();
         container.appendChild(this.element);

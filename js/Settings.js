@@ -1,32 +1,27 @@
 class Settings{
-    constructor({
-        onComplete
-    }) {
+    constructor({onComplete}){
         this.onComplete = onComplete;
     }
-    
     close() {
         if(document.querySelector(".settings")){
-        let audio_settings_close = document.querySelector("#audio_settings_close");
-                   audio_settings_close.volume = 0.2*window.sfx_volume;
-                   audio_settings_close.play();
+            let audio_settings_close = document.querySelector("#audio_settings_close");
+            audio_settings_close.volume = 0.2*window.sfx_volume;
+            audio_settings_close.play();
         }
         if(!document.querySelector(".PauseMenu")){
             document.querySelector("canvas").style.filter = "none";
         }
         if(document.querySelector(".TitleScreen")){
             document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: none');
-             document.querySelector(".DescriptionBox").setAttribute('style', 'filter: none');
+            document.querySelector(".DescriptionBox").setAttribute('style', 'filter: none');
         }
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
-    }
-    
-    
+    }   
     fullscreen(){
         // TEN KOD JEST GRZECHEM PRZECIW LUDZKOŚCI, ALE DZIAŁA
-        window.fullscreen = 1;
+       window.fullscreen = 1;
        let width0 = window.getComputedStyle(document.querySelector(".game-container")).width;
        let width = parseInt(width0.slice(0, width0.length-2));
        let scale = window.scale;
@@ -70,56 +65,55 @@ class Settings{
        document.querySelector(".game-container").style.transform = `scale(${scale},${scale2}) translateY(34%)`
        document.body.style.background = "#202020";
        document.body.style.overflow = "hidden";
-        document.querySelector(".game-container").style.outline = "0";
-        document.querySelector(".settings > input[type=range]").disabled = true;
-        document.querySelector(".settings > input[type=range]").style.setProperty("filter", "contrast(0.4)");
-        document.querySelector(".settings > button").style.border = "1px solid rgba(255, 67, 95)";
-    }
-    
+       document.querySelector(".game-container").style.outline = "0";
+       document.querySelector(".settings > input[type=range]").disabled = true;
+       document.querySelector(".settings > input[type=range]").style.setProperty("filter", "contrast(0.4)");
+       document.querySelector(".settings > button").style.border = "1px solid rgba(255, 67, 95)";
+    }  
    async init() {
        this.progress = new Progress();
        let audio_settings = document.querySelector("#audio_settings");
-                   audio_settings.volume = 0.2*window.sfx_volume;
-                   audio_settings.play();
+       audio_settings.volume = 0.2*window.sfx_volume;
+       audio_settings.play();
        document.querySelector("canvas").style.filter = "blur(4px)";
-        document.querySelectorAll(".hud").forEach(el => {
+       document.querySelectorAll(".hud").forEach(el => {
             el.style = "filter: blur(4px); cursor: default;pointer-events: none;";
-        })
-        let this2 = this;
-        this.element = document.createElement("div");
-        this.element.classList.add("settings");
+       })
+       let this2 = this;
+       this.element = document.createElement("div");
+       this.element.classList.add("settings");
        this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10" id="range_size"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><h3>Dźwięk</h3><label id="label_sfx">SFX</label><input type="range" min="0" max="200" id="range_sfx"><br /><input type="checkbox" id="sans_check"><label>S A N S</label>`;
        const file = window.localStorage.getItem("preferences");
-    const file2 = JSON.parse(file);
-        document.querySelector(".game-container").appendChild(this.element);
+       const file2 = JSON.parse(file);
+       document.querySelector(".game-container").appendChild(this.element);
        this.element.setAttribute("tabindex", "0");
-         this.element.focus();
-        if(file2 && file2.scale){
-            if(file2.scale){
-           document.querySelector(".settings > input[type=range]").value = file2.scale*10;
-            window.scale = file2.scale;
-            }
-            if(file2.website_color){
-            document.querySelector("#color_website").value = file2.website_color;
-            window.website_color = file2.website_color;
-            }
-            if(file2.game_color){
-            document.querySelector("#color_game").value = file2.game_color;
-            window.game_color = file2.game_color;
+       this.element.focus();
+       if(file2 && file2.scale){
+          if(file2.scale){
+             document.querySelector(".settings > input[type=range]").value = file2.scale*10;
+             window.scale = file2.scale;
+           }
+           if(file2.website_color){
+              document.querySelector("#color_website").value = file2.website_color;
+              window.website_color = file2.website_color;
+           }
+           if(file2.game_color){
+              document.querySelector("#color_game").value = file2.game_color;
+              window.game_color = file2.game_color;
             }
        }
        document.querySelector("#range_sfx").value = window.sfx_volume*100;
        if(window.sans_mode){
            document.querySelector("#sans_check").checked = true;
        }
-        if(typeof window.fullscreen !== 'undefined' && window.fullscreen == 1){
-           document.querySelector(".settings > input[type=range]").disabled = true;
-        document.querySelector(".settings > input[type=range]").style.setProperty("filter", "contrast(0.4)")
+       if(typeof window.fullscreen !== 'undefined' && window.fullscreen == 1){
+          document.querySelector(".settings > input[type=range]").disabled = true;
+          document.querySelector(".settings > input[type=range]").style.setProperty("filter", "contrast(0.4)")
        }
        utils.wait(200);
        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
-        });
+       });
        document.querySelector("#range_size").addEventListener("change", function(){
            let skala = document.querySelector(".settings > input[type=range]").value/10;
            document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
@@ -131,11 +125,11 @@ class Settings{
                window.fullscreen = 0;
                let skala =  document.querySelector(".settings > input[type=range]").value/10;
                document.querySelector(".game-container").style.transform = `scale(${skala}) translateY(39%)`;
-       document.body.style.background = "#fff";
-       document.body.style.overflow = "auto";
-        document.querySelector(".game-container").style.outline = "1px solid #000";
+               document.body.style.background = "#fff";
+               document.body.style.overflow = "auto";
+               document.querySelector(".game-container").style.outline = "1px solid #000";
                document.querySelector(".settings > input[type=range]").disabled = false;
-        document.querySelector(".settings > input[type=range]").style.filter = "contrast(1)";
+               document.querySelector(".settings > input[type=range]").style.filter = "contrast(1)";
                document.querySelector(".settings > button").style.border = "1px solid #2ecc71";
            }else{
                this2.fullscreen();
@@ -170,7 +164,7 @@ class Settings{
            document.querySelector("#color_website").value = window.website_color;
            document.querySelector("#color_game").value = window.game_color;
            document.body.style.background = window.website_color;
-            this2.progress.save_preferences();
+           this2.progress.save_preferences();
        })
        document.querySelector("#sans_check").addEventListener("change", function(){
            if(!document.querySelector("#sans_check").checked){
@@ -193,5 +187,4 @@ class Settings{
            }
        })
    }
-
 }

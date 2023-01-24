@@ -2,19 +2,17 @@ class Buff{
     constructor(type, time) {
      this.type = type;
      this.time = parseInt(time);
-    }
-    
+    }  
     end(){
         this.element.remove();
         if(document.querySelector(".desc")){
             document.querySelector(".desc").remove();
         }
-    }
-    
-   async init() {
-        let this2 = this;
-        this.element = document.createElement("div");
-        this.element.classList.add("buff");
+    }  
+    async init() {
+       let this2 = this;
+       this.element = document.createElement("div");
+       this.element.classList.add("buff");
        this.element.classList.add("hud");
        this.element.dataset.type = this.type;
        const buffs = document.querySelectorAll(".buff");
@@ -22,13 +20,13 @@ class Buff{
            this.element.style.top = `${40+(25*buffs.length)}px`;
        }
        this.element.dataset.top = this.element.style.top;
-        document.querySelector(".game-container").appendChild(this.element);
-        this.element.innerHTML = `<img src="./images/Objects/${this.type.toLowerCase()}.png" height="17px" width="13px">`;
+       document.querySelector(".game-container").appendChild(this.element);
+       this.element.innerHTML = `<img src="./images/Objects/${this.type.toLowerCase()}.png" height="17px" width="13px">`;
        this.element.addEventListener("mouseenter", function(event){
            let desc = document.createElement("div");
            desc.classList.add("desc");
            desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
-            let nice_time = this2.time;
+           let nice_time = this2.time;
            if(nice_time >= 0){
                if(nice_time > 60000){
                    if((nice_time%60000)/1000 == 0){

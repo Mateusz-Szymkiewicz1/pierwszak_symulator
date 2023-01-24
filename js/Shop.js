@@ -1,17 +1,15 @@
 class Shop{
-     constructor({onComplete}, products) {
+     constructor({onComplete}, products){
         this.onComplete = onComplete;
         this.products = products;
     }
- 
     close() {
         document.querySelector("canvas").style.filter = "none";
-       utils.turn_hud_on();
+        utils.turn_hud_on();
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
-    }
-    
+    }  
     show_products(){
         this.element.innerHTML = "<h2>Sklep</h2>";
         this.products.forEach(el => {
@@ -23,27 +21,26 @@ class Shop{
                 <img src="${el2.src}" height="30px" width="30px">
             </div>`;
         })
-    }
-    
+    } 
    async init() {
-       document.querySelector("canvas").style.filter = "blur(4px)";
+        document.querySelector("canvas").style.filter = "blur(4px)";
         utils.turn_hud_off();
         document.querySelector(".gold").style = "filter: none; cursor: pointer;pointer-events: auto;";
         let this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("shop");
-       this.element.innerHTML = `<h2>Sklep</h2>`;
+        this.element.innerHTML = `<h2>Sklep</h2>`;
         document.querySelector(".game-container").appendChild(this.element);
-       this.element.setAttribute("tabindex", "0")
-       this.element.focus();
-       this.show_products();
-       utils.wait(200);
-       this.esc = new KeyPressListener("Escape", () => {
+        this.element.setAttribute("tabindex", "0")
+        this.element.focus();
+        this.show_products();
+        utils.wait(200);
+        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
-       const gold = new Gold();
-       gold.add(100)
-       this.element.addEventListener("mouseup", function product_mouseup(event){
+        const gold = new Gold();
+        gold.add(100)
+        this.element.addEventListener("mouseup", function product_mouseup(event){
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
                    gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
@@ -54,26 +51,25 @@ class Shop{
                    if(window.heroInventory.find(x=> x.id === event.target.dataset.product)){
                        if(window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted == true){
                            window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted = false;
-                       window.heroInventory.find(x=> x.id === event.target.dataset.product).amount = 1;
+                           window.heroInventory.find(x=> x.id === event.target.dataset.product).amount = 1;
                        }else{
                            window.heroInventory.find(x=> x.id === event.target.dataset.product).amount++;
                        }
                    }else{
-                   window.heroInventory.push(obj);
+                      window.heroInventory.push(obj);
                    }
                }else{
                    let audio_wrong = document.querySelector("#audio_wrong");
                    audio_wrong.volume = 0.1*window.sfx_volume;
                    audio_wrong.play();
-                    document.querySelector(".gold > span").style.color = "red";
+                   document.querySelector(".gold > span").style.color = "red";
                    document.querySelector(".gold > span").style.animation = "shake 1s ease";
                    setTimeout(function(){
-                     document.querySelector(".gold > span").style.color = "#fff";
-                   document.querySelector(".gold > span").style.animation = "";  
+                       document.querySelector(".gold > span").style.color = "#fff";
+                       document.querySelector(".gold > span").style.animation = "";  
                    }, 1200)
                 }
            }
        })
    }
-
 }

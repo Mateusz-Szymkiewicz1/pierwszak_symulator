@@ -1,12 +1,11 @@
 class KeyboardMenu {
-  constructor(config={}) {
-    this.options = []; //set by updater method
+  constructor(config={}){
+    this.options = [];
     this.up = null;
     this.down = null;
     this.prevFocus = null;
     this.descriptionContainer = config.descriptionContainer || null;
   }
-
   setOptions(options) {
     this.options = options;
     this.element.innerHTML = this.options.map((option, index) => {
@@ -20,9 +19,7 @@ class KeyboardMenu {
         </div>
       `)
     }).join("");
-
     this.element.querySelectorAll("button").forEach(button => {
-
       button.addEventListener("click", () => {
         const chosenOption = this.options[ Number(button.dataset.button) ];
         chosenOption.handler();
@@ -31,9 +28,9 @@ class KeyboardMenu {
         button.focus();
       })
       button.addEventListener("focus", () => {
-          let audio_switch = document.querySelector("#audio_button_switch").cloneNode(true);
-                   audio_switch.volume = 0.2*window.sfx_volume;
-                   audio_switch.play().then(function(){},function(){});
+        let audio_switch = document.querySelector("#audio_button_switch").cloneNode(true);
+        audio_switch.volume = 0.2*window.sfx_volume;
+        audio_switch.play().then(function(){},function(){});
         this.prevFocus = button;
         this.descriptionElementText.innerText = button.dataset.description;
       })
@@ -42,43 +39,28 @@ class KeyboardMenu {
         this.descriptionElementText.innerText = "";
       })
     })
-
     setTimeout(() => {
       this.element.querySelector("button[data-button]:not([disabled])").focus();
     }, 10)
-
-    
-
-
   }
-
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("KeyboardMenu");
-
-    //Description box element
     this.descriptionElement = document.createElement("div");
     this.descriptionElement.classList.add("DescriptionBox");
     this.descriptionElement.innerHTML = (`<p></p>`);
     this.descriptionElementText = this.descriptionElement.querySelector("p");
   }
-
   end() {
-
-    //Remove menu element and description element
     this.element.remove();
     this.descriptionElement.remove();
-
-    //Clean up bindings
     this.up.unbind();
     this.down.unbind();
   }
-
   init(container) {
     this.createElement();
     (this.descriptionContainer || container).appendChild(this.descriptionElement);
     container.appendChild(this.element);
-
     this.up = new KeyPressListener("ArrowUp", () => {
       const current = Number(this.prevFocus.getAttribute("data-button"));
       const prevButton = Array.from(this.element.querySelectorAll("button[data-button]")).reverse().find(el => {
@@ -93,7 +75,5 @@ class KeyboardMenu {
       })
       nextButton?.focus();
     })
-
   }
-
 }

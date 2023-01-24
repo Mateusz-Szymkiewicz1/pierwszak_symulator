@@ -7,7 +7,6 @@ class Progress {
         this.saveFileKey = "saveFile";
         this.buffs = [];
     }
-
     save() {
         this.save_relations();
         this.heroX = window.Overworld.map.gameObjects.hero.x;
@@ -22,10 +21,7 @@ class Progress {
         this.buffs = [];
         if(document.querySelector(".buff")){
             document.querySelectorAll(".buff").forEach(el => {
-                let obj = {
-                    type: el.dataset.type,
-                    time: el.dataset.time,
-                }
+                let obj = {type: el.dataset.type,time: el.dataset.time,};
                 this.buffs.push(obj);
             })
         }
@@ -42,12 +38,10 @@ class Progress {
             buffs: this.buffs,
         }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","szafka","id","deleted","amount","tile","src","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
     }
-
     getSaveFile() {
         const file = window.localStorage.getItem(this.saveFileKey);
         return file ? JSON.parse(file) : null
     }
-
     save_preferences(){
         window.localStorage.setItem("preferences", JSON.stringify({
                scale: window.scale,
@@ -56,26 +50,23 @@ class Progress {
                 sfx_volume: window.sfx_volume,
              music_volume: window.music_volume,
              sans_mode: window.sans_mode,
-            }))
+        }))
     }
-    
     save_relations(){
         window.localStorage.setItem("relations", JSON.stringify({
                relations: window.relations_obj
         }))
-    }
-    
+    } 
     load_relations(){
         const file = window.localStorage.getItem("relations");
         const file2 = JSON.parse(file);
-        if (file2) {
-         window.relations_obj = file2.relations; 
+        if(file2){
+           window.relations_obj = file2.relations; 
         }
-    }
-    
+    } 
     load() {
         const file = this.getSaveFile();
-        if (file) {
+        if(file){
             this.mapId = file.mapId;
             this.startingHeroX = file.startingHeroX;
             this.startingHeroY = file.startingHeroY;
@@ -88,5 +79,4 @@ class Progress {
             this.szafka = file.szafka;
         }
     }
-
 }

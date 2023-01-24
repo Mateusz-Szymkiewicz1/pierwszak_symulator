@@ -1,14 +1,12 @@
 class QuestLog{
-    constructor({onComplete}) {
+    constructor({onComplete}){
         this.onComplete = onComplete;
     }
-
-    createElement() {
+    createElement(){
         this.element = document.createElement("div");
         this.element.classList.add("QuestLog")
         this.element.innerHTML = `<h2>Questy</h2>`;
     }
-    
     add_quest(quest){
         quest.progress = 0;
         if(!quest.reward){
@@ -18,7 +16,7 @@ class QuestLog{
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_added");
-         popup.classList.add("hud");
+        popup.classList.add("hud");
         let audio_quest = document.querySelector("#audio_quest");
         audio_quest.volume = 0.2*window.sfx_volume;
         audio_quest.play();
@@ -49,8 +47,7 @@ class QuestLog{
                 }
             }, 200)
         })
-    }
-    
+    }  
     end_quest(id){
         let quest = {};
         window.quests.forEach(e => {
@@ -58,22 +55,22 @@ class QuestLog{
                 quest = e;
                 e.progress = 1;
                 if(e.reward){
-                let gold = new Gold();
-                gold.add(e.reward);
+                    let gold = new Gold();
+                    gold.add(e.reward);
                 }
             }
         })
         const popup = document.createElement("div");
         popup.classList.add("QuestPopup");
         popup.classList.add("quest_ended");
-         popup.classList.add("hud");
+        popup.classList.add("hud");
         let audio_quest_completed = document.querySelector("#audio_quest_completed");
         audio_quest_completed.volume = 0.2*window.sfx_volume;
         audio_quest_completed.play();
         if(quest.reward){
             popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}<br />Nagroda : ${quest.reward}</span>`;
         }else{
-        popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}</span>`;
+            popup.innerHTML = `<h2>Wykonano Questa!</h2><span>${quest.desc}</span>`;
         }
         if(document.querySelector(".QuestPopup")){
             popup.style.bottom = "60px";
@@ -97,8 +94,8 @@ class QuestLog{
             setTimeout(function(){
                 popup.remove();
                 if(document.querySelector(".QuestPopup")){
-                document.querySelector(".QuestPopup").style.bottom = "6px";
-            }
+                    document.querySelector(".QuestPopup").style.bottom = "6px";
+                }
             }, 200)
         })
     }
@@ -114,99 +111,93 @@ class QuestLog{
             }
             if(e.progress == 0){
                 counter++;
-            if(e.deletable){
-                this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}G</p></h3><br><br/><span>${e.desc}</span>`;
-            }else{
-            this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span>`;
-            }
+                if(e.deletable){
+                    this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}G</p></h3><br><br/><span>${e.desc}</span>`;
+                }else{
+                    this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span>`;
+                }
             }
         })
         if(counter == 0){
             this.element.innerHTML = this.element.innerHTML+`<h4>Pusto ;(</h4>`;
         }
     }
-    
     close() {
         document.querySelector("canvas").style.filter = "none";
         utils.turn_hud_on();
         document.querySelector(".quest_button").innerText = '!';
         document.querySelector(".quest_button").style.paddingTop = "1px";
-       document.querySelector(".quest_button").style.height = "20px";
+        document.querySelector(".quest_button").style.height = "20px";
         var old_element = document.querySelector(".quest_button");
-var new_element = old_element.cloneNode(true);
-old_element.parentNode.replaceChild(new_element, old_element);
-       document.querySelector(".quest_button").addEventListener("click", function(){
-           if (!window.Overworld.map.isCutscenePlaying) {
-                window.Overworld.map.startCutscene([
-                    {
-                        type: "questlog"
-                    }
-            ]);
-            }
-       })
+        var new_element = old_element.cloneNode(true);
+        old_element.parentNode.replaceChild(new_element, old_element);
+        document.querySelector(".quest_button").addEventListener("click", function(){
+           if(!window.Overworld.map.isCutscenePlaying){
+                window.Overworld.map.startCutscene([{type: "questlog"}]);
+           }
+        })
         setTimeout(function(){
             document.querySelector(".quest_button").addEventListener("mouseenter", function(event){
-            if(!document.querySelector(".QuestLog")){
-                let desc = document.createElement("div");
-           desc.classList.add("desc");
-           desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
-            desc.innerText = "Quests";
-           document.querySelector("body").appendChild(desc);
-            }
-        })
-        document.querySelector(".quest_button").addEventListener("mousemove", function(event){
-            if(!document.querySelector(".QuestLog")){
-                if(document.querySelector(".desc")){
-               document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;     
+                if(!document.querySelector(".QuestLog")){
+                    let desc = document.createElement("div");
+                    desc.classList.add("desc");
+                    desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
+                    desc.innerText = "Quests";
+                    document.querySelector("body").appendChild(desc);
                 }
-            }
-            else{
-                if(document.querySelector(".desc")){
-                document.querySelector(".desc").remove();
+            })
+            document.querySelector(".quest_button").addEventListener("mousemove", function(event){
+                if(!document.querySelector(".QuestLog")){
+                    if(document.querySelector(".desc")){
+                        document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;     
+                    }
                 }
-            }
-       })
-       document.querySelector(".quest_button").addEventListener("mouseleave", function(){
-           if(document.querySelector(".desc")){
-           document.querySelector(".desc").remove();
-           }
-       })
-        },500)
-        this.element.remove();
-        this.esc.unbind();
-        this.q.unbind();
-        this.onComplete();
-    }
-        
+                else{
+                    if(document.querySelector(".desc")){
+                        document.querySelector(".desc").remove();
+                    }
+                }
+           })
+           document.querySelector(".quest_button").addEventListener("mouseleave", function(){
+               if(document.querySelector(".desc")){
+                  document.querySelector(".desc").remove();
+               }
+           })
+       },500)
+       this.element.remove();
+       this.esc.unbind();
+       this.q.unbind();
+       this.onComplete();
+    }     
    async init(container) {
        if(document.querySelector(".desc")){
-                document.querySelector(".desc").remove();
-                }
-       document.querySelector(".quest_button").innerText = 'x';
-       document.querySelector(".quest_button").style.paddingTop = "0px";
-       document.querySelector(".quest_button").style.height = "21px";
+            document.querySelector(".desc").remove();
+        }
+        document.querySelector(".quest_button").innerText = 'x';
+        document.querySelector(".quest_button").style.paddingTop = "0px";
+        document.querySelector(".quest_button").style.height = "21px";
         let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
-       utils.turn_hud_off();
+        utils.turn_hud_off();
         container.appendChild(this.element);
-       this.element.setAttribute("tabindex", "0");
+        this.element.setAttribute("tabindex", "0");
          this.element.focus();
-       this.check();
-       utils.wait(200);
-       this.esc = new KeyPressListener("Escape", () => {
+        this.check();
+        utils.wait(200);
+        this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
-       this.q = new KeyPressListener("KeyQ", () => {
+        this.q = new KeyPressListener("KeyQ", () => {
            this2.close();
         });
-       var old_element = document.querySelector(".quest_button");
-var new_element = old_element.cloneNode(true);
-old_element.parentNode.replaceChild(new_element, old_element);
-       document.querySelector(".quest_button").addEventListener("click", function quest_close(){
+        var old_element = document.querySelector(".quest_button");
+        var new_element = old_element.cloneNode(true);
+        old_element.parentNode.replaceChild(new_element, old_element);
+        document.querySelector(".quest_button").addEventListener("click", function quest_close(){
            this2.close();
-       })
-       document.querySelector(".QuestLog").addEventListener("click", function(event){
+        })
+        document.querySelector(".QuestLog").addEventListener("click", function(event){
            if(event.target.className == "rez"){
            const eventHandler = new OverworldEvent({event:{
                         type: "decision",
@@ -225,5 +216,4 @@ old_element.parentNode.replaceChild(new_element, old_element);
            }
        })
     }
-
 }

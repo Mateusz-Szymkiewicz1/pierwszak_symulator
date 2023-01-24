@@ -19,10 +19,7 @@ class OverworldMap {
         ctx.drawImage(this.upperImage, utils.withGrid(10.5) - cameraPerson.x, utils.withGrid(6) - cameraPerson.y);
     }
     isSpaceTaken(currentX, currentY, direction) {
-        const {
-            x,
-            y
-        } = utils.nextPosition(currentX, currentY, direction);
+        const {x,y} = utils.nextPosition(currentX, currentY, direction);
         return this.walls[`${x},${y}`] || false;
     }
     mountObjects() {
@@ -32,23 +29,15 @@ class OverworldMap {
             object.mount(this);
         })
     }
-
     async startCutscene(events) {
         this.isCutscenePlaying = true;
-
         for (let i = 0; i < events.length; i++) {
-            const eventHandler = new OverworldEvent({
-                event: events[i],
-                map: this,
-            })
+            const eventHandler = new OverworldEvent({event: events[i],map: this,});
             await eventHandler.init();
         }
-
         this.isCutscenePlaying = false;
-
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
-
     checkForActionCutscene() {
         if(!document.querySelector(".TextMessage") && !document.querySelector(".Question")){
         const hero = this.gameObjects["hero"];
@@ -81,7 +70,7 @@ class OverworldMap {
         const hero = this.gameObjects["hero"];
         const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
         if (!this.isCutscenePlaying && match) {
-            this.startCutscene(match[0].events)
+            this.startCutscene(match[0].events);
         }
     }
     addWall(x, y) {
@@ -92,14 +81,8 @@ class OverworldMap {
     }
     moveWall(wasX, wasY, direction) {
         this.removeWall(wasX, wasY);
-        const {
-            x,
-            y
-        } = utils.nextPosition(wasX, wasY, direction);
+        const {x,y} = utils.nextPosition(wasX, wasY, direction);
         this.addWall(x, y);
     }
 }
-
-window.OverworldMaps = {
-    
-}
+window.OverworldMaps = {};

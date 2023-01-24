@@ -1,7 +1,7 @@
 window.OverworldMaps.Schron = {
         id: "Schron",
         lowerSrc: "images/maps/SchronLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/SchronUpper.png",
         gameObjects: {
             placeholder: new Person({
                src: "images/maps/KitchenUpper.png"
