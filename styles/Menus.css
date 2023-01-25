@@ -11,15 +11,12 @@
   padding-right: 4px;
   padding-bottom: 4px;
 }
-
 .PauseMenu .KeyboardMenu {
   position: relative;
   border:0;
 }
-
 .PauseMenu h2 {
   font-size: 10px;
-  color: var(--menu-font-color);
   margin:0;
   padding: 2px 0;
   text-align:center;
@@ -38,10 +35,8 @@
   padding-right: 4px;
   padding-bottom: 4px;
 }
-
 .Inventory h2 {
   font-size: 10px;
-  color: var(--menu-font-color);
   margin:0;
   padding: 2px 0;
     padding-bottom: 5px;
@@ -203,15 +198,12 @@
     padding-bottom: 5px;
     margin-top: 5px;
 }
-.QuestLog > h3{
+.QuestLog h3{
     font-size: 12px;
     margin-top: 5px;
     margin-left: 5px;
-    border-top: 1px solid #a48465;
     float: left;
-}
-.QuestLog > h3:first-of-type{
-    border: 0;
+    margin-bottom: 0;
 }
 .QuestLog p {
     margin: 0;
@@ -229,20 +221,32 @@
 }
 .QuestLog p:nth-child(even){
     color: #f1c40f;
-    cursor: auto;
     text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
 }
-.QuestLog > span{
+.QuestLog span{
     display: block;
     font-size: 11px;
     font-weight: 100;
     margin-left: 5px;
     padding-bottom: 4px;
-    margin-top: -5px;
+    margin-top: -11px;
+    color: #5c382f;
 }
 .QuestLog h4{
     text-align: center;
     font-weight: 300;
+}
+.quest{
+    background: #ddc6b0;
+    margin-top: 5px;
+    padding-bottom: 4px;
+    padding-top: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.quest:hover{
+    background: #ccb5a0;
+    transform: translateY(-0.5px);
 }
 .health_bar{
     background: #937354;
@@ -425,11 +429,15 @@
     margin-top: 15px;
 }
 .settings > input[type=range]{
-    margin-left: -10px;
     margin-top: -9px;
      float: left;
     border-radius: 0px;
     transition: 0.4s;
+    background-color: transparent;
+  -webkit-appearance: none;
+    width: 120px;
+    height: 10px;
+    margin-left: 5px;
 }
 .settings > label{
     display: block;
@@ -441,13 +449,6 @@
 }
 .settings > label:nth-of-type(2){
     margin-top: -7.2px;
-}
-.settings >input[type=range] {
-  background-color: transparent;
-  -webkit-appearance: none;
-    width: 120px;
-    height: 10px;
-    margin-left: 5px;
 }
 input[type=range]:focus {
   outline: none;
@@ -481,7 +482,6 @@ button{
     font-family: 'font';
     margin-top: 10px;
     margin-left: 5px;
-    border: 0;
     background: #484d4d;
     border: 1px solid #2ecc71;
     transition: 0.4s;
@@ -491,8 +491,6 @@ button{
     width: 50px;
     height: 20px;
     cursor: pointer;
-    -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   background-color: transparent;
   border: none;

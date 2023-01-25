@@ -98,8 +98,7 @@ class QuestLog{
                 }
             }, 200)
         })
-    }
-    
+    }  
     check(){
         this.element = document.querySelector(".QuestLog");
         this.element.innerHTML = `<h2>Questy</h2>`;
@@ -112,9 +111,9 @@ class QuestLog{
             if(e.progress == 0){
                 counter++;
                 if(e.deletable){
-                    this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}G</p></h3><br><br/><span>${e.desc}</span>`;
+                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}</p></h3><br><br/><span>${e.desc}</span></div>`;
                 }else{
-                    this.element.innerHTML = this.element.innerHTML+`<h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span>`;
+                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span></div>`;
                 }
             }
         })

@@ -244,9 +244,7 @@ window.OverworldMaps.OZE = {
                 ]
                 }
             })
-            const progress = new Progress();
-            progress.load();
-            progress.quests.forEach(e =>{
+            window.quests.forEach(e =>{
                 if(e.id == "Klucz_do_schronu"){
                     let length = window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events.length-1;
                     if(window.OverworldMaps.OZE.gameObjects.schronD.talking[0].events[length].type == "do_code"){
