@@ -22,12 +22,7 @@ window.NPCs.push({
             }
         ],
         [
-            {
-               type: "textMessage",
-                who: "ziomek",
-                faceHero: "ziomek",
-                text: "Kocham gilzy kokosowe <3", 
-            }
-        ]
+            {type: "textMessage",who: "ziomek",faceHero: "ziomek",text: "Kocham gilzy kokosowe <3", }
+        ],
     ]
 });

@@ -4,12 +4,7 @@ window.NPCs.push({
       title: "Jędrzej",
     talking: [
         [
-            {
-                type: "textMessage",
-                who: "ranny",
-                faceHero: "ranny",
-                text: "Nie chcę o tym gadać..."
-            }
+            {type: "textMessage",who: "ranny",faceHero: "ranny",text: "Nie chcę o tym gadać..."}
         ],
     ]
 });

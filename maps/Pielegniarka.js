@@ -36,12 +36,12 @@ window.OverworldMaps.Pielegniarka = {
                 talking: [
                     {
                         events: [
-                            {who: "pielegniarka",type: "textMessage",text: 'Lorem Ipsum dolor sit amet'},
+                            {who: "pielegniarka",type: "talk"},
                        ]
                    }
                ],
             }),
-            pielegniarka_talking: new Person({
+            pielegniarka_shop: new Person({
                 x: utils.withGrid(2),
                 y: utils.withGrid(3),
                 counter: 0,

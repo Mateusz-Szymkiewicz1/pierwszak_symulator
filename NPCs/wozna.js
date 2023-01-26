@@ -4,26 +4,11 @@ window.NPCs.push({
       title: "Woźna",
     talking: [
         [
-            {
-                type: "textMessage",
-                who: "wozna",
-                faceHero: "wozna",
-                text: "Zmien buty debilu"
-            }
+            {type: "textMessage",who: "wozna",faceHero: "wozna",text: "Zmien buty debilu"}
         ],
         [
-             {
-                type: "textMessage",
-                who: "wozna",
-                faceHero: "wozna",
-                text: "Ktoś sie bije na kamerach lol"
-            },
-             {
-                type: "textMessage",
-                who: "wozna",
-                faceHero: "wozna",
-                text: "Stawiam na tego po lewej"
-            }
+            {type: "textMessage",who: "wozna",faceHero: "wozna",text: "Ktoś sie bije na kamerach lol"},
+            {type: "textMessage",who: "wozna",faceHero: "wozna",text: "Stawiam na tego po lewej"}
         ]
     ]
 });

@@ -4,24 +4,9 @@ window.NPCs.push({
       title: "Dariusz",
       talking: [
                     [
-                        {
-                            who: "dariusz",
-                            type: "textMessage",
-                            text: "Kazali mi zapłacić za winkiel",
-                            faceHero: "dariusz"
-                        },
-                        {
-                            who: "dariusz",
-                            type: "textMessage",
-                            text: "Teraz dzwonią po moich rodziców",
-                            faceHero: "dariusz"
-                        },
-                        {
-                            who: "dariusz",
-                            type: "textMessage",
-                            text: "Dwulicowe szmaty",
-                            faceHero: "dariusz"
-                        },
+                        {who: "dariusz",type: "textMessage",text: "Kazali mi zapłacić za winkiel",faceHero: "dariusz"},
+                        {who: "dariusz",type: "textMessage", text: "Teraz dzwonią po moich rodziców", faceHero: "dariusz"},
+                        {who: "dariusz",type: "textMessage",text: "Dwulicowe szmaty",faceHero: "dariusz"},
                         {
                             once: true,
                             who: "dariusz",
@@ -41,26 +26,11 @@ window.NPCs.push({
                             },
                 ],
                 [
-                  {
-                     who: "dariusz",
-                    type: "textMessage",
-                    text: "Lorem Ipsum dolor sit amet",
-                    faceHero: "dariusz"
-                    }  
+                  {who: "dariusz",type: "textMessage",text: "Lorem Ipsum dolor sit amet",faceHero: "dariusz"}  
                 ],
-          [
-                  {
-                     who: "dariusz",
-                    type: "textMessage",
-                    text: "Nie, nie jestem NPCem",
-                    faceHero: "dariusz"
-                    },
-                {
-                     who: "dariusz",
-                    type: "textMessage",
-                    text: "Wypuśćcie mnie",
-                    faceHero: "dariusz"
-                    }
+                [
+                    {who: "dariusz",type: "textMessage",text: "Nie, nie jestem NPCem",faceHero: "dariusz"},
+                    {who: "dariusz",type: "textMessage",text: "Wypuśćcie mnie",faceHero: "dariusz"}
                 ],
       ]
 });

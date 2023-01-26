@@ -41,7 +41,7 @@ window.OverworldMaps.KorytarzLewy = {
                 talking: [
                     {
                         events: [
-                            {who: "lysy",type: "textMessage",text: "Zapytaj się czy dzisiaj bilard",faceHero:"lysy"},
+                            {who: "lysy",type: "talk"},
                        ]
                    }
                ],
@@ -326,7 +326,45 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-
+            [utils.asGridCoord(1, 12)]: [
+                {
+                    events: [
+                        {
+                           type: "changeMap",
+                            map: "SalaG",
+                            x: utils.withGrid(12),
+                            y: utils.withGrid(7),
+                            direction: "left" 
+                        }
+                    ]
+                }
+            ],
+             [utils.asGridCoord(2, 12)]: [
+                {
+                    events: [
+                        {
+                           type: "changeMap",
+                            map: "SalaG",
+                            x: utils.withGrid(12),
+                            y: utils.withGrid(7),
+                            direction: "left" 
+                        }
+                    ]
+                }
+            ],
+             [utils.asGridCoord(3, 12)]: [
+                {
+                    events: [
+                        {
+                           type: "changeMap",
+                            map: "SalaG",
+                            x: utils.withGrid(13),
+                            y: utils.withGrid(7),
+                            direction: "left" 
+                        }
+                    ]
+                }
+            ],
         },
         walls: {
            [utils.asGridCoord(23, 3)]: true,
@@ -405,5 +443,8 @@ window.OverworldMaps.KorytarzLewy = {
            [utils.asGridCoord(8, 2)]: true,
            [utils.asGridCoord(13, 2)]: true,
            [utils.asGridCoord(0, 7)]: true,
+           [utils.asGridCoord(1, 13)]: true,
+           [utils.asGridCoord(2, 13)]: true,
+           [utils.asGridCoord(3, 13)]: true,
         },
     };
