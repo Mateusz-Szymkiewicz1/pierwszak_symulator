@@ -25,6 +25,9 @@ window.OverworldMaps.SalaG = {
                             {
                                 type: "changeMap",
                                 map: "Pilki",
+                                x: utils.withGrid(1),
+                                y: utils.withGrid(4),
+                                direction: "right" 
                             },
                        ]
                    },

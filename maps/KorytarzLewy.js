@@ -358,7 +358,7 @@ window.OverworldMaps.KorytarzLewy = {
                         {
                            type: "changeMap",
                             map: "SalaG",
-                            x: utils.withGrid(13),
+                            x: utils.withGrid(12),
                             y: utils.withGrid(7),
                             direction: "left" 
                         }
