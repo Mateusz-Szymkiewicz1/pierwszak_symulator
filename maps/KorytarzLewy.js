@@ -365,6 +365,32 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
+            [utils.asGridCoord(21, 3)]: [
+                {
+                    events: [
+                        {
+                           type: "changeMap",
+                            map: "Hol",
+                            x: utils.withGrid(7),
+                            y: utils.withGrid(5),
+                            direction: "down" 
+                        }
+                    ]
+                }
+            ],
+            [utils.asGridCoord(22, 3)]: [
+                {
+                    events: [
+                        {
+                           type: "changeMap",
+                            map: "Hol",
+                            x: utils.withGrid(7),
+                            y: utils.withGrid(5),
+                            direction: "down" 
+                        }
+                    ]
+                }
+            ],
         },
         walls: {
            [utils.asGridCoord(23, 3)]: true,
