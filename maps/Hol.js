@@ -14,32 +14,6 @@ window.OverworldMaps.Hol = {
       }),
   },
   cutsceneSpaces: {
-         [utils.asGridCoord(1, 5)]: [
-          {
-              events: [
-                  {
-                      type: "changeMap",
-                      map: "KorytarzLewy1",
-                      x: utils.withGrid(1),
-                      y: utils.withGrid(5),
-                      direction: "left"
-                  },
-              ]
-          }
-      ],
-      [utils.asGridCoord(1, 6)]: [
-        {
-            events: [
-                {
-                    type: "changeMap",
-                    map: "KorytarzLewy1",
-                    x: utils.withGrid(1),
-                    y: utils.withGrid(5),
-                    direction: "left"
-                },
-            ]
-        }
-    ],
     [utils.asGridCoord(7, 4)]: [
       {
           events: [
@@ -92,6 +66,32 @@ window.OverworldMaps.Hol = {
       ]
   }
 ],
+[utils.asGridCoord(1, 5)]: [
+    {
+        events: [
+            {
+                type: "changeMap",
+                map: "KorytarzLewy1",
+                x: utils.withGrid(15),
+                y: utils.withGrid(3),
+                direction: "left"
+            },
+        ]
+    }
+  ],
+  [utils.asGridCoord(1, 6)]: [
+    {
+        events: [
+            {
+                type: "changeMap",
+                map: "KorytarzLewy1",
+                x: utils.withGrid(15),
+                y: utils.withGrid(4),
+                direction: "left"
+            },
+        ]
+    }
+  ],
   },
   walls: {
   [utils.asGridCoord(6, 5)]: true,
