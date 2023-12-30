@@ -105,8 +105,8 @@ window.OverworldMaps.KorytarzLewy1 = {
                   {
                       type: "changeMap",
                       map: "ToaletaKL1",
-                      x: utils.withGrid(4),
-                      y: utils.withGrid(11),
+                      x: utils.withGrid(3),
+                      y: utils.withGrid(12),
                       direction: "up"
                   },
              ]
