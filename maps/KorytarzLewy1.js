@@ -200,9 +200,9 @@ IzolatkaDrzwi: new Person({
           {
               type: "changeMap",
               map: "Izolatka",
-              x: utils.withGrid(4),
-              y: utils.withGrid(11),
-              direction: "up"
+              x: utils.withGrid(2),
+              y: utils.withGrid(1),
+              direction: "down"
           },
         ]
      },
