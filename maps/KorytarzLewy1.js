@@ -40,7 +40,7 @@ window.OverworldMaps.KorytarzLewy1 = {
                       {
                           type: "changeMap",
                           map: "S129",
-                          x: utils.withGrid(4),
+                          x: utils.withGrid(13),
                           y: utils.withGrid(11),
                           direction: "up"
                       },
