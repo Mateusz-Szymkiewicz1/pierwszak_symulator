@@ -7,8 +7,10 @@ class OverworldMap {
         this.cutsceneSpaces = config.cutsceneSpaces || {};
         this.lowerImage = new Image();
         this.lowerImage.src = config.lowerSrc;
-        this.upperImage = new Image();
-        this.upperImage.src = config.upperSrc;
+        if(config.upperSrc){
+            this.upperImage = new Image();
+            this.upperImage.src = config.upperSrc;
+        }
         this.isCutscenePlaying = false;
         this.isPaused = false;
     }
@@ -16,7 +18,9 @@ class OverworldMap {
         ctx.drawImage(this.lowerImage, utils.withGrid(10.5) - cameraPerson.x, utils.withGrid(6) - cameraPerson.y);
     }
     drawUpperImage(ctx, cameraPerson) {
-        ctx.drawImage(this.upperImage, utils.withGrid(10.5) - cameraPerson.x, utils.withGrid(6) - cameraPerson.y);
+        if(this.upperImage){
+            ctx.drawImage(this.upperImage, utils.withGrid(10.5) - cameraPerson.x, utils.withGrid(6) - cameraPerson.y);
+        }
     }
     isSpaceTaken(currentX, currentY, direction) {
         const {x,y} = utils.nextPosition(currentX, currentY, direction);

@@ -66,7 +66,7 @@ window.OverworldMaps.School = {
                 x: utils.withGrid(8),
                 y: utils.withGrid(7),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -80,13 +80,13 @@ window.OverworldMaps.School = {
                 y: utils.withGrid(2),
                 pickUp: true,
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
             }),
             ksiazka: new Person({
                 x: utils.withGrid(16),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -114,7 +114,7 @@ window.OverworldMaps.School = {
                 x: utils.withGrid(10),
                 y: utils.withGrid(6),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [

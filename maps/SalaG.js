@@ -4,7 +4,7 @@ window.OverworldMaps.SalaG = {
         upperSrc: "images/maps/SalaGUpper.png",
         gameObjects: {
             placeholder: new Person({
-               src: "images/maps/KitchenUpper.png"
+               src: "images/maps/blank.png"
             }),
             pilki_d: new Person({
                 x: utils.withGrid(12),

@@ -1,7 +1,6 @@
 window.OverworldMaps.OZE = {
         id: "OZE",
         lowerSrc: "images/maps/OZELower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
         gameObjects: {
             schronD: new Person({
                 x: utils.withGrid(7),

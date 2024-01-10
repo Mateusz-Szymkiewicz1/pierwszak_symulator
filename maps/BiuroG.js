@@ -1,7 +1,6 @@
 window.OverworldMaps.BiuroG = {
         id: "BiuroG",
         lowerSrc: "images/maps/BiuroGLower.png",
-        upperSrc: "images/maps/KitchenUpper.png",
         gameObjects: {
             g: new Person({
                 x: utils.withGrid(2),

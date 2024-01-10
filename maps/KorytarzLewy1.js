@@ -1,7 +1,6 @@
 window.OverworldMaps.KorytarzLewy1 = {
   id: "KorytarzLewy1",
   lowerSrc: "images/maps/KorytarzLewy1Lower.png",
-  upperSrc: "images/maps/KitchenUpper.png",
   gameObjects: {
       hero: new Person({
           isPlayerControlled: true,
@@ -13,7 +12,7 @@ window.OverworldMaps.KorytarzLewy1 = {
           x: utils.withGrid(12),
           y: utils.withGrid(2),
           counter: 0,
-          src: "images/maps/KitchenUpper.png",
+          src: "images/maps/blank.png",
           talking: [
               {
                   events: [
@@ -52,7 +51,7 @@ window.OverworldMaps.KorytarzLewy1 = {
         x: utils.withGrid(7),
         y: utils.withGrid(2),
         counter: 0,
-        src: "images/maps/KitchenUpper.png",
+        src: "images/maps/blank.png",
         talking: [
             {
                 events: [

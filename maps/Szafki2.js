@@ -1,13 +1,12 @@
 window.OverworldMaps.Szafki2 = {
         id: "Szafki2",
         lowerSrc: "images/maps/Szafki2Lower.png",
-        upperSrc: "images/maps/Szafki2Upper.png",
         gameObjects: {
         szafka: new Person({
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [],
             }),
         hero: new Person({

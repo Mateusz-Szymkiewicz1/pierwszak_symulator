@@ -1,14 +1,13 @@
 window.OverworldMaps.Pielegniarka = {
         id: "Pielegniarka",
         lowerSrc: "images/maps/PielegniarkaLower.png",
-        upperSrc: "images/maps/PielegniarkaUpper.png",
         gameObjects: {
             Klucz_Schron: new Person({
                 x: utils.withGrid(0),
                 y: utils.withGrid(9),
                 pickUp: true,
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
             }),
             ranny: new Person({
                 x: utils.withGrid(1),
@@ -45,7 +44,7 @@ window.OverworldMaps.Pielegniarka = {
                 x: utils.withGrid(2),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [

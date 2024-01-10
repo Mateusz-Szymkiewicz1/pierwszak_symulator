@@ -53,7 +53,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(16),
                 y: utils.withGrid(1),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -72,7 +72,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(17),
                 y: utils.withGrid(1),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -91,7 +91,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(12),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -104,7 +104,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(7),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -117,7 +117,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(3),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -130,7 +130,7 @@ window.OverworldMaps.KorytarzLewy = {
                 x: utils.withGrid(10),
                 y: utils.withGrid(3),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [

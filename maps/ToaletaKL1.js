@@ -1,7 +1,6 @@
 window.OverworldMaps.ToaletaKL1 = {
   id: "ToaletaKL1",
   lowerSrc: "images/maps/ToiletLower.png",
-  upperSrc: "images/maps/ToiletUpper.png",
   gameObjects: {
       wcDrzwi: new Person({
           x: utils.withGrid(4),

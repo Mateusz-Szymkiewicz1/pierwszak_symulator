@@ -1,7 +1,6 @@
 window.OverworldMaps.Toilet = {
         id: "Toilet",
         lowerSrc: "images/maps/ToiletLower.png",
-        upperSrc: "images/maps/ToiletUpper.png",
         gameObjects: {
             ziomek: new Person({
                 x: utils.withGrid(6),

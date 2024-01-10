@@ -4,7 +4,7 @@ window.OverworldMaps.S130 = {
   upperSrc: "images/maps/S26Upper.png",
   gameObjects: {
       placeholder: new Person({
-         src: "images/maps/KitchenUpper.png"
+         src: "images/maps/blank.png"
       }),
       hero: new Person({
           isPlayerControlled: true,

@@ -152,7 +152,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 x: utils.withGrid(3),
                 y: utils.withGrid(7),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -165,7 +165,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 x: utils.withGrid(7),
                 y: utils.withGrid(7),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -178,7 +178,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 x: utils.withGrid(14),
                 y: utils.withGrid(7),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -191,7 +191,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 x: utils.withGrid(17),
                 y: utils.withGrid(7),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -211,7 +211,7 @@ window.OverworldMaps.KorytarzPrawy = {
                 x: utils.withGrid(22),
                 y: utils.withGrid(5),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [

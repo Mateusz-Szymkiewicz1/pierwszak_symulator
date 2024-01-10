@@ -4,7 +4,7 @@ window.OverworldMaps.Hol = {
   upperSrc: "images/maps/HolUpper.png",
   gameObjects: {
       placeholder: new Person({
-         src: "images/maps/KitchenUpper.png"
+         src: "images/maps/blank.png"
       }),
       hero: new Person({
           isPlayerControlled: true,

@@ -1,7 +1,6 @@
 window.OverworldMaps.Biblioteka = {
         id: "Biblioteka",
         lowerSrc: "images/maps/BibliotekaLower.png",
-        upperSrc: "images/maps/BibliotekaUpper.png",
         gameObjects: {
             bibliotekarka1: new Person({
                 x: utils.withGrid(8),
@@ -17,7 +16,7 @@ window.OverworldMaps.Biblioteka = {
                 x: utils.withGrid(7),
                 y: utils.withGrid(8),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -30,7 +29,7 @@ window.OverworldMaps.Biblioteka = {
                 x: utils.withGrid(3),
                 y: utils.withGrid(2),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [
@@ -59,7 +58,7 @@ window.OverworldMaps.Biblioteka = {
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 counter: 0,
-                src: "images/maps/KitchenUpper.png",
+                src: "images/maps/blank.png",
                 talking: [
                     {
                         events: [

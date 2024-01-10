@@ -1,7 +1,6 @@
 window.OverworldMaps.SzatniaM = {
         id: "SzatniaM",
         lowerSrc: "images/maps/SzatniaMLower.png",
-        upperSrc: "images/maps/SzatniaMUpper.png",
         gameObjects: {
             wcDrzwi: new Person({
                 x: utils.withGrid(3),
