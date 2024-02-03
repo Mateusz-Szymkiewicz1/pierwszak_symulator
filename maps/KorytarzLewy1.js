@@ -131,9 +131,9 @@ window.OverworldMaps.KorytarzLewy1 = {
               {
                   type: "changeMap",
                   map: "K2",
-                  x: utils.withGrid(4),
-                  y: utils.withGrid(11),
-                  direction: "up"
+                  x: utils.withGrid(3),
+                  y: utils.withGrid(1),
+                  direction: "down"
               },
             ]
          },
