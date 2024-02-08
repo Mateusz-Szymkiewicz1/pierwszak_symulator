@@ -140,7 +140,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.add(15);'
+                code: 'document.querySelector("#audio_eating").volume = 0.25*window.sfx_volume;document.querySelector("#audio_eating").play();window.health_bar.add(15);'
             }
         ],
         use_req: "1==1"
@@ -154,7 +154,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.add(10);'
+                code: 'document.querySelector("#audio_eating").volume = 0.25*window.sfx_volume;document.querySelector("#audio_eating").play();window.health_bar.add(10);'
             }
         ],
         use_req: "1==1"
@@ -168,7 +168,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.add(20);'
+                code: 'document.querySelector("#audio_eating").volume = 0.25*window.sfx_volume;document.querySelector("#audio_eating").play();window.health_bar.add(20);'
             }
         ],
         use_req: "1==1"
@@ -182,7 +182,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.substract(3);window.speed = 2;setTimeout(function(){window.speed = 1;}, 91300)'
+                code: 'document.querySelector("#audio_drinking").volume = 0.25*window.sfx_volume;document.querySelector("#audio_drinking").play();window.health_bar.substract(3);window.speed = 2;setTimeout(function(){window.speed = 1;}, 91300)'
             },{
                 type: "do_code",
                 code: 'const buff = new Buff("Speed", 90000);buff.init();'
@@ -201,7 +201,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: ''
+                code: 'document.querySelector("#audio_drinking").volume = 0.25*window.sfx_volume;document.querySelector("#audio_drinking").play();'
             }
         ],
         use_req: "1==1"
@@ -215,7 +215,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: ''
+                code: 'document.querySelector("#audio_drinking").volume = 0.25*window.sfx_volume;document.querySelector("#audio_drinking").play();'
             }
         ],
         use_req: "1==1"
@@ -229,7 +229,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.add(5)'
+                code: 'document.querySelector("#audio_eating").volume = 0.25*window.sfx_volume;document.querySelector("#audio_eating").play();window.health_bar.add(5)'
             }
         ],
         use_req: "1==1"
@@ -243,7 +243,7 @@ window.GameObjects = [
         use: [
             {
                 type: "do_code",
-                code: 'window.health_bar.add(25)'
+                code: 'document.querySelector("#audio_eating").volume = 0.25*window.sfx_volume;document.querySelector("#audio_eating").play();window.health_bar.add(25)'
             }
         ],
         use_req: "1==1"
