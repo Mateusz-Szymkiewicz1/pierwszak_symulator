@@ -136,5 +136,8 @@ window.OverworldMaps.Hol = {
   [utils.asGridCoord(1, 4)]: true,
   [utils.asGridCoord(2, 4)]: true,
   [utils.asGridCoord(2, 3)]: true,
+  [utils.asGridCoord(3, 2)]: true,
+  [utils.asGridCoord(4, 2)]: true,
+  [utils.asGridCoord(5, 2)]: true,
   },
 };

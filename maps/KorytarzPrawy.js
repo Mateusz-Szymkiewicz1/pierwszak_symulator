@@ -96,6 +96,48 @@ window.OverworldMaps.KorytarzPrawy = {
                    },
                ],
             }),
+            wc: new Person({
+                x: utils.withGrid(12),
+                y: utils.withGrid(10),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_down.png",
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage",text: 'Tylko dla personelu!'},
+                       ]
+                   },
+               ],
+            }),
+            ksiegowosc: new Person({
+                x: utils.withGrid(8),
+                y: utils.withGrid(10),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_down.png",
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage",text: 'Zamknięte...'},
+                       ]
+                   },
+               ],
+            }),
+            kier_gosp: new Person({
+                x: utils.withGrid(6),
+                y: utils.withGrid(10),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_down.png",
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage",text: 'Zamknięte...'},
+                       ]
+                   },
+               ],
+            }),
             s14Drzwi: new Person({
                 x: utils.withGrid(15),
                 y: utils.withGrid(7),

@@ -233,6 +233,9 @@ window.OverworldMaps.School = {
            [utils.asGridCoord(18, 3)]: true,
            [utils.asGridCoord(20, 7)]: true,
            [utils.asGridCoord(20, 8)]: true,
+           [utils.asGridCoord(4, 1)]: true,
+           [utils.asGridCoord(5, 1)]: true,
+           [utils.asGridCoord(6, 1)]: true,
         },
     start_func: function(){
         let wozna_talking = window.OverworldMaps.School.gameObjects.wozna.talking;

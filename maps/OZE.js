@@ -48,7 +48,7 @@ window.OverworldMaps.OZE = {
                    },
                ],
             }),
-             s19: new Person({
+             bieznieD: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(18),
                 counter: 0,
@@ -66,13 +66,13 @@ window.OverworldMaps.OZE = {
                             },
                             {
                                 type: "changeMap",
-                                map: "S19",
+                                map: "Bieznie",
                             },
                        ]
                    },
                ],
             }),
-            s20: new Person({
+            s18: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(16),
                 counter: 0,
@@ -86,7 +86,7 @@ window.OverworldMaps.OZE = {
                    },
                ],
             }),
-            s21: new Person({
+            s19: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(14),
                 counter: 0,
@@ -100,7 +100,7 @@ window.OverworldMaps.OZE = {
                    },
                ],
             }),
-            s22: new Person({
+            s20: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(12),
                 counter: 0,
@@ -114,7 +114,21 @@ window.OverworldMaps.OZE = {
                    },
                ],
             }),
-            s23: new Person({
+            s21: new Person({
+                x: utils.withGrid(7),
+                y: utils.withGrid(10),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_right.png",
+                talking: [
+                    {
+                        events: [
+                           {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
+                       ]
+                   },
+               ],
+            }),
+            s22: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(8),
                 counter: 0,
@@ -124,6 +138,34 @@ window.OverworldMaps.OZE = {
                     {
                         events: [
                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
+                       ]
+                   },
+               ],
+            }),
+            s23: new Person({
+                x: utils.withGrid(7),
+                y: utils.withGrid(6),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_right.png",
+                talking: [
+                    {
+                        events: [
+                           {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
+                       ]
+                   },
+               ],
+            }),
+            wc: new Person({
+                x: utils.withGrid(3),
+                y: utils.withGrid(7),
+                counter: 0,
+                movePixels: true,
+                src: "images/Objects/door_left.png",
+                talking: [
+                    {
+                        events: [
+                           {type: "textMessage",text: 'Tylko dla personelu'}
                        ]
                    },
                ],
@@ -176,7 +218,6 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(6, 15)]: true,
             [utils.asGridCoord(6, 13)]: true,
             [utils.asGridCoord(6, 11)]: true,
-            [utils.asGridCoord(6, 10)]: true,
             [utils.asGridCoord(6, 9)]: true,
             [utils.asGridCoord(6, 7)]: true,
             [utils.asGridCoord(3, 20)]: true,
@@ -186,8 +227,6 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(4, 16)]: true,
             [utils.asGridCoord(4, 13)]: true,
             [utils.asGridCoord(4, 11)]: true,
-            [utils.asGridCoord(4, 8)]: true,
-            [utils.asGridCoord(4, 7)]: true,
             [utils.asGridCoord(3, 9)]: true,
             [utils.asGridCoord(3,10)]: true,
             [utils.asGridCoord(3,12)]: true,
@@ -205,6 +244,7 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(2,3)]: true,
             [utils.asGridCoord(3,3)]: true,
             [utils.asGridCoord(2,6)]: true,
+            [utils.asGridCoord(5,2)]: true,
         },
         start_func: function(){
              window.OverworldMaps.OZE.gameObjects.schronD.talking = [
