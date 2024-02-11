@@ -60,7 +60,7 @@ class OverworldEvent{
     }
     question(resolve) {
         if(this.faceHero){
-            const obj = this.map.gameObjects[this.faceHero];
+            const obj = window.map.gameObjects[this.faceHero];
             obj.direction = utils.oppositeDirection(window.map.gameObjects["hero"].direction);
         }
         if(!this.who){
@@ -83,8 +83,8 @@ class OverworldEvent{
         (async function(){
             for await(const ev of randomElement){
                 if(ev.once){
-                    let index = window.NPCs.find(x=> x.id === this2.event.who).talking.indexOf(randomElement);
-                    window.relations.add_said(this2.event.who, index)
+                    let index = window.NPCs.find(x=> x.id === this2.who).talking.indexOf(randomElement);
+                    window.relations.add_said(this2.who, index)
                 }
                 const eventHandler = new OverworldEvent(ev);
                 await eventHandler.init();
