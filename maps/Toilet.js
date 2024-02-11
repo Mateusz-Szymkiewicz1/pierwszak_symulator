@@ -87,7 +87,7 @@ window.OverworldMaps.Toilet = {
                 pickUp: true,
                 counter: 0,
                 movePixels: true,
-                src: "images/objects/cigs.png",
+                src: "images/Objects/cigs.png",
                 talking: [
                     {
                         events: [

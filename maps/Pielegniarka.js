@@ -70,7 +70,7 @@ window.OverworldMaps.Pielegniarka = {
                 pickUp: true,
                 counter: 0,
                 movePixels: true,
-                src: "images/objects/medkit.png",
+                src: "images/Objects/medkit.png",
                 talking: [
                     {
                         events: [

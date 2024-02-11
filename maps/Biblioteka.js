@@ -75,7 +75,7 @@ window.OverworldMaps.Biblioteka = {
                 pickUp: true,
                 counter: 0,
                 movePixels: true,
-                src: "images/objects/podrecznik.png",
+                src: "images/Objects/podrecznik.png",
                 talking: [
                     {
                         events: [
