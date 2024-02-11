@@ -26,7 +26,7 @@ class PauseMenu {
                 handler: async () => {
                     let map = window.map;
                     await this.close();
-                    const eventHandler = new OverworldEvent({map, event: {type: "settings"}});
+                    const eventHandler = new OverworldEvent({type: "settings"});
                     await eventHandler.init();
                 }
             },

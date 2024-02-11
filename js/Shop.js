@@ -44,9 +44,8 @@ class Shop{
            if(event.target.className == "product"){
                if(window.gold >= this2.products.find(x=> x.id === event.target.dataset.product).price){
                    gold.spend(this2.products.find(x=> x.id === event.target.dataset.product).price);
-                   let audio_spend = document.querySelector("#audio_spend").cloneNode(true);
-                   audio_spend.volume = 0.2*window.sfx_volume;
-                   audio_spend.play();
+                   const eventHandler = new OverworldEvent({type: "play_audio", audio: "spend", volume: 0.2});
+                   eventHandler.init();
                    let obj = window.GameObjects.find(x=> x.id === event.target.dataset.product);
                    if(window.heroInventory.find(x=> x.id === event.target.dataset.product)){
                        if(window.heroInventory.find(x=> x.id === event.target.dataset.product).deleted == true){
@@ -59,9 +58,8 @@ class Shop{
                       window.heroInventory.push(obj);
                    }
                }else{
-                   let audio_wrong = document.querySelector("#audio_wrong");
-                   audio_wrong.volume = 0.1*window.sfx_volume;
-                   audio_wrong.play();
+                   const eventHandler = new OverworldEvent({type: "play_audio", audio: "wrong", volume: 0.1});
+                   eventHandler.init();
                    document.querySelector(".gold > span").style.color = "red";
                    document.querySelector(".gold > span").style.animation = "shake 1s ease";
                    setTimeout(function(){

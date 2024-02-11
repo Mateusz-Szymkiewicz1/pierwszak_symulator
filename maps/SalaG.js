@@ -3,9 +3,6 @@ window.OverworldMaps.SalaG = {
         lowerSrc: "images/maps/SalaGLower.png",
         upperSrc: "images/maps/SalaGUpper.png",
         gameObjects: {
-            placeholder: new Person({
-               src: "images/maps/blank.png"
-            }),
             pilki_d: new Person({
                 x: utils.withGrid(12),
                 y: utils.withGrid(3),
@@ -16,11 +13,10 @@ window.OverworldMaps.SalaG = {
                     {
                         events: [
                             {
-                                type: "do_code",
-                                code: `let audio_door = document.querySelector("#audio_door_open");
-                                audio_door.playbackRate = 2;
-                                audio_door.volume = 0.2*window.sfx_volume;
-                                audio_door.play();`
+                                type: "play_audio",
+                                audio: "door_open",
+                                speed: 2,
+                                volume: 0.2
                             },
                             {
                                 type: "changeMap",

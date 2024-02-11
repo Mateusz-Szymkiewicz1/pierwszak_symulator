@@ -2,9 +2,6 @@ window.OverworldMaps.Izolatka = {
   id: "Izolatka",
   lowerSrc: "images/maps/IzolatkaLower.png",
   gameObjects: {
-     placeholder: new Person({
-        src: "images/maps/blank.png"
-     }),
       hero: new Person({
           isPlayerControlled: true,
           x: utils.withGrid(2),

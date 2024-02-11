@@ -7,7 +7,7 @@ class HealthBar{
        document.querySelector(".health_fill").style.width = window.health+"px";
        let map = window.map;
        if(text == true){
-           const eventHandler = new OverworldEvent({map, event: {type: "textMessage",text: `Odzyskałeś ${value} HP ;)`}});
+           const eventHandler = new OverworldEvent({type: "textMessage",text: `Odzyskałeś ${value} HP ;)`});
            eventHandler.init();
        }
        if(document.querySelector(".desc")){
@@ -24,7 +24,7 @@ class HealthBar{
            }
         document.querySelector(".health_fill").style.width = window.health+"px";
         let map = window.map;
-        const eventHandler = new OverworldEvent({map, event: {type: "textMessage",text: `Straciłeś ${value} HP ;(`}});
+        const eventHandler = new OverworldEvent({type: "textMessage",text: `Straciłeś ${value} HP ;(`});
         eventHandler.init();
    }
    async init() {

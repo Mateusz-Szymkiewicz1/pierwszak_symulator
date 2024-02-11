@@ -2,9 +2,6 @@ window.OverworldMaps.Szafki = {
         id: "Szafki",
         lowerSrc: "images/maps/SzafkiLower.png",
         gameObjects: {
-        placeholder: new Person({
-               src: "images/maps/blank.png"
-            }),
         hero: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(5),

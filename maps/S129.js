@@ -2,9 +2,6 @@ window.OverworldMaps.S129 = {
   id: "S129",
   lowerSrc: "images/maps/S129Lower.png",
   gameObjects: {
-      placeholder: new Person({
-         src: "images/maps/blank.png"
-      }),
       hero: new Person({
           isPlayerControlled: true,
           x: utils.withGrid(13),

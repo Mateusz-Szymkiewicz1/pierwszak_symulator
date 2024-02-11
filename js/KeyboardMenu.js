@@ -28,9 +28,8 @@ class KeyboardMenu {
         button.focus();
       })
       button.addEventListener("focus", () => {
-        let audio_switch = document.querySelector("#audio_button_switch").cloneNode(true);
-        audio_switch.volume = 0.2*window.sfx_volume;
-        audio_switch.play().then(function(){},function(){});
+        const eventHandler = new OverworldEvent({type: "play_audio",audio: "button_switch", volume: 0.2});
+        eventHandler.init();
         this.prevFocus = button;
         this.descriptionElementText.innerText = button.dataset.description;
       })

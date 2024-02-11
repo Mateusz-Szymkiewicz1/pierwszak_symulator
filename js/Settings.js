@@ -4,9 +4,8 @@ class Settings{
     }
     close() {
         if(document.querySelector(".settings")){
-            let audio_settings_close = document.querySelector("#audio_settings_close");
-            audio_settings_close.volume = 0.2*window.sfx_volume;
-            audio_settings_close.play();
+            const eventHandler = new OverworldEvent({type: "play_audio", audio: "settings_close", volume: 0.2});
+            eventHandler.init();
         }
         if(!document.querySelector(".PauseMenu")){
             document.querySelector("canvas").style.filter = "none";
@@ -72,9 +71,8 @@ class Settings{
     }  
    async init() {
        this.progress = new Progress();
-       let audio_settings = document.querySelector("#audio_settings");
-       audio_settings.volume = 0.2*window.sfx_volume;
-       audio_settings.play();
+       const eventHandler = new OverworldEvent({type: "play_audio", audio: "settings", volume: 0.2});
+       eventHandler.init();
        document.querySelector("canvas").style.filter = "blur(4px)";
        document.querySelectorAll(".hud").forEach(el => {
             el.style = "filter: blur(4px); cursor: default;pointer-events: none;";

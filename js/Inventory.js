@@ -204,7 +204,7 @@ class Inventory {
                             })
                         }
                         for await (const ev of eventConfig){
-                            const eventHandler = new OverworldEvent({map, event: ev});
+                            const eventHandler = new OverworldEvent(ev);
                             await eventHandler.init();
                         }
                         if(window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).amount == 0){
@@ -216,23 +216,23 @@ class Inventory {
                     }
                     else{
                         let use_req_text = obj.use_req_text;
-                        const eventHandler = new OverworldEvent({map, event: {
+                        const eventHandler = new OverworldEvent({
                             type: "textMessage",
                             text: use_req_text
-                        }});
+                        });
                         eventHandler.init();
                     }
                 }
                  if(event.target.className == "span_usun_all"){  
-                     const eventHandler = new OverworldEvent({map, event:{
+                     const eventHandler = new OverworldEvent({
                             type: "decision",
                             handler: () => {
                                 window.heroInventory.find(x=> x.id === event.target.parentElement.dataset.itemName).deleted = true;
                                 if(document.querySelector(".Inventory")){
-                                this2.check();
+                                    this2.check();
                                 }
                             }
-                        }});
+                        });
                     eventHandler.init();
                 }
                  if(event.target.className == "span_usun"){  

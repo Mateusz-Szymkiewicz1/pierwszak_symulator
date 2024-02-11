@@ -29,13 +29,12 @@ window.OverworldMaps.KorytarzLewy1 = {
           talking: [
               {
                   events: [
-                      {
-                          type: "do_code",
-                          code: `let audio_door = document.querySelector("#audio_door_open");
-                          audio_door.playbackRate = 2;
-                          audio_door.volume = 0.2*window.sfx_volume;
-                          audio_door.play();`
-                      },
+                    {
+                        type: "play_audio",
+                        audio: "door_open",
+                        speed: 2,
+                        volume: 0.2
+                    },
                       {
                           type: "changeMap",
                           map: "S129",
@@ -69,11 +68,10 @@ window.OverworldMaps.KorytarzLewy1 = {
             {
                 events: [
                     {
-                        type: "do_code",
-                        code: `let audio_door = document.querySelector("#audio_door_open");
-                        audio_door.playbackRate = 2;
-                        audio_door.volume = 0.2*window.sfx_volume;
-                        audio_door.play();`
+                        type: "play_audio",
+                        audio: "door_open",
+                        speed: 2,
+                        volume: 0.2
                     },
                     {
                         type: "changeMap",
@@ -94,13 +92,12 @@ window.OverworldMaps.KorytarzLewy1 = {
       talking: [
           {
               events: [
-                  {
-                      type: "do_code",
-                      code: `let audio_door = document.querySelector("#audio_door_open");
-                      audio_door.playbackRate = 2;
-                      audio_door.volume = 0.2*window.sfx_volume;
-                      audio_door.play();`
-                  },
+                {
+                    type: "play_audio",
+                    audio: "door_open",
+                    speed: 2,
+                    volume: 0.2
+                },
                   {
                       type: "changeMap",
                       map: "ToaletaKL1",
@@ -121,13 +118,12 @@ window.OverworldMaps.KorytarzLewy1 = {
       talking: [
           {
             events: [
-              {
-                  type: "do_code",
-                  code: `let audio_door = document.querySelector("#audio_door_open");
-                  audio_door.playbackRate = 2;
-                  audio_door.volume = 0.2*window.sfx_volume;
-                  audio_door.play();`
-              },
+                {
+                    type: "play_audio",
+                    audio: "door_open",
+                    speed: 2,
+                    volume: 0.2
+                },
               {
                   type: "changeMap",
                   map: "K2",
@@ -149,11 +145,10 @@ window.OverworldMaps.KorytarzLewy1 = {
         {
           events: [
             {
-                type: "do_code",
-                code: `let audio_door = document.querySelector("#audio_door_open");
-                audio_door.playbackRate = 2;
-                audio_door.volume = 0.2*window.sfx_volume;
-                audio_door.play();`
+                type: "play_audio",
+                audio: "door_open",
+                speed: 2,
+                volume: 0.2
             },
             {
                 type: "changeMap",
@@ -189,20 +184,19 @@ IzolatkaDrzwi: new Person({
   talking: [
       {
         events: [
-          {
-              type: "do_code",
-              code: `let audio_door = document.querySelector("#audio_door_open");
-              audio_door.playbackRate = 2;
-              audio_door.volume = 0.2*window.sfx_volume;
-              audio_door.play();`
-          },
-          {
-              type: "changeMap",
-              map: "Izolatka",
-              x: utils.withGrid(2),
-              y: utils.withGrid(1),
-              direction: "down"
-          },
+            {
+                type: "play_audio",
+                audio: "door_open",
+                speed: 2,
+                volume: 0.2
+            },
+            {
+                type: "changeMap",
+                map: "Izolatka",
+                x: utils.withGrid(2),
+                y: utils.withGrid(1),
+                direction: "down"
+            },
         ]
      },
  ],

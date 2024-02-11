@@ -10,13 +10,13 @@ class TitleScreen {
                 description: "Rozpocznij przygodę",
                 handler: () => {
                     if(window.localStorage.getItem("saveFile")){
-                        const eventHandler = new OverworldEvent({event:{
+                        const eventHandler = new OverworldEvent({
                             type: "decision",
                             handler: () => {
                                 this.close();
                                 resolve();
                             }
-                        }});
+                        });
                         eventHandler.init();
                     }else{
                         this.close();
@@ -28,9 +28,8 @@ class TitleScreen {
                 label: "Kontynuuj grę",
                 description: "Wróć do ostaniego zapisu",
                 handler: () => {
-                    let audio_start = document.querySelector("#audio_start");
-                    audio_start.volume = 0.2*window.sfx_volume;
-                    audio_start.play();
+                    const eventHandler = new OverworldEvent({type: "play_audio", audio: "start", volume: 0.2});
+                    eventHandler.init();
                     this.close();
                     resolve(safeFile);
                 }
@@ -57,16 +56,14 @@ class TitleScreen {
             this.keyboardMenu.init(this.element);
             document.querySelector(".settings_icon").addEventListener("click", function(){
                 if(document.querySelector(".settings")){
-                    let audio_settings_close = document.querySelector("#audio_settings_close");
-                    audio_settings_close.volume = 0.2*window.sfx_volume;
-                    audio_settings_close.play();
+                    const eventHandler = new OverworldEvent({type: "play_audio", audio: "settings_close", volume: 0.2});
+                    eventHandler.init();
                     document.querySelector(".settings").remove();
                     document.querySelector("canvas").style.filter = "none";
                     document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: none');
                     document.querySelector(".DescriptionBox").setAttribute('style', 'filter: none');
                 }else{
-                    let map = window.map;
-                    const eventHandler = new OverworldEvent({map, event: {type: "settings"}});
+                    const eventHandler = new OverworldEvent({type: "settings"});
                     eventHandler.init();
                     document.querySelector(".TitleScreen>*").setAttribute('style', 'filter: brightness(0.5)');
                     document.querySelector(".DescriptionBox").setAttribute('style', 'filter: brightness(0.5)');

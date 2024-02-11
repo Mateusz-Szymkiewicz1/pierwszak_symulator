@@ -109,17 +109,15 @@ class Szafka{
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
         utils.turn_hud_off();
-        let audio_locker = document.querySelector("#audio_locker");
-        audio_locker.volume = 0.4*window.sfx_volume;
-        audio_locker.play();
+        const eventHandler2 = new OverworldEvent({type: "play_audio", audio: "locker", volume: 0.4});
+        eventHandler2.init();
         container.appendChild(this.element);
         this.check();
         utils.wait(200);
         this.esc = new KeyPressListener("Escape", () => {
             this2.close();
         });
-        let map = window.map;
-        const eventHandler = new OverworldEvent({map, event: {type: "inventory",szafka: true,}});
+        const eventHandler = new OverworldEvent({type: "inventory",szafka: true});
         eventHandler.init();
         function shift_click_listen(e){
            if(e.target.tagName == "TD" && e.target.dataset.nameBackup && e.target.parentElement.parentElement.parentElement.parentElement.classList == "Inventory szafka_inventory" && e.target.dataset.nameBackup != "Klucz_Szafka"){

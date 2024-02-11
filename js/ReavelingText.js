@@ -3,7 +3,6 @@ class RevealingText {
         this.element = config.element;
         this.text = config.text;
         this.speed = config.speed || 50;
-        
         this.timeout = null;
         this.isDone = false;
     }
@@ -17,9 +16,8 @@ class RevealingText {
                 audio.play();
                 audio.volume = 0.5*window.sfx_volume;
              }else{
-                let audio = document.querySelector("#audio_talking");
-                audio.play();
-                audio.volume = 0.5*window.sfx_volume;
+                const eventHandler = new OverworldEvent({type: "play_audio", audio: "talking", volume: 0.5});
+                eventHandler.init();
              }
          }
         next.span.classList.add("revealed");

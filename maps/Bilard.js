@@ -2,9 +2,6 @@ window.OverworldMaps.Bilard = {
         id: "Bilard",
         lowerSrc: "images/maps/BilardLower.png",
         gameObjects: {
-            placeholder: new Person({
-               src: "images/maps/blank.png"
-            }),
             hero: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(1),

@@ -3,9 +3,6 @@ window.OverworldMaps.K2 = {
   lowerSrc: "images/maps/K2Lower.png",
   upperSrc: "images/maps/K2Upper.png",
   gameObjects: {
-      placeholder: new Person({
-         src: "images/maps/blank.png"
-      }),
       hero: new Person({
           isPlayerControlled: true,
           x: utils.withGrid(3),

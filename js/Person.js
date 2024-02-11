@@ -17,7 +17,7 @@ class Person extends GameObject{
         }
         else{
             if(!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow){
-                this.startBehavior(state, {type: "walk",direction: state.arrow});
+                this.startBehavior(state, {type: "walk", direction: state.arrow});
             }
             this.updateSprite(state);
         }
@@ -34,13 +34,12 @@ class Person extends GameObject{
                return;
             }
             if(this.isPlayerControlled == true && !window.Overworld.map.isPaused){
-                document.querySelector("#audio_walk").volume = 0.4*window.sfx_volume;
+                let speed = 2;
                 if(window.speed){
-                    document.querySelector("#audio_walk").playbackRate = window.speed*2;
-                }else{
-                    document.querySelector("#audio_walk").playbackRate = 2;
+                    speed = window.speed*2;
                 }
-                document.querySelector("#audio_walk").play();
+                const eventHandler = new OverworldEvent({type: "play_audio", audio: "walk", volume: 0.4, speed: speed});
+                eventHandler.init();
             }
             state.map.moveWall(this.x,this.y,this.direction);  
             this.movingProgressRemaining = 16;

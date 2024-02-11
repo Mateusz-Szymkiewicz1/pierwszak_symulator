@@ -2,9 +2,6 @@ window.OverworldMaps.Pilki = {
         id: "Pilki",
         lowerSrc: "images/maps/PilkiLower.png",
         gameObjects: {
-            placeholder: new Person({
-               src: "images/maps/blank.png"
-            }),
             hero: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(1),

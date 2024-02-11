@@ -1,32 +1,35 @@
 class OverworldEvent{
-    constructor({map,event}){
-        this.map = map || null;
-        this.event = event;
+    constructor(config){
+        for(let el in config){
+            this[el] = config[el];
+        }
     }
     stand(resolve){
-        const who = this.map.gameObjects[this.event.who];
-        who.startBehavior({map: this.map},{
-            type: "stand",
-            direction: this.event.direction,
-            time: this.event.time
-        })
-        const completeHandler = e => {
-            if (e.detail.whoId === this.event.who) {
-                document.removeEventListener("PersonStandComplete", completeHandler);
-                resolve();
+        const who = window.map.gameObjects[this.who];
+        if(who){
+            who.startBehavior({}, {
+                type: "stand",
+                direction: this.direction,
+                time: this.time
+            })
+            const completeHandler = e => {
+                if (e.detail.whoId === this.who) {
+                    document.removeEventListener("PersonStandComplete", completeHandler);
+                    resolve();
+                }
             }
+            document.addEventListener("PersonStandComplete", completeHandler)
         }
-        document.addEventListener("PersonStandComplete", completeHandler)
     }
     walk(resolve){
-        const who = this.map.gameObjects[this.event.who];
-        who.startBehavior({map: this.map}, {
+        const who = window.map.gameObjects[this.who];
+        who.startBehavior({
             type: "walk",
-            direction: this.event.direction,
+            direction: this.direction,
             retry: true
         })
         const completeHandler = e => {
-            if(e.detail.whoId === this.event.who){
+            if(e.detail.whoId === this.who){
                 document.removeEventListener("PersonWalkingComplete", completeHandler);
                 resolve();
             }
@@ -34,21 +37,21 @@ class OverworldEvent{
         document.addEventListener("PersonWalkingComplete", completeHandler);
     }
     textMessage(resolve){
-        if (this.event.faceHero) {
-            const obj = this.map.gameObjects[this.event.faceHero];
-            obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+        if (this.faceHero) {
+            const obj = window.map.gameObjects[this.faceHero];
+            obj.direction = utils.oppositeDirection(window.map.gameObjects["hero"].direction);
         }
-        if(!this.event.who){
-            this.event.who = null;
+        if(!this.who){
+            this.who = null;
         }
         const message = new TextMessage({
-            text: this.event.text,
-            npc: this.event.who,
+            text: this.text,
+            npc: this.who,
             onComplete: () => resolve()
         })
         message.init(document.querySelector(".game-container"));
-        if (this.event.who) {
-            const obj = this.map.gameObjects[this.event.who];
+        if (this.who) {
+            const obj = window.map.gameObjects[this.who];
             if(obj.pickUp) {
                 obj.talking = [];
                 window.heroInventory.push(window.GameObjects.find(x=> x.id === obj.id));
@@ -56,17 +59,17 @@ class OverworldEvent{
         }
     }
     question(resolve) {
-        if(this.event.faceHero){
-            const obj = this.map.gameObjects[this.event.faceHero];
-            obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+        if(this.faceHero){
+            const obj = this.map.gameObjects[this.faceHero];
+            obj.direction = utils.oppositeDirection(window.map.gameObjects["hero"].direction);
         }
-        if(!this.event.who){
-            this.event.who = null;
+        if(!this.who){
+            this.who = null;
         }
         const question = new Question({
-            text: this.event.text,
-            npc: this.event.who,
-            options: this.event.options,
+            text: this.text,
+            npc: this.who,
+            options: this.options,
             onComplete: async () => resolve()
         })
         question.init(document.querySelector(".game-container"));
@@ -75,16 +78,15 @@ class OverworldEvent{
         let this2 = this;
         let has_events = false;
         let randomElement;
-        let array = window.NPCs.find(x=> x.id === this.event.who).talking;
+        let array = window.NPCs.find(x=> x.id === this.who).talking;
         randomElement = array[Math.floor(Math.random() * array.length)];
-        let map = window.map;
         (async function(){
             for await(const ev of randomElement){
                 if(ev.once){
                     let index = window.NPCs.find(x=> x.id === this2.event.who).talking.indexOf(randomElement);
                     window.relations.add_said(this2.event.who, index)
                 }
-                const eventHandler = new OverworldEvent({map, event: ev});
+                const eventHandler = new OverworldEvent(ev);
                 await eventHandler.init();
             }})().then(function(){
                 resolve();
@@ -93,51 +95,50 @@ class OverworldEvent{
     changeMap(resolve) {
         const sceneTransition = new SceneTransition();
         sceneTransition.init(document.querySelector(".game-container"), () => {
-            this.map.overworld.startMap(window.OverworldMaps[this.event.map], {
-                x: this.event.x,
-                y: this.event.y,
-                direction: this.event.direction
+            window.map.overworld.startMap(window.OverworldMaps[this.map], {
+                x: this.x,
+                y: this.y,
+                direction: this.direction
             });
             resolve();
             sceneTransition.fadeOut();
         })
     }
     open(resolve) {
-        let who = this.map.gameObjects[this.event.who];
-        who.src = this.event.src;
-        if (who.x != this.map.gameObjects["hero"].x || who.y != this.map.gameObjects["hero"].y) {
+        let who = window.map.gameObjects[this.who];
+        who.src = this.src;
+        if (who.x != window.map.gameObjects["hero"].x || who.y != window.map.gameObjects["hero"].y) {
             if (who.counter === 0) {
-                delete this.map.walls[`${who.x},${who.y}`];
+                delete window.map.walls[`${who.x},${who.y}`];
             }
             if (who.counter === 1) {
-                this.map.walls[`${who.x},${who.y}`] = true;
+                window.map.walls[`${who.x},${who.y}`] = true;
             }
             who.sprite = new Sprite({
                 gameObject: who,
-                src: this.event.src,
+                src: this.src,
             });
         }
         resolve();
     }
     do_code(resolve) {
-        eval(this.event.code);
+        eval(this.code);
         resolve();
     }
     pause(resolve) {
-        this.map.isPaused = true;
-        window.Overworld.map.isPaused = true;
+        window.map.isPaused = true;
         const menu = new PauseMenu({
-            progress: this.map.overworld.progress,
+            progress: window.map.overworld.progress,
             onComplete: () => {
                 resolve();
-                this.map.isPaused = false;
-                this.map.overworld.startGameLoop();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
             }
         });
         menu.init(document.querySelector(".game-container"));
     }
     inventory(resolve){
-        if(this.event.szafka){
+        if(this.szafka){
             const inventory = new Inventory({
                 onComplete: () => {
                     resolve();
@@ -146,54 +147,63 @@ class OverworldEvent{
             inventory.init(document.querySelector(".game-container"));
         }
         else{
-            this.map.isPaused = true;
+            window.map.isPaused = true;
             const inventory = new Inventory({
                 onComplete: () => {
                     resolve();
-                    this.map.isPaused = false;
-                    this.map.overworld.startGameLoop();
+                    window.map.isPaused = false;
+                    window.map.overworld.startGameLoop();
                 }
             }, false);
             inventory.init(document.querySelector(".game-container"));
         }
     } 
    questlog(resolve){
-        this.map.isPaused = true;
+        window.map.isPaused = true;
         const questlog = new QuestLog({
             onComplete: () => {
                 resolve();
-                this.map.isPaused = false;
-                this.map.overworld.startGameLoop();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
             }
         });
         questlog.init(document.querySelector(".game-container"));
     }  
     shop(resolve){
-        this.map.isPaused = true;
+        window.map.isPaused = true;
         const shop = new Shop({
             onComplete: () => {
                 resolve();
-                this.map.isPaused = false;
-                this.map.overworld.startGameLoop();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
             }
-        }, this.event.products);
+        }, this.products);
         shop.init();
     }  
     book(resolve){
-        this.map.isPaused = true;
+        window.map.isPaused = true;
         const book = new Book({
             onComplete: () => {
                 resolve();
-                this.map.isPaused = false;
-                this.map.overworld.startGameLoop();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
             }
-        }, this.event.book_id);
+        }, this.book_id);
         book.init();
     }  
+    play_audio(resolve){
+        const audio = document.querySelector("#audio_"+this.audio);
+        if(this.speed){
+            audio.playbackRate = this.speed;
+        } 
+        audio.volume = this.volume*window.sfx_volume;
+        audio.play();
+        resolve();
+    } 
      settings(resolve){
-         if(this.map){
-        this.map.isPaused = true;
-         }
+        if(window.map){
+            window.map.isPaused = true;
+        }
         const settings = new Settings({
             onComplete: () => {
                 resolve();
@@ -205,7 +215,7 @@ class OverworldEvent{
         const decision = new DecisionBox({
             onComplete: () => {
                 resolve();
-                this.event.handler();
+                this.handler();
             }
         });
         decision.init(document.querySelector(".game-container"));
@@ -215,19 +225,19 @@ class OverworldEvent{
            const quest = new QuestLog({onComplete: () => {}});
            quest.end_quest("Znajdź_Szafkę");
         }
-        this.map.isPaused = true;
+        window.map.isPaused = true;
         const szafka = new Szafka({
             onComplete: () => {
                 resolve();
-                this.map.isPaused = false;
-                this.map.overworld.startGameLoop();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
             }
         });
         szafka.init(document.querySelector(".game-container"));
     }  
     init() {
         return new Promise(resolve => {
-            this[this.event.type](resolve)
+            this[this.type](resolve)
         })
     }
 }
