@@ -24,7 +24,19 @@ class Sprite {
           "walk-down": [ [1,0],[0,0],[3,0],[0,0] ],
           "walk-right": [ [1,1],[0,1],[3,1],[0,1] ],
           "walk-up": [ [1,2],[0,2],[3,2],[0,2] ],
-          "walk-left": [ [1,3],[0,3],[3,3],[0,3] ]
+          "walk-left": [ [1,3],[0,3],[3,3],[0,3] ],
+          "punch-down-right": [ [0,0], [4,0], [0,0] ],
+          "punch-down-left": [ [0,0], [5,0], [0,0] ],
+          "punch-up-right": [ [0,2], [4,2], [0,2] ],
+          "punch-up-left": [ [0,2], [5,2], [0,2] ],
+          "punch-right-right": [ [0,1], [4,1], [0,1] ],
+          "punch-right-left": [ [0,1], [4,1], [0,1] ],
+          "punch-left-right": [ [0,3], [4,3], [0,3] ],
+          "punch-left-left": [ [0,3], [4,3], [0,3] ],
+          "duck-down": [ [6,0] ],
+          "duck-right": [ [6,1] ],
+          "duck-up": [ [6,2] ],
+          "duck-left": [ [6,3] ],
         }
         this.currentAnimation =  config.currentAnimation || "idle-down";
         this.currentAnimationFrame = 0;

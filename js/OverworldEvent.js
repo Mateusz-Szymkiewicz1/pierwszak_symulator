@@ -23,7 +23,7 @@ class OverworldEvent{
     }
     walk(resolve){
         const who = window.map.gameObjects[this.who];
-        who.startBehavior({
+        who.startBehavior({}, {
             type: "walk",
             direction: this.direction,
             retry: true
@@ -35,6 +35,36 @@ class OverworldEvent{
             }
         }
         document.addEventListener("PersonWalkingComplete", completeHandler);
+    }
+    punch(resolve){
+        const who = window.map.gameObjects[this.who];
+        who.hand = this.hand;
+        who.startBehavior({}, {
+            type: "punch",
+            direction: this.direction,
+            hand: this.hand
+        })
+        const completeHandler = e => {
+            if(e.detail.whoId === this.who){
+                document.removeEventListener("PersonPunchingComplete", completeHandler);
+                resolve();
+            }
+        }
+        document.addEventListener("PersonPunchingComplete", completeHandler);
+    }
+    duck(resolve){
+        const who = window.map.gameObjects[this.who];
+        who.startBehavior({}, {
+            type: "duck",
+            direction: this.direction,
+        })
+        const completeHandler = e => {
+            if(e.detail.whoId === this.who){
+                document.removeEventListener("PersonDuckingComplete", completeHandler);
+                resolve();
+            }
+        }
+        document.addEventListener("PersonDuckingComplete", completeHandler);
     }
     textMessage(resolve){
         if (this.faceHero) {

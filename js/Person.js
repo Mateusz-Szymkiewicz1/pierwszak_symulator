@@ -2,6 +2,9 @@ class Person extends GameObject{
     constructor(config){
         super(config);
         this.movingProgressRemaining = 0;
+        this.punchingProgressRemaining = 0;
+        this.duckingProgressRemaining = 0;
+        this.hand = 'right'
         this.isStanding = false;
         this.isPlayerControlled = config.isPlayerControlled || false;
         this.directionUpdate = {
@@ -45,6 +48,15 @@ class Person extends GameObject{
             this.movingProgressRemaining = 16;
             this.updateSprite(state);
         } 
+        if(behavior.type === 'punch'){
+            this.hand = behavior.hand;
+            this.punchingProgressRemaining = 16;
+            this.updateSprite(state);
+        }
+        if(behavior.type === 'duck'){
+            this.duckingProgressRemaining = 16;
+            this.updateSprite(state);
+        }
         if(behavior.type === "stand"){
             this.isStanding = true;
             setTimeout(() => {
@@ -70,6 +82,16 @@ class Person extends GameObject{
         }
         if(this.movingProgressRemaining > 0){
             this.sprite.setAnimation("walk-"+this.direction);
+            return;
+        }
+        if(this.punchingProgressRemaining > 0){
+            this.punchingProgressRemaining -= 1;
+            this.sprite.setAnimation("punch-"+this.direction+"-"+this.hand);
+            return;
+        }
+        if(this.duckingProgressRemaining > 0){
+            this.duckingProgressRemaining -= 1;
+            this.sprite.setAnimation("duck-"+this.direction);
             return;
         }
         this.sprite.setAnimation("idle-"+this.direction);

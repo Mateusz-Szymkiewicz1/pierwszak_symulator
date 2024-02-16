@@ -55,6 +55,24 @@ class Overworld {
                 this.map.startCutscene([{type: "inventory",}]);
             }
         })
+        new KeyPressListener("KeyJ", () => {
+            if (!this.map.isCutscenePlaying) {
+                const eventHandler = new OverworldEvent({type: "punch", hand: "right", who: "hero", direction: window.map.gameObjects["hero"].direction});
+                eventHandler.init();
+            }
+        })
+        new KeyPressListener("KeyH", () => {
+            if (!this.map.isCutscenePlaying) {
+                const eventHandler = new OverworldEvent({type: "punch", hand: "left", who: "hero", direction: window.map.gameObjects["hero"].direction});
+                eventHandler.init();
+            }
+        })
+        new KeyPressListener("KeyB", () => {
+            if (!this.map.isCutscenePlaying) {
+                const eventHandler = new OverworldEvent({type: "duck", who: "hero", direction: window.map.gameObjects["hero"].direction});
+                eventHandler.init();
+            }
+        })
     }
     bindHeroPositionCheck() {
         document.addEventListener("PersonWalkingComplete", e => {
