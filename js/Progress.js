@@ -45,6 +45,7 @@ class Progress {
     save_preferences(){
         window.localStorage.setItem("preferences", JSON.stringify({
                scale: window.scale,
+               zoom: window.zoom,
                website_color: window.website_color,
                game_color: window.game_color,
                 sfx_volume: window.sfx_volume,

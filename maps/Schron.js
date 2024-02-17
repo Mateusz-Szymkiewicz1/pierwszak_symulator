@@ -9,6 +9,25 @@ window.OverworldMaps.Schron = {
                 y: utils.withGrid(2),
                 useShadow: true,
             }),
+            tutorial: new Person({
+                x: utils.withGrid(8),
+                y: utils.withGrid(2),
+                counter: 0,
+                src: "images/maps/blank.png",
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage",text: "Chcesz się nauczyć walki?"},
+                            {type: "textMessage",text: "Witaj w tutorialu!"},
+                            {type: "textMessage",text: 'Aby uderzyć prawą reką kliknij "J"'},
+                            {type: "textMessage",text: 'Aby uderzyć lewą reką kliknij "H"'},
+                            {type: "textMessage",text: 'Aby zablokować cios kliknij "G"'},
+                            {type: "textMessage",text: 'Aby kucnąć kliknij "B"'},
+                            {type: "textMessage",text: 'Powodzenia!'},
+                       ]
+                   }
+               ],
+            }),
         },
         cutsceneSpaces: {
                [utils.asGridCoord(1, 2)]: [
@@ -49,8 +68,6 @@ window.OverworldMaps.Schron = {
             [utils.asGridCoord(5, 1)]: true,
             [utils.asGridCoord(6, 1)]: true,
             [utils.asGridCoord(7, 1)]: true,
-            [utils.asGridCoord(8, 1)]: true,
-            [utils.asGridCoord(9, 2)]: true,
             [utils.asGridCoord(9, 8)]: true,
             [utils.asGridCoord(2, 9)]: true,
             [utils.asGridCoord(1, 5)]: true,

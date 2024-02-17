@@ -3,8 +3,12 @@
     const file2 = JSON.parse(file);
     if(file2){
         if(file2.scale){
-        document.querySelector(".game-container").style.transform = `scale(${file2.scale}) translateY(39%)`
-        window.scale = file2.scale;
+            document.querySelector(".game-container").style.transform = `scale(${file2.scale}) translateY(39%)`
+            window.scale = file2.scale;
+        }
+        if(file2.zoom){
+            document.querySelector("canvas").style.transform = `scale(${file2.zoom})`
+            window.zoom = file2.zoom;
         }
         if(file2.website_color){
             document.body.style.background = file2.website_color;
@@ -39,8 +43,9 @@
         window.music_volume = 1;
         window.sfx_volume = 1;
         window.game_color = "#202020";
-         window.website_color = "#fff";
+        window.website_color = "#fff";
         window.scale = 2.5;
+        window.zoom = 1;
     }
   const overworld = new Overworld({
     element: document.querySelector(".game-container")

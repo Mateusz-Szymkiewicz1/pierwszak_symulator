@@ -80,7 +80,7 @@ class Settings{
        let this2 = this;
        this.element = document.createElement("div");
        this.element.classList.add("settings");
-       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10" id="range_size"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><h3>Dźwięk</h3><label id="label_sfx">SFX</label><input type="range" min="0" max="200" id="range_sfx"><br /><input type="checkbox" id="sans_check"><label>S A N S</label>`;
+       this.element.innerHTML = `<h2>Ustawienia</h2><h3>Rozmiar okna</h3><label>min</label><input type="range" list="dl" value="25" max="40" min="10" id="range_size"><label>max</label><datalist id="dl"><option>0</option><option>10</option><option>20</option><option>30</option><option>40</option></datalist><button>Tryb Pełnoekranowy</button><br /><br/><h3>Zoom</h3><label>min</label><input type="range" min="1" max="20" value="10" id="range_zoom"><label>max</label><br/><br/><h3>Kolory</h3><label>Tło strony :</label><input type="color" value="#ffffff" id="color_website"><br /><label>Tło gry :</label><input type="color" value="#202020" id="color_game"><div class="color_default">Przywróć domyślne</div><br/><h3>Dźwięk</h3><label id="label_sfx">SFX</label><input type="range" min="0" max="200" id="range_sfx"><br /><input type="checkbox" id="sans_check"><label>S A N S</label>`;
        const file = window.localStorage.getItem("preferences");
        const file2 = JSON.parse(file);
        document.querySelector(".game-container").appendChild(this.element);
@@ -91,6 +91,10 @@ class Settings{
              document.querySelector(".settings > input[type=range]").value = file2.scale*10;
              window.scale = file2.scale;
            }
+           if(file2.zoom){
+            document.querySelector("#range_zoom").value = file2.zoom*10;
+            window.zoom = file2.zoom;
+            }
            if(file2.website_color){
               document.querySelector("#color_website").value = file2.website_color;
               window.website_color = file2.website_color;
@@ -133,6 +137,12 @@ class Settings{
                this2.fullscreen();
            }
        })
+       document.querySelector("#range_zoom").addEventListener("change", function(){
+            let zoom = document.querySelector("#range_zoom").value/10;
+            document.querySelector("canvas").style.transform = `scale(${zoom})`;
+            window.zoom = zoom;
+            this2.progress.save_preferences();
+        })
        let timeout;
        document.querySelector("#color_website").addEventListener("input", function(e){
            if(typeof timeout !== 'undefined' || timeout !== null){
