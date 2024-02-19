@@ -89,19 +89,15 @@ class Settings{
        if(file2 && file2.scale){
           if(file2.scale){
              document.querySelector(".settings > input[type=range]").value = file2.scale*10;
-             window.scale = file2.scale;
            }
            if(file2.zoom){
             document.querySelector("#range_zoom").value = file2.zoom*10;
-            window.zoom = file2.zoom;
             }
            if(file2.website_color){
               document.querySelector("#color_website").value = file2.website_color;
-              window.website_color = file2.website_color;
            }
            if(file2.game_color){
               document.querySelector("#color_game").value = file2.game_color;
-              window.game_color = file2.game_color;
             }
        }
        document.querySelector("#range_sfx").value = window.sfx_volume*100;

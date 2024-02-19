@@ -220,6 +220,17 @@ class OverworldEvent{
             }
         }, this.book_id);
         book.init();
+    }
+    fights(resolve){
+        window.map.isPaused = true;
+        const fights = new Fights({
+            onComplete: () => {
+                resolve();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
+            }
+        });
+        fights.init();
     }  
     play_audio(resolve){
         const audio = document.querySelector("#audio_"+this.audio);

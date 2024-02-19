@@ -28,6 +28,23 @@ window.OverworldMaps.Schron = {
                    }
                ],
             }),
+            tyler: new Person({
+                x: utils.withGrid(7),
+                y: utils.withGrid(2),
+                useShadow: true,
+                counter: 0,
+                src: "images/characters/people/tyler.png",
+                talking: [
+                    {
+                        events: [
+                            {who: "tyler",type: "talk"},
+                       ]
+                   }
+               ],
+                behaviorLoop: [
+                    {type: "stand",direction: "down",time: 2000},
+                ]
+            }),
         },
         cutsceneSpaces: {
                [utils.asGridCoord(1, 2)]: [
