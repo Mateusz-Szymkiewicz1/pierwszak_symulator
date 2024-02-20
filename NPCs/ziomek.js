@@ -13,7 +13,7 @@ window.NPCs.push({
                 options: [
                             {
                                 text: "Tak",
-                                reaction: 'let map = window.map;map.startCutscene([{type: "textMessage",who:"ziomek",faceHero:"ziomek",text:"Dzięki :D"}]);window.heroInventory.find(x=> x.id === "Kiepy").amount--;',
+                                reaction: 'window.map.startCutscene([{type: "textMessage",who:"ziomek",faceHero:"ziomek",text:"Dzięki :D"}]);window.heroInventory.find(x=> x.id === "Kiepy").amount--;',
                                 req: 'window.heroInventory.find(x=> x.id === "Kiepy") && window.heroInventory.find(x=> x.id === "Kiepy").amount > 0 && !window.heroInventory.find(x=> x.id === "Kiepy").deleted',
                             },
                             {text: "Nie",reaction: ''},

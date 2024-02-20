@@ -17,13 +17,7 @@ window.OverworldMaps.Schron = {
                 talking: [
                     {
                         events: [
-                            {type: "textMessage",text: "Chcesz się nauczyć walki?"},
-                            {type: "textMessage",text: "Witaj w tutorialu!"},
-                            {type: "textMessage",text: 'Aby uderzyć prawą reką kliknij "J"'},
-                            {type: "textMessage",text: 'Aby uderzyć lewą reką kliknij "H"'},
-                            {type: "textMessage",text: 'Aby zablokować cios kliknij "G"'},
-                            {type: "textMessage",text: 'Aby kucnąć kliknij "B"'},
-                            {type: "textMessage",text: 'Powodzenia!'},
+                            {who: "fight_tutorial", type: "talk"}
                        ]
                    }
                ],
@@ -117,4 +111,9 @@ window.OverworldMaps.Schron = {
             [utils.asGridCoord(9,3)]: true,
             [utils.asGridCoord(9,4)]: true,
         },
+        start_func: function(){
+            if(window.relations_obj.fight_tutorial.relationship > 50){
+                window.OverworldMaps.Schron.gameObjects.tyler.talking = [{events: [{type: "fights"}]}];
+            }
+        }
     };

@@ -16,11 +16,11 @@ window.NPCs.push({
                             options: [
                                         {
                                         text: "Wisła",
-                                        reaction: 'let map = window.map;map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Wisła?"}]);'
+                                        reaction: 'window.map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Wisła?"}]);'
                                         },
                                      {
                                          text: "Cracovia",
-                                        reaction: 'let map = window.map;map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Cracovia?"}]);'
+                                        reaction: 'window.map.startCutscene([{type: "textMessage",who:"dariusz",faceHero:"dariusz",text:"Serio? Cracovia?"}]);'
                                      }
                                  ]
                             },
