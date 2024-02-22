@@ -236,7 +236,7 @@
     text-align: center;
     font-weight: 300;
 }
-.quest{
+.quest, .fight{
     background: #ddc6b0;
     margin-top: 5px;
     padding-bottom: 4px;
@@ -244,7 +244,7 @@
     cursor: pointer;
     transition: 0.4s;
 }
-.quest:hover{
+.quest:hover, .fight:hover{
     background: #ccb5a0;
     transform: translateY(-0.5px);
 }
@@ -599,4 +599,45 @@ image-rendering: pixelated;
 }
 #range_sfx, #range_zoom{
     margin-top: -5px;
+}
+.fight h3{
+    float: left;
+    margin: 5px;
+    font-size: 17px;
+}
+.fight > img{
+    float: right;
+    margin: 10px;
+    image-rendering: pixelated;
+    transform: scale(1.5);
+}
+.fight p{
+    margin: 5px;
+    font-size: 12px;
+}
+.fight span img{
+    image-rendering: pixelated;
+    width: 15px;
+    height: 15px;
+    margin-left: 3px;
+}
+.fight span{
+    display: block;
+    margin-left: 5px;
+    margin-top: 35px;
+}
+.fight button{
+    background: #a48465;
+    outline: none;
+    border: 0;
+    font-size: 14px;
+    font-family: inherit;
+    margin-right: 10px;
+    padding: 1px 4px;
+    color: #fff;
+    transition: .4s;
+    margin-left: 5px;
+}
+.fight button:hover{
+    background: #937354;
 }
