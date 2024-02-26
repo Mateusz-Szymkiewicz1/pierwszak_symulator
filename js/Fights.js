@@ -51,6 +51,7 @@ class Fights{
  } 
 
  fight(el){
+    window.current_fight = el;
     const eventHandler = new OverworldEvent({type: "changeMap",map:"Schron",x:utils.withGrid(5),y:utils.withGrid(6),direction:"right"});
     eventHandler.init();
     this.close();
@@ -80,7 +81,8 @@ async init() {
             name: "Manekin",
             reward: 0,
             difficulty: 1,
-            desc: "Dosłownie manekin."
+            desc: "Dosłownie manekin.",
+            health: 10
         }
     ]
 
@@ -90,4 +92,35 @@ async init() {
          this2.close();
      });
 }
+}
+
+class End_fight{
+
+    constructor({onComplete}){
+       this.onComplete = onComplete;
+    }
+
+    close(){
+        document.querySelector("canvas").style.filter = "none";
+        utils.turn_hud_on();
+        this.esc.unbind();
+        this.element.remove();
+        this.onComplete();
+    }
+    
+    async init() {
+        document.querySelector("canvas").style.filter = "blur(4px)";
+        utils.turn_hud_off();
+        let this2 = this;
+        this.element = document.createElement("div");
+        this.element.classList.add("fights");
+        this.element.innerHTML = `<h2>Koniec walki!</h2>`;
+        document.querySelector(".game-container").appendChild(this.element);
+        this.element.setAttribute("tabindex", "0")
+        this.element.focus();
+        utils.wait(200);
+        this.esc = new KeyPressListener("Escape", () => {
+            this2.close();
+        });
+    }   
 }

@@ -39,6 +39,20 @@ class OverworldEvent{
     punch(resolve){
         const who = window.map.gameObjects[this.who];
         who.hand = this.hand;
+        if(window.timeout && who.id == 'hero'){
+            return;
+        }
+        const target = utils.nextPosition(who.x, who.y, who.direction);
+        const match = Object.values(window.map.gameObjects).find(object => {
+            return `${object.x},${object.y}` === `${target.x},${target.y}`
+        });
+        if(window.current_fight){
+            if(match.id == 'hero'){
+                window.health_bar.add(-5, false)
+            }else{
+                window.current_fight.health -= 5;
+            }
+        }
         who.startBehavior({}, {
             type: "punch",
             direction: this.direction,
@@ -51,6 +65,13 @@ class OverworldEvent{
             }
         }
         document.addEventListener("PersonPunchingComplete", completeHandler);
+        window.timeout = setTimeout(function(){
+            utils.emitEvent("PersonPunchingComplete", {whoId: this.id});
+            delete window.timeout;
+        }, 500)
+        if(window.health < 1 || window.current_fight.health < 1){
+            window.map.startCutscene([{type: "end_fight"}]);
+        }
     }
     duck(resolve){
         const who = window.map.gameObjects[this.who];
@@ -187,6 +208,17 @@ class OverworldEvent{
             }, false);
             inventory.init(document.querySelector(".game-container"));
         }
+    } 
+    end_fight(resolve){
+        window.map.isPaused = true;
+        const end_fight = new End_fight({
+            onComplete: () => {
+                resolve();
+                window.map.isPaused = false;
+                window.map.overworld.startGameLoop();
+            }
+        }, false);
+        end_fight.init(document.querySelector(".game-container"));
     } 
    questlog(resolve){
         window.map.isPaused = true;
