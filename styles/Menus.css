@@ -615,7 +615,7 @@ image-rendering: pixelated;
     margin: 5px;
     font-size: 12px;
 }
-.fight span img{
+.fight span img, .fights > span > img{
     image-rendering: pixelated;
     width: 15px;
     height: 15px;
@@ -657,4 +657,14 @@ image-rendering: pixelated;
     font-size: 10px;
     display: block;
     margin-top: 3px;
+}
+.fight_end span{
+    font-size: 12px;
+    font-weight: 100;
+}
+.fight_end h2{
+    margin-bottom: 5px;
+}
+.fight_end{
+    height: 90px;
 }

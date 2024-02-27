@@ -82,7 +82,7 @@ async init() {
             reward: 0,
             difficulty: 1,
             desc: "Dosłownie manekin.",
-            health: 10
+            health: 100
         }
     ]
 
@@ -101,11 +101,19 @@ class End_fight{
     }
 
     close(){
+        delete window.current_fight;
         document.querySelector("canvas").style.filter = "none";
         utils.turn_hud_on();
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
+        if(window.health > 0){
+            delete window.OverworldMaps.Schron.gameObjects.opps;
+            window.map.startCutscene([{type: "changeMap", map: 'Schron', x: utils.withGrid(6), y: utils.withGrid(2), direction: "right"},{type: 'textMessage', who: 'tyler',text: "Brawo..."},{type: 'textMessage', who: 'tyler',text: "oby tak dalej."}]);    
+        }else{
+            delete window.OverworldMaps.Schron.gameObjects.opps;
+            window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(1), y: utils.withGrid(4), direction: "right"}]);    
+        }
     }
     
     async init() {
@@ -113,9 +121,18 @@ class End_fight{
         utils.turn_hud_off();
         let this2 = this;
         this.element = document.createElement("div");
-        this.element.classList.add("fights");
-        this.element.innerHTML = `<h2>Koniec walki!</h2>`;
+        this.element.className = 'fights fight_end';
+        this.element.innerHTML = `
+            <h2>Koniec walki! <br/> <span class="fight_score">Przegrana :(</span></h2>
+            <span class="fight_reward"><img src="images/Objects/gold.png"> Otrzymujesz: 0</span>
+        `;
         document.querySelector(".game-container").appendChild(this.element);
+        if(window.health > 0){
+            document.querySelector('.fight_score').innerText = 'Wygrana :D';
+            document.querySelector('.fight_reward').innerHTML = `<img src="images/Objects/gold.png"> Otrzymujesz: ${window.current_fight.reward}`;
+            const gold = new Gold();
+            gold.add(window.current_fight.reward);
+        }
         this.element.setAttribute("tabindex", "0")
         this.element.focus();
         utils.wait(200);
