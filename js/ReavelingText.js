@@ -12,7 +12,7 @@ class RevealingText {
              document.querySelector("#audio_talking").pause();
          }else{
             if(document.querySelector("#audio_talking").src.slice(-18) == "audio/talking2.mp3"){
-                let audio = document.querySelector("#audio_talking").cloneNode(true);
+                const audio = document.querySelector("#audio_talking").cloneNode(true);
                 audio.play();
                 audio.volume = 0.5*window.sfx_volume;
              }else{

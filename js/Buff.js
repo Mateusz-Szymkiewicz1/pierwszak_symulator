@@ -12,8 +12,7 @@ class Buff{
     async init() {
        let this2 = this;
        this.element = document.createElement("div");
-       this.element.classList.add("buff");
-       this.element.classList.add("hud");
+       this.element.className = 'hud buff';
        this.element.dataset.type = this.type;
        const buffs = document.querySelectorAll(".buff");
        if(buffs.length > 0){

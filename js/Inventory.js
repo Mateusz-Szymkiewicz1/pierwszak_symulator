@@ -125,10 +125,12 @@ class Inventory {
                 this.close();
             })
             this.esc2 = new KeyPressListener("Escape", () => {
-                if(document.querySelector(".option_box")){
-                    document.querySelector(".option_box").remove();
-                }
-                this.close();
+                if(!document.querySelector('.DecisionBox')){
+                    if(document.querySelector(".option_box")){
+                        document.querySelector(".option_box").remove();
+                    }
+                    this.close();
+                }   
             })
        }
         this2.element.addEventListener("mouseover", function(event){

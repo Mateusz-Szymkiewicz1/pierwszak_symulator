@@ -307,7 +307,7 @@ class OverworldEvent{
             }
         });
         szafka.init(document.querySelector(".game-container"));
-    }  
+    }
     init() {
         return new Promise(resolve => {
             this[this.type](resolve)

@@ -12,8 +12,7 @@ class DecisionBox {
             if(!window.Overworld.map.isPaused){
                 document.querySelector("canvas").style.filter = "none";
             }
-        }
-        else{
+        }else{
             document.querySelector("canvas").style.filter = "none";
         }
         this.element.remove();

@@ -30,7 +30,7 @@ class OverworldMap {
         Object.keys(this.gameObjects).forEach(key => {
             let object = this.gameObjects[key];
             object.id = key;
-            object.mount(this);
+            object.mount();
         })
     }
     async startCutscene(events) {
@@ -40,7 +40,7 @@ class OverworldMap {
             await eventHandler.init();
         }
         this.isCutscenePlaying = false;
-        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
+        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent())
     }
     checkForActionCutscene() {
         if(!document.querySelector(".TextMessage") && !document.querySelector(".Question")){

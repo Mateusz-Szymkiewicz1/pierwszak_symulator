@@ -16,13 +16,12 @@ class Book{
         this.onComplete();
     }       
    async init() {
-        let this2 = this;
         this.createElement();
         document.querySelector("canvas").style.filter = "blur(4px)";
         utils.turn_hud_off();
         document.querySelector(".game-container").appendChild(this.element);
         this.esc = new KeyPressListener("Escape", () => {
-            this2.close();
+            this.close();
         });
     }
 }

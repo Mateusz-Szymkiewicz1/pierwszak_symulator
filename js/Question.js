@@ -7,7 +7,7 @@ class Question{
         this.element = null;
     }
     createElement(){
-        let this2 = this;
+        const this2 = this;
         this.element = document.createElement("div");
         this.element.classList.add("Question");
         this.element.innerHTML = `<p class="Question_p"></p>`;

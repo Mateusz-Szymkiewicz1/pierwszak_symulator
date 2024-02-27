@@ -14,9 +14,7 @@ class QuestLog{
         }
         window.quests.push(quest);
         const popup = document.createElement("div");
-        popup.classList.add("QuestPopup");
-        popup.classList.add("quest_added");
-        popup.classList.add("hud");
+        popup.className = 'hud QuestPopup quest_added';
         const eventHandler = new OverworldEvent({type: "play_audio", audio: "quest", volume: 0.2});
         eventHandler.init();
         popup.innerHTML = `<h2>Nowy Quest!</h2><span>${quest.desc}</span>`;
@@ -60,9 +58,7 @@ class QuestLog{
             }
         })
         const popup = document.createElement("div");
-        popup.classList.add("QuestPopup");
-        popup.classList.add("quest_ended");
-        popup.classList.add("hud");
+        popup.className = 'hud QuestPopup quest_added';
         const eventHandler = new OverworldEvent({type: "play_audio", audio: "quest_completed", volume: 0.2});
         eventHandler.init();
         if(quest.reward){
@@ -136,7 +132,7 @@ class QuestLog{
         setTimeout(function(){
             document.querySelector(".quest_button").addEventListener("mouseenter", function(event){
                 if(!document.querySelector(".QuestLog")){
-                    let desc = document.createElement("div");
+                    const desc = document.createElement("div");
                     desc.classList.add("desc");
                     desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
                     desc.innerText = "Quests";

@@ -5,33 +5,36 @@ class HealthBar{
            window.health = 100;
         }
        document.querySelector(".health_fill").style.width = window.health+"px";
-       let map = window.map;
-       if(text == true){
+       if(text){
            const eventHandler = new OverworldEvent({type: "textMessage",text: `Odzyskałeś ${value} HP ;)`});
            eventHandler.init();
        }
-       if(document.querySelector(".desc")){
-           if(document.querySelector(".desc").dataset.div == "health_bar"){
-               document.querySelector(".desc").innerText = `Health ${window.health}/100`;
-           }
+       if(document.querySelector(".desc") && document.querySelector(".desc").dataset.div == "health_bar"){
+            document.querySelector(".desc").innerText = `Health ${window.health}/100`;
        }
    }
-    substract(value){
+    substract(value, text = true){
         window.health = window.health-value;
            if(window.health <= 0){
-               window.health = 0;
-               alert("Dead");
+               window.health = 100;
+               window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(2), y: utils.withGrid(4), direction: "up"},{type: 'textMessage', who: 'pielegniarka',text: "Następnym razem uważaj na siebie..."}]);  
+                const gold = new Gold();
+                gold.spend(window.gold);
+                window.heroInventory.forEach(el => {
+                    if(el.can_delete){
+                        el.deleted = true;
+                    }
+                })
            }
         document.querySelector(".health_fill").style.width = window.health+"px";
-        let map = window.map;
-        const eventHandler = new OverworldEvent({type: "textMessage",text: `Straciłeś ${value} HP ;(`});
-        eventHandler.init();
+        if(text){
+            const eventHandler = new OverworldEvent({type: "textMessage",text: `Straciłeś ${value} HP ;(`});
+            eventHandler.init();
+        }
    }
    async init() {
-       let this2 = this;
        this.element = document.createElement("div");
-       this.element.classList.add("health_bar");
-       this.element.classList.add("hud");
+       this.element.className = 'hud health_bar';
        this.fill = document.createElement("div");
        this.fill.classList.add("health_fill");
        this.fill.style.width = window.health+"px";

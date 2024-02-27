@@ -15,7 +15,7 @@ class Fights{
  show_fights(){
     let this2 = this;
     window.fights.forEach(el => {
-        let div = document.createElement('div');
+        const div = document.createElement('div');
         div.className = 'fight';
         div.innerHTML = `
             <h3>${el.name}</h3>
@@ -62,13 +62,12 @@ class Fights{
         counter: 0,
         src: `images/characters/people/${el.name.toLowerCase()}.png`
     })
-    let opps = window.OverworldMaps.Schron.gameObjects.opps;
+    const opps = window.OverworldMaps.Schron.gameObjects.opps;
  }
 
 async init() {
      document.querySelector("canvas").style.filter = "blur(4px)";
      utils.turn_hud_off();
-     let this2 = this;
      this.element = document.createElement("div");
      this.element.classList.add("fights");
      this.element.innerHTML = `<h2>Walki</h2>`;
@@ -89,7 +88,7 @@ async init() {
      this.show_fights();
      utils.wait(200);
      this.esc = new KeyPressListener("Escape", () => {
-         this2.close();
+         this.close();
      });
 }
 }
@@ -112,14 +111,21 @@ class End_fight{
             window.map.startCutscene([{type: "changeMap", map: 'Schron', x: utils.withGrid(6), y: utils.withGrid(2), direction: "right"},{type: 'textMessage', who: 'tyler',text: "Brawo..."},{type: 'textMessage', who: 'tyler',text: "oby tak dalej."}]);    
         }else{
             delete window.OverworldMaps.Schron.gameObjects.opps;
-            window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(1), y: utils.withGrid(4), direction: "right"}]);    
+            window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(2), y: utils.withGrid(4), direction: "up"},{type: 'textMessage', who: 'pielegniarka',text: "Następnym razem uważaj na siebie..."},{type: 'textMessage', who: 'pielegniarka',text: "już mam dość uczniów z kręgu."}]);  
+            const gold = new Gold();
+            gold.spend(window.gold);  
+            window.health = 100;
+            window.heroInventory.forEach(el => {
+                if(el.can_delete){
+                    el.deleted = true;
+                }
+            })
         }
     }
     
     async init() {
         document.querySelector("canvas").style.filter = "blur(4px)";
         utils.turn_hud_off();
-        let this2 = this;
         this.element = document.createElement("div");
         this.element.className = 'fights fight_end';
         this.element.innerHTML = `
@@ -137,7 +143,7 @@ class End_fight{
         this.element.focus();
         utils.wait(200);
         this.esc = new KeyPressListener("Escape", () => {
-            this2.close();
+            this.close();
         });
     }   
 }

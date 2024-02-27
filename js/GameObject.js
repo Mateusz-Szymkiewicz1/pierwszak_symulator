@@ -18,20 +18,20 @@ class GameObject {
         this.behaviorLoopIndex = 0;
         this.talking = config.talking || [];
     }
-    mount(map){
+    mount(){
         this.isMounted = true;
         if(this.walkable === false){
-            map.addWall(this.x, this.y);
+            window.map.addWall(this.x, this.y);
         }   
         setTimeout(() => {
-            this.doBehaviorEvent(map);
+            this.doBehaviorEvent();
         }, 10);
     } 
-    async doBehaviorEvent(map){     
-        if(map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding){
+    async doBehaviorEvent(){     
+        if(window.map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding){
             return;
         }     
-        let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
+        const eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
         eventConfig.who = this.id;     
         const eventHandler = new OverworldEvent(eventConfig);
         await eventHandler.init();
@@ -39,6 +39,6 @@ class GameObject {
         if(this.behaviorLoopIndex === this.behaviorLoop.length){
             this.behaviorLoopIndex = 0;
         }
-        this.doBehaviorEvent(map);
+        this.doBehaviorEvent();
     }
 }

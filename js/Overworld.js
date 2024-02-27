@@ -104,7 +104,7 @@ class Overworld {
     }
     async init() {
         window.page_hover = true;
-        let this2 = this;
+        const this2 = this;
         document.querySelector(".game-container").addEventListener("contextmenu", function(event){
             event.preventDefault();
         });
@@ -195,9 +195,7 @@ class Overworld {
                     {type: "textMessage",text: "oraz Enter do interakcji"},
                 ])
             }).then(function(){
-                const quest = new QuestLog({
-                onComplete: () => {}
-                });
+                const quest = new QuestLog({onComplete: () => {}});
                 quest.add_quest({id: "Znajdź_Klucz",desc: "Poszukaj klucza do twojej nowej szafki!",});
             })
         }
@@ -208,9 +206,9 @@ class Overworld {
             this2.directionInput.init();
             this2.startGameLoop();
             document.addEventListener('mouseleave', e=>{
-                if(!this2.map.isPaused){
-                    if (!this2.map.isCutscenePlaying) {
-                        this2.map.startCutscene([{type: "pause"}]);
+                if(!window.map.isPaused){
+                    if (!window.map.isCutscenePlaying) {
+                        window.map.startCutscene([{type: "pause"}]);
                     }
                     window.page_hover = false;
                 }
@@ -224,23 +222,22 @@ class Overworld {
         const gold = new Gold();
         gold.init();
         const quest_button = document.createElement("div");
-        quest_button.classList.add("quest_button");
-        quest_button.classList.add("hud");
+        quest_button.className = 'hud quest_button';
         quest_button.innerText = "!";
         document.querySelector(".game-container").append(quest_button);
         quest_button.addEventListener("click", function(){
-            if(!this2.map.isCutscenePlaying){
-                    this2.map.startCutscene([{type: "questlog"}]);
+            if(!window.map.isCutscenePlaying){
+                window.map.startCutscene([{type: "questlog"}]);
             }
         })
         const quest_press = new KeyPressListener("KeyQ", () => {
-            if(!this2.map.isCutscenePlaying && !document.querySelector(".QuestLog")){
-                this2.map.startCutscene([{type: "questlog"}]);
+            if(!window.map.isCutscenePlaying && !document.querySelector(".QuestLog")){
+                window.map.startCutscene([{type: "questlog"}]);
             }
         });
         document.querySelector(".quest_button").addEventListener("mouseenter", function(event){
             if(!document.querySelector(".QuestLog")){
-                let desc = document.createElement("div");
+                const desc = document.createElement("div");
                 desc.classList.add("desc");
                 desc.style = `position: absolute; top: ${event.clientY}px; left: ${event.clientX}px`;
                 desc.innerText = "Quests";
@@ -250,11 +247,8 @@ class Overworld {
         document.querySelector(".quest_button").addEventListener("mousemove", function(event){
             if(!document.querySelector(".QuestLog")){
                document.querySelector(".desc").style = `position: absolute; top: ${event.clientY+15}px; left: ${event.clientX+15}px`;    
-            }
-            else{
-                if(document.querySelector(".desc")){
-                    document.querySelector(".desc").remove();
-                }
+            }else if(document.querySelector(".desc")){
+                document.querySelector(".desc").remove();
             }
        })
        document.querySelector(".quest_button").addEventListener("mouseleave", function(){

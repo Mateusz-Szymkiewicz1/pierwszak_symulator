@@ -24,7 +24,6 @@ class PauseMenu {
                 label: "Ustawienia",
                 description: "Dostosuj grę pod siebie",
                 handler: async () => {
-                    let map = window.map;
                     await this.close();
                     const eventHandler = new OverworldEvent({type: "settings"});
                     await eventHandler.init();
