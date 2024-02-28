@@ -58,7 +58,7 @@ class QuestLog{
             }
         })
         const popup = document.createElement("div");
-        popup.className = 'hud QuestPopup quest_added';
+        popup.className = 'hud QuestPopup quest_ended';
         const eventHandler = new OverworldEvent({type: "play_audio", audio: "quest_completed", volume: 0.2});
         eventHandler.init();
         if(quest.reward){

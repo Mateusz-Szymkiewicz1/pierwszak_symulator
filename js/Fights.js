@@ -31,21 +31,18 @@ class Fights{
         })
         document.querySelector('.fights').appendChild(div);
         div.querySelector(".fill").style.background = "#00b894";
-        if(el.difficulty > 20){
-            div.querySelector(".fill").style.background = "#ffeaa7";
-            div.querySelector(".difficulty").innerText = 'Łatwy'
-        }
-        if(el.difficulty > 40){
-            div.querySelector(".fill").style.background = "#fdcb6e";
-            div.querySelector(".difficulty").innerText = 'Średni'
-        }
-        if(el.difficulty > 60){
-            div.querySelector(".fill").style.background = "#e17055";
-            div.querySelector(".difficulty").innerText = 'Ciężki'
-        }
         if(el.difficulty > 80){
             div.querySelector(".fill").style.background = "#d63031";
             div.querySelector(".difficulty").innerText = 'Bardzo ciężki'
+        }else if(el.difficulty > 60){
+            div.querySelector(".fill").style.background = "#e17055";
+            div.querySelector(".difficulty").innerText = 'Ciężki'
+        }else if(el.difficulty > 40){
+            div.querySelector(".fill").style.background = "#fdcb6e";
+            div.querySelector(".difficulty").innerText = 'Średni'
+        }else if(el.difficulty > 20){
+            div.querySelector(".fill").style.background = "#ffeaa7";
+            div.querySelector(".difficulty").innerText = 'Łatwy'
         }
     })
  } 

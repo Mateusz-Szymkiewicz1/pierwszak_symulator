@@ -1,7 +1,7 @@
 window.GameObjects = [
     {
         id: "Kiepy",
-        src: "images/objects/cigs.png",
+        src: "images/Objects/cigs.png",
         desc: "Rak płuc za jedyne 16.99!",
         amount: "8",
         use: [
@@ -16,19 +16,19 @@ window.GameObjects = [
     },
     {
         id: "Podrecznik_access",
-        src: "images/objects/podrecznik.png",
+        src: "images/Objects/podrecznik.png",
         desc: "1200 stron mądrości życiowej",
         can_delete: true,
     },
     {
         id: "Klucz_Szafka",
-        src: "images/objects/klucz_szafka.png",
+        src: "images/Objects/klucz_szafka.png",
         desc: '"nr.213" - Lepiej go nie zgub.',
         can_delete: false,
     },
     {
         id: "Klucz_Schron",
-        src: "images/objects/klucz_schron.png",
+        src: "images/Objects/klucz_schron.png",
         desc: '???',
         can_delete: false,
     },
@@ -133,7 +133,7 @@ window.GameObjects = [
     },
     {
         id:  "Rogal",
-        src: "images/objects/croissant.png",
+        src: "images/Objects/croissant.png",
         desc: "Uzdrawia 15 HP",
         can_delete: true,
         amount: "1",
@@ -152,7 +152,7 @@ window.GameObjects = [
     },
     {
         id:  "Obwarzanek",
-        src: "images/objects/pretzel.png",
+        src: "images/Objects/pretzel.png",
         desc: "Uzdrawia 10 HP",
         can_delete: true,
         amount: "1",
@@ -171,7 +171,7 @@ window.GameObjects = [
     },
     {
         id:  "Pizza",
-        src: "images/objects/pizza.png",
+        src: "images/Objects/pizza.png",
         desc: "Uzdrawia 20 HP",
         can_delete: true,
         amount: "1",
@@ -190,7 +190,7 @@ window.GameObjects = [
     },
     {
         id:  "Monster",
-        src: "images/objects/monster.png",
+        src: "images/Objects/monster.png",
         desc: "+1 Prędkość +1 Szansa na zawał",
         can_delete: true,
         amount: "1",
@@ -215,7 +215,7 @@ window.GameObjects = [
     },
     {
         id:  "Woda",
-        src: "images/objects/water.png",
+        src: "images/Objects/water.png",
         desc: "W sumie to nic nie robi",
         can_delete: true,
         amount: "1",
@@ -230,7 +230,7 @@ window.GameObjects = [
     },
     {
         id:  "Cola",
-        src: "images/objects/cola.png",
+        src: "images/Objects/cola.png",
         desc: "Oryginalna receptura",
         can_delete: true,
         amount: "1",
@@ -245,7 +245,7 @@ window.GameObjects = [
     },
     {
         id:  "Baton",
-        src: "images/objects/baton.png",
+        src: "images/Objects/baton.png",
         desc: "500kcal + cukrzyca",
         can_delete: true,
         amount: "1",
@@ -264,7 +264,7 @@ window.GameObjects = [
     },
     {
         id:  "Kanapka",
-        src: "images/objects/sandwich.png",
+        src: "images/Objects/sandwich.png",
         desc: "Uzdrawia 25HP",
         can_delete: true,
         amount: "1",
