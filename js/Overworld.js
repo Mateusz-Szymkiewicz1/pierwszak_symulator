@@ -18,7 +18,7 @@ class Overworld {
             })
             if(window.speed && window.speed == 2){
                 Object.values(this.map.gameObjects).forEach(object => {
-                    if(object.id == "hero"){
+                    if(object.id == "hero" && object.sprite.currentAnimation.slice(0, 4) == 'walk'){
                         object.update({
                             arrow: this.directionInput.direction,
                             map: this.map,

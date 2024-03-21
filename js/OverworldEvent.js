@@ -52,6 +52,9 @@ class OverworldEvent{
             }else{
                 window.current_fight.health -= 5;
             }
+            if(window.health < 1 || window.current_fight.health < 1){
+                window.map.startCutscene([{type: "end_fight"}]);
+            }
         }
         who.startBehavior({}, {
             type: "punch",
@@ -69,9 +72,6 @@ class OverworldEvent{
             utils.emitEvent("PersonPunchingComplete", {whoId: this.id});
             delete window.timeout;
         }, 500)
-        if(window.health < 1 || window.current_fight.health < 1){
-            window.map.startCutscene([{type: "end_fight"}]);
-        }
     }
     duck(resolve){
         const who = window.map.gameObjects[this.who];
