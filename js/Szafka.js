@@ -60,7 +60,7 @@ class Szafka{
                        new_tile.dataset.itemName = item2.id;
                        this2.check();
                    }
-                  if(parent == "inventory"){
+                  if(parent == "inventory" && e.dataTransfer.getData("item") != 'Klucz_Szafka'){
                        let item = e.dataTransfer.getData("item");
                        let item2 = window.heroInventory.find(x=> x.id === item);
                        let new_tile_number = parseInt(e.target.getAttribute("id").slice(1));
