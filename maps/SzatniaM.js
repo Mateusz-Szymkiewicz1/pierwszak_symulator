@@ -74,7 +74,7 @@ window.OverworldMaps.SzatniaM = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(1),
+                            x: utils.withGrid(5),
                             y: utils.withGrid(7),
                             direction: "right"
                         },

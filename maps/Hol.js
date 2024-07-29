@@ -17,7 +17,7 @@ window.OverworldMaps.Hol = {
               {
                   type: "changeMap",
                   map: "KorytarzLewy",
-                  x: utils.withGrid(21),
+                  x: utils.withGrid(25),
                   y: utils.withGrid(3),
                   direction: "down"
               },
@@ -30,7 +30,7 @@ window.OverworldMaps.Hol = {
             {
                 type: "changeMap",
                 map: "KorytarzLewy",
-                x: utils.withGrid(21),
+                x: utils.withGrid(25),
                 y: utils.withGrid(3),
                 direction: "down"
             },

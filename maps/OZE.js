@@ -182,7 +182,7 @@ window.OverworldMaps.OZE = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(16),
+                            x: utils.withGrid(20),
                             y: utils.withGrid(2),
                             direction: "down"
                         },
@@ -195,7 +195,7 @@ window.OverworldMaps.OZE = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(17),
+                            x: utils.withGrid(21),
                             y: utils.withGrid(2),
                             direction: "down"
                         },

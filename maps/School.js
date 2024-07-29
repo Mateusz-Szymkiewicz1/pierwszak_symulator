@@ -139,7 +139,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(24),
+                            x: utils.withGrid(28),
                             y: utils.withGrid(4),
                             direction: "left"
                         },
@@ -152,7 +152,7 @@ window.OverworldMaps.School = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(24),
+                            x: utils.withGrid(28),
                             y: utils.withGrid(5),
                             direction: "left"
                         },

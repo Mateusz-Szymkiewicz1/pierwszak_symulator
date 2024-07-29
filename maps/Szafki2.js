@@ -23,7 +23,7 @@ window.OverworldMaps.Szafki2 = {
                         {
                             type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(10),
+                            x: utils.withGrid(14),
                             y: utils.withGrid(6),
                             direction: "up"
                         }

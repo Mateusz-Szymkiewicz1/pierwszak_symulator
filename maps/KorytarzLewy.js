@@ -6,11 +6,11 @@ window.OverworldMaps.KorytarzLewy = {
             hero: new Person({
                 isPlayerControlled: true,
                 useShadow: true,
-                x: utils.withGrid(24),
+                x: utils.withGrid(28),
                 y: utils.withGrid(5),
             }),
             marek: new Person({
-                x: utils.withGrid(21),
+                x: utils.withGrid(25),
                 y: utils.withGrid(9),
                 useShadow: true,
                 counter: 0,
@@ -33,7 +33,7 @@ window.OverworldMaps.KorytarzLewy = {
                 ]
             }),
             lysy: new Person({
-                x: utils.withGrid(3),
+                x: utils.withGrid(7),
                 y: utils.withGrid(6),
                 useShadow: true,
                 counter: 0,
@@ -50,7 +50,7 @@ window.OverworldMaps.KorytarzLewy = {
                 ]
             }),
             oze: new Person({
-                x: utils.withGrid(16),
+                x: utils.withGrid(20),
                 y: utils.withGrid(1),
                 counter: 0,
                 src: "images/maps/blank.png",
@@ -69,7 +69,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             oze2: new Person({
-                x: utils.withGrid(17),
+                x: utils.withGrid(21),
                 y: utils.withGrid(1),
                 counter: 0,
                 src: "images/maps/blank.png",
@@ -88,7 +88,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             s25: new Person({
-                x: utils.withGrid(12),
+                x: utils.withGrid(16),
                 y: utils.withGrid(3),
                 counter: 0,
                 src: "images/maps/blank.png",
@@ -101,7 +101,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             s26: new Person({
-                x: utils.withGrid(7),
+                x: utils.withGrid(11),
                 y: utils.withGrid(3),
                 counter: 0,
                 src: "images/maps/blank.png",
@@ -127,7 +127,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             dezynfekcja: new Person({
-                x: utils.withGrid(10),
+                x: utils.withGrid(14),
                 y: utils.withGrid(3),
                 counter: 0,
                 src: "images/maps/blank.png",
@@ -140,7 +140,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             s26Drzwi: new Person({
-                x: utils.withGrid(13),
+                x: utils.withGrid(17),
                 y: utils.withGrid(3),
                 counter: 0,
                 src: "images/Objects/door.png",
@@ -165,7 +165,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             s25Drzwi: new Person({
-                x: utils.withGrid(8),
+                x: utils.withGrid(12),
                 y: utils.withGrid(3),
                 counter: 0,
                 src: "images/Objects/door.png",
@@ -215,7 +215,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             szatniaMDrzwi: new Person({
-                x: utils.withGrid(0),
+                x: utils.withGrid(4),
                 y: utils.withGrid(7),
                 counter: 0,
                 movePixels: true,
@@ -241,7 +241,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             szatniaDDrzwi: new Person({
-                x: utils.withGrid(0),
+                x: utils.withGrid(4),
                 y: utils.withGrid(9),
                 movePixels: true,
                 counter: 0,
@@ -255,7 +255,7 @@ window.OverworldMaps.KorytarzLewy = {
                ],
             }),
             kantorekDrzwi: new Person({
-                x: utils.withGrid(0),
+                x: utils.withGrid(4),
                 y: utils.withGrid(11),
                 movePixels: true,
                 counter: 0,
@@ -270,7 +270,7 @@ window.OverworldMaps.KorytarzLewy = {
             }),
         },
         cutsceneSpaces: {
-                [utils.asGridCoord(24, 4)]: [
+                [utils.asGridCoord(28, 4)]: [
                 {
                     events: [
                         {
@@ -283,7 +283,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-                [utils.asGridCoord(24, 5)]: [
+                [utils.asGridCoord(28, 5)]: [
                 {
                     events: [
                         {
@@ -296,7 +296,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-             [utils.asGridCoord(10, 6)]: [
+             [utils.asGridCoord(14, 6)]: [
                 {
                     events: [
                         {
@@ -309,7 +309,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-             [utils.asGridCoord(14, 6)]: [
+             [utils.asGridCoord(18, 6)]: [
                 {
                     events: [
                         {
@@ -322,7 +322,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-            [utils.asGridCoord(1, 12)]: [
+            [utils.asGridCoord(5, 12)]: [
                 {
                     events: [
                         {
@@ -335,7 +335,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-             [utils.asGridCoord(2, 12)]: [
+             [utils.asGridCoord(6, 12)]: [
                 {
                     events: [
                         {
@@ -348,7 +348,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-             [utils.asGridCoord(3, 12)]: [
+             [utils.asGridCoord(7, 12)]: [
                 {
                     events: [
                         {
@@ -361,7 +361,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-            [utils.asGridCoord(21, 3)]: [
+            [utils.asGridCoord(25, 3)]: [
                 {
                     events: [
                         {
@@ -374,7 +374,7 @@ window.OverworldMaps.KorytarzLewy = {
                     ]
                 }
             ],
-            [utils.asGridCoord(22, 3)]: [
+            [utils.asGridCoord(26, 3)]: [
                 {
                     events: [
                         {
@@ -389,86 +389,90 @@ window.OverworldMaps.KorytarzLewy = {
             ],
         },
         walls: {
-           [utils.asGridCoord(23, 3)]: true,
+           [utils.asGridCoord(27, 3)]: true,
+           [utils.asGridCoord(18, 7)]: true,
            [utils.asGridCoord(14, 7)]: true,
-           [utils.asGridCoord(10, 7)]: true,
+           [utils.asGridCoord(28, 3)]: true,
+           [utils.asGridCoord(29, 4)]: true,
+           [utils.asGridCoord(29, 5)]: true,
            [utils.asGridCoord(24, 3)]: true,
-           [utils.asGridCoord(25, 4)]: true,
-           [utils.asGridCoord(25, 5)]: true,
-           [utils.asGridCoord(20, 3)]: true,
+           [utils.asGridCoord(23, 3)]: true,
+           [utils.asGridCoord(22, 3)]: true,
            [utils.asGridCoord(19, 3)]: true,
            [utils.asGridCoord(18, 3)]: true,
+           [utils.asGridCoord(16, 3)]: true,
            [utils.asGridCoord(15, 3)]: true,
-           [utils.asGridCoord(14, 3)]: true,
-           [utils.asGridCoord(12, 3)]: true,
+           [utils.asGridCoord(13, 3)]: true,
            [utils.asGridCoord(11, 3)]: true,
+           [utils.asGridCoord(10, 3)]: true,
            [utils.asGridCoord(9, 3)]: true,
+           [utils.asGridCoord(8, 3)]: true,
            [utils.asGridCoord(7, 3)]: true,
-           [utils.asGridCoord(6, 3)]: true,
            [utils.asGridCoord(5, 3)]: true,
-           [utils.asGridCoord(4, 3)]: true,
-           [utils.asGridCoord(3, 3)]: true,
-           [utils.asGridCoord(0, 4)]: true,
-           [utils.asGridCoord(0, 5)]: true,
-           [utils.asGridCoord(1, 3)]: true,
-           [utils.asGridCoord(0, 6)]: true,
-           [utils.asGridCoord(0, 8)]: true,
-           [utils.asGridCoord(0, 10)]: true,
-           [utils.asGridCoord(0, 12)]: true,
-           [utils.asGridCoord(15, 2)]: true,
-           [utils.asGridCoord(18, 2)]: true,
-           [utils.asGridCoord(4, 12)]: true,
-           [utils.asGridCoord(5, 11)]: true,
-           [utils.asGridCoord(5, 10)]: true,
-           [utils.asGridCoord(4, 9)]: true,
-           [utils.asGridCoord(4, 8)]: true,
-           [utils.asGridCoord(4, 7)]: true,
            [utils.asGridCoord(4, 6)]: true,
-           [utils.asGridCoord(5, 6)]: true,
-           [utils.asGridCoord(6, 6)]: true,
-           [utils.asGridCoord(7, 6)]: true,
+           [utils.asGridCoord(4, 8)]: true,
+           [utils.asGridCoord(4, 10)]: true,
+           [utils.asGridCoord(4, 12)]: true,
+           [utils.asGridCoord(19, 2)]: true,
+           [utils.asGridCoord(22, 2)]: true,
+           [utils.asGridCoord(8, 12)]: true,
+           [utils.asGridCoord(9, 11)]: true,
+           [utils.asGridCoord(9, 10)]: true,
+           [utils.asGridCoord(8, 9)]: true,
+           [utils.asGridCoord(8, 8)]: true,
+           [utils.asGridCoord(8, 7)]: true,
            [utils.asGridCoord(8, 6)]: true,
            [utils.asGridCoord(9, 6)]: true,
+           [utils.asGridCoord(10, 6)]: true,
            [utils.asGridCoord(11, 6)]: true,
            [utils.asGridCoord(12, 6)]: true,
            [utils.asGridCoord(13, 6)]: true,
            [utils.asGridCoord(15, 6)]: true,
            [utils.asGridCoord(16, 6)]: true,
            [utils.asGridCoord(17, 6)]: true,
-           [utils.asGridCoord(17, 7)]: true,
-           [utils.asGridCoord(17, 8)]: true,
-           [utils.asGridCoord(17, 9)]: true,
-           [utils.asGridCoord(17, 10)]: true,
-           [utils.asGridCoord(18, 11)]: true,
-           [utils.asGridCoord(21, 11)]: true,
-           [utils.asGridCoord(23, 6)]: true,
-           [utils.asGridCoord(24, 6)]: true,
-           [utils.asGridCoord(22, 6)]: true,
-           [utils.asGridCoord(22, 7)]: true,
-           [utils.asGridCoord(22, 8)]: true,
-           [utils.asGridCoord(22, 9)]: true,
-           [utils.asGridCoord(22, 10)]: true,
-          [utils.asGridCoord(19, 6)]: true,
-           [utils.asGridCoord(19, 7)]: true,
-           [utils.asGridCoord(19, 8)]: true,
-           [utils.asGridCoord(19, 9)]: true,
-           [utils.asGridCoord(19, 10)]: true,
-            [utils.asGridCoord(20, 6)]: true,
-           [utils.asGridCoord(20, 7)]: true,
-           [utils.asGridCoord(20, 8)]: true,
-           [utils.asGridCoord(20, 9)]: true,
-           [utils.asGridCoord(20, 10)]: true,
-           [utils.asGridCoord(3, 7)]: true,
-           [utils.asGridCoord(3, 8)]: true,
-           [utils.asGridCoord(3, 9)]: true,
-           [utils.asGridCoord(2, 2)]: true,
-           [utils.asGridCoord(8, 2)]: true,
-           [utils.asGridCoord(13, 2)]: true,
-           [utils.asGridCoord(0, 7)]: true,
-           [utils.asGridCoord(1, 13)]: true,
-           [utils.asGridCoord(2, 13)]: true,
-           [utils.asGridCoord(3, 13)]: true,
-           [utils.asGridCoord(21, 2)]: true,
-           [utils.asGridCoord(22, 2)]: true,
+           [utils.asGridCoord(19, 6)]: true,
+           [utils.asGridCoord(20, 6)]: true,
+           [utils.asGridCoord(21, 6)]: true,
+           [utils.asGridCoord(21, 7)]: true,
+           [utils.asGridCoord(21, 8)]: true,
+           [utils.asGridCoord(21, 9)]: true,
+           [utils.asGridCoord(21, 10)]: true,
+           [utils.asGridCoord(22, 11)]: true,
+           [utils.asGridCoord(25, 11)]: true,
+           [utils.asGridCoord(27, 6)]: true,
+           [utils.asGridCoord(28, 6)]: true,
+           [utils.asGridCoord(26, 6)]: true,
+           [utils.asGridCoord(26, 7)]: true,
+           [utils.asGridCoord(26, 8)]: true,
+           [utils.asGridCoord(26, 9)]: true,
+           [utils.asGridCoord(26, 10)]: true,
+          [utils.asGridCoord(23, 6)]: true,
+           [utils.asGridCoord(23, 7)]: true,
+           [utils.asGridCoord(23, 8)]: true,
+           [utils.asGridCoord(23, 9)]: true,
+           [utils.asGridCoord(23, 10)]: true,
+            [utils.asGridCoord(24, 6)]: true,
+           [utils.asGridCoord(24, 7)]: true,
+           [utils.asGridCoord(24, 8)]: true,
+           [utils.asGridCoord(24, 9)]: true,
+           [utils.asGridCoord(24, 10)]: true,
+           [utils.asGridCoord(7, 7)]: true,
+           [utils.asGridCoord(7, 8)]: true,
+           [utils.asGridCoord(7, 9)]: true,
+           [utils.asGridCoord(6, 3)]: true,
+           [utils.asGridCoord(12, 2)]: true,
+           [utils.asGridCoord(17, 2)]: true,
+           [utils.asGridCoord(4, 7)]: true,
+           [utils.asGridCoord(5, 13)]: true,
+           [utils.asGridCoord(6, 13)]: true,
+           [utils.asGridCoord(7, 13)]: true,
+           [utils.asGridCoord(25, 2)]: true,
+           [utils.asGridCoord(26, 2)]: true,
+           [utils.asGridCoord(1, 5)]: true,
+           [utils.asGridCoord(2, 5)]: true,
+           [utils.asGridCoord(3, 5)]: true,
+           [utils.asGridCoord(0, 4)]: true,
+           [utils.asGridCoord(1, 3)]: true,
+           [utils.asGridCoord(4, 3)]: true,
         },
     };

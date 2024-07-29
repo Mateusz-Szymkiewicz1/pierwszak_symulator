@@ -43,7 +43,7 @@ window.OverworldMaps.SalaG = {
                         {
                            type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(2),
+                            x: utils.withGrid(6),
                             y: utils.withGrid(12),
                             direction: "up" 
                         }
@@ -56,7 +56,7 @@ window.OverworldMaps.SalaG = {
                         {
                            type: "changeMap",
                             map: "KorytarzLewy",
-                            x: utils.withGrid(3),
+                            x: utils.withGrid(7),
                             y: utils.withGrid(12),
                             direction: "up" 
                         }
