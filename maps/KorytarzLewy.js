@@ -328,9 +328,9 @@ window.OverworldMaps.KorytarzLewy = {
                         {
                            type: "changeMap",
                             map: "SalaG",
-                            x: utils.withGrid(12),
-                            y: utils.withGrid(7),
-                            direction: "left" 
+                            x: utils.withGrid(7),
+                            y: utils.withGrid(1),
+                            direction: "down" 
                         }
                     ]
                 }
@@ -341,9 +341,9 @@ window.OverworldMaps.KorytarzLewy = {
                         {
                            type: "changeMap",
                             map: "SalaG",
-                            x: utils.withGrid(12),
-                            y: utils.withGrid(7),
-                            direction: "left" 
+                            x: utils.withGrid(7),
+                            y: utils.withGrid(1),
+                            direction: "down" 
                         }
                     ]
                 }
@@ -354,9 +354,9 @@ window.OverworldMaps.KorytarzLewy = {
                         {
                            type: "changeMap",
                             map: "SalaG",
-                            x: utils.withGrid(12),
-                            y: utils.withGrid(7),
-                            direction: "left" 
+                            x: utils.withGrid(8),
+                            y: utils.withGrid(1),
+                            direction: "down" 
                         }
                     ]
                 }
@@ -368,7 +368,7 @@ window.OverworldMaps.KorytarzLewy = {
                            type: "changeMap",
                             map: "Hol",
                             x: utils.withGrid(7),
-                            y: utils.withGrid(5),
+                            y: utils.withGrid(4),
                             direction: "down" 
                         }
                     ]
@@ -381,7 +381,7 @@ window.OverworldMaps.KorytarzLewy = {
                            type: "changeMap",
                             map: "Hol",
                             x: utils.withGrid(7),
-                            y: utils.withGrid(5),
+                            y: utils.withGrid(4),
                             direction: "down" 
                         }
                     ]
@@ -468,5 +468,7 @@ window.OverworldMaps.KorytarzLewy = {
            [utils.asGridCoord(1, 13)]: true,
            [utils.asGridCoord(2, 13)]: true,
            [utils.asGridCoord(3, 13)]: true,
+           [utils.asGridCoord(21, 2)]: true,
+           [utils.asGridCoord(22, 2)]: true,
         },
     };

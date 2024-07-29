@@ -32,7 +32,6 @@ window.OverworldMaps.Szafki2 = {
             ]
         },
         walls: {
-            [utils.asGridCoord(9, 2)]: true,
             [utils.asGridCoord(9, 3)]: true,
             [utils.asGridCoord(8, 1)]: true,
             [utils.asGridCoord(8, 0)]: true,
@@ -69,6 +68,12 @@ window.OverworldMaps.Szafki2 = {
             [utils.asGridCoord(8, 6)]: true,
             [utils.asGridCoord(8, 7)]: true,
             [utils.asGridCoord(8, 8)]: true,
+            [utils.asGridCoord(10, 3)]: true,
+            [utils.asGridCoord(11, 3)]: true,
+            [utils.asGridCoord(12, 2)]: true,
+            [utils.asGridCoord(9, 1)]: true,
+            [utils.asGridCoord(10, 1)]: true,
+            [utils.asGridCoord(11, 1)]: true,
         },
     start_func: function(){
         let has_key = false;
