@@ -70,7 +70,7 @@ window.OverworldMaps.OZE = {
                    },
                ],
             }),
-            s18: new Person({
+            s19: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(16),
                 counter: 0,
@@ -79,21 +79,19 @@ window.OverworldMaps.OZE = {
                 talking: [
                     {
                         events: [
-                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
-                       ]
-                   },
-               ],
-            }),
-            s19: new Person({
-                x: utils.withGrid(7),
-                y: utils.withGrid(14),
-                counter: 0,
-                movePixels: true,
-                src: "images/Objects/door_right.png",
-                talking: [
-                    {
-                        events: [
-                            {type: "textMessage",text: 'Na OZE lepiej nie wchodzić...'}
+                            {
+                                type: "play_audio",
+                                audio: "door_open",
+                                speed: 2,
+                                volume: 0.2
+                            },
+                            {
+                                type: "changeMap",
+                                map: "S19",
+                                x: utils.withGrid(1),
+                                y: utils.withGrid(7),
+                                direction: "right"
+                            },
                        ]
                    },
                ],
@@ -211,7 +209,6 @@ window.OverworldMaps.OZE = {
             [utils.asGridCoord(4, 21)]: true,
             [utils.asGridCoord(7, 23)]: true,
             [utils.asGridCoord(7, 21)]: true,
-            [utils.asGridCoord(6, 19)]: true,
             [utils.asGridCoord(6, 17)]: true,
             [utils.asGridCoord(6, 15)]: true,
             [utils.asGridCoord(6, 13)]: true,
