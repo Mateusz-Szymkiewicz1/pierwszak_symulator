@@ -54,5 +54,6 @@ window.OverworldMaps.S19 = {
     [utils.asGridCoord(4, 4)]: true,
     [utils.asGridCoord(4, 5)]: true,
     [utils.asGridCoord(2, 8)]: true,
+    [utils.asGridCoord(0, 7)]: true,
   },
 };

@@ -50,6 +50,7 @@ class OverworldEvent{
             if(match.id == 'hero'){
                 window.health_bar.add(-5, false)
             }else{
+                if(!window.current_fight.original_health) window.current_fight.original_health = window.current_fight.health
                 window.current_fight.health -= 5;
             }
             if(window.health < 1 || window.current_fight.health < 1){

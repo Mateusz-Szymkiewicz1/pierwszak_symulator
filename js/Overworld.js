@@ -38,6 +38,27 @@ class Overworld {
                     step();
                 })
             }
+            if(window.current_fight && window.current_fight.original_health){
+                const ctx = window.Overworld.ctx;
+
+                ctx.beginPath();
+                ctx.strokeStyle = "#000"
+                ctx.moveTo(utils.withGrid(11.6), utils.withGrid(5.5));
+                ctx.lineTo(utils.withGrid(11.6)+12, utils.withGrid(5.5));
+                ctx.stroke();
+
+                const ratio = window.current_fight.health/window.current_fight.original_health
+                if(ratio > 0.6){
+                    ctx.strokeStyle = "#0f0"
+                }else if(ratio > 0.3){
+                    ctx.strokeStyle = "#f1c40f"
+                }else{
+                    ctx.strokeStyle = "#f00"
+                }
+                ctx.moveTo(utils.withGrid(11.6), utils.withGrid(5.5));
+                ctx.lineTo(utils.withGrid(11.6)+(12*ratio), utils.withGrid(5.5));
+                ctx.stroke();
+            }
         }
         step();
     }
