@@ -12,6 +12,9 @@ class QuestLog{
         if(!quest.reward){
             quest.reward = "";
         }
+        if(!quest.exp){
+            quest.exp = "";
+        }
         window.quests.push(quest);
         const popup = document.createElement("div");
         popup.className = 'hud QuestPopup quest_added';
@@ -54,6 +57,9 @@ class QuestLog{
                 if(e.reward){
                     let gold = new Gold();
                     gold.add(e.reward);
+                }
+                if(e.exp){
+                    window.exp_bar.add(e.exp)
                 }
             }
         })

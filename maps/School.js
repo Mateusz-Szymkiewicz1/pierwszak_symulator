@@ -30,7 +30,7 @@ window.OverworldMaps.School = {
                                 type: "do_code",
                             },
                             {
-                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Znajdź_Szafkę",desc: "Znajdź szafkę numer 213",})',
+                                code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Znajdź_Szafkę",desc: "Znajdź szafkę numer 213",exp: 10})',
                                 type: "do_code",
                             },
                        ]

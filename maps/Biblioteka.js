@@ -79,7 +79,8 @@ window.OverworldMaps.Biblioteka = {
                 talking: [
                     {
                         events: [
-                            {who: "Podrecznik_access",type: "textMessage",text: 'Znalazłeś "Podręcznik Access"!!'},
+                            {who: "Podrecznik_access",type: "textMessage",text: 'Znalazłeś "Podręcznik Access"!! (+50EXP)'},
+                            {type: "do_code", code: "window.exp_bar.add(50)"},
                             {who: "Podrecznik_access",type: "stand",direction: "left",time: 200},
                        ]
                    }

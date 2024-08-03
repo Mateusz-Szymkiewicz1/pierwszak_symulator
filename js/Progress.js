@@ -33,10 +33,12 @@ class Progress {
             heroInventory: window.heroInventory,
             szafka: window.szafka,
             health: window.health,
+            exp: window.exp,
+            current_level: window.current_level,
             quests: window.quests,
             gold: window.gold,
             buffs: this.buffs,
-        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","szafka","id","deleted","amount","tile","src","health", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
+        }, ["mapId","startingHeroX","startingHeroY","startingHeroDirection","heroInventory","szafka","id","deleted","amount","tile","src","health","exp","current_level", "quests", "desc", "progress", "deletable", "gold", "type", "time","buffs"]))
     }
     getSaveFile() {
         const file = window.localStorage.getItem(this.saveFileKey);
@@ -74,6 +76,8 @@ class Progress {
             this.startingHeroDirection = file.startingHeroDirection;
             this.heroInventory = file.heroInventory;
             this.health = file.health;
+            this.exp = file.exp;
+            this.current_level = file.current_level;
             this.quests = file.quests;
             this.gold = file.gold;
             this.buffs = file.buffs;

@@ -248,7 +248,7 @@
     background: #ccb5a0;
     transform: translateY(-0.5px);
 }
-.health_bar{
+.health_bar, .exp_bar{
     background: #937354;
     height: 10px;
     width: 100px;
@@ -259,12 +259,18 @@
     overflow: hidden;
     cursor: pointer;
 }
-.health_fill{
+.exp_bar{
+    left: 105px;
+}
+.health_fill, .exp_fill{
     background: #ef1110;
-    height: 7.5px;
+    height: 8px;
     transition: 0.4s;
 }
-.health_bar span{
+.exp_fill{
+    background: #2ecc71;
+}
+.health_bar span, .exp_bar span{
     color: #fff;
     font-size: 8px;
     margin: 0;

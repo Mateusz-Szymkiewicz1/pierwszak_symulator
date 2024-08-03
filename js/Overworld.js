@@ -144,6 +144,8 @@ class Overworld {
             }
             window.heroInventory = this.progress.heroInventory;
             window.health = this.progress.health;
+            window.exp = this.progress.exp;
+            window.current_level = this.progress.current_level;
             window.quests = this.progress.quests;
             window.gold = this.progress.gold;
             window.szafka = this.progress.szafka;
@@ -195,6 +197,8 @@ class Overworld {
             window.heroInventory = [];
             window.szafka = [];
             window.health = 100;
+            window.exp = 0;
+            window.current_level = 0;
             window.gold = 0;
             window.quests = [];
             window.relations = new Relations();
@@ -240,6 +244,8 @@ class Overworld {
         })
         window.health_bar = new HealthBar();
         window.health_bar.init();
+        window.exp_bar = new ExpBar();
+        window.exp_bar.init();
         const gold = new Gold();
         gold.init();
         const quest_button = document.createElement("div");
