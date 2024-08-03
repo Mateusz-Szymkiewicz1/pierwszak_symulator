@@ -202,28 +202,35 @@
     font-size: 12px;
     margin-top: 5px;
     margin-left: 5px;
-    float: left;
-    margin-bottom: 0;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
 }
 .QuestLog p {
     margin: 0;
     padding: 0;
-    float: right;
-    margin-left: 8px;
     cursor: pointer;
-    font-size: 10px;
     font-weight: 200;
-    margin-top: 1.5px;
 }
-.QuestLog p:nth-child(odd){
+.rez{
     color: #e74c3c;
-    margin-top: 2px;
+    font-size: 18px;
+    margin-top: -7.5px !important;
+    margin-right: 5px !important;
 }
-.QuestLog p:nth-child(even){
+.reward{
     color: #f1c40f;
     text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
 }
-.QuestLog span{
+.exp{
+    color: #2ecc71;
+    text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
+}
+.quest h3 span{
+    display: flex;
+    gap: 4px;
+}
+.QuestLog .quest > span{
     display: block;
     font-size: 11px;
     font-weight: 100;

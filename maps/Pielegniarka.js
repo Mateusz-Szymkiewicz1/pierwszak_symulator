@@ -140,7 +140,7 @@ window.OverworldMaps.Pielegniarka = {
                         {who: "ranny", type: "textMessage", text: "Daj mi szluga to się dogadamy."},
                         {code: 'const quest = new QuestLog({onComplete: () => {}});quest.end_quest("Klucz_do_schronu");',type: "do_code"},
                         {
-                            code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Przysługa",desc: "Przynieś Jędrkowi szlugi"});',
+                            code: 'const quest = new QuestLog({onComplete: () => {}});quest.add_quest({id: "Przysługa",desc: "Przynieś Jędrkowi szlugi", exp: 25});',
                             type: "do_code",
                         },
                         {type: "do_code", code: "window.OverworldMaps.Pielegniarka.start_func();"},

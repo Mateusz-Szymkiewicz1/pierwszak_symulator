@@ -105,15 +105,19 @@ class QuestLog{
         let counter = 0;
         window.quests.forEach(e => {
             let reward = "";
+            let exp = ""
             if(e.reward){
                 reward = e.reward+"G";
+            }
+            if(e.exp){
+                exp = e.exp+"EXP";
             }
             if(e.progress == 0){
                 counter++;
                 if(e.deletable){
-                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3>${e.id}<p class="rez" data-questid="${e.id}">X</p><p>${reward}</p></h3><br><br/><span>${e.desc}</span></div>`;
+                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3><span><span class="id">${e.id}</span><p class="exp">${exp}</p><p class="reward">${reward}</p></span><p class="rez" data-questid="${e.id}">x</p></h3><span>${e.desc}</span></div>`;
                 }else{
-                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3>${e.id}<p></p><p>${reward}</p></h3><br/><br/><span>${e.desc}</span></div>`;
+                    this.element.innerHTML = this.element.innerHTML+`<div class="quest"><h3><span><span class="id">${e.id}</span><p class="exp">${exp}</p><p class="reward">${reward}</p></span></h3><span>${e.desc}</span></div>`;
                 }
             }
         })
