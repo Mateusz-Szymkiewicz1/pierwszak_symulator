@@ -65,6 +65,9 @@ window.OverworldMaps.OZE = {
                             {
                                 type: "changeMap",
                                 map: "Bieznie",
+                                x: utils.withGrid(1),
+                                y: utils.withGrid(6),
+                                direction: "right"
                             },
                        ]
                    },
