@@ -9,6 +9,32 @@ window.OverworldMaps.Hol = {
           y: utils.withGrid(5),
           useShadow: true,
       }),
+      S121: new Person({
+        x: utils.withGrid(6),
+        y: utils.withGrid(3),
+        counter: 0,
+        movePixels: true,
+        src: "images/Objects/blank.png",
+        talking: [
+            {
+                events: [
+                    {
+                        type: "play_audio",
+                        audio: "door_open",
+                        speed: 2,
+                        volume: 0.2
+                    },
+                    {
+                        type: "changeMap",
+                        map: "S121",
+                        x: utils.withGrid(1),
+                        y: utils.withGrid(6),
+                        direction: "right"
+                    },
+               ]
+           },
+       ],
+    }),
   },
   cutsceneSpaces: {
     [utils.asGridCoord(7, 4)]: [

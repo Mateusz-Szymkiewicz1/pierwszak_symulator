@@ -5,7 +5,7 @@ window.OverworldMaps.S19 = {
   gameObjects: {
       hero: new Person({
           isPlayerControlled: true,
-          x: utils.withGrid(6),
+          x: utils.withGrid(1),
           y: utils.withGrid(7),
           useShadow: true,
       }),
