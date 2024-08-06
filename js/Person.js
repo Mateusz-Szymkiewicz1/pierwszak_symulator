@@ -4,6 +4,7 @@ class Person extends GameObject{
         this.movingProgressRemaining = 0;
         this.punchingProgressRemaining = 0;
         this.duckingProgressRemaining = 0;
+        this.hitProgressRemaining = 0;
         this.hand = 'right'
         this.isStanding = false;
         this.isPlayerControlled = config.isPlayerControlled || false;
@@ -19,7 +20,7 @@ class Person extends GameObject{
             this.updatePosition();
         }
         else{
-            if(!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow){
+            if(!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow && !document.querySelector(".TextMessage")){
                 this.startBehavior(state, {type: "walk", direction: state.arrow});
             }
             this.updateSprite(state);
@@ -57,6 +58,10 @@ class Person extends GameObject{
             this.duckingProgressRemaining = 16;
             this.updateSprite(state);
         }
+        if(behavior.type === 'get_hit'){
+            this.hitProgressRemaining = 16;
+            this.updateSprite(state);
+        }
         if(behavior.type === "stand"){
             this.isStanding = true;
             setTimeout(() => {
@@ -92,6 +97,12 @@ class Person extends GameObject{
         if(this.duckingProgressRemaining > 0){
             this.duckingProgressRemaining -= 1;
             this.sprite.setAnimation("duck-"+this.direction);
+            return;
+        }
+        if(this.hitProgressRemaining > 0){
+            this.direction = "left"
+            this.hitProgressRemaining -= 1;
+            this.sprite.setAnimation("opp-hit");
             return;
         }
         this.sprite.setAnimation("idle-"+this.direction);

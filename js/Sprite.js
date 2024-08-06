@@ -37,6 +37,7 @@ class Sprite {
           "duck-right": [ [6,1] ],
           "duck-up": [ [6,2] ],
           "duck-left": [ [6,3] ],
+          "opp-hit": [ [0,3], [1,3] ],
         }
         this.currentAnimation =  config.currentAnimation || "idle-down";
         this.currentAnimationFrame = 0;

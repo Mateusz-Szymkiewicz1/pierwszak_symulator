@@ -639,6 +639,9 @@ image-rendering: pixelated;
     margin-left: 5px;
     margin-top: 35px;
 }
+.fight .exp{
+    margin-left: 5px;
+}
 .fight button{
     background: #a48465;
     outline: none;
@@ -679,5 +682,18 @@ image-rendering: pixelated;
     margin-bottom: 5px;
 }
 .fight_end{
-    height: 90px;
+    height: 100px;
+}
+.fight_end .exp{
+    margin-left: 5px;
+    display: block;
+    float: left;
+}
+.fight_end .reward{
+    margin-left: 3px;
+    display: block;
+    float: left;
+}
+.fight_end img{
+    float: left;
 }

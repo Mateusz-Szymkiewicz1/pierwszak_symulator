@@ -14,7 +14,7 @@ window.OverworldMaps.Hol = {
         y: utils.withGrid(3),
         counter: 0,
         movePixels: true,
-        src: "images/Objects/blank.png",
+        src: "images/maps/blank.png",
         talking: [
             {
                 events: [
@@ -56,7 +56,7 @@ window.OverworldMaps.Hol = {
             {
                 type: "changeMap",
                 map: "KorytarzLewy",
-                x: utils.withGrid(25),
+                x: utils.withGrid(26),
                 y: utils.withGrid(3),
                 direction: "down"
             },

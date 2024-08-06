@@ -22,6 +22,7 @@ class OverworldEvent{
         }
     }
     walk(resolve){
+        console.log('a')
         const who = window.map.gameObjects[this.who];
         who.startBehavior({}, {
             type: "walk",
@@ -50,8 +51,13 @@ class OverworldEvent{
             if(match.id == 'hero'){
                 window.health_bar.add(-5, false)
             }else{
-                if(!window.current_fight.original_health) window.current_fight.original_health = window.current_fight.health
+                if(!window.current_fight.original_health){
+                    window.current_fight.original_health = window.current_fight.health
+                }
                 window.current_fight.health -= 5;
+                window.OverworldMaps.Schron.gameObjects.opps.startBehavior({}, {
+                    type: "get_hit",
+                })
             }
             if(window.health < 1 || window.current_fight.health < 1){
                 window.map.startCutscene([{type: "end_fight"}]);
@@ -81,6 +87,7 @@ class OverworldEvent{
             direction: this.direction,
         })
         const completeHandler = e => {
+            console.log(e)
             if(e.detail.whoId === this.who){
                 document.removeEventListener("PersonDuckingComplete", completeHandler);
                 resolve();

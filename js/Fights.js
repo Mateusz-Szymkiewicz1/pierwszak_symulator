@@ -21,6 +21,7 @@ class Fights{
             <h3>${el.name}</h3>
             <img src="images/characters/${el.name.toLowerCase()}.png">
             <span class="reward">${el.reward}<img src="images/Objects/gold.png"></span>
+            <span class="exp">${el.exp}EXP</span>
             <p>${el.desc}</p>
             <div class="bar"><div class="fill" style="width: ${el.difficulty}%;"></div></div>
             <span class="difficulty">Bardzo łatwy</span><br/>
@@ -57,6 +58,7 @@ class Fights{
         y: utils.withGrid(6),
         useShadow: true,
         counter: 0,
+        direction: "left",
         src: `images/characters/people/${el.name.toLowerCase()}.png`
     })
     const opps = window.OverworldMaps.Schron.gameObjects.opps;
@@ -76,9 +78,18 @@ async init() {
         {
             name: "Manekin",
             reward: 0,
-            difficulty: 1,
+            exp: 0,
+            difficulty: 0,
             desc: "Dosłownie manekin.",
             health: 100
+        },
+        {
+            name: "Radziu",
+            reward: 5,
+            exp: 5,
+            difficulty: 5,
+            desc: "Waga kogucia. Zapędy pedofilskie.",
+            health: 10
         }
     ]
 
@@ -105,13 +116,15 @@ class End_fight{
         this.onComplete();
         if(window.health > 0){
             delete window.OverworldMaps.Schron.gameObjects.opps;
-            window.map.startCutscene([{type: "changeMap", map: 'Schron', x: utils.withGrid(6), y: utils.withGrid(2), direction: "right"},{type: 'textMessage', who: 'tyler',text: "Brawo..."},{type: 'textMessage', who: 'tyler',text: "oby tak dalej."}]);    
+            window.map.startCutscene([{type: "changeMap", map: 'Schron', x: utils.withGrid(6), y: utils.withGrid(2), direction: "right"},{type: 'textMessage', who: 'tyler',text: "Brawo..."},{type: 'textMessage', who: 'tyler',text: "oby tak dalej."}]);
         }else{
             delete window.OverworldMaps.Schron.gameObjects.opps;
             window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(2), y: utils.withGrid(4), direction: "up"},{type: 'textMessage', who: 'pielegniarka',text: "Następnym razem uważaj na siebie..."},{type: 'textMessage', who: 'pielegniarka',text: "już mam dość uczniów z kręgu."}]);  
             const gold = new Gold();
             gold.spend(window.gold);  
             window.health = 100;
+            window.current_level -= 1;
+            window.exp = 0;
             window.heroInventory.forEach(el => {
                 if(el.can_delete){
                     el.deleted = true;
@@ -132,9 +145,10 @@ class End_fight{
         document.querySelector(".game-container").appendChild(this.element);
         if(window.health > 0){
             document.querySelector('.fight_score').innerText = 'Wygrana :D';
-            document.querySelector('.fight_reward').innerHTML = `<img src="images/Objects/gold.png"> Otrzymujesz: ${window.current_fight.reward}`;
+            document.querySelector('.fight_reward').innerHTML = `Otrzymujesz:<br/><img src="images/Objects/gold.png"><span class="reward">${window.current_fight.reward}</span><span class="exp">${window.current_fight.exp}EXP</span>`;
             const gold = new Gold();
             gold.add(window.current_fight.reward);
+            window.exp_bar.add(window.current_fight.exp)
         }
         this.element.setAttribute("tabindex", "0")
         this.element.focus();
