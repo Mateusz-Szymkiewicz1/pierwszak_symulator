@@ -13,7 +13,7 @@ window.fights = [
         exp: 5,
         difficulty: 5,
         desc: "Waga kogucia. Zapędy pedofilskie.",
-        health: 100
+        health: 10
     }
 ]
 

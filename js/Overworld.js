@@ -182,6 +182,30 @@ class Overworld {
                     }, parseInt(buff.time)+1300);
                 }
             })
+            this.progress.fights.forEach((f, index) => {
+                if(!f.minutes) return
+                let fight = window.fights[index];
+                fight.minutes = f.minutes;
+                const interval = setInterval(() => {
+                    if(fight.minutes > 0){
+                        fight.minutes--;
+                        let minutes = fight.minutes;
+                        if(minutes < 10){
+                            minutes = "0"+minutes
+                        }
+                        if(document.querySelector(`.fight_${fight.name}`)){
+                            document.querySelector(`.fight_${fight.name} .minutes`).innerHTML = `Poczekaj! Jeszcze nie doszedł do siebie.<br/>00:${minutes}`
+                        }
+                    }else{
+                        if(document.querySelector(`.fight_${fight.name}`)){
+                            document.querySelector(`.fight_${fight.name} .minutes`).remove();
+                            document.querySelector(`.fight_${fight.name} button`).style = "";
+                        }
+                        clearInterval(interval)
+                        delete fight.minutes;
+                    }
+                }, 1000*60)
+            })
             var StartMapPromise = new Promise(function(resolve) {
                 const sceneTransition = new SceneTransition();
                 sceneTransition.init(document.querySelector(".game-container"), () => {
