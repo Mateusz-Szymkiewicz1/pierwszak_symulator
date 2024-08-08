@@ -13,7 +13,7 @@ window.fights = [
         exp: 5,
         difficulty: 5,
         desc: "Waga kogucia. Zapędy pedofilskie.",
-        health: 10
+        health: 100
     }
 ]
 
@@ -69,13 +69,13 @@ class Fights{
             if(minutes < 10){
                 minutes = "0"+minutes
             }
-            div.querySelector('button').style = `pointer-events: none;filter: contrast(0.5) brightness(0.8);`
+            // div.querySelector('button').style = `pointer-events: none;filter: contrast(0.5) brightness(0.8);`
             div.insertAdjacentHTML('beforeend', `<div class="minutes">Poczekaj! Jeszcze nie doszedł do siebie.<br/>00:${minutes}</div>`);
         }
     })
  } 
 
- fight(el){
+ async fight(el){
     window.current_fight = el;
     const eventHandler = new OverworldEvent({type: "changeMap",map:"Schron",x:utils.withGrid(5),y:utils.withGrid(6),direction:"right"});
     eventHandler.init();
@@ -88,7 +88,35 @@ class Fights{
         direction: "left",
         src: `images/characters/people/${el.name.toLowerCase()}.png`
     })
-    const opps = window.OverworldMaps.Schron.gameObjects.opps;
+    while(!document.querySelector('.fight_end') && window.current_fight && window.current_fight.difficulty && !window.current_fight.ended){
+        let difficulty = (100-(window.current_fight.difficulty))*100
+        let rand = utils.getRandomInt(400,difficulty)
+        await new Promise((resolveInner) => {
+            setTimeout(resolveInner, rand);
+        })
+        if(window.map.isPaused || !window.current_fight || window.current_fight.ended) continue
+        let dodged = false;
+        window.map.gameObjects.wykrzyknik = new Person({
+            x: 91,
+            y: 104,
+            src: `images/Objects/wykrzyknik.png`
+        })
+        const dodge_listener = new KeyPressListener("KeyB", () => {
+            dodged = true
+        });
+        setTimeout(() => {
+            delete window.map.gameObjects.wykrzyknik
+            const eventHandler = new OverworldEvent({type: "punch",who: "opps"});
+            eventHandler.init();
+            dodge_listener.unbind();
+            if(!dodged){
+                window.health_bar.add(-5, false)
+                if(window.health < 1){
+                    window.map.startCutscene([{type: "end_fight"}]);
+                }
+            }
+        }, 350)
+    }
  }
 
 async init() {
@@ -155,9 +183,11 @@ class End_fight{
             window.map.startCutscene([{type: "changeMap", map: 'Pielegniarka', x: utils.withGrid(2), y: utils.withGrid(4), direction: "up"},{type: 'textMessage', who: 'pielegniarka',text: "Następnym razem uważaj na siebie..."},{type: 'textMessage', who: 'pielegniarka',text: "już mam dość uczniów z kręgu."}]);  
             const gold = new Gold();
             gold.spend(window.gold);  
-            window.health = 100;
-            window.current_level -= 1;
-            window.exp = 0;
+            window.health_bar.add(100)
+            if(window.current_level > 0){
+                window.current_level -= 1;
+            }
+            window.exp_bar.add(window.exp*(-1))
             window.heroInventory.forEach(el => {
                 if(el.can_delete){
                     el.deleted = true;
@@ -168,6 +198,7 @@ class End_fight{
     }
     
     async init() {
+        window.current_fight.ended = true;
         document.querySelector("canvas").style.filter = "blur(4px)";
         utils.turn_hud_off();
         this.element = document.createElement("div");

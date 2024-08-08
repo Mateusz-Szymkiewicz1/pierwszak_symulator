@@ -38,8 +38,15 @@ class OverworldEvent{
         document.addEventListener("PersonWalkingComplete", completeHandler);
     }
     punch(resolve){
-        const who = window.map.gameObjects[this.who];
+        let who = window.map.gameObjects[this.who];
+        if(!who) return
         who.hand = this.hand;
+        if(this.who == 'opps'){
+            who.direction = 'left'
+            this.direction = 'left'
+            who.hand = 'left'
+            this.hand = 'left'
+        }
         if(window.timeout && who.id == 'hero'){
             return;
         }
@@ -47,19 +54,15 @@ class OverworldEvent{
         const match = Object.values(window.map.gameObjects).find(object => {
             return `${object.x},${object.y}` === `${target.x},${target.y}`
         });
-        if(window.current_fight){
-            if(match.id == 'hero'){
-                window.health_bar.add(-5, false)
-            }else{
-                if(!window.current_fight.original_health){
-                    window.current_fight.original_health = window.current_fight.health
-                }
-                window.current_fight.health -= 5;
-                window.OverworldMaps.Schron.gameObjects.opps.startBehavior({}, {
-                    type: "get_hit",
-                })
+        if(window.current_fight && match.id != 'hero'){
+            if(!window.current_fight.original_health){
+                window.current_fight.original_health = window.current_fight.health
             }
-            if(window.health < 1 || window.current_fight.health < 1){
+            window.current_fight.health -= 5;
+            window.OverworldMaps.Schron.gameObjects.opps.startBehavior({}, {
+                type: "get_hit",
+            })
+            if(window.current_fight.health < 1){
                 window.map.startCutscene([{type: "end_fight"}]);
             }
         }
