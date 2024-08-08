@@ -1,3 +1,22 @@
+window.fights = [
+    {
+        name: "Manekin",
+        reward: 0,
+        exp: 0,
+        difficulty: 0,
+        desc: "Dosłownie manekin.",
+        health: 100
+    },
+    {
+        name: "Radziu",
+        reward: 5,
+        exp: 5,
+        difficulty: 5,
+        desc: "Waga kogucia. Zapędy pedofilskie.",
+        health: 100
+    }
+]
+
 class Fights{
 
   constructor({onComplete}){
@@ -16,7 +35,7 @@ class Fights{
     let this2 = this;
     window.fights.forEach(el => {
         const div = document.createElement('div');
-        div.className = 'fight';
+        div.className = `fight fight_${el.name}`;
         div.innerHTML = `
             <h3>${el.name}</h3>
             <img src="images/characters/${el.name.toLowerCase()}.png">
@@ -44,6 +63,14 @@ class Fights{
         }else if(el.difficulty > 20){
             div.querySelector(".fill").style.background = "#ffeaa7";
             div.querySelector(".difficulty").innerText = 'Łatwy'
+        }
+        if(el.minutes){
+            let minutes = el.minutes;
+            if(minutes < 10){
+                minutes = "0"+minutes
+            }
+            div.querySelector('button').style = `pointer-events: none;filter: contrast(0.5) brightness(0.8);`
+            div.insertAdjacentHTML('beforeend', `<div class="minutes">Poczekaj! Jeszcze nie doszedł do siebie.<br/>00:${minutes}</div>`);
         }
     })
  } 
@@ -73,26 +100,6 @@ async init() {
      document.querySelector(".game-container").appendChild(this.element);
      this.element.setAttribute("tabindex", "0")
      this.element.focus();
-
-    window.fights = [
-        {
-            name: "Manekin",
-            reward: 0,
-            exp: 0,
-            difficulty: 0,
-            desc: "Dosłownie manekin.",
-            health: 100
-        },
-        {
-            name: "Radziu",
-            reward: 5,
-            exp: 5,
-            difficulty: 5,
-            desc: "Waga kogucia. Zapędy pedofilskie.",
-            health: 10
-        }
-    ]
-
      this.show_fights();
      utils.wait(200);
      this.esc = new KeyPressListener("Escape", () => {
@@ -108,13 +115,39 @@ class End_fight{
     }
 
     close(){
-        delete window.current_fight;
         document.querySelector("canvas").style.filter = "none";
         utils.turn_hud_on();
         this.esc.unbind();
         this.element.remove();
         this.onComplete();
+        window.current_fight.health = window.current_fight.original_health
+        if(window.current_fight.original_health){
+            delete window.current_fight.original_health
+        }
         if(window.health > 0){
+            if(window.current_fight.name != "Manekin"){
+                window.current_fight.minutes = 10;
+                const fight = window.current_fight;
+                const interval = setInterval(() => {
+                    if(fight.minutes > 0){
+                        fight.minutes--;
+                        let minutes = fight.minutes;
+                        if(minutes < 10){
+                            minutes = "0"+minutes
+                        }
+                        if(document.querySelector(`.fight_${fight.name}`)){
+                            document.querySelector(`.fight_${fight.name} .minutes`).innerHTML = `Poczekaj! Jeszcze nie doszedł do siebie.<br/>00:${minutes}`
+                        }
+                    }else{
+                        if(document.querySelector(`.fight_${fight.name}`)){
+                            document.querySelector(`.fight_${fight.name} .minutes`).remove();
+                            document.querySelector(`.fight_${fight.name} button`).style = "";
+                        }
+                        clearInterval(interval)
+                        delete fight.minutes;
+                    }
+                }, 1000*60)
+            }
             delete window.OverworldMaps.Schron.gameObjects.opps;
             window.map.startCutscene([{type: "changeMap", map: 'Schron', x: utils.withGrid(6), y: utils.withGrid(2), direction: "right"},{type: 'textMessage', who: 'tyler',text: "Brawo..."},{type: 'textMessage', who: 'tyler',text: "oby tak dalej."}]);
         }else{
@@ -131,6 +164,7 @@ class End_fight{
                 }
             })
         }
+        delete window.current_fight;
     }
     
     async init() {

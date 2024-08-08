@@ -697,3 +697,9 @@ image-rendering: pixelated;
 .fight_end img{
     float: left;
 }
+.minutes{
+    font-size: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
+    color: #d63b2b;
+}
