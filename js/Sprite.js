@@ -46,6 +46,9 @@ class Sprite {
         this.gameObject = config.gameObject;
     }
     get frame(){
+        if(this.gameObject.id == 'opps' && this.currentAnimation.includes("punch-undefined")){
+          this.currentAnimation = 'punch-left-left'
+        }
         return this.animations[this.currentAnimation][this.currentAnimationFrame];
     }
     setAnimation(key){

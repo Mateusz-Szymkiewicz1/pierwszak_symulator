@@ -101,6 +101,8 @@ class Fights{
             y: 104,
             src: `images/Objects/wykrzyknik.png`
         })
+        const eventHandler = new OverworldEvent({type: "play_audio",audio: "attack", volume: 0.2});
+        eventHandler.init();
         const dodge_listener = new KeyPressListener("KeyB", () => {
             dodged = true
         });
@@ -110,10 +112,15 @@ class Fights{
             eventHandler.init();
             dodge_listener.unbind();
             if(!dodged){
+                const eventHandler = new OverworldEvent({type: "play_audio",audio: "getting_hit", volume: 0.45});
+                eventHandler.init();
                 window.health_bar.add(-5, false)
                 if(window.health < 1){
                     window.map.startCutscene([{type: "end_fight"}]);
                 }
+            }else{
+                const eventHandler = new OverworldEvent({type: "play_audio",audio: "dodge", volume: 0.4});
+                eventHandler.init();
             }
         }, 350)
     }
@@ -194,6 +201,7 @@ class End_fight{
                 }
             })
         }
+        delete window.current_fight.ended;
         delete window.current_fight;
     }
     

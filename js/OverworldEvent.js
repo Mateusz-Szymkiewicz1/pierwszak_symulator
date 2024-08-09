@@ -58,6 +58,8 @@ class OverworldEvent{
             if(!window.current_fight.original_health){
                 window.current_fight.original_health = window.current_fight.health
             }
+            const eventHandler = new OverworldEvent({type: "play_audio",audio: "hitting", volume: 0.45, clone: true});
+            eventHandler.init();
             window.current_fight.health -= 5;
             window.OverworldMaps.Schron.gameObjects.opps.startBehavior({}, {
                 type: "get_hit",
@@ -276,7 +278,12 @@ class OverworldEvent{
         fights.init();
     }  
     play_audio(resolve){
-        const audio = document.querySelector("#audio_"+this.audio);
+        let audio = undefined;
+        if(this.clone){
+            audio = document.querySelector("#audio_"+this.audio).cloneNode(true)
+        }else{
+            audio = document.querySelector("#audio_"+this.audio);
+        }
         if(this.speed){
             audio.playbackRate = this.speed;
         } 
