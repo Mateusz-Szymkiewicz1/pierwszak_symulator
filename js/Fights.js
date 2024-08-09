@@ -213,7 +213,7 @@ class End_fight{
         this.element.className = 'fights fight_end';
         this.element.innerHTML = `
             <h2>Koniec walki! <br/> <span class="fight_score">Przegrana :(</span></h2>
-            <span class="fight_reward"><img src="images/Objects/gold.png"> Otrzymujesz: 0</span>
+            <span class="fight_reward">Tracisz:<br/><img src="images/Objects/gold.png"><span class="reward">${window.gold}</span><span class="exp">${window.exp}EXP</span>
         `;
         document.querySelector(".game-container").appendChild(this.element);
         if(window.health > 0){
@@ -222,6 +222,11 @@ class End_fight{
             const gold = new Gold();
             gold.add(window.current_fight.reward);
             window.exp_bar.add(window.current_fight.exp)
+            const eventHandler = new OverworldEvent({type: "play_audio",audio: "win", volume: 0.2});
+            eventHandler.init();
+        }else{
+            const eventHandler = new OverworldEvent({type: "play_audio",audio: "death", volume: 0.2});
+            eventHandler.init();
         }
         this.element.setAttribute("tabindex", "0")
         this.element.focus();
